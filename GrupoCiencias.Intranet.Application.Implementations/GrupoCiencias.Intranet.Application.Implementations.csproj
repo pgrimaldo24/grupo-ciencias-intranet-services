@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GrupoCiencias.Intranet.Application.Interfaces\GrupoCiencias.Intranet.Application.Interfaces.csproj" />
+    <ProjectReference Include="..\GrupoCiencias.Intranet.CrossCutting.Common\GrupoCiencias.Intranet.CrossCutting.Common.csproj" />
+    <ProjectReference Include="..\GrupoCiencias.Intranet.CrossCutting.Dto\GrupoCiencias.Intranet.CrossCutting.Dto.csproj" />
+    <ProjectReference Include="..\GrupoCiencias.Intranet.CrossCutting.IoC\GrupoCiencias.Intranet.CrossCutting.IoC.csproj" />
+    <ProjectReference Include="..\GrupoCiencias.Intranet.Domain.Models\GrupoCiencias.Intranet.Domain.Models.csproj" />
+    <ProjectReference Include="..\GrupoCiencias.Intranet.Repository.Interfaces\GrupoCiencias.Intranet.Repository.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>

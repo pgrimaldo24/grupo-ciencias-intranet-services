@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GrupoCiencias.Intranet.CrossCutting.Dto\GrupoCiencias.Intranet.CrossCutting.Dto.csproj" />
+  </ItemGroup>
+
+</Project>

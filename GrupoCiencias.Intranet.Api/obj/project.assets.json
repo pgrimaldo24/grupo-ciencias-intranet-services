@@ -1,0 +1,432 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0": {
+      "Microsoft.Extensions.ApiDescription.Server/3.0.0": {
+        "type": "package",
+        "build": {
+          "build/Microsoft.Extensions.ApiDescription.Server.props": {},
+          "build/Microsoft.Extensions.ApiDescription.Server.targets": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Microsoft.Extensions.ApiDescription.Server.props": {},
+          "buildMultiTargeting/Microsoft.Extensions.ApiDescription.Server.targets": {}
+        }
+      },
+      "Microsoft.OpenApi/1.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {}
+        }
+      },
+      "Swashbuckle.AspNetCore/5.6.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.ApiDescription.Server": "3.0.0",
+          "Swashbuckle.AspNetCore.Swagger": "5.6.3",
+          "Swashbuckle.AspNetCore.SwaggerGen": "5.6.3",
+          "Swashbuckle.AspNetCore.SwaggerUI": "5.6.3"
+        },
+        "build": {
+          "build/Swashbuckle.AspNetCore.props": {}
+        }
+      },
+      "Swashbuckle.AspNetCore.Swagger/5.6.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.OpenApi": "1.2.3"
+        },
+        "compile": {
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Swagger.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Swagger.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Swashbuckle.AspNetCore.SwaggerGen/5.6.3": {
+        "type": "package",
+        "dependencies": {
+          "Swashbuckle.AspNetCore.Swagger": "5.6.3"
+        },
+        "compile": {
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Swashbuckle.AspNetCore.SwaggerUI/5.6.3": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "GrupoCiencias.Intranet.Application.Implementations/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "GrupoCiencias.Intranet.Application.Interfaces": "1.0.0",
+          "GrupoCiencias.Intranet.CrossCutting.Common": "1.0.0",
+          "GrupoCiencias.Intranet.CrossCutting.Dto": "1.0.0",
+          "GrupoCiencias.Intranet.CrossCutting.IoC": "1.0.0",
+          "GrupoCiencias.Intranet.Domain.Models": "1.0.0",
+          "GrupoCiencias.Intranet.Repository.Interfaces": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GrupoCiencias.Intranet.Application.Implementations.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GrupoCiencias.Intranet.Application.Implementations.dll": {}
+        }
+      },
+      "GrupoCiencias.Intranet.Application.Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "GrupoCiencias.Intranet.CrossCutting.Dto": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GrupoCiencias.Intranet.Application.Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GrupoCiencias.Intranet.Application.Interfaces.dll": {}
+        }
+      },
+      "GrupoCiencias.Intranet.CrossCutting.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/GrupoCiencias.Intranet.CrossCutting.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GrupoCiencias.Intranet.CrossCutting.Common.dll": {}
+        }
+      },
+      "GrupoCiencias.Intranet.CrossCutting.Dto/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "GrupoCiencias.Intranet.CrossCutting.Common": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GrupoCiencias.Intranet.CrossCutting.Dto.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GrupoCiencias.Intranet.CrossCutting.Dto.dll": {}
+        }
+      },
+      "GrupoCiencias.Intranet.CrossCutting.IoC/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "GrupoCiencias.Intranet.CrossCutting.Dto": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GrupoCiencias.Intranet.CrossCutting.IoC.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GrupoCiencias.Intranet.CrossCutting.IoC.dll": {}
+        }
+      },
+      "GrupoCiencias.Intranet.Domain.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "GrupoCiencias.Intranet.CrossCutting.Common": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GrupoCiencias.Intranet.Domain.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GrupoCiencias.Intranet.Domain.Models.dll": {}
+        }
+      },
+      "GrupoCiencias.Intranet.Repository.Implementations/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "GrupoCiencias.Intranet.Application.Implementations": "1.0.0",
+          "GrupoCiencias.Intranet.CrossCutting.Common": "1.0.0",
+          "GrupoCiencias.Intranet.CrossCutting.Dto": "1.0.0",
+          "GrupoCiencias.Intranet.CrossCutting.IoC": "1.0.0",
+          "GrupoCiencias.Intranet.Domain.Models": "1.0.0",
+          "GrupoCiencias.Intranet.Repository.Interfaces": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GrupoCiencias.Intranet.Repository.Implementations.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GrupoCiencias.Intranet.Repository.Implementations.dll": {}
+        }
+      },
+      "GrupoCiencias.Intranet.Repository.Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "GrupoCiencias.Intranet.CrossCutting.Common": "1.0.0",
+          "GrupoCiencias.Intranet.CrossCutting.Dto": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GrupoCiencias.Intranet.Repository.Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GrupoCiencias.Intranet.Repository.Interfaces.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Microsoft.Extensions.ApiDescription.Server/3.0.0": {
+      "sha512": "LH4OE/76F6sOCslif7+Xh3fS/wUUrE5ryeXAMcoCnuwOQGT5Smw0p57IgDh/pHgHaGz/e+AmEQb7pRgb++wt0w==",
+      "type": "package",
+      "path": "microsoft.extensions.apidescription.server/3.0.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Microsoft.Extensions.ApiDescription.Server.props",
+        "build/Microsoft.Extensions.ApiDescription.Server.targets",
+        "buildMultiTargeting/Microsoft.Extensions.ApiDescription.Server.props",
+        "buildMultiTargeting/Microsoft.Extensions.ApiDescription.Server.targets",
+        "microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+        "microsoft.extensions.apidescription.server.nuspec",
+        "tools/Newtonsoft.Json.dll",
+        "tools/dotnet-getdocument.deps.json",
+        "tools/dotnet-getdocument.dll",
+        "tools/dotnet-getdocument.runtimeconfig.json",
+        "tools/net461-x86/GetDocument.Insider.exe",
+        "tools/net461-x86/GetDocument.Insider.exe.config",
+        "tools/net461/GetDocument.Insider.exe",
+        "tools/net461/GetDocument.Insider.exe.config",
+        "tools/netcoreapp2.1/GetDocument.Insider.deps.json",
+        "tools/netcoreapp2.1/GetDocument.Insider.dll",
+        "tools/netcoreapp2.1/GetDocument.Insider.runtimeconfig.json"
+      ]
+    },
+    "Microsoft.OpenApi/1.2.3": {
+      "sha512": "Nug3rO+7Kl5/SBAadzSMAVgqDlfGjJZ0GenQrLywJ84XGKO0uRqkunz5Wyl0SDwcR71bAATXvSdbdzPrYRYKGw==",
+      "type": "package",
+      "path": "microsoft.openapi/1.2.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net46/Microsoft.OpenApi.dll",
+        "lib/net46/Microsoft.OpenApi.pdb",
+        "lib/net46/Microsoft.OpenApi.xml",
+        "lib/netstandard2.0/Microsoft.OpenApi.dll",
+        "lib/netstandard2.0/Microsoft.OpenApi.pdb",
+        "lib/netstandard2.0/Microsoft.OpenApi.xml",
+        "microsoft.openapi.1.2.3.nupkg.sha512",
+        "microsoft.openapi.nuspec"
+      ]
+    },
+    "Swashbuckle.AspNetCore/5.6.3": {
+      "sha512": "UkL9GU0mfaA+7RwYjEaBFvAzL8qNQhNqAeV5uaWUu/Z+fVgvK9FHkGCpTXBqSQeIHuZaIElzxnLDdIqGzuCnVg==",
+      "type": "package",
+      "path": "swashbuckle.aspnetcore/5.6.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Swashbuckle.AspNetCore.props",
+        "swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+        "swashbuckle.aspnetcore.nuspec"
+      ]
+    },
+    "Swashbuckle.AspNetCore.Swagger/5.6.3": {
+      "sha512": "rn/MmLscjg6WSnTZabojx5DQYle2GjPanSPbCU3Kw8Hy72KyQR3uy8R1Aew5vpNALjfUFm2M/vwUtqdOlzw+GA==",
+      "type": "package",
+      "path": "swashbuckle.aspnetcore.swagger/5.6.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Swagger.dll",
+        "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Swagger.pdb",
+        "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Swagger.xml",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.Swagger.dll",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.Swagger.pdb",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.Swagger.xml",
+        "swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+        "swashbuckle.aspnetcore.swagger.nuspec"
+      ]
+    },
+    "Swashbuckle.AspNetCore.SwaggerGen/5.6.3": {
+      "sha512": "CkhVeod/iLd3ikVTDOwG5sym8BE5xbqGJ15iF3cC7ZPg2kEwDQL4a88xjkzsvC9oOB2ax6B0rK0EgRK+eOBX+w==",
+      "type": "package",
+      "path": "swashbuckle.aspnetcore.swaggergen/5.6.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerGen.dll",
+        "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerGen.pdb",
+        "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerGen.xml",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerGen.dll",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerGen.pdb",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerGen.xml",
+        "swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+        "swashbuckle.aspnetcore.swaggergen.nuspec"
+      ]
+    },
+    "Swashbuckle.AspNetCore.SwaggerUI/5.6.3": {
+      "sha512": "BPvcPxQRMsYZ3HnYmGKRWDwX4Wo29WHh14Q6B10BB8Yfbbcza+agOC2UrBFA1EuaZuOsFLbp6E2+mqVNF/Je8A==",
+      "type": "package",
+      "path": "swashbuckle.aspnetcore.swaggerui/5.6.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerUI.dll",
+        "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerUI.pdb",
+        "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerUI.xml",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerUI.dll",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerUI.pdb",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerUI.xml",
+        "swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
+        "swashbuckle.aspnetcore.swaggerui.nuspec"
+      ]
+    },
+    "GrupoCiencias.Intranet.Application.Implementations/1.0.0": {
+      "type": "project",
+      "path": "../GrupoCiencias.Intranet.Application.Implementations/GrupoCiencias.Intranet.Application.Implementations.csproj",
+      "msbuildProject": "../GrupoCiencias.Intranet.Application.Implementations/GrupoCiencias.Intranet.Application.Implementations.csproj"
+    },
+    "GrupoCiencias.Intranet.Application.Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../GrupoCiencias.Intranet.Application.Interfaces/GrupoCiencias.Intranet.Application.Interfaces.csproj",
+      "msbuildProject": "../GrupoCiencias.Intranet.Application.Interfaces/GrupoCiencias.Intranet.Application.Interfaces.csproj"
+    },
+    "GrupoCiencias.Intranet.CrossCutting.Common/1.0.0": {
+      "type": "project",
+      "path": "../GrupoCiencias.Intranet.CrossCutting.Common/GrupoCiencias.Intranet.CrossCutting.Common.csproj",
+      "msbuildProject": "../GrupoCiencias.Intranet.CrossCutting.Common/GrupoCiencias.Intranet.CrossCutting.Common.csproj"
+    },
+    "GrupoCiencias.Intranet.CrossCutting.Dto/1.0.0": {
+      "type": "project",
+      "path": "../GrupoCiencias.Intranet.CrossCutting.Dto/GrupoCiencias.Intranet.CrossCutting.Dto.csproj",
+      "msbuildProject": "../GrupoCiencias.Intranet.CrossCutting.Dto/GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
+    },
+    "GrupoCiencias.Intranet.CrossCutting.IoC/1.0.0": {
+      "type": "project",
+      "path": "../GrupoCiencias.Intranet.CrossCutting.IoC/GrupoCiencias.Intranet.CrossCutting.IoC.csproj",
+      "msbuildProject": "../GrupoCiencias.Intranet.CrossCutting.IoC/GrupoCiencias.Intranet.CrossCutting.IoC.csproj"
+    },
+    "GrupoCiencias.Intranet.Domain.Models/1.0.0": {
+      "type": "project",
+      "path": "../GrupoCiencias.Intranet.Domain.Models/GrupoCiencias.Intranet.Domain.Models.csproj",
+      "msbuildProject": "../GrupoCiencias.Intranet.Domain.Models/GrupoCiencias.Intranet.Domain.Models.csproj"
+    },
+    "GrupoCiencias.Intranet.Repository.Implementations/1.0.0": {
+      "type": "project",
+      "path": "../GrupoCiencias.Intranet.Repository.Implementations/GrupoCiencias.Intranet.Repository.Implementations.csproj",
+      "msbuildProject": "../GrupoCiencias.Intranet.Repository.Implementations/GrupoCiencias.Intranet.Repository.Implementations.csproj"
+    },
+    "GrupoCiencias.Intranet.Repository.Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../GrupoCiencias.Intranet.Repository.Interfaces/GrupoCiencias.Intranet.Repository.Interfaces.csproj",
+      "msbuildProject": "../GrupoCiencias.Intranet.Repository.Interfaces/GrupoCiencias.Intranet.Repository.Interfaces.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0": [
+      "GrupoCiencias.Intranet.Application.Implementations >= 1.0.0",
+      "GrupoCiencias.Intranet.Domain.Models >= 1.0.0",
+      "GrupoCiencias.Intranet.Repository.Implementations >= 1.0.0",
+      "Swashbuckle.AspNetCore >= 5.6.3"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\pgrimald\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Api\\GrupoCiencias.Intranet.Api.csproj",
+      "projectName": "GrupoCiencias.Intranet.Api",
+      "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Api\\GrupoCiencias.Intranet.Api.csproj",
+      "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
+      "outputPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Api\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "projectReferences": {
+            "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj": {
+              "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj"
+            },
+            "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
+              "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj"
+            },
+            "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj": {
+              "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0": {
+        "targetAlias": "net5.0",
+        "dependencies": {
+          "Swashbuckle.AspNetCore": {
+            "target": "Package",
+            "version": "[5.6.3, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[5.0.14, 5.0.14]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

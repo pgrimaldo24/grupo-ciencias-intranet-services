@@ -1,0 +1,201 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0": {
+      "GrupoCiencias.Intranet.Application.Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "GrupoCiencias.Intranet.CrossCutting.Dto": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GrupoCiencias.Intranet.Application.Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GrupoCiencias.Intranet.Application.Interfaces.dll": {}
+        }
+      },
+      "GrupoCiencias.Intranet.CrossCutting.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/GrupoCiencias.Intranet.CrossCutting.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GrupoCiencias.Intranet.CrossCutting.Common.dll": {}
+        }
+      },
+      "GrupoCiencias.Intranet.CrossCutting.Dto/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "GrupoCiencias.Intranet.CrossCutting.Common": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GrupoCiencias.Intranet.CrossCutting.Dto.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GrupoCiencias.Intranet.CrossCutting.Dto.dll": {}
+        }
+      },
+      "GrupoCiencias.Intranet.CrossCutting.IoC/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "GrupoCiencias.Intranet.CrossCutting.Dto": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GrupoCiencias.Intranet.CrossCutting.IoC.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GrupoCiencias.Intranet.CrossCutting.IoC.dll": {}
+        }
+      },
+      "GrupoCiencias.Intranet.Domain.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "GrupoCiencias.Intranet.CrossCutting.Common": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GrupoCiencias.Intranet.Domain.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GrupoCiencias.Intranet.Domain.Models.dll": {}
+        }
+      },
+      "GrupoCiencias.Intranet.Repository.Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "GrupoCiencias.Intranet.CrossCutting.Common": "1.0.0",
+          "GrupoCiencias.Intranet.CrossCutting.Dto": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GrupoCiencias.Intranet.Repository.Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GrupoCiencias.Intranet.Repository.Interfaces.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GrupoCiencias.Intranet.Application.Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../GrupoCiencias.Intranet.Application.Interfaces/GrupoCiencias.Intranet.Application.Interfaces.csproj",
+      "msbuildProject": "../GrupoCiencias.Intranet.Application.Interfaces/GrupoCiencias.Intranet.Application.Interfaces.csproj"
+    },
+    "GrupoCiencias.Intranet.CrossCutting.Common/1.0.0": {
+      "type": "project",
+      "path": "../GrupoCiencias.Intranet.CrossCutting.Common/GrupoCiencias.Intranet.CrossCutting.Common.csproj",
+      "msbuildProject": "../GrupoCiencias.Intranet.CrossCutting.Common/GrupoCiencias.Intranet.CrossCutting.Common.csproj"
+    },
+    "GrupoCiencias.Intranet.CrossCutting.Dto/1.0.0": {
+      "type": "project",
+      "path": "../GrupoCiencias.Intranet.CrossCutting.Dto/GrupoCiencias.Intranet.CrossCutting.Dto.csproj",
+      "msbuildProject": "../GrupoCiencias.Intranet.CrossCutting.Dto/GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
+    },
+    "GrupoCiencias.Intranet.CrossCutting.IoC/1.0.0": {
+      "type": "project",
+      "path": "../GrupoCiencias.Intranet.CrossCutting.IoC/GrupoCiencias.Intranet.CrossCutting.IoC.csproj",
+      "msbuildProject": "../GrupoCiencias.Intranet.CrossCutting.IoC/GrupoCiencias.Intranet.CrossCutting.IoC.csproj"
+    },
+    "GrupoCiencias.Intranet.Domain.Models/1.0.0": {
+      "type": "project",
+      "path": "../GrupoCiencias.Intranet.Domain.Models/GrupoCiencias.Intranet.Domain.Models.csproj",
+      "msbuildProject": "../GrupoCiencias.Intranet.Domain.Models/GrupoCiencias.Intranet.Domain.Models.csproj"
+    },
+    "GrupoCiencias.Intranet.Repository.Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../GrupoCiencias.Intranet.Repository.Interfaces/GrupoCiencias.Intranet.Repository.Interfaces.csproj",
+      "msbuildProject": "../GrupoCiencias.Intranet.Repository.Interfaces/GrupoCiencias.Intranet.Repository.Interfaces.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0": [
+      "GrupoCiencias.Intranet.Application.Interfaces >= 1.0.0",
+      "GrupoCiencias.Intranet.CrossCutting.Common >= 1.0.0",
+      "GrupoCiencias.Intranet.CrossCutting.Dto >= 1.0.0",
+      "GrupoCiencias.Intranet.CrossCutting.IoC >= 1.0.0",
+      "GrupoCiencias.Intranet.Domain.Models >= 1.0.0",
+      "GrupoCiencias.Intranet.Repository.Interfaces >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\pgrimald\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj",
+      "projectName": "GrupoCiencias.Intranet.Application.Implementations",
+      "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj",
+      "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
+      "outputPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "projectReferences": {
+            "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj": {
+              "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj"
+            },
+            "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
+              "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
+            },
+            "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
+              "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
+            },
+            "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj": {
+              "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj"
+            },
+            "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
+              "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj"
+            },
+            "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj": {
+              "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0": {
+        "targetAlias": "net5.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
