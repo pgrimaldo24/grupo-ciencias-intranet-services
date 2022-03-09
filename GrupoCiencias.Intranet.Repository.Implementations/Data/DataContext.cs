@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using GrupoCiencias.Intranet.Domain.Models.Entity;
+using GrupoCiencias.Intranet.Repository.Implementations.Configuration;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace GrupoCiencias.Intranet.Repository.Implementations.Data
@@ -14,8 +16,9 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-          
+            builder.ApplyConfiguration(new SolicitudMatriculaConfiguration());
         }
 
+        public virtual DbSet<SolicitudMatriculaEntity> SolicitudMatricula { get; set; }
     }
 }

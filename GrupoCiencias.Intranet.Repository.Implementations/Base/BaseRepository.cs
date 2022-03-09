@@ -1,48 +1,54 @@
-﻿using GrupoCiencias.Intranet.Repository.Interfaces.Base;
+﻿using GrupoCiencias.Intranet.Repository.Implementations.Data;
+using GrupoCiencias.Intranet.Repository.Interfaces.Base;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace GrupoCiencias.Intranet.Repository.Implementations.Base
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
-        public async Task Delete(object id)
+        private DbSet<T> table = null;
+        private readonly DataContext Context;
+
+        public BaseRepository(DataContext context)
         {
-            throw new NotImplementedException();
+            Context = context;
+            table = context.Set<T>();
         }
 
-        public async Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate)
+        public async Task Delete(object id)
         {
-            throw new NotImplementedException();
+            T existing = await table.FindAsync(id);
+            table.Remove(existing);
         }
+
+        public async Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate) => await table.FirstOrDefaultAsync(predicate);
 
         public async Task<IEnumerable<T>> GetAll()
         {
-            throw new NotImplementedException();
+            return await table.ToListAsync();
         }
 
-        public async Task<T> GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<T> GetById(int id) => await table.FindAsync(id);
 
         public async Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await table.Where(predicate).ToListAsync();
         }
 
         public async Task Insert(T entity)
         {
-            throw new NotImplementedException();
+            await table.AddAsync(entity);
         }
 
         public void Update(T entity, bool activarDeteccion = false)
         {
-            throw new NotImplementedException();
+            table.Attach(entity);
+            Context.Entry(entity).State = EntityState.Modified; 
         }
     }
 }
