@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GrupoCiencias.Intranet.Application.Implementations\GrupoCiencias.Intranet.Application.Implementations.csproj" />
+    <ProjectReference Include="..\GrupoCiencias.Intranet.CrossCutting.Common\GrupoCiencias.Intranet.CrossCutting.Common.csproj" />
     <ProjectReference Include="..\GrupoCiencias.Intranet.Domain.Models\GrupoCiencias.Intranet.Domain.Models.csproj" />
     <ProjectReference Include="..\GrupoCiencias.Intranet.Repository.Implementations\GrupoCiencias.Intranet.Repository.Implementations.csproj" />
   </ItemGroup>

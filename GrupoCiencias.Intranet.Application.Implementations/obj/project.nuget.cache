@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "LbFQ9VjBIA/izrQ2eexkf8VBJtYpvTYzMofSiI+9so0RWyaHcaWyy8NiARJr3Jrw8NWglK+0/xugP8KfI9daCA==",
+  "dgSpecHash": "5ztjzq3n9ZYVfOk89d/mF70zJ61oSB7GhbtIcAKZEtlrLnWuys852tGTn959N29iWnVo8rW6TtY+e0VUjSCo9A==",
   "success": true,
   "projectFilePath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\pgrimald\\.nuget\\packages\\autofac\\6.3.0\\autofac.6.3.0.nupkg.sha512",
+    "C:\\Users\\pgrimald\\.nuget\\packages\\autofac.extensions.dependencyinjection\\7.2.0\\autofac.extensions.dependencyinjection.7.2.0.nupkg.sha512",
+    "C:\\Users\\pgrimald\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\pgrimald\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1\\system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512"
+  ],
   "logs": []
 }

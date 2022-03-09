@@ -1,0 +1,7 @@
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Api\obj\Debug\net5.0\GrupoCiencias.Intranet.Api.csproj.AssemblyReference.cache
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Api\obj\Debug\net5.0\GrupoCiencias.Intranet.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Api\obj\Debug\net5.0\GrupoCiencias.Intranet.Api.AssemblyInfoInputs.cache
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Api\obj\Debug\net5.0\GrupoCiencias.Intranet.Api.AssemblyInfo.cs
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Api\obj\Debug\net5.0\GrupoCiencias.Intranet.Api.csproj.CoreCompileInputs.cache
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Api\obj\Debug\net5.0\GrupoCiencias.Intranet.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Api\obj\Debug\net5.0\GrupoCiencias.Intranet.Api.MvcApplicationPartsAssemblyInfo.cache

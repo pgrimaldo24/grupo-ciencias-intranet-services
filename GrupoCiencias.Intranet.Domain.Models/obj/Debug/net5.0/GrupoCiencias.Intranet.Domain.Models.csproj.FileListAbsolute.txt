@@ -1,0 +1,15 @@
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Domain.Models\bin\Debug\net5.0\GrupoCiencias.Intranet.Domain.Models.deps.json
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Domain.Models\bin\Debug\net5.0\GrupoCiencias.Intranet.Domain.Models.dll
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Domain.Models\bin\Debug\net5.0\ref\GrupoCiencias.Intranet.Domain.Models.dll
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Domain.Models\bin\Debug\net5.0\GrupoCiencias.Intranet.Domain.Models.pdb
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Domain.Models\bin\Debug\net5.0\GrupoCiencias.Intranet.CrossCutting.Common.dll
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Domain.Models\bin\Debug\net5.0\GrupoCiencias.Intranet.CrossCutting.Common.pdb
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Domain.Models\obj\Debug\net5.0\GrupoCiencias.Intranet.Domain.Models.csproj.AssemblyReference.cache
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Domain.Models\obj\Debug\net5.0\GrupoCiencias.Intranet.Domain.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Domain.Models\obj\Debug\net5.0\GrupoCiencias.Intranet.Domain.Models.AssemblyInfoInputs.cache
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Domain.Models\obj\Debug\net5.0\GrupoCiencias.Intranet.Domain.Models.AssemblyInfo.cs
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Domain.Models\obj\Debug\net5.0\GrupoCiencias.Intranet.Domain.Models.csproj.CoreCompileInputs.cache
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Domain.Models\obj\Debug\net5.0\GrupoCiencias.Intranet.Domain.Models.dll
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Domain.Models\obj\Debug\net5.0\ref\GrupoCiencias.Intranet.Domain.Models.dll
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Domain.Models\obj\Debug\net5.0\GrupoCiencias.Intranet.Domain.Models.pdb
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Domain.Models\obj\Debug\net5.0\GrupoCiencias.Intranet.Domain.Models.csproj.CopyComplete
