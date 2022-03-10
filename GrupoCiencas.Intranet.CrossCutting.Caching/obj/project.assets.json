@@ -6175,11 +6175,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencas.Intranet.CrossCutting.Caching\\GrupoCiencas.Intranet.CrossCutting.Caching.csproj",
+      "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencas.Intranet.CrossCutting.Caching\\GrupoCiencas.Intranet.CrossCutting.Caching.csproj",
       "projectName": "GrupoCiencas.Intranet.CrossCutting.Caching",
-      "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencas.Intranet.CrossCutting.Caching\\GrupoCiencas.Intranet.CrossCutting.Caching.csproj",
+      "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencas.Intranet.CrossCutting.Caching\\GrupoCiencas.Intranet.CrossCutting.Caching.csproj",
       "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
-      "outputPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencas.Intranet.CrossCutting.Caching\\obj\\",
+      "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencas.Intranet.CrossCutting.Caching\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6196,8 +6196,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
-              "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
+            "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
+              "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
             }
           }
         }

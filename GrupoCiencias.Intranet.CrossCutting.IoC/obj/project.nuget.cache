@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "n5PvcdOpNxgeDrBVvhpCYUs/meYMOI4oXE2F648emuklRH5abTxh+MjP3SmgKB/rN3Biehh6NMuXU+dfH2E5CA==",
+  "dgSpecHash": "3o7MBGk9pdUkSMgq50Q3S5vXrscCJ+F3GZzxfgW3xgqGBwqaFbXyJi5+XQaOXJun7WtqxoosDacFu2395u7FaQ==",
   "success": true,
-  "projectFilePath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj",
+  "projectFilePath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pgrimald\\.nuget\\packages\\autofac\\6.3.0\\autofac.6.3.0.nupkg.sha512",
     "C:\\Users\\pgrimald\\.nuget\\packages\\autofac.extensions.dependencyinjection\\7.2.0\\autofac.extensions.dependencyinjection.7.2.0.nupkg.sha512",

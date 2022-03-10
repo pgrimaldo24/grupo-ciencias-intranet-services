@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8lVZSXrtcMhgEQYQjm2T4PKzlW5vpYBCik5J43UDo8E4vOcZl9x/+Jk29vY9qPdpeMASmc3VZcLqd1OSyhy9Ow==",
+  "dgSpecHash": "BqoHl19FVdCPuTlyz1o5R/qqgdRH8LbL6UtVghjVzHVvGEaGd9UOy5S3EMs48ahs5M1DIVebGNtcNA336J5usg==",
   "success": true,
-  "projectFilePath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencas.Intranet.CrossCutting.Caching\\GrupoCiencas.Intranet.CrossCutting.Caching.csproj",
+  "projectFilePath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencas.Intranet.CrossCutting.Caching\\GrupoCiencas.Intranet.CrossCutting.Caching.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pgrimald\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\pgrimald\\.nuget\\packages\\castle.core.asyncinterceptor\\2.0.0\\castle.core.asyncinterceptor.2.0.0.nupkg.sha512",

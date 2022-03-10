@@ -51,3 +51,10 @@ C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.A
 C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Api\obj\Debug\net5.0\ref\GrupoCiencias.Intranet.Api.dll
 C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Api\obj\Debug\net5.0\GrupoCiencias.Intranet.Api.pdb
 C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Api\obj\Debug\net5.0\GrupoCiencias.Intranet.Api.genruntimeconfig.cache
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\1.GrupoCienciasRepository\proceso-matricula-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll

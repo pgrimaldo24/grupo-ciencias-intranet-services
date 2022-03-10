@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Api\\GrupoCiencias.Intranet.Api.csproj": {}
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Api\\GrupoCiencias.Intranet.Api.csproj": {}
   },
   "projects": {
-    "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Api\\GrupoCiencias.Intranet.Api.csproj": {
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Api\\GrupoCiencias.Intranet.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Api\\GrupoCiencias.Intranet.Api.csproj",
+        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Api\\GrupoCiencias.Intranet.Api.csproj",
         "projectName": "GrupoCiencias.Intranet.Api",
-        "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Api\\GrupoCiencias.Intranet.Api.csproj",
+        "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Api\\GrupoCiencias.Intranet.Api.csproj",
         "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
-        "outputPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Api\\obj\\",
+        "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,17 +28,17 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj"
               },
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
               },
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj"
               },
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj"
               }
             }
           }
@@ -90,14 +90,14 @@
         }
       }
     },
-    "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj": {
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj",
+        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj",
         "projectName": "GrupoCiencias.Intranet.Application.Implementations",
-        "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj",
+        "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj",
         "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
-        "outputPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\obj\\",
+        "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Implementations\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -114,23 +114,23 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj"
               },
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
               },
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
               },
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj"
               },
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj"
               },
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj"
               }
             }
           }
@@ -163,14 +163,14 @@
         }
       }
     },
-    "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj": {
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj",
+        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj",
         "projectName": "GrupoCiencias.Intranet.Application.Interfaces",
-        "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj",
+        "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj",
         "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
-        "outputPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Interfaces\\obj\\",
+        "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Interfaces\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -187,8 +187,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
               }
             }
           }
@@ -221,14 +221,14 @@
         }
       }
     },
-    "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj",
+        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj",
         "projectName": "GrupoCiencias.Intranet.CrossCutting.Common",
-        "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj",
+        "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj",
         "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
-        "outputPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\obj\\",
+        "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -275,14 +275,14 @@
         }
       }
     },
-    "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj",
+        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj",
         "projectName": "GrupoCiencias.Intranet.CrossCutting.Dto",
-        "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj",
+        "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj",
         "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
-        "outputPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\obj\\",
+        "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -299,8 +299,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
               }
             }
           }
@@ -333,14 +333,14 @@
         }
       }
     },
-    "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj": {
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj",
+        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj",
         "projectName": "GrupoCiencias.Intranet.CrossCutting.IoC",
-        "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj",
+        "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj",
         "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
-        "outputPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\obj\\",
+        "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -357,8 +357,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
               }
             }
           }
@@ -401,14 +401,14 @@
         }
       }
     },
-    "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj",
+        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj",
         "projectName": "GrupoCiencias.Intranet.Domain.Models",
-        "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj",
+        "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj",
         "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
-        "outputPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\obj\\",
+        "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -425,8 +425,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
               }
             }
           }
@@ -459,14 +459,14 @@
         }
       }
     },
-    "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj": {
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj",
+        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj",
         "projectName": "GrupoCiencias.Intranet.Repository.Implementations",
-        "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj",
+        "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj",
         "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
-        "outputPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Implementations\\obj\\",
+        "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Implementations\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -483,23 +483,23 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj"
               },
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
               },
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
               },
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj"
               },
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj"
               },
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj"
               }
             }
           }
@@ -570,14 +570,14 @@
         }
       }
     },
-    "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj": {
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj",
+        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj",
         "projectName": "GrupoCiencias.Intranet.Repository.Interfaces",
-        "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj",
+        "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj",
         "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
-        "outputPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\obj\\",
+        "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Interfaces\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -594,11 +594,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
               },
-              "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
-                "projectPath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
               }
             }
           }

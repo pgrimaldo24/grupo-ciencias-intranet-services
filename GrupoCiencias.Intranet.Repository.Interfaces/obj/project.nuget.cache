@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jh4PoPgBUAVyBotQAur4jd5YtvHLcudjJdHr3VuzvzE2Cr8yMtG3rI3/JGQqQiP0ucSflBBDRm/TzYQUCtr2pA==",
+  "dgSpecHash": "pp+NLZTDNb9H6heYWS8Igg5bKHI8h0K4diGZmy6VP8oPRe5UcZOPqcM4FVH4CAWvdoAYklUwyZhUrhqOtnCeKA==",
   "success": true,
-  "projectFilePath": "C:\\1.GrupoCienciasRepository\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj",
+  "projectFilePath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pgrimald\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.0\\microsoft.entityframeworkcore.5.0.0.nupkg.sha512",
     "C:\\Users\\pgrimald\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.0\\microsoft.entityframeworkcore.abstractions.5.0.0.nupkg.sha512",

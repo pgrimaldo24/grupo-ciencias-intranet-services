@@ -13,4 +13,8 @@
     <ProjectReference Include="..\GrupoCiencias.Intranet.CrossCutting.Dto\GrupoCiencias.Intranet.CrossCutting.Dto.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>
