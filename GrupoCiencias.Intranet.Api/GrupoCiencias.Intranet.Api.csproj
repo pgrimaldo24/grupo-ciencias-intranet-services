@@ -16,8 +16,4 @@
     <ProjectReference Include="..\GrupoCiencias.Intranet.Repository.Implementations\GrupoCiencias.Intranet.Repository.Implementations.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
