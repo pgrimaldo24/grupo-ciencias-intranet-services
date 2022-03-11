@@ -6,5 +6,10 @@
         {
             public const string MasterDropDownlist = "MasterDropDownlist"; 
         }
+
+        public struct MatriculaRouter
+        {
+            public const string RegistrarSolicitud = "RegistrarSolicitud";
+        }
     }
 }
