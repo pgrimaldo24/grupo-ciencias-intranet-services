@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="mercadopago-sdk" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\GrupoCiencias.Intranet.Application.Interfaces\GrupoCiencias.Intranet.Application.Interfaces.csproj" />
     <ProjectReference Include="..\GrupoCiencias.Intranet.CrossCutting.Common\GrupoCiencias.Intranet.CrossCutting.Common.csproj" />
     <ProjectReference Include="..\GrupoCiencias.Intranet.CrossCutting.Dto\GrupoCiencias.Intranet.CrossCutting.Dto.csproj" />

@@ -2,6 +2,7 @@
 {
     public class UtilConstants
     {
+         
         public struct DateTimeFormats
         {
             public const string DD_MM_YYYY = "dd/MM/yyyy";
@@ -21,12 +22,14 @@
             public const int NotFound = 404;
             public const int InternalServerError = 500;
 
-            public struct Login
+            public struct CacheTime
             {
-                public const int CredencialesIncorrectas = 1;
-                public const int UsuarioNoExiste = 2;
-                public const string ErrorUsuarioNoEncontrado = "El usuario no se encuentra registrado en la aplicación";
-            }
+                public const int MAX = 604800; // 1 Semana
+                public const int LONG = 43200; // 12 Horas
+                public const int MEDIUM = 21600; // 6 Horas
+                public const int SHORT = 3600; // 1 Hora
+                public const int MIN = 900; // 15 Minutos
+            } 
         }
     }
 }
