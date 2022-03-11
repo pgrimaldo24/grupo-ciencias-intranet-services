@@ -9,7 +9,8 @@ namespace GrupoCiencias.Intranet.Domain.Models.Entity
         public string Nombre { get; set; }
         public DateTime? FechaRegistro { get; set; }
         public int? Estado { get; set; }
-
+        public string Idmaster { get; set; }
         public virtual AreasCarreraEntity AreasCarrera { get; set; }
+        public virtual MasterEntity Master { get; set; }
     }
 }

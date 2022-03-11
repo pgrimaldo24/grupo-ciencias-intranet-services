@@ -40,7 +40,14 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
 
             builder.Property(e => e.Estado).HasColumnName("estado");
 
+
+            builder.Property(e => e.FechaNacimiento)
+                .HasColumnType("date")
+                .HasColumnName("fecha_nacimiento");
+
             builder.Property(e => e.FechaRegistro).HasColumnName("fecha_registro");
+
+            builder.Property(e => e.IdTipoDocumento).HasColumnName("id_tipo_documento");
 
             builder.Property(e => e.Idapoderado).HasColumnName("idapoderado");
 
@@ -55,6 +62,10 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
             builder.Property(e => e.PerfilFacebook)
                 .HasMaxLength(100)
                 .HasColumnName("perfil_facebook");
+
+            builder.Property(e => e.PoliticasFinesComerciales).HasColumnName("politicas_fines_comerciales");
+
+            builder.Property(e => e.Politicasseguridad).HasColumnName("politicasseguridad");
 
             builder.Property(e => e.Referido)
                 .HasMaxLength(50)
