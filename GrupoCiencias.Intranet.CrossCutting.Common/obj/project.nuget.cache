@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oYzXO+bkB+xUVst4pb6ZWhsOMIYLYQW1jMWVxHIznJlSNuZpKB137wcns1XMm1mVxUZsujdae3d7OguheWJH2g==",
+  "dgSpecHash": "k5MFGE/XWFizUUqWyNfwVQjDSuVKFIruucDWr7wtOB3iZxTHQ9eZDCmGKXNVHYlygjMc95kf8GEmKW6BbID2nw==",
   "success": true,
-  "projectFilePath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj",
+  "projectFilePath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
