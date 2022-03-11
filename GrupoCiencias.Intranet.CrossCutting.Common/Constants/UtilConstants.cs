@@ -2,7 +2,11 @@
 {
     public class UtilConstants
     {
-         
+        public struct Util
+        {
+            public const string Context = "context";
+        }
+
         public struct DateTimeFormats
         {
             public const string DD_MM_YYYY = "dd/MM/yyyy";
@@ -14,6 +18,7 @@
             public const string DD_MM_YYY_HH_MM_SS = "ddMMyyyHHmmss";
             public const string YYYY_MM_DD = "yyyyMMdd";
         }
+         
 
         public struct CodigoEstado
         {
@@ -30,6 +35,12 @@
                 public const int SHORT = 3600; // 1 Hora
                 public const int MIN = 900; // 15 Minutos
             } 
+
+            public struct EstadoDatos
+            {
+                public const int Activo = 1;
+                public const int NoActivo = 0;
+            }
         }
     }
 }

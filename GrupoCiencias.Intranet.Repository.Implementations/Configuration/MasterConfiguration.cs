@@ -39,6 +39,10 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
             builder.Property(e => e.Valor)
                 .HasMaxLength(200)
                 .HasColumnName("valor");
+
+            builder.Property(e => e.Propiedad)
+               .HasMaxLength(50)
+               .HasColumnName("propiedad");
         }
     }
 }

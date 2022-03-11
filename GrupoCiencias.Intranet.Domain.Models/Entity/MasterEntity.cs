@@ -22,6 +22,7 @@ namespace GrupoCiencias.Intranet.Domain.Models.Entity
         public string Usuario { get; set; }
         public DateTime Fechacreacion { get; set; }
         public DateTime? Fechabaja { get; set; }
+        public string Propiedad { get; set; }
 
         public virtual ICollection<CarrerasEntity> Carreras { get; set; }
         public virtual ICollection<CiclosEntity> Ciclos { get; set; }

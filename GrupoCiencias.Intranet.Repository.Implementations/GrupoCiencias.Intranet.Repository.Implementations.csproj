@@ -30,8 +30,4 @@
     <ProjectReference Include="..\GrupoCiencias.Intranet.Repository.Interfaces\GrupoCiencias.Intranet.Repository.Interfaces.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>

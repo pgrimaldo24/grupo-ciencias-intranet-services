@@ -22,7 +22,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class AlertResources {
+    public class AlertResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
         ///   Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GrupoCiencias.Intranet.CrossCutting.Common.Resources.AlertResources", typeof(AlertResources).Assembly);
@@ -51,7 +51,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
         ///   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -59,56 +59,56 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
         ///   Busca una cadena traducida similar a Se procesó correctamente..
         /// </summary>
-        internal static string msg_correcto {
+        public static string msg_correcto {
             get {
                 return ResourceManager.GetString("msg_correcto", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Busca una cadena traducida similar a ERROR.
         /// </summary>
-        internal static string str_log_error {
+        public static string str_log_error {
             get {
                 return ResourceManager.GetString("str_log_error", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Busca una cadena traducida similar a INFORMATION.
         /// </summary>
-        internal static string str_log_info {
+        public static string str_log_info {
             get {
                 return ResourceManager.GetString("str_log_info", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Busca una cadena traducida similar a WARNING.
         /// </summary>
-        internal static string str_log_warning {
+        public static string str_log_warning {
             get {
                 return ResourceManager.GetString("str_log_warning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Busca una cadena traducida similar a INFO : METHOD -&gt;.
         /// </summary>
-        internal static string str_method {
+        public static string str_method {
             get {
                 return ResourceManager.GetString("str_method", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Busca una cadena traducida similar a INFO : response -&gt;.
         /// </summary>
-        internal static string str_response {
+        public static string str_response {
             get {
                 return ResourceManager.GetString("str_response", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
         /// <summary>
         ///   Busca una cadena traducida similar a INFO : URL -&gt;.
         /// </summary>
-        internal static string str_url {
+        public static string str_url {
             get {
                 return ResourceManager.GetString("str_url", resourceCulture);
             }
