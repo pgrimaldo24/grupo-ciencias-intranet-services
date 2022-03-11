@@ -25,7 +25,10 @@ namespace GrupoCiencias.Intranet.Domain.Models.Entity
         public string RutaFotoDni2 { get; set; }
         public string Referido { get; set; }
         public DateTime? FechaRegistro { get; set; }
-
+        public int? IdTipoDocumento { get; set; }
+        public DateTime? FechaNacimiento { get; set; }
+        public int? Politicasseguridad { get; set; }
+        public int? PoliticasFinesComerciales { get; set; }
         public virtual ApoderadosEntity Apoderado { get; set; }
     }
 }

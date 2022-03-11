@@ -12,7 +12,9 @@ namespace GrupoCiencias.Intranet.Domain.Models.Entity
         public int? GrupoCiclos { get; set; }
         public int? Estado { get; set; }
         public int? VisibleLanding { get; set; }
+        public string Idmaster { get; set; }
 
         public virtual UniversidadEntity Universidad { get; set; }
+        public virtual MasterEntity Master { get; set; }
     }
 }

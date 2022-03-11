@@ -30,6 +30,8 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
 
             builder.Property(e => e.Estado).HasColumnName("estado");
 
+            builder.Property(e => e.IdTipoDocumento).HasColumnName("id_tipo_documento");
+
             builder.Property(e => e.Nombres)
                 .HasMaxLength(50)
                 .HasColumnName("nombres");

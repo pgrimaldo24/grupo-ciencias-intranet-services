@@ -24,6 +24,11 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
             builder.ApplyConfiguration(new CiclosConfiguration());
             builder.ApplyConfiguration(new CursosCicloConfiguration());
             builder.ApplyConfiguration(new UniversidadConfiguration());
+            builder.ApplyConfiguration(new MasterConfiguration());
+            builder.ApplyConfiguration(new MarketingConfiguration());
+            builder.ApplyConfiguration(new RedsocialConfiguration());
+            builder.ApplyConfiguration(new SedesConfiguration());
+            builder.ApplyConfiguration(new TipoDocumentoConfiguration());
         }
 
         public virtual DbSet<SolicitudesEntity> Solicitudes { get; set; }
@@ -34,5 +39,10 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
         public virtual DbSet<CiclosEntity> Ciclos { get; set; }
         public virtual DbSet<CursosCicloEntity> CursosCiclo { get; set; }
         public virtual DbSet<UniversidadEntity> Universidad { get; set; }
+        public virtual DbSet<MarketingEntity> Marketings { get; set; }
+        public virtual DbSet<RedSocialEntity> Redsocials { get; set; }
+        public virtual DbSet<SedeEntity> Sedes { get; set; }
+        public virtual DbSet<TipoDocumentoEntity> TipoDocumentos { get; set; }
+        public virtual DbSet<MasterEntity> Masters { get; set; }
     }
 }

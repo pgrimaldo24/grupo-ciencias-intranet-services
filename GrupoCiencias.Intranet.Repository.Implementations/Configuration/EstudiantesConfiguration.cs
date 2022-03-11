@@ -40,6 +40,8 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
 
             builder.Property(e => e.Estado).HasColumnName("estado");
 
+            builder.Property(e => e.IdTipoDocumento).HasColumnName("id_tipo_documento");
+
             builder.Property(e => e.Idapoderado).HasColumnName("idapoderado");
 
             builder.Property(e => e.Idciclo).HasColumnName("idciclo");

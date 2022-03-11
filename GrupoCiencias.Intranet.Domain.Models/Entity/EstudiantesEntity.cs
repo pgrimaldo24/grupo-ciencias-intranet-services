@@ -22,6 +22,7 @@
         public string RutaFotoPerfil { get; set; }
         public string MedioInfo { get; set; }
         public string RutaFotoDni2 { get; set; }
+        public int? IdTipoDocumento { get; set; }
 
         public virtual ApoderadosEntity Apoderado { get; set; }
     }

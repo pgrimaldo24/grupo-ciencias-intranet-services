@@ -33,12 +33,23 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                 .HasPrecision(9, 2)
                 .HasColumnName("precio");
 
+            builder.Property(e => e.Idmaster)
+                   .HasMaxLength(50)
+                   .HasColumnName("idmaster");
+
+            
             builder.Property(e => e.VisibleLanding).HasColumnName("visible_landing");
 
             builder.HasOne(d => d.Universidad)
                 .WithMany(p => p.Ciclos)
                 .HasForeignKey(d => d.Iduniversidad)
                 .HasConstraintName("ciclos_universidad_constraint");
+
+            builder.HasOne(d => d.Master)
+             .WithMany(p => p.Ciclos)
+             .HasForeignKey(d => d.Idmaster)
+             .HasConstraintName("master_ciclos_constraint");
+
         }
     }
 }
