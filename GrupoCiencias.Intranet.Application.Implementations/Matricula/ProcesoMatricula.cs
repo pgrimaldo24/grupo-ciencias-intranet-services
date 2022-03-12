@@ -26,21 +26,9 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
         {
             _unitOfWork = new Lazy<IUnitOfWork>(() => IoCAutofacContainer.Current.Resolve<IUnitOfWork>());
         }
-        private IUnitOfWork UnitOfWork
-        {
-            get
-            {
-                return _unitOfWork.Value;
-            }
-        }
+        private IUnitOfWork UnitOfWork => _unitOfWork.Value;
 
-        private IMatriculaRepository MatriculaRepository
-        {
-            get
-            {
-                return UnitOfWork.Repository<IMatriculaRepository>();
-            }
-        }
+        private IMatriculaRepository MatriculaRepository => UnitOfWork.Repository<IMatriculaRepository>();
         public async Task<ResponseDto> RegistrarSolicitudAsync(SolicitudDto solicitudDto)
         {
             var response = new ResponseDto();

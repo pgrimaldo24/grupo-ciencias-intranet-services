@@ -1,16 +1,11 @@
 ﻿using GrupoCiencias.Intranet.Application.Interfaces;
-using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
 using GrupoCiencias.Intranet.Repository.Implementations.Data;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
 {
-        public class MatriculaRepository : IMatriculaRepository
+    public class MatriculaRepository : IMatriculaRepository
         {
             private readonly DataContext context;
             public MatriculaRepository(DataContext context)
