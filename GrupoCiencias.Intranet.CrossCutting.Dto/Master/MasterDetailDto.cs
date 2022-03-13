@@ -2,7 +2,7 @@
 { 
     public class MasterKey
     {
-        public int Clave { get; set; }
-        public string Valor { get; set; } 
+        public int Code { get; set; }
+        public string Name { get; set; } 
     }
 }
