@@ -27,7 +27,8 @@ x86/
 build/
 bld/
 bin/
-obj/
+obj/Debug
+.obj/Debug
 [Oo]ut/
 msbuild.log
 msbuild.err
