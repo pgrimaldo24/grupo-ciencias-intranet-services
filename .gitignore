@@ -26,12 +26,12 @@ x64/
 x86/
 build/
 bld/
-[Bb]in/
-[Oo]bj/
+bin/
+obj/
 [Oo]ut/
 msbuild.log
 msbuild.err
 msbuild.wrn
 
-# Visual Studio 2018
-.vs/
+# Visual Studio 2019
+.vs
