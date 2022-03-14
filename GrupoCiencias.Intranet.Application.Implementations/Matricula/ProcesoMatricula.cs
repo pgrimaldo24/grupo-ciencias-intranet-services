@@ -8,6 +8,7 @@ using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
 using GrupoCiencias.Intranet.CrossCutting.IoC.Container;
 using GrupoCiencias.Intranet.Domain.Models.Entity;
 using GrupoCiencias.Intranet.Repository.Interfaces.Data;
+using GrupoCiencias.Intranet.Repository.Interfaces.Repositories;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
@@ -31,16 +32,19 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
         private IMatriculaRepository MatriculaRepository => UnitOfWork.Repository<IMatriculaRepository>();
         public async Task<ResponseDto> RegistrarSolicitudAsync(SolicitudDto solicitudDto)
         {
+            int idApoderado = 0;
             var response = new ResponseDto();
             if (string.IsNullOrEmpty(solicitudDto.ToString()))
                 return response;
             
-            if (solicitudDto.Apoderado == true) {
-                var apoderado = await SetApoderado(solicitudDto);
+            if (solicitudDto.HasApoderado == true) {
+                var apoderado = await SetApoderado(solicitudDto.Apoderado);
                 UnitOfWork.Set<ApoderadosEntity>().Add(apoderado);
                 UnitOfWork.SaveChanges();
+                var infoApoderado = ObtenerIdApoderadoAsync(solicitudDto.Apoderado.NroDocumento).Result;
+                idApoderado = infoApoderado.IdApoderado;
             }
-            var solicitud = await SetSolicitud(solicitudDto);
+            var solicitud = await SetSolicitud(solicitudDto, idApoderado);
             UnitOfWork.Set<SolicitudesEntity>().Add(solicitud);
             
             UnitOfWork.SaveChanges();
@@ -49,39 +53,49 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
             return response;
         }
 
-        private async Task<SolicitudesEntity> SetSolicitud(SolicitudDto solicitudDto)
+        private async Task<SolicitudesEntity> SetSolicitud(SolicitudDto solicitudDto, int idApoderado)
         {
-            var IdApoderado = solicitudDto.Apoderado == true ? ObtenerIdApoderadoAsync(solicitudDto).Result : 0;
             
             var solicitudEntity = new SolicitudesEntity
             {
-                Idapoderado=IdApoderado,
+                Idapoderado= idApoderado,
                 Nombres = solicitudDto.Nombres,
                 Apellidos = solicitudDto.Apellidos,
-                Dni = solicitudDto.Dni,
+                FechaNacimiento = solicitudDto.FechaNacimiento,
                 Celular = solicitudDto.Celular,
+                IdTipoDocumento = solicitudDto.TipoDocumento,
+                Dni = solicitudDto.Dni,                                
                 Correo = solicitudDto.Correo,
+                Universidad = solicitudDto.Universidad,
+                //Falta agregar sede
+                CarreraInteres = solicitudDto.Carrera,
+                Ciclo = solicitudDto.Ciclo,
+                RutaFotoPerfil = solicitudDto.Ruta_foto_perfil,
+                RutaFotoDni = solicitudDto.Ruta_foto_dni,
+                Politicasseguridad = solicitudDto.PoliticaSeguridad,
+                PoliticasFinesComerciales = solicitudDto.PoliticaComercial
             };
             return solicitudEntity;
         }
 
-        private async Task<ApoderadosEntity> SetApoderado(SolicitudDto solicitudDto)
+        private async Task<ApoderadosEntity> SetApoderado(ApoderadoDto apoderadoDto)
         {
             var apoderadoEntity = new ApoderadosEntity
             {
-                Nombres = solicitudDto.NombresApoderado,
-                Apellidos = solicitudDto.ApellidosApoderado,
-                Dni = solicitudDto.DNIApoderado,
-                Celular = solicitudDto.CelularApoderado,
+                Nombres = apoderadoDto.Nombres,
+                Apellidos = apoderadoDto.Apellidos,
+                IdTipoDocumento = apoderadoDto.TipoDocumento,
+                Dni = apoderadoDto.NroDocumento,
+                Celular = apoderadoDto.Celular,
+                RutaFotoDni = apoderadoDto.Ruta_foto_dni
 
             };
             return apoderadoEntity;
         }
 
-        public async Task<int> ObtenerIdApoderadoAsync(SolicitudDto solicitudDto) 
+        public async Task<ApoderadoDetalleDto> ObtenerIdApoderadoAsync(string nroDocumento) 
         {
-            var result = await MatriculaRepository.ObtenerIdApoderadoAsync(solicitudDto.DNIApoderado);
-            return result;
+            return await MatriculaRepository.ObtenerIdApoderadoAsync(nroDocumento);
         }
     }
 }

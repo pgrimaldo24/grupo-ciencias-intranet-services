@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GrupoCiencias.Intranet.CrossCutting.Dto.Matricula
 {
@@ -10,15 +6,21 @@ namespace GrupoCiencias.Intranet.CrossCutting.Dto.Matricula
     {
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
-        public int idApoderado { get; set; }
-        public string Dni { get; set; }
+        public DateTime FechaNacimiento { get; set; }
         public string Celular { get; set; }
+        public int TipoDocumento { get; set; }
+        public string Dni { get; set; }
         public string Correo { get; set; }
-        public bool Apoderado { get; set; }
-        public string NombresApoderado { get; set; }
-        public string ApellidosApoderado { get; set; }
-        public string DNIApoderado { get; set; }
-        public string CelularApoderado { get; set; }
+        public bool HasApoderado { get; set; }
+        public string Universidad { get; set; }
+        public string Sede { get; set; }
+        public string Carrera { get; set; }
+        public int Ciclo { get; set; }
+        public string Ruta_foto_perfil { get; set; }
+        public string Ruta_foto_dni { get; set; }
+        public int PoliticaSeguridad { get; set; }
+        public int PoliticaComercial { get; set; }
+        public ApoderadoDto Apoderado { get; set; }
 
 
     }

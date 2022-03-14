@@ -5,6 +5,6 @@ namespace GrupoCiencias.Intranet.Repository.Interfaces.Repositories
 {
     public interface IMatriculaRepository
     {
-        Task<SolicitudDto> ObtenerIdApoderadoAsync(string DNIApoderado);
+        Task<ApoderadoDetalleDto> ObtenerIdApoderadoAsync(string nroDocumento);
     }
 }
