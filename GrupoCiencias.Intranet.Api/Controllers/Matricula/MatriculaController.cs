@@ -1,20 +1,14 @@
-﻿using Autofac;
-using GrupoCiencias.Intranet.Application.Implementations.Intranet;
-using GrupoCiencias.Intranet.Application.Interfaces.Intranet;
-using GrupoCiencias.Intranet.Application.Interfaces.Matricula;
+﻿using GrupoCiencias.Intranet.Application.Interfaces.Matricula;
 using GrupoCiencias.Intranet.CrossCutting.Common;
 using GrupoCiencias.Intranet.CrossCutting.Common.Constants;
 using GrupoCiencias.Intranet.CrossCutting.Common.Exceptions;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Common;
-using GrupoCiencias.Intranet.CrossCutting.Dto.Master;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
 using GrupoCiencias.Intranet.CrossCutting.IoC.Container;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace GrupoCiencias.Intranet.Api.Controllers.Matricula
@@ -23,17 +17,17 @@ namespace GrupoCiencias.Intranet.Api.Controllers.Matricula
     [ApiController]
     public class MatriculaController : Controller
     { 
-        private readonly Lazy<IProcesoMatricula> _procesoMatriculaApplication;
+        private readonly Lazy<IMatriculaApplication> _procesoMatriculaApplication;
         private readonly Lazy<ILogger> _logger;
 
         public MatriculaController(IOptions<AppSetting> appSettings)
         {
-            _procesoMatriculaApplication = new Lazy<IProcesoMatricula>(() => IoCAutofacContainer.Current.Resolve<IProcesoMatricula>());
+            _procesoMatriculaApplication = new Lazy<IMatriculaApplication>(() => IoCAutofacContainer.Current.Resolve<IMatriculaApplication>());
             _logger = new Lazy<ILogger>(() => IoCAutofacContainer.Current.Resolve<ILogger>());
         }
 
         private ILogger Logger => _logger.Value;
-        private IProcesoMatricula ProcesoMatriculaApplication => _procesoMatriculaApplication.Value;
+        private IMatriculaApplication ProcesoMatriculaApplication => _procesoMatriculaApplication.Value;
 
         [HttpPost]
         [Route(EndPointDecoratorConstants.MatriculaRouter.RegistrarSolicitud)]

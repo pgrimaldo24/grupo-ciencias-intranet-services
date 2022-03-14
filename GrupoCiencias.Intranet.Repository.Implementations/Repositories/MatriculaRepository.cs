@@ -1,5 +1,4 @@
-﻿using GrupoCiencias.Intranet.Application.Interfaces;
-using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
+﻿using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
 using GrupoCiencias.Intranet.Repository.Implementations.Data;
 using GrupoCiencias.Intranet.Repository.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;

@@ -1,5 +1,4 @@
-﻿using GrupoCiencias.Intranet.Application.Interfaces;
-using GrupoCiencias.Intranet.Application.Interfaces.Matricula;
+﻿using GrupoCiencias.Intranet.Application.Interfaces.Matricula;
 using GrupoCiencias.Intranet.CrossCutting.Common;
 using GrupoCiencias.Intranet.CrossCutting.Common.Constants;
 using GrupoCiencias.Intranet.CrossCutting.Common.Resources;
@@ -9,21 +8,17 @@ using GrupoCiencias.Intranet.CrossCutting.IoC.Container;
 using GrupoCiencias.Intranet.Domain.Models.Entity;
 using GrupoCiencias.Intranet.Repository.Interfaces.Data;
 using GrupoCiencias.Intranet.Repository.Interfaces.Repositories;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
 {
-    public class ProcesoMatricula : IProcesoMatricula
+    public class MatriculaApplication : IMatriculaApplication
     {
         private Lazy<IUnitOfWork> _unitOfWork;
 
-        public ProcesoMatricula(IOptions<AppSetting> appSettings)
+        public MatriculaApplication(IOptions<AppSetting> appSettings)
         {
             _unitOfWork = new Lazy<IUnitOfWork>(() => IoCAutofacContainer.Current.Resolve<IUnitOfWork>());
         }
