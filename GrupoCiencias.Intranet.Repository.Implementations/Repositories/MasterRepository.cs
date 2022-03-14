@@ -28,56 +28,56 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                     response = await context.Universidad.Where(x => x.Idmaster.Equals(key))
                      .Select(y => new MasterKey
                      {
-                         Clave = y.Iduniversidad,
-                         Valor = y.Nombre
+                         Code = y.Iduniversidad,
+                         Name = y.Nombre
                      }).ToListAsync();
                   break;
                 case PropiedadesConstants.KeyTblMaster.CIC:
                     response = await context.Ciclos.Where(x => x.Idmaster.Equals(key))
                      .Select(y => new MasterKey
                      {
-                         Clave = y.Idciclo,
-                         Valor = y.Descripcion
+                         Code = y.Idciclo,
+                         Name = y.Descripcion
                      }).ToListAsync();
                     break;
                 case PropiedadesConstants.KeyTblMaster.PAG:
                     response = await context.Redsocials.Where(x => x.Idmaster.Equals(key))
                      .Select(y => new MasterKey
                      {
-                         Clave = y.Idred,
-                         Valor = y.Valor
+                         Code = y.Idred,
+                         Name = y.Valor
                      }).ToListAsync();
                     break;
                 case PropiedadesConstants.KeyTblMaster.RED:
                     response = await context.Marketings.Where(x => x.Idmaster.Equals(key))
                      .Select(y => new MasterKey
                      {
-                         Clave = y.Idmarketing,
-                         Valor = y.Valor
+                         Code = y.Idmarketing,
+                         Name = y.Valor
                      }).ToListAsync();
                     break;
                 case PropiedadesConstants.KeyTblMaster.DOC:
                     response = await context.TipoDocumentos.Where(x => x.Idmaster.Equals(key))
                      .Select(y => new MasterKey
                      {
-                         Clave = y.Id,
-                         Valor = y.Valor
+                         Code = y.Id,
+                         Name = y.Valor
                      }).ToListAsync();
                     break;
                 case PropiedadesConstants.KeyTblMaster.CAR:
                     response = await context.Carreras.Where(x => x.Idmaster.Equals(key))
                      .Select(y => new MasterKey
                      {
-                         Clave = y.Idcarrera,
-                         Valor = y.Nombre
+                         Code = y.Idcarrera,
+                         Name = y.Nombre
                      }).ToListAsync();
                     break;
                 case PropiedadesConstants.KeyTblMaster.SED:
                     response = await context.Sedes.Where(x => x.Idmaster.Equals(key))
                      .Select(y => new MasterKey
                      {
-                         Clave = y.Idsedes,
-                         Valor = y.Valor
+                         Code = y.Idsedes,
+                         Name = y.Valor
                      }).ToListAsync();
                     break;
                 default: 
