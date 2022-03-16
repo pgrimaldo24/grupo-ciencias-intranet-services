@@ -1,5 +1,7 @@
-﻿using GrupoCiencias.Intranet.Application.Interfaces;
+﻿using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
 using GrupoCiencias.Intranet.Repository.Implementations.Data;
+using GrupoCiencias.Intranet.Repository.Interfaces.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,14 +15,13 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                 this.context = context;
             }
 
-        async Task<int> IMatriculaRepository.ObtenerIdApoderadoAsync(string DNIApoderado)
+        public async Task<ApoderadoDetalleDto> ObtenerIdApoderadoAsync(string nroDocumento)
         {
-            var idApoderador = (from u in context.Apoderado
-                                where u.Dni == DNIApoderado
-                                orderby u.Idapoderado descending
-                                select u.Idapoderado).Take(1).FirstOrDefault();
-
-            return idApoderador;
+            return await context.Apoderado
+                    .Where(x => x.Dni == nroDocumento)
+                    .OrderByDescending(x => x.Idapoderado)
+                    .Take(1)
+                    .Select(p => new ApoderadoDetalleDto { IdApoderado = p.Idapoderado }).FirstOrDefaultAsync();
         }
     }
 }
