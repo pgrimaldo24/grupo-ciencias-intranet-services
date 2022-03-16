@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
 {
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
     public class MercadoPagoController : Controller
