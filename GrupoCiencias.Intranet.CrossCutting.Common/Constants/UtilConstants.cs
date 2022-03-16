@@ -25,22 +25,22 @@
             public const int Ok = 200;
             public const int Created = 201;
             public const int NotFound = 404;
-            public const int InternalServerError = 500;
+            public const int InternalServerError = 500; 
+        }
 
-            public struct CacheTime
-            {
-                public const int MAX = 604800; // 1 Semana
-                public const int LONG = 43200; // 12 Horas
-                public const int MEDIUM = 21600; // 6 Horas
-                public const int SHORT = 3600; // 1 Hora
-                public const int MIN = 900; // 15 Minutos
-            } 
+        public struct CacheTime
+        {
+            public const int MAX = 604800; // 1 Semana
+            public const int LONG = 43200; // 12 Horas
+            public const int MEDIUM = 21600; // 6 Horas
+            public const int SHORT = 3600; // 1 Hora
+            public const int MIN = 900; // 15 Minutos
+        }
 
-            public struct EstadoDatos
-            {
-                public const int Activo = 1;
-                public const int NoActivo = 0;
-            }
+        public struct EstadoDatos
+        {
+            public const int Activo = 1;
+            public const int NoActivo = 0;
         }
     }
 }

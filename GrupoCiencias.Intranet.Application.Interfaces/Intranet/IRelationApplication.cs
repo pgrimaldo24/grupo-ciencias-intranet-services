@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace GrupoCiencias.Intranet.Application.Interfaces.Intranet
 {
-    public interface IMasterApplication
+    public interface IRelationApplication
     {
-        Task<ResponseDto> MasterDropDownlistAsync(MasterDto masterDto);
+        Task<ResponseDto> GetListMasterDetailAsync(string access_token); 
     }
 }

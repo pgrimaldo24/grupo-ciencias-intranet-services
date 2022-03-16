@@ -70,6 +70,15 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
         }
 
         /// <summary>
+        ///   Busca una cadena traducida similar a Su clave no se encuentra registrado en la aplicación.
+        /// </summary>
+        public static string str_error_key_no_encontrado {
+            get {
+                return ResourceManager.GetString("str_error_key_no_encontrado", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Busca una cadena traducida similar a ERROR.
         /// </summary>
         public static string str_log_error {
@@ -113,7 +122,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("str_response", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Busca una cadena traducida similar a INFO : URL -&gt;.
         /// </summary>

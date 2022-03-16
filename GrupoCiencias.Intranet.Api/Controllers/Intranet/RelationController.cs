@@ -15,29 +15,28 @@ namespace GrupoCiencias.Intranet.Api.Controllers.Intranet
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MasterController : ControllerBase
+    public class RelationController : ControllerBase
     {
-        private readonly Lazy<IMasterApplication> _masterApplication;
+        private readonly Lazy<IRelationApplication> _masterApplication;
         private readonly Lazy<ILogger> _logger;
-        
-        public MasterController(
-            IOptions<AppSetting> appSettings)
+
+        public RelationController(IOptions<AppSetting> appSettings)
         {
-            _masterApplication = new Lazy<IMasterApplication>(() => IoCAutofacContainer.Current.Resolve<IMasterApplication>());
+            _masterApplication = new Lazy<IRelationApplication>(() => IoCAutofacContainer.Current.Resolve<IRelationApplication>());
             _logger = new Lazy<ILogger>(() => IoCAutofacContainer.Current.Resolve<ILogger>());
         }
 
-        private ILogger Logger => _logger.Value; 
-        private IMasterApplication MasterApplication => _masterApplication.Value;
+        private ILogger Logger => _logger.Value;
+        private IRelationApplication RelationApplication => _masterApplication.Value;
 
-        [HttpPost]
-        [Route(EndPointDecoratorConstants.MasterRouter.MasterDropDownlist)]
-        public async Task<JsonResult> MasterDropDownlist([FromBody] MasterDto masterDto)
+        [HttpGet]
+        [Route(EndPointDecoratorConstants.MasterRouter.GetListMasterDetail)]
+        public async Task<JsonResult> GetListMasterDetail(string access_token)
         {
             var response = new ResponseDto();
             try
             {
-                response = await MasterApplication.MasterDropDownlistAsync(masterDto);
+                response = await RelationApplication.GetListMasterDetailAsync(access_token);
             }
             catch (FunctionalException ex)
             {

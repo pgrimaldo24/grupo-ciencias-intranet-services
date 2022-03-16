@@ -4,7 +4,7 @@
     {
         public struct MasterRouter
         {
-            public const string MasterDropDownlist = "MasterDropDownlist"; 
+            public const string GetListMasterDetail = "GetListMasterDetail"; 
         }
 
         public struct MatriculaRouter

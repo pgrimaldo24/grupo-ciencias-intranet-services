@@ -27,6 +27,10 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                   .HasMaxLength(50)
                   .HasColumnName("idmaster");
 
+            builder.Property(e => e.Activo)
+               .HasColumnName("activo")
+               .HasDefaultValueSql("1");
+
             builder.HasOne(d => d.Master)
                  .WithMany(p => p.Universidads)
                  .HasForeignKey(d => d.Idmaster)

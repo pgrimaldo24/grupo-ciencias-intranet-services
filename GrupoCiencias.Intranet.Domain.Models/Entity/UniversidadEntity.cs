@@ -15,6 +15,7 @@ namespace GrupoCiencias.Intranet.Domain.Models.Entity
         public string Nombre { get; set; }
         public DateTime? FechaCreacion { get; set; }
         public string Idmaster { get; set; }
+        public int Activo { get; set; }
 
         public virtual ICollection<AreasCarreraEntity> AreasCarreras { get; set; }
         public virtual ICollection<CiclosEntity> Ciclos { get; set; }

@@ -120,6 +120,9 @@
   <data name="msg_correcto" xml:space="preserve">
     <value>Se procesó correctamente.</value>
   </data>
+  <data name="str_error_key_no_encontrado" xml:space="preserve">
+    <value>Su clave no se encuentra registrado en la aplicación</value>
+  </data>
   <data name="str_log_error" xml:space="preserve">
     <value>ERROR</value>
   </data>
