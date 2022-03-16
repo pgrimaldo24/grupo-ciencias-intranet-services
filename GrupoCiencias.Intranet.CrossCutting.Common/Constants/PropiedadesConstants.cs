@@ -18,5 +18,13 @@
             public const string CAR = "CAR";
             public const string SED = "SED";
         }
+
+        public struct TypeRequest
+        {
+            public const string POST = "POST";
+            public const string PUT = "PUT";
+            public const string GET = "GET";
+            public const string DELETE = "DELETE";
+        }
     }
 }

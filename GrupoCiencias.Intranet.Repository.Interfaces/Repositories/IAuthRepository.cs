@@ -5,6 +5,6 @@ namespace GrupoCiencias.Intranet.Repository.Interfaces.Repositories
 {
     public interface IAuthRepository
     {
-        Task<AuthDto> GetKeyAppAsync(string access_token);
+        Task<AuthDto> GetKeyAppAsync(CredentialDto credential);
     }
 }

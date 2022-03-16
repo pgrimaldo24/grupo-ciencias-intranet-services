@@ -6,6 +6,6 @@ namespace GrupoCiencias.Intranet.Application.Interfaces.Intranet
 {
     public interface IRelationApplication
     {
-        Task<ResponseDto> GetListMasterDetailAsync(string access_token); 
+        Task<ResponseDto> GetListMasterDetailAsync(); 
     }
 }

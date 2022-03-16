@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace GrupoCiencias.Intranet.Application.Interfaces.Intranet
 {
     public interface IAuthApplication
-    { 
-        Task<ResponseDto> KeyAuthenticationAsync(string access_token);
+    {  
+        Task<ResponseDto> AuthenticationAsync(CredentialDto credential);
     }
 }

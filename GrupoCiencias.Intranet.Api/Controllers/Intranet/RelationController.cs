@@ -3,8 +3,9 @@ using GrupoCiencias.Intranet.CrossCutting.Common;
 using GrupoCiencias.Intranet.CrossCutting.Common.Constants;
 using GrupoCiencias.Intranet.CrossCutting.Common.Exceptions;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Common;
-using GrupoCiencias.Intranet.CrossCutting.Dto.Master;
 using GrupoCiencias.Intranet.CrossCutting.IoC.Container;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace GrupoCiencias.Intranet.Api.Controllers.Intranet
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
     public class RelationController : ControllerBase
@@ -29,14 +31,13 @@ namespace GrupoCiencias.Intranet.Api.Controllers.Intranet
         private ILogger Logger => _logger.Value;
         private IRelationApplication RelationApplication => _masterApplication.Value;
 
-        [HttpGet]
-        [Route(EndPointDecoratorConstants.MasterRouter.GetListMasterDetail)]
-        public async Task<JsonResult> GetListMasterDetail(string access_token)
+        [HttpGet(EndPointDecoratorConstants.EndPointRouter.GetListMasterDetail)]
+        public async Task<JsonResult> GetListMasterDetail()
         {
             var response = new ResponseDto();
             try
             {
-                response = await RelationApplication.GetListMasterDetailAsync(access_token);
+                response = await RelationApplication.GetListMasterDetailAsync();
             }
             catch (FunctionalException ex)
             {

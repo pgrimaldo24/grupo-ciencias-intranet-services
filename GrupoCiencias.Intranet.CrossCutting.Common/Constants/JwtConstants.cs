@@ -1,12 +1,15 @@
 ﻿namespace GrupoCiencias.Intranet.CrossCutting.Common.Constants
-{
+{ 
     public class JwtConstants
     {
-        public struct UserClaims
+        public struct UserClaimsKeyApp
         {
-            public const string UserId = "UserId";
-            public const string Usuario = "Usuario";
-            public const string Token = "Token";
+            public const string IdUserKeyApp = "Id";
+            public const string User = "User";
+            public const string Password = "Password";
+            public const string Description = "Description";
+            public const string Status = "Status";
+            public const string CreationDate = "CreationDate";
         }
     }
 }

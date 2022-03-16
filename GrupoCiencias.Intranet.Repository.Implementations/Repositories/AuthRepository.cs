@@ -2,6 +2,7 @@
 using GrupoCiencias.Intranet.Repository.Implementations.Data;
 using GrupoCiencias.Intranet.Repository.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,19 +16,22 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
             this.context = context;
         }
 
-        public async Task<AuthDto> GetKeyAppAsync(string access_token)
+        public async Task<AuthDto> GetKeyAppAsync(CredentialDto credential)
         { 
-            if (access_token == null)
+            if (credential.User == null && credential.Password == null)
                 return null;
 
-            return await context.Keyapps.Where(x => x.Clave == access_token.ToString() && x.Estado == 1)
-                              .Select(key => new AuthDto
-                              {
-                                  Id = key.Id,
-                                  Key = key.Clave,
-                                  Status = key.Estado
-                              })
-                              .FirstOrDefaultAsync();
+            return await context.Keyapps.Where(x => x.Usuario == credential.User.ToString() && x.Clave == credential.Password.ToString() && x.Estado == 1)
+                    .Select(key => new AuthDto
+                    {
+                        Id = Convert.ToString(key.Id),
+                        User = key.Usuario.ToString(),
+                        Password = key.Clave.ToString(),
+                        Description = key.Descripcion.ToString(),
+                        Status = Convert.ToString(key.Estado),
+                        CreationDate = key.FechaCreacion.ToString("yyyyMMdd")
+                    })
+                    .FirstOrDefaultAsync();
         }
     }
 }

@@ -17,12 +17,14 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Intranet
     public class RelationApplication : IRelationApplication
     {
         private readonly Lazy<IAuthApplication> _authApplication;
-        private Lazy<IUnitOfWork> _unitOfWork; 
+        private readonly Lazy<IUnitOfWork> _unitOfWork;
+        private readonly AppSetting _appSettings;
 
         public RelationApplication(IOptions<AppSetting> appSettings)
         {
             _authApplication = new Lazy<IAuthApplication>(() => IoCAutofacContainer.Current.Resolve<IAuthApplication>());
             _unitOfWork = new Lazy<IUnitOfWork>(() => IoCAutofacContainer.Current.Resolve<IUnitOfWork>());
+            _appSettings = appSettings.Value;
         }
 
         private IUnitOfWork UnitOfWork => _unitOfWork.Value;
@@ -31,19 +33,15 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Intranet
 
         private IAuthApplication AuthApplication => _authApplication.Value;
  
-        public async Task<ResponseDto> GetListMasterDetailAsync(string access_token)
+        public async Task<ResponseDto> GetListMasterDetailAsync()
         {
-            var response = new ResponseDto();
-            var keyapp = await AuthApplication.KeyAuthenticationAsync(access_token);
-
-            if (keyapp.Status.Equals(UtilConstants.EstadoDatos.NoActivo))
-            {
-                response.Status = UtilConstants.CodigoEstado.NotFound;
-                response.Message = keyapp.Message.ToString();
-                return response;
-            } 
-
-            var result = await SetListaMasterDetail(); 
+            var response = new ResponseDto(); 
+            var result = await SetListaMasterDetail();
+            if (ReferenceEquals(null, result)) 
+            { 
+                response.Status = UtilConstants.CodigoEstado.InternalServerError; 
+                response.Message = AlertResources.str_error_method_master.ToString(); return response;
+            }
             response.Message = AlertResources.msg_correcto.ToString();
             response.Data = result; 
             return response;

@@ -1,9 +1,9 @@
-﻿using GrupoCiencias.Intranet.Application.Interfaces.Matricula;
+﻿using GrupoCiencias.Intranet.Application.Interfaces.MercadoPago;
 using GrupoCiencias.Intranet.CrossCutting.Common;
 using GrupoCiencias.Intranet.CrossCutting.Common.Constants;
 using GrupoCiencias.Intranet.CrossCutting.Common.Exceptions;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Common;
-using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
+using GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago;
 using GrupoCiencias.Intranet.CrossCutting.IoC.Container;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -11,34 +11,36 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
-namespace GrupoCiencias.Intranet.Api.Controllers.Matricula
+namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
 {
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
-    public class MatriculaController : Controller
+    public class MercadoPagoController : Controller
     { 
-        private readonly Lazy<IMatriculaApplication> _procesoMatriculaApplication;
         private readonly Lazy<ILogger> _logger;
-
-        public MatriculaController(IOptions<AppSetting> appSettings)
+        private readonly Lazy<IMercadoPagoApplication> _mercadoPagoApplication;
+        
+        public MercadoPagoController(IOptions<AppSetting> appSettings)
         {
-            _procesoMatriculaApplication = new Lazy<IMatriculaApplication>(() => IoCAutofacContainer.Current.Resolve<IMatriculaApplication>());
+            _mercadoPagoApplication = new Lazy<IMercadoPagoApplication>(() => IoCAutofacContainer.Current.Resolve<IMercadoPagoApplication>());
             _logger = new Lazy<ILogger>(() => IoCAutofacContainer.Current.Resolve<ILogger>());
         }
 
         private ILogger Logger => _logger.Value;
-        private IMatriculaApplication ProcesoMatriculaApplication => _procesoMatriculaApplication.Value;
+        private IMercadoPagoApplication MercadoPagoApplication => _mercadoPagoApplication.Value;
 
-        [HttpPost(EndPointDecoratorConstants.EndPointRouter.RegistrarSolicitud)] 
-        public async Task<JsonResult> RegistrarSolicitud([FromBody] SolicitudDto solicitudDto)
+        [HttpPost(EndPointDecoratorConstants.MercadoPagoEndPointRouter.CardToken)] 
+        public async Task<JsonResult> CardToken([FromBody] CardTokenDto cardTokenDto)
         {
             var response = new ResponseDto();
             try
             {
-                response = await ProcesoMatriculaApplication.RegistrarSolicitudAsync(solicitudDto);
+                response = await MercadoPagoApplication.CardTokenAsync(cardTokenDto);
             }
             catch (FunctionalException ex)
             {
@@ -57,6 +59,7 @@ namespace GrupoCiencias.Intranet.Api.Controllers.Matricula
             }
 
             return new JsonResult(response);
-        }  
+        }
+
     }
 }

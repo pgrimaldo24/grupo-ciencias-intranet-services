@@ -89,7 +89,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
         {
             if (_context.ChangeTracker.Entries().Any(e => e.State == EntityState.Added || e.State == EntityState.Modified))
             {
-                var identity = _httpContext?.HttpContext?.User.FindFirst(JwtConstants.UserClaims.UserId)?.Value ?? "SYSTEM";
+                var identity = _httpContext?.HttpContext?.User.FindFirst(JwtConstants.UserClaimsKeyApp.IdUserKeyApp)?.Value ?? "SYSTEM";
             }
 
         }

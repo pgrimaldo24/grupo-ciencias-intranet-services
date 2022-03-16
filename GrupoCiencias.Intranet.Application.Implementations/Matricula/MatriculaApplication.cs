@@ -16,7 +16,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
 {
     public class MatriculaApplication : IMatriculaApplication
     {
-        private Lazy<IUnitOfWork> _unitOfWork;
+        private readonly Lazy<IUnitOfWork> _unitOfWork;
 
         public MatriculaApplication(IOptions<AppSetting> appSettings)
         {

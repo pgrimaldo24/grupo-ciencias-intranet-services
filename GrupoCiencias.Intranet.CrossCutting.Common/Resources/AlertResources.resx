@@ -121,7 +121,10 @@
     <value>Se procesó correctamente.</value>
   </data>
   <data name="str_error_key_no_encontrado" xml:space="preserve">
-    <value>Su clave no se encuentra registrado en la aplicación</value>
+    <value>El usuario no se encuentra registrado en la aplicación</value>
+  </data>
+  <data name="str_error_method_master" xml:space="preserve">
+    <value>El method -&gt; SetListaMasterDetail ha retornado con un valor NULL </value>
   </data>
   <data name="str_log_error" xml:space="preserve">
     <value>ERROR</value>

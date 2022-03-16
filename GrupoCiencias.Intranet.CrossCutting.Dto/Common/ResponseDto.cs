@@ -14,6 +14,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Dto.Common
         {
             Status = UtilConstants.CodigoEstado.Ok;
             TransactionId = DateTime.Now.ToString(UtilConstants.DateTimeFormats.DD_MM_YYYY_HH_MM_SS_FFF);
+            Message = AlertResources.msg_correcto;
             Data = new Dynamic();
         }
 

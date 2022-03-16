@@ -1,44 +1,42 @@
-﻿using GrupoCiencias.Intranet.Application.Interfaces.Matricula;
+﻿using GrupoCiencias.Intranet.Application.Interfaces.Intranet;
 using GrupoCiencias.Intranet.CrossCutting.Common;
 using GrupoCiencias.Intranet.CrossCutting.Common.Constants;
 using GrupoCiencias.Intranet.CrossCutting.Common.Exceptions;
+using GrupoCiencias.Intranet.CrossCutting.Dto.Auth;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Common;
-using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
 using GrupoCiencias.Intranet.CrossCutting.IoC.Container;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
 using System.Threading.Tasks;
 
-namespace GrupoCiencias.Intranet.Api.Controllers.Matricula
+namespace GrupoCiencias.Intranet.Api.Controllers.Intranet
 {
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
-    public class MatriculaController : Controller
-    { 
-        private readonly Lazy<IMatriculaApplication> _procesoMatriculaApplication;
+    public class AuthController : ControllerBase
+    {
+        private readonly Lazy<IAuthApplication> _authApplication;
         private readonly Lazy<ILogger> _logger;
 
-        public MatriculaController(IOptions<AppSetting> appSettings)
+        public AuthController(IOptions<AppSetting> appSettings)
         {
-            _procesoMatriculaApplication = new Lazy<IMatriculaApplication>(() => IoCAutofacContainer.Current.Resolve<IMatriculaApplication>());
+            _authApplication = new Lazy<IAuthApplication>(() => IoCAutofacContainer.Current.Resolve<IAuthApplication>());
             _logger = new Lazy<ILogger>(() => IoCAutofacContainer.Current.Resolve<ILogger>());
         }
 
         private ILogger Logger => _logger.Value;
-        private IMatriculaApplication ProcesoMatriculaApplication => _procesoMatriculaApplication.Value;
 
-        [HttpPost(EndPointDecoratorConstants.EndPointRouter.RegistrarSolicitud)] 
-        public async Task<JsonResult> RegistrarSolicitud([FromBody] SolicitudDto solicitudDto)
+        private IAuthApplication AuthApplication => _authApplication.Value;
+         
+        [HttpPost(EndPointDecoratorConstants.EndPointRouter.Authentication)]
+        public async Task<JsonResult> Authentication([FromBody] CredentialDto credential)
         {
             var response = new ResponseDto();
             try
             {
-                response = await ProcesoMatriculaApplication.RegistrarSolicitudAsync(solicitudDto);
+                response = await AuthApplication.AuthenticationAsync(credential);
             }
             catch (FunctionalException ex)
             {
@@ -57,6 +55,7 @@ namespace GrupoCiencias.Intranet.Api.Controllers.Matricula
             }
 
             return new JsonResult(response);
-        }  
+        }
+
     }
 }

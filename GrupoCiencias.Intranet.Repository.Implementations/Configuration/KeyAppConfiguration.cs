@@ -25,11 +25,16 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                 .HasColumnName("fechacreacion")
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
              
-            builder.Property(e => e.Usuario)
+            builder.Property(e => e.Usuario_Creacion)
                 .IsRequired()
                 .HasMaxLength(100)
-                .HasColumnName("usuario")
+                .HasColumnName("usuario_creacion")
                 .HasDefaultValueSql("'ADMIN'::character varying");
+
+
+            builder.Property(e => e.Usuario)
+               .HasMaxLength(50)
+               .HasColumnName("usuario");
 
             builder.Property(e => e.Clave)
                .HasMaxLength(50)

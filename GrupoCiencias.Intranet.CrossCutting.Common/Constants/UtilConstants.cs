@@ -37,10 +37,33 @@
             public const int MIN = 900; // 15 Minutos
         }
 
+        public struct StatusKey
+        { 
+            public const string ActivatedStatus = "1";
+            public const string InactiveStatus = "0";
+        }
+
         public struct EstadoDatos
-        {
+        { 
             public const int Activo = 1;
             public const int NoActivo = 0;
+            public const string ActiveJwt = "Active";
+            public const string InactiveJwt = "Inactive";
+        }
+
+        public struct ContentService
+        {
+            public const string ContentTypeApplicationJson = "application/json";
+            public const string Authorization = "Authorization";
+            public const string Bearer = "Bearer  "; 
+
+            public const string ContentType = "application/x-www-form-urlencoded";
+            public const string Accept = "*/*";
+            public const string AcceptLanguage = "Accept-Language";
+            public const string UACPU = "UA-CPU";
+            public const string CacheControl = "Cache-Control";
+
+            public const string PublicKey = "?public_key=";
         }
     }
 }

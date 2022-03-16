@@ -22,7 +22,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class AlertResources {
+    public  class AlertResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -70,11 +70,20 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
         }
 
         /// <summary>
-        ///   Busca una cadena traducida similar a Su clave no se encuentra registrado en la aplicación.
+        ///   Busca una cadena traducida similar a El usuario no se encuentra registrado en la aplicación.
         /// </summary>
         public static string str_error_key_no_encontrado {
             get {
                 return ResourceManager.GetString("str_error_key_no_encontrado", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a El method -&gt; SetListaMasterDetail ha retornado con un valor NULL .
+        /// </summary>
+        public static string str_error_method_master {
+            get {
+                return ResourceManager.GetString("str_error_method_master", resourceCulture);
             }
         }
 
