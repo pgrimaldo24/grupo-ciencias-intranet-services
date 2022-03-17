@@ -30,5 +30,6 @@ namespace GrupoCiencias.Intranet.Domain.Models.Entity
         public int? Politicasseguridad { get; set; }
         public int? PoliticasFinesComerciales { get; set; }
         public virtual ApoderadosEntity Apoderado { get; set; }
+        
     }
 }

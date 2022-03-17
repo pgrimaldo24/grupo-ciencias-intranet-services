@@ -30,6 +30,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
             builder.ApplyConfiguration(new SedesConfiguration());
             builder.ApplyConfiguration(new TipoDocumentoConfiguration());
             builder.ApplyConfiguration(new KeyAppConfiguration());
+            builder.ApplyConfiguration(new TipoPagoDetalleConfiguration());
         }
 
         public virtual DbSet<SolicitudesEntity> Solicitudes { get; set; }
@@ -46,5 +47,6 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
         public virtual DbSet<TipoDocumentoEntity> TipoDocumentos { get; set; }
         public virtual DbSet<MasterEntity> Masters { get; set; }
         public virtual DbSet<KeyAppEntity> Keyapps { get; set; }
+        public virtual DbSet<TipoPagoDetalleEntity> TipoPagoDetalle { get; set; }
     }
 }

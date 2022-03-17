@@ -7,5 +7,8 @@ namespace GrupoCiencias.Intranet.Application.Interfaces.Matricula
     public interface IMatriculaApplication
     {
         Task<ResponseDto> RegistrarSolicitudAsync(SolicitudDto solicitudDto);
+        Task<ResponseDto> GetListMatriculaPrices(int idCiclo, int IdTipoPago);
+
+
     }
 }

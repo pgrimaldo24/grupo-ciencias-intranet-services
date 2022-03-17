@@ -2,16 +2,15 @@
 {
     public  class EndPointDecoratorConstants
     {
-        public struct EndPointRouter
+        public struct MasterRouter
         {
-            public const string Authentication = "Authentication";
-            public const string GetListMasterDetail = "GetListMasterDetail";
-            public const string RegistrarSolicitud = "RegistrarSolicitud";
+            public const string GetListMasterDetail = "GetListMasterDetail"; 
         }
 
-        public struct MercadoPagoEndPointRouter
+        public struct MatriculaRouter
         {
-            public const string CardToken = "CardToken"; 
+            public const string RegistrarSolicitud = "RegisterEnrollment";
+            public const string GetListMatriculaPrices = "GetEnrollmentPricesList";
         }
     }
 }
