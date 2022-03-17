@@ -45,11 +45,12 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             return response;
         }
 
-        public async Task<ResponseDto> PaymentMethodAsync(BinCardDto binCardDto)
+        public async Task<ResponseDto> PaymentMethodAsync(string binCard)
         {
             var response = new ResponseDto();
-            var result = await BridgeApplication.GetInvoque<BinCardDto, PaymentMethodDto>(binCardDto, string.Concat(_appSettings.MercadoPagoServices.PaymentMethods, UtilConstants.ContentService.Bin + binCardDto.bin_card + UtilConstants.ContentService.AccessToken + _appSettings.MercadoPagoCredentials.AccessToken), _appSettings.MercadoPagoCredentials.AccessToken,
-               PropiedadesConstants.TypeRequest.GET);
+            var bincardDto = new RequestPaymentMethodDto() { bin_card = binCard };
+            var result = await BridgeApplication.GetInvoque<RequestPaymentMethodDto, List<ResponsePaymentMethodDto>> (bincardDto, string.Concat(_appSettings.MercadoPagoServices.PaymentMethods, UtilConstants.ContentService.Bin + bincardDto.bin_card + UtilConstants.ContentService.AccessToken + _appSettings.MercadoPagoCredentials.AccessToken),
+                _appSettings.MercadoPagoCredentials.AccessToken, PropiedadesConstants.TypeRequest.GET);
             response.Data = result;
             return response;
         }

@@ -35,12 +35,12 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
         private IMercadoPagoApplication MercadoPagoApplication => _mercadoPagoApplication.Value;
 
         [HttpGet(EndPointDecoratorConstants.MercadoPagoEndPointRouter.PaymentMethod)]
-        public async Task<JsonResult> PaymentMethod([FromBody] BinCardDto binCardDto)
+        public async Task<JsonResult> PaymentMethod(string bin_card)
         {
             var response = new ResponseDto();
             try
             {
-                response = await MercadoPagoApplication.PaymentMethodAsync(binCardDto);
+                response = await MercadoPagoApplication.PaymentMethodAsync(bin_card);
             }
             catch (FunctionalException ex)
             {
