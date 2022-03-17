@@ -61,13 +61,13 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Intranet
              
             foreach (var item in entidades.Universities)
             {
-                entidades.Careers = await RelationRepository.GetListCareersXIdAsync(item.Code);
-                entidades.Cycles = await RelationRepository.GetListCyclesXIdAsync(item.Code);
+                entidades.Careers = await RelationRepository.GetListCareersXIdAsync(item.code);
+                entidades.Cycles = await RelationRepository.GetListCyclesXIdAsync(item.code);
 
                 var informationAcademy = new UniversityDto
                 {
-                    Code = item.Code,
-                    Name = item.Name,
+                    code = item.code,
+                    name = item.name,
                     Careers = entidades.Careers,
                     Cycles = entidades.Cycles
                 };
