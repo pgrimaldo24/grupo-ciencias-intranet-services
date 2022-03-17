@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
 {
-    public class RedsocialConfiguration : IEntityTypeConfiguration<RedSocialEntity>
+    public class RedsocialConfiguration : IEntityTypeConfiguration<TipoPagoEntity>
     {
-        public void Configure(EntityTypeBuilder<RedSocialEntity> builder)
+        public void Configure(EntityTypeBuilder<TipoPagoEntity> builder)
         {
             builder.HasKey(e => e.Idred)
                   .HasName("redsocial_pkey");
 
-            builder.ToTable("redsocial");
+            builder.ToTable("tipo_pago");
 
             builder.Property(e => e.Idred).HasColumnName("idred");
 

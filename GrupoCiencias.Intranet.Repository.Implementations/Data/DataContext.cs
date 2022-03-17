@@ -42,7 +42,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
         public virtual DbSet<CursosCicloEntity> CursosCiclo { get; set; }
         public virtual DbSet<UniversidadEntity> Universidad { get; set; }
         public virtual DbSet<MarketingEntity> Marketings { get; set; }
-        public virtual DbSet<RedSocialEntity> Redsocials { get; set; }
+        public virtual DbSet<TipoPagoEntity> TipoPagos { get; set; }
         public virtual DbSet<SedeEntity> Sedes { get; set; }
         public virtual DbSet<TipoDocumentoEntity> TipoDocumentos { get; set; }
         public virtual DbSet<MasterEntity> Masters { get; set; }

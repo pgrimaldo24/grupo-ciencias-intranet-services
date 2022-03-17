@@ -54,7 +54,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
 
         public async Task<List<MasterDto>> GetListTypeMatriculaAsync()
         {
-            return await context.Redsocials.Where(x => x.Activo.Equals(1))
+            return await context.TipoPagos.Where(x => x.Activo.Equals(1))
                .OrderBy(r => r.Idmaster)
                .Select(u => new MasterDto
                {

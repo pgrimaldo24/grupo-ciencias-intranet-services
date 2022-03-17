@@ -11,7 +11,7 @@ namespace GrupoCiencias.Intranet.Domain.Models.Entity
             Ciclos = new HashSet<CiclosEntity>();
             Universidads = new HashSet<UniversidadEntity>();
             Marketings = new HashSet<MarketingEntity>();
-            Redsocials = new HashSet<RedSocialEntity>();
+            Redsocials = new HashSet<TipoPagoEntity>();
             Sedes = new HashSet<SedeEntity>();
             TipoDocumentos = new HashSet<TipoDocumentoEntity>();
         }
@@ -28,7 +28,7 @@ namespace GrupoCiencias.Intranet.Domain.Models.Entity
         public virtual ICollection<CiclosEntity> Ciclos { get; set; }
         public virtual ICollection<UniversidadEntity> Universidads { get; set; }
         public virtual ICollection<MarketingEntity> Marketings { get; set; }
-        public virtual ICollection<RedSocialEntity> Redsocials { get; set; }
+        public virtual ICollection<TipoPagoEntity> Redsocials { get; set; }
         public virtual ICollection<SedeEntity> Sedes { get; set; }
         public virtual ICollection<TipoDocumentoEntity> TipoDocumentos { get; set; }
     }

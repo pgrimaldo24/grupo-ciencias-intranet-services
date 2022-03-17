@@ -2,7 +2,7 @@
 
 namespace GrupoCiencias.Intranet.Domain.Models.Entity
 {
-    public class RedSocialEntity
+    public class TipoPagoEntity
     {
         public int Idred { get; set; }
         public string Idmaster { get; set; }
