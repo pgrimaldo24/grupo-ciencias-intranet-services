@@ -22,8 +22,8 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                 .OrderBy(r => r.Iduniversidad)
                 .Select(u => new UniversityDto
                 {
-                    Code = u.Iduniversidad,
-                    Name = u.Nombre
+                    code = u.Iduniversidad,
+                    name = u.Nombre
                 })
                 .ToListAsync();
         }
@@ -35,8 +35,8 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                     .OrderBy(p => p.Carrera.Idcarrera)
                     .Select(o => new MasterDto
                     {
-                        Code = o.Carrera.Idcarrera,
-                        Name = o.Carrera.Nombre.ToString()
+                        code = o.Carrera.Idcarrera,
+                        name = o.Carrera.Nombre.ToString()
                     }).ToListAsync(); 
         }
 
@@ -46,8 +46,8 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                     .OrderBy(r => r.Idciclo)
                     .Select(u => new MasterDto
                     {
-                        Code = u.Idciclo,
-                        Name = u.Descripcion.ToString()
+                        code = u.Idciclo,
+                        name = u.Descripcion.ToString()
                     })
                     .ToListAsync();
         }
@@ -58,8 +58,8 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                .OrderBy(r => r.Idmaster)
                .Select(u => new MasterDto
                {
-                   Code = u.Idred,
-                   Name = u.Valor
+                   code = u.Idred,
+                   name = u.Valor
                })
                .ToListAsync();
         }
@@ -70,8 +70,8 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                .OrderBy(r => r.Idmarketing)
                .Select(u => new MasterDto
                {
-                   Code = u.Idmarketing,
-                   Name = u.Valor
+                   code = u.Idmarketing,
+                   name = u.Valor
                })
                .ToListAsync();
         }
@@ -82,8 +82,8 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                .OrderBy(r => r.Id)
                .Select(u => new MasterDto
                {
-                   Code = u.Id,
-                   Name = u.Valor
+                   code = u.Id,
+                   name = u.Valor
                })
                .ToListAsync();
         }
@@ -94,8 +94,8 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                .OrderBy(r => r.Idsedes)
                .Select(u => new MasterDto
                {
-                   Code = u.Idsedes,
-                   Name = u.Valor
+                   code = u.Idsedes,
+                   name = u.Valor
                })
                .ToListAsync();
         }

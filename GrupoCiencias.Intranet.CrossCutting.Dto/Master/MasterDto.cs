@@ -4,8 +4,8 @@ namespace GrupoCiencias.Intranet.CrossCutting.Dto.Master
 { 
     public class MasterDto
     {
-        public int Code { get; set; }
-        public string Name { get; set; }
+        public int code { get; set; }
+        public string name { get; set; }
     }
 
     public class MasterDetailDto

@@ -15,8 +15,8 @@ namespace GrupoCiencias.Intranet.CrossCutting.Dto.Master
      
     public class UniversityDto
     {
-        public int Code { get; set; }
-        public string Name { get; set; }
+        public int code { get; set; }
+        public string name { get; set; }
         public List<MasterDto> Careers { get; set; }
         public List<MasterDto> Cycles { get; set; }
     }
