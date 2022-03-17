@@ -2,13 +2,13 @@
 {
     public class ApoderadoDto
     {
-        public string Nombres { get; set; }
-        public string Apellidos { get; set; }
-        public int TipoDocumento { get; set; }
-        public string NroDocumento { get; set; }
-        public string CorreoElectronico { get; set; }
-        public string Celular { get; set; }
-        public string Ruta_foto_dni { get; set; }
+        public string names { get; set; }
+        public string surnames { get; set; }
+        public int document_type_id { get; set; }
+        public string document_number { get; set; }
+        public string email { get; set; }
+        public string cell_phone { get; set; }
+        public string route_photo_document { get; set; }
     }
 
     public class ApoderadoDetalleDto

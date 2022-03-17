@@ -32,12 +32,12 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
             if (string.IsNullOrEmpty(solicitudDto.ToString()))
                 return response;
             
-            if (solicitudDto.HasApoderado == true) {
-                var apoderado = await SetApoderado(solicitudDto.Apoderado);
+            if (solicitudDto.has_apoderado == true) {
+                var apoderado = await SetApoderado(solicitudDto.apoderado);
                 UnitOfWork.Set<ApoderadosEntity>().Add(apoderado);
                 UnitOfWork.SaveChanges();
                 
-                var infoApoderado = MatriculaRepository.GetIdApoderadoAsync(solicitudDto.Apoderado.NroDocumento).Result; 
+                var infoApoderado = MatriculaRepository.GetIdApoderadoAsync(solicitudDto.apoderado.document_number).Result; 
                 idApoderado = infoApoderado.IdApoderado;
             }
             var solicitud = await SetSolicitud(solicitudDto, idApoderado);
@@ -55,23 +55,23 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
             var solicitudEntity = new SolicitudesEntity
             {
                 Idapoderado= idApoderado,
-                Nombres = solicitudDto.Nombres,
-                Apellidos = solicitudDto.Apellidos,
-                FechaNacimiento = solicitudDto.FechaNacimiento,
-                Celular = solicitudDto.Celular,
-                IdTipoDocumento = solicitudDto.TipoDocumento,
-                Dni = solicitudDto.Dni,                                
-                Correo = solicitudDto.Correo,
-                Universidad = solicitudDto.Universidad,
+                Nombres = solicitudDto.names,
+                Apellidos = solicitudDto.surnames,
+                FechaNacimiento = solicitudDto.birth_date,
+                Celular = solicitudDto.cell_phone,
+                IdTipoDocumento = solicitudDto.document_type_id,
+                Dni = solicitudDto.document_number,                                
+                Correo = solicitudDto.email,
+                Universidad = solicitudDto.university,
                 //Falta agregar sede
-                CarreraInteres = solicitudDto.Carrera,
-                Ciclo = solicitudDto.Ciclo,
-                MedioInfo = solicitudDto.MedioInfo,
-                Referido = solicitudDto.Referido,
-                RutaFotoPerfil = solicitudDto.Ruta_foto_perfil,
-                RutaFotoDni = solicitudDto.Ruta_foto_dni,
-                Politicasseguridad = solicitudDto.PoliticaSeguridad,
-                PoliticasFinesComerciales = solicitudDto.PoliticaComercial,
+                CarreraInteres = solicitudDto.career,
+                Ciclo = solicitudDto.cycle,
+                MedioInfo = solicitudDto.medio_info,
+                Referido = solicitudDto.referred,
+                RutaFotoPerfil = solicitudDto.route_photo_profile,
+                RutaFotoDni = solicitudDto.route_photo_document,
+                Politicasseguridad = solicitudDto.security_policy,
+                PoliticasFinesComerciales = solicitudDto.trade_policy,
                 FechaRegistro = DateTime.UtcNow.ToLocalTime(),
         };
             return solicitudEntity;
@@ -81,13 +81,12 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
         {
             var apoderadoEntity = new ApoderadosEntity
             {
-                Nombres = apoderadoDto.Nombres,
-                Apellidos = apoderadoDto.Apellidos,
-                IdTipoDocumento = apoderadoDto.TipoDocumento,
-                Dni = apoderadoDto.NroDocumento,
-                Celular = apoderadoDto.Celular,
-                RutaFotoDni = apoderadoDto.Ruta_foto_dni
-
+                Nombres = apoderadoDto.names,
+                Apellidos = apoderadoDto.surnames,
+                IdTipoDocumento = apoderadoDto.document_type_id,
+                Dni = apoderadoDto.document_number,
+                Celular = apoderadoDto.cell_phone,
+                RutaFotoDni = apoderadoDto.route_photo_document 
             };
             return apoderadoEntity;
         }
