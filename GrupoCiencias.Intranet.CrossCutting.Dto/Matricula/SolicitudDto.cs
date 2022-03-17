@@ -16,6 +16,8 @@ namespace GrupoCiencias.Intranet.CrossCutting.Dto.Matricula
         public string Sede { get; set; }
         public string Carrera { get; set; }
         public int Ciclo { get; set; }
+        public string MedioInfo { get; set; }
+        public string Referido { get; set; }
         public string Ruta_foto_perfil { get; set; }
         public string Ruta_foto_dni { get; set; }
         public int PoliticaSeguridad { get; set; }

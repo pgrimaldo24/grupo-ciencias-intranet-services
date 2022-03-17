@@ -9,7 +9,8 @@
 
         public struct MatriculaRouter
         {
-            public const string RegistrarSolicitud = "RegistrarSolicitud";
+            public const string RegistrarSolicitud = "RegisterEnrollment";
+            public const string GetListMatriculaPrices = "GetEnrollmentPricesList";
         }
     }
 }

@@ -65,11 +65,14 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
                 //Falta agregar sede
                 CarreraInteres = solicitudDto.Carrera,
                 Ciclo = solicitudDto.Ciclo,
+                MedioInfo = solicitudDto.MedioInfo,
+                Referido = solicitudDto.Referido,
                 RutaFotoPerfil = solicitudDto.Ruta_foto_perfil,
                 RutaFotoDni = solicitudDto.Ruta_foto_dni,
                 Politicasseguridad = solicitudDto.PoliticaSeguridad,
-                PoliticasFinesComerciales = solicitudDto.PoliticaComercial
-            };
+                PoliticasFinesComerciales = solicitudDto.PoliticaComercial,
+                FechaRegistro = DateTime.UtcNow.ToLocalTime(),
+        };
             return solicitudEntity;
         }
 
@@ -91,6 +94,22 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
         public async Task<ApoderadoDetalleDto> ObtenerIdApoderadoAsync(string nroDocumento) 
         {
             return await MatriculaRepository.ObtenerIdApoderadoAsync(nroDocumento);
+        }
+
+        public async Task<ResponseDto> GetListMatriculaPrices(int IdPeriod, int IdPaymentType)
+        {
+            var response = new ResponseDto();
+            var listaPrecios = await MatriculaRepository.ListarPreciosMatriculaAsync(IdPeriod, IdPaymentType);
+            if (ReferenceEquals(null, listaPrecios))
+            {
+                response.Status = UtilConstants.CodigoEstado.NotFound;
+                response.Message = AlertResources.str_log_error;
+                return response;
+            }
+            response.Status = UtilConstants.EstadoDatos.Activo;
+            response.Message = AlertResources.msg_correcto.ToString();
+            response.Data = listaPrecios;
+            return response;
         }
     }
 }
