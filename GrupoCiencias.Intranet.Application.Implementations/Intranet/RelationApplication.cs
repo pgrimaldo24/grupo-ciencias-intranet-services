@@ -57,12 +57,12 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Intranet
             masterDetail.DocumentTypes = new List<MasterDto>();
             masterDetail.Sedes = new List<MasterDto>();
 
-            entidades.Universities = await RelationRepository.ObtenerListaUniversidadesAsync();
+            entidades.Universities = await RelationRepository.GetListaUniversitiesAsync();
              
             foreach (var item in entidades.Universities)
             {
-                entidades.Careers = await RelationRepository.ObtenerListaCarreraXIdAsync(item.Code);
-                entidades.Cycles = await RelationRepository.ObtenerListaCiclosXIdAsync(item.Code);
+                entidades.Careers = await RelationRepository.GetListCareersXIdAsync(item.Code);
+                entidades.Cycles = await RelationRepository.GetListCyclesXIdAsync(item.Code);
 
                 var informationAcademy = new UniversityDto
                 {
@@ -74,10 +74,10 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Intranet
                 masterDetail.Universities.Add(informationAcademy);
             }
 
-            entidades.Redsocials = await RelationRepository.GetListTipoMatriculaAsync();
-            entidades.Marketings = await RelationRepository.ObtenerListaMarketingAsync();
-            entidades.DocumentTypes = await RelationRepository.ObtenerListaTipoDocumentosAsync();
-            entidades.Sedes = await RelationRepository.ObtenerListaSedesAsync();
+            entidades.Redsocials = await RelationRepository.GetListTypeMatriculaAsync();
+            entidades.Marketings = await RelationRepository.GetListMarketingAsync();
+            entidades.DocumentTypes = await RelationRepository.GetListTypeDocumentsAsync();
+            entidades.Sedes = await RelationRepository.GetListHeadquartersAsync();
 
             masterDetail.Redsocials = entidades.Redsocials;
             masterDetail.Marketings = entidades.Marketings;

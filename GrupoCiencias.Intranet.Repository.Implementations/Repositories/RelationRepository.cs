@@ -16,7 +16,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
             this.context = context;
         }
 
-        public async Task<List<UniversityDto>> ObtenerListaUniversidadesAsync()
+        public async Task<List<UniversityDto>> GetListaUniversitiesAsync()
         {
             return await context.Universidad.Where(x => x.Activo.Equals(1))
                 .OrderBy(r => r.Iduniversidad)
@@ -28,7 +28,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                 .ToListAsync();
         }
 
-        public async Task<List<MasterDto>> ObtenerListaCarreraXIdAsync(int idUniversity)
+        public async Task<List<MasterDto>> GetListCareersXIdAsync(int idUniversity)
         {
             return await context.Carreras.Join(context.AreasCarrera, a => a.Idarea, p => p.Idarea, (a, p) => new { Carrera = a, AreaCarrera = p })
                     .Where(x => x.AreaCarrera.Iduniversidad.Equals(idUniversity) && x.Carrera.Estado.Equals(1))
@@ -40,7 +40,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                     }).ToListAsync(); 
         }
 
-        public async Task<List<MasterDto>> ObtenerListaCiclosXIdAsync(int idUniversity)
+        public async Task<List<MasterDto>> GetListCyclesXIdAsync(int idUniversity)
         {
             return await context.Ciclos.Where(x => x.Iduniversidad.Equals(idUniversity) && x.Estado.Equals(1))
                     .OrderBy(r => r.Idciclo)
@@ -52,7 +52,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                     .ToListAsync();
         }
 
-        public async Task<List<MasterDto>> GetListTipoMatriculaAsync()
+        public async Task<List<MasterDto>> GetListTypeMatriculaAsync()
         {
             return await context.Redsocials.Where(x => x.Activo.Equals(1))
                .OrderBy(r => r.Idmaster)
@@ -64,7 +64,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                .ToListAsync();
         }
 
-        public async Task<List<MasterDto>> ObtenerListaMarketingAsync()
+        public async Task<List<MasterDto>> GetListMarketingAsync()
         {
             return await context.Marketings.Where(x => x.Activo.Equals(1))
                .OrderBy(r => r.Idmarketing)
@@ -76,7 +76,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                .ToListAsync();
         }
 
-        public async Task<List<MasterDto>> ObtenerListaTipoDocumentosAsync()
+        public async Task<List<MasterDto>> GetListTypeDocumentsAsync()
         {
             return await context.TipoDocumentos.Where(x => x.Activo.Equals(1))
                .OrderBy(r => r.Id)
@@ -88,7 +88,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                .ToListAsync();
         }
 
-        public async Task<List<MasterDto>> ObtenerListaSedesAsync()
+        public async Task<List<MasterDto>> GetListHeadquartersAsync()
         {
             return await context.Sedes.Where(x => x.Activo.Equals(1))
                .OrderBy(r => r.Idsedes)

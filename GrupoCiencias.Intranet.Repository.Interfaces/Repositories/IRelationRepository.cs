@@ -6,12 +6,12 @@ namespace GrupoCiencias.Intranet.Repository.Interfaces.Repositories
 {
     public interface IRelationRepository
     {
-        public Task<List<UniversityDto>> ObtenerListaUniversidadesAsync();
-        public Task<List<MasterDto>> ObtenerListaCarreraXIdAsync(int idUniversity);
-        public Task<List<MasterDto>> ObtenerListaCiclosXIdAsync(int idUniversity);
-        public Task<List<MasterDto>> GetListTipoMatriculaAsync();
-        public Task<List<MasterDto>> ObtenerListaMarketingAsync();
-        public Task<List<MasterDto>> ObtenerListaTipoDocumentosAsync();
-        public Task<List<MasterDto>> ObtenerListaSedesAsync();
+        public Task<List<UniversityDto>> GetListaUniversitiesAsync();
+        public Task<List<MasterDto>> GetListCareersXIdAsync(int idUniversity);
+        public Task<List<MasterDto>> GetListCyclesXIdAsync(int idUniversity);
+        public Task<List<MasterDto>> GetListTypeMatriculaAsync();
+        public Task<List<MasterDto>> GetListMarketingAsync();
+        public Task<List<MasterDto>> GetListTypeDocumentsAsync();
+        public Task<List<MasterDto>> GetListHeadquartersAsync();
     }
 }
