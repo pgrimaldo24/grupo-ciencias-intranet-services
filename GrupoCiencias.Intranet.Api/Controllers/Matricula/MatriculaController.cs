@@ -39,7 +39,7 @@ namespace GrupoCiencias.Intranet.Api.Controllers.Matricula
             var response = new ResponseDto();
             try
             {
-                response = await ProcesoMatriculaApplication.RegistrarSolicitudAsync(solicitudDto);
+                response = await ProcesoMatriculaApplication.RegisterEnrollmentAsync(solicitudDto);
             }
             catch (FunctionalException ex)
             {
@@ -67,7 +67,7 @@ namespace GrupoCiencias.Intranet.Api.Controllers.Matricula
             var response = new ResponseDto();
             try
             {
-                response = await ProcesoMatriculaApplication.GetListMatriculaPrices(IdPeriod, IdPaymentType);
+                response = await ProcesoMatriculaApplication.GetEnrollmentPricesList(IdPeriod, IdPaymentType);
             }
             catch (FunctionalException ex)
             {
@@ -86,9 +86,6 @@ namespace GrupoCiencias.Intranet.Api.Controllers.Matricula
             }
 
             return new JsonResult(response);
-        }
-
-
-
+        } 
     }
 }

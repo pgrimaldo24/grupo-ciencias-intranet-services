@@ -7,5 +7,6 @@ namespace GrupoCiencias.Intranet.Application.Interfaces.MercadoPago
     public interface IMercadoPagoApplication
     {
         Task<ResponseDto> CardTokenAsync(CardTokenDto cardTokenDto);
+        Task<ResponseDto> PaymentMethodAsync(BinCardDto binCardDto);
     }
 }

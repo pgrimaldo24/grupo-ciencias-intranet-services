@@ -40,7 +40,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Intranet
             
             if (ReferenceEquals(null, keyapp))
             {
-                response.Status = UtilConstants.EstadoDatos.NoActivo;
+                response.Status = UtilConstants.CodigoEstado.NotFound;
                 response.Message = AlertResources.str_error_key_no_encontrado; return response;
             }  
 
@@ -49,7 +49,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Intranet
             else jwt.Status = UtilConstants.EstadoDatos.InactiveJwt; 
            
             response.Message = AlertResources.msg_correcto; 
-            response.Status = UtilConstants.EstadoDatos.Activo;
+            response.Status = UtilConstants.CodigoEstado.Ok;
             response.Data = jwt;
             return response;
         }

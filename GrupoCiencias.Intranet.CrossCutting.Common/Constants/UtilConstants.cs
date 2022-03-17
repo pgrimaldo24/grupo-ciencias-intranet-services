@@ -64,6 +64,9 @@
             public const string CacheControl = "Cache-Control";
 
             public const string PublicKey = "?public_key=";
+
+            public const string Bin = "?bin=";
+            public const string AccessToken = "&access_token=";
         }
     }
 }

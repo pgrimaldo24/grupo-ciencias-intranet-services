@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GrupoCiencias.Intranet.CrossCutting.Dto.Matricula
+﻿namespace GrupoCiencias.Intranet.CrossCutting.Dto.Matricula
 {
     public class PreciosMatriculaDto
     {
-        public int IdDetailPayment { get; set; }
-        public decimal SubTotal { get; set; }
-        public decimal Discount { get; set; }
-        public decimal FinalPrice { get; set; }
-
+        public int id_detail_payment { get; set; }
+        public decimal sub_total { get; set; }
+        public decimal discount { get; set; }
+        public decimal final_price { get; set; } 
     }
 }

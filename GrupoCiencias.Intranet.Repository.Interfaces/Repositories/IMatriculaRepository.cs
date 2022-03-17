@@ -5,8 +5,8 @@ namespace GrupoCiencias.Intranet.Repository.Interfaces.Repositories
 {
     public interface IMatriculaRepository
     {
-        Task<ApoderadoDetalleDto> ObtenerIdApoderadoAsync(string nroDocumento);
+        Task<ApoderadoDetalleDto> GetIdApoderadoAsync(string nroDocumento);
 
-        Task<PreciosMatriculaDto> ListarPreciosMatriculaAsync(int IdPeriod, int IdPaymentType);
+        Task<PreciosMatriculaDto> EnrollmentPricesListAsync(int IdPeriod, int IdPaymentType);
     }
 }

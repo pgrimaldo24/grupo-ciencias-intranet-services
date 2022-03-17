@@ -1,17 +1,7 @@
 ﻿using System.Collections.Generic;
 
 namespace GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago
-{
-    //public class mercadopago 
-    //{
-    //    public string token_public { get; set; }
-    //    public string card_number { get; set; }
-    //    public string security_code { get; set; }
-    //    public int expiration_month { get; set; }
-    //    public int expiration_year { get; set; }
-    //    public CardHolder cardholder { get; set; }
-    //    public Device device { get; set; }
-    //}
+{ 
     public class CardTokenDto
     {
         public string token_public { get; set; }

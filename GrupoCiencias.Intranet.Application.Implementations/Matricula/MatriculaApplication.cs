@@ -25,7 +25,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
         private IUnitOfWork UnitOfWork => _unitOfWork.Value;
 
         private IMatriculaRepository MatriculaRepository => UnitOfWork.Repository<IMatriculaRepository>();
-        public async Task<ResponseDto> RegistrarSolicitudAsync(SolicitudDto solicitudDto)
+        public async Task<ResponseDto> RegisterEnrollmentAsync(SolicitudDto solicitudDto)
         {
             int idApoderado = 0;
             var response = new ResponseDto();
@@ -36,7 +36,8 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
                 var apoderado = await SetApoderado(solicitudDto.Apoderado);
                 UnitOfWork.Set<ApoderadosEntity>().Add(apoderado);
                 UnitOfWork.SaveChanges();
-                var infoApoderado = ObtenerIdApoderadoAsync(solicitudDto.Apoderado.NroDocumento).Result;
+                
+                var infoApoderado = MatriculaRepository.GetIdApoderadoAsync(solicitudDto.Apoderado.NroDocumento).Result; 
                 idApoderado = infoApoderado.IdApoderado;
             }
             var solicitud = await SetSolicitud(solicitudDto, idApoderado);
@@ -91,22 +92,17 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
             return apoderadoEntity;
         }
 
-        public async Task<ApoderadoDetalleDto> ObtenerIdApoderadoAsync(string nroDocumento) 
-        {
-            return await MatriculaRepository.ObtenerIdApoderadoAsync(nroDocumento);
-        }
-
-        public async Task<ResponseDto> GetListMatriculaPrices(int IdPeriod, int IdPaymentType)
+        public async Task<ResponseDto> GetEnrollmentPricesList(int IdPeriod, int IdPaymentType)
         {
             var response = new ResponseDto();
-            var listaPrecios = await MatriculaRepository.ListarPreciosMatriculaAsync(IdPeriod, IdPaymentType);
+            var listaPrecios = await MatriculaRepository.EnrollmentPricesListAsync(IdPeriod, IdPaymentType);
             if (ReferenceEquals(null, listaPrecios))
             {
                 response.Status = UtilConstants.CodigoEstado.NotFound;
                 response.Message = AlertResources.str_log_error;
                 return response;
             }
-            response.Status = UtilConstants.EstadoDatos.Activo;
+            response.Status = UtilConstants.CodigoEstado.Ok;
             response.Message = AlertResources.msg_correcto.ToString();
             response.Data = listaPrecios;
             return response;

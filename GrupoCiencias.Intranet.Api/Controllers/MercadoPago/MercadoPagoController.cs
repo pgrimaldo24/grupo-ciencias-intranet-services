@@ -34,6 +34,33 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
         private ILogger Logger => _logger.Value;
         private IMercadoPagoApplication MercadoPagoApplication => _mercadoPagoApplication.Value;
 
+        [HttpGet(EndPointDecoratorConstants.MercadoPagoEndPointRouter.PaymentMethod)]
+        public async Task<JsonResult> PaymentMethod([FromBody] BinCardDto binCardDto)
+        {
+            var response = new ResponseDto();
+            try
+            {
+                response = await MercadoPagoApplication.PaymentMethodAsync(binCardDto);
+            }
+            catch (FunctionalException ex)
+            {
+                response = new ResponseDto { Status = ex.FuntionalCode, Message = ex.Message, Data = ex.Data, TransactionId = ex.TransactionId };
+                Logger.LogWarning(ex.Message, ex.TransactionId, ex);
+            }
+            catch (TechnicalException ex)
+            {
+                response = new ResponseDto { Status = ex.ErrorCode, Message = ex.StackTrace.ToString(), Data = ex.Data, TransactionId = ex.TransactionId };
+                Logger.LogError(ex.Message, ex.TransactionId, ex);
+            }
+            catch (Exception ex)
+            {
+                response = new ResponseDto { Status = UtilConstants.CodigoEstado.InternalServerError, Message = ex.StackTrace.ToString() };
+                Logger.LogError(ex.Message, response.TransactionId, ex);
+            }
+
+            return new JsonResult(response);
+        }
+
         [HttpPost(EndPointDecoratorConstants.MercadoPagoEndPointRouter.CardToken)] 
         public async Task<JsonResult> CardToken([FromBody] CardTokenDto cardTokenDto)
         {
@@ -59,7 +86,6 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
             }
 
             return new JsonResult(response);
-        }
-
+        } 
     }
 }

@@ -7,6 +7,7 @@
         public int HoursOfExpires { get; set; } 
         public CacheSetting CacheSettings { get; set; }
         public MercadoPagoService MercadoPagoServices { get; set; }
+        public MercadoPagoCredential MercadoPagoCredentials { get; set; }
     }
     public class ConnectionString
     {
@@ -24,5 +25,10 @@
         public string CreatePayment { get; set; }
         public string CardToken { get; set; }
         public string PaymentMethods { get; set; }
+    }
+
+    public class MercadoPagoCredential
+    {
+        public string AccessToken { get; set; }
     }
 }

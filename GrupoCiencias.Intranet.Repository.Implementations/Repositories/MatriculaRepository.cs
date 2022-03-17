@@ -15,7 +15,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
             this.context = context;
         }
 
-        public async Task<ApoderadoDetalleDto> ObtenerIdApoderadoAsync(string nroDocumento)
+        public async Task<ApoderadoDetalleDto> GetIdApoderadoAsync(string nroDocumento)
         {
             return await context.Apoderado
                     .Where(x => x.Dni == nroDocumento)
@@ -24,15 +24,15 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                     .Select(p => new ApoderadoDetalleDto { IdApoderado = p.Idapoderado }).FirstOrDefaultAsync();
         }
 
-        public async Task<PreciosMatriculaDto> ListarPreciosMatriculaAsync(int IdPeriod, int IdPaymentType)
+        public async Task<PreciosMatriculaDto> EnrollmentPricesListAsync(int IdPeriod, int IdPaymentType)
         {
             return await context.TipoPagoDetalle.Where(x => x.idciclo == IdPeriod && x.idtipopago == IdPaymentType)
                   .Select(precioMatricula => new PreciosMatriculaDto
                   {
-                      IdDetailPayment = precioMatricula.idpagodetalle,
-                      SubTotal = precioMatricula.subtotal,
-                      Discount = precioMatricula.descuento,
-                      FinalPrice = precioMatricula.preciofinal,
+                      id_detail_payment = precioMatricula.idpagodetalle,
+                      sub_total = precioMatricula.subtotal,
+                      discount = precioMatricula.descuento,
+                      final_price = precioMatricula.preciofinal,
                   })
                   .FirstOrDefaultAsync();
         }
