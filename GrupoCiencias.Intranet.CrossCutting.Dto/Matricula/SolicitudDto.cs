@@ -13,15 +13,16 @@ namespace GrupoCiencias.Intranet.CrossCutting.Dto.Matricula
         public string email { get; set; }
         public bool has_apoderado { get; set; }
         public string university { get; set; }
-        public string headquarters { get; set; }
+        public int headquarters { get; set; }
         public string career { get; set; }
         public int cycle { get; set; }
+        public int payment_type { get; set; }
         public string medio_info { get; set; }
         public string referred { get; set; }
         public string route_photo_profile { get; set; }
         public string route_photo_document { get; set; }
         public int security_policy { get; set; }
         public int trade_policy { get; set; }
-        public ApoderadoDto apoderado { get; set; } 
+        public ApoderadoDto apoderado { get; set; }
     }
 }

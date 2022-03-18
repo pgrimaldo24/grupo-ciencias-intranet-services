@@ -9,8 +9,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
     public class DataContext : DbContext
     {
         private readonly IHttpContextAccessor _httpContext;
-        public DataContext(DbContextOptions<DataContext> options, IHttpContextAccessor httpContext)
-          : base(options)
+        public DataContext(DbContextOptions<DataContext> options, IHttpContextAccessor httpContext) : base(options)
         {
             _httpContext = httpContext;
         }
@@ -33,6 +32,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
             builder.ApplyConfiguration(new KeyAppConfiguration());
             builder.ApplyConfiguration(new TipoPagoDetalleConfiguration());
             builder.ApplyConfiguration(new EstadoPagoConfiguration());
+            builder.ApplyConfiguration(new TransaccionPagoConfiguration());
         }
 
         public virtual DbSet<SolicitudesEntity> Solicitudes { get; set; }
@@ -51,5 +51,6 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
         public virtual DbSet<KeyAppEntity> Keyapps { get; set; }
         public virtual DbSet<TipoPagoDetalleEntity> TipoPagoDetalle { get; set; }
         public virtual DbSet<EstadoPagoEntity> EstadoPagos { get; set; }
+        public virtual DbSet<TransaccionPagoEntity> TransaccionPagos { get; set; }
     }
 }

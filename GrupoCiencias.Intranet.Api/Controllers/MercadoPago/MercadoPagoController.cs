@@ -33,6 +33,7 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
         private IMercadoPagoApplication MercadoPagoApplication => _mercadoPagoApplication.Value;
 
         [HttpPost(EndPointDecoratorConstants.MercadoPagoEndPointRouter.CreatePayment)]
+
         public async Task<JsonResult> CreatePayment([FromBody] PaymentDto paymentDto)
         {
             var response = new ResponseDto();
@@ -57,7 +58,7 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
             }
 
             return new JsonResult(response);
-        } 
+        }
 
         [HttpGet(EndPointDecoratorConstants.MercadoPagoEndPointRouter.PaymentMethod)]
         public async Task<JsonResult> PaymentMethod(string bin_card)
