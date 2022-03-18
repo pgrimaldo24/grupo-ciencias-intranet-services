@@ -16,6 +16,7 @@
         
         public struct MercadoPagoEndPointRouter
         {
+            public const string CreatePayment = "CreatePayment";
             public const string PaymentMethod = "PaymentMethod";
             public const string CardToken = "CardToken";
         }

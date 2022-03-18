@@ -11,8 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
@@ -33,6 +31,33 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
 
         private ILogger Logger => _logger.Value;
         private IMercadoPagoApplication MercadoPagoApplication => _mercadoPagoApplication.Value;
+
+        [HttpPost(EndPointDecoratorConstants.MercadoPagoEndPointRouter.CreatePayment)]
+        public async Task<JsonResult> CreatePayment([FromBody] PaymentDto paymentDto)
+        {
+            var response = new ResponseDto();
+            try
+            {
+                response = await MercadoPagoApplication.CreatePaymentAsync(paymentDto);
+            }
+            catch (FunctionalException ex)
+            {
+                response = new ResponseDto { Status = ex.FuntionalCode, Message = ex.Message, Data = ex.Data, TransactionId = ex.TransactionId };
+                Logger.LogWarning(ex.Message, ex.TransactionId, ex);
+            }
+            catch (TechnicalException ex)
+            {
+                response = new ResponseDto { Status = ex.ErrorCode, Message = ex.StackTrace.ToString(), Data = ex.Data, TransactionId = ex.TransactionId };
+                Logger.LogError(ex.Message, ex.TransactionId, ex);
+            }
+            catch (Exception ex)
+            {
+                response = new ResponseDto { Status = UtilConstants.CodigoEstado.InternalServerError, Message = ex.StackTrace.ToString() };
+                Logger.LogError(ex.Message, response.TransactionId, ex);
+            }
+
+            return new JsonResult(response);
+        } 
 
         [HttpGet(EndPointDecoratorConstants.MercadoPagoEndPointRouter.PaymentMethod)]
         public async Task<JsonResult> PaymentMethod(string bin_card)

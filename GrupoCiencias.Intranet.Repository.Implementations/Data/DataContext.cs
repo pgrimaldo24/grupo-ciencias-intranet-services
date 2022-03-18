@@ -1,4 +1,5 @@
 ﻿using GrupoCiencias.Intranet.Domain.Models.Entity;
+using GrupoCiencias.Intranet.Domain.Models.MercadoPago;
 using GrupoCiencias.Intranet.Repository.Implementations.Configuration;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
             builder.ApplyConfiguration(new TipoDocumentoConfiguration());
             builder.ApplyConfiguration(new KeyAppConfiguration());
             builder.ApplyConfiguration(new TipoPagoDetalleConfiguration());
+            builder.ApplyConfiguration(new EstadoPagoConfiguration());
         }
 
         public virtual DbSet<SolicitudesEntity> Solicitudes { get; set; }
@@ -48,5 +50,6 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
         public virtual DbSet<MasterEntity> Masters { get; set; }
         public virtual DbSet<KeyAppEntity> Keyapps { get; set; }
         public virtual DbSet<TipoPagoDetalleEntity> TipoPagoDetalle { get; set; }
+        public virtual DbSet<EstadoPagoEntity> EstadoPagos { get; set; }
     }
 }

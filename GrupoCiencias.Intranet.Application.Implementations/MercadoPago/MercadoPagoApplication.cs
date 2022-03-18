@@ -45,6 +45,13 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             return response;
         }
 
+        public async Task<ResponseDto> CreatePaymentAsync(PaymentDto paymentDto)
+        {
+            var response = new ResponseDto();
+
+             
+        }
+
         public async Task<ResponseDto> PaymentMethodAsync(string binCard)
         {
             var response = new ResponseDto();
