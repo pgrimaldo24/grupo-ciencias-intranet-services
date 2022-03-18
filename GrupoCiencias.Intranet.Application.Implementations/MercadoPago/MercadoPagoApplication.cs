@@ -43,7 +43,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
         public async Task<ResponseDto> CardTokenAsync(CardTokenDto cardTokenDto)
         {
             var response = new ResponseDto();
-            var cardInformation = SetDataCardInformation(cardTokenDto);
+            var cardInformation = SetDataCardTokenInformation(cardTokenDto);
             var cardtoken = await BridgeApplication.PostInvoque<RequestCardTokenDto, ResponseCardTokenDto>(
                 cardInformation, string.Concat(_appSettings.MercadoPagoServices.CardToken, UtilConstants.ContentService.PublicKey + cardTokenDto.token_public + ""), cardTokenDto.token_public, PropiedadesConstants.TypeRequest.POST);
             response.Data = cardtoken;
@@ -74,29 +74,38 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
         }
 
         #region Method private MercadoPago
-        private RequestCardTokenDto SetDataCardInformation(CardTokenDto cardtokendto)
+        private RequestCardTokenDto SetDataCardTokenInformation(CardTokenDto cardtokendto)
         {
             var cardRequest = new RequestCardTokenDto();
-            cardRequest.device = new Device();
-            cardRequest.device.fingerprint = new Fingerprint();
+            cardRequest.device = new Device(); 
             cardRequest.device.fingerprint.vendor_ids = new List<VendorId>();
-            cardRequest.device.fingerprint.vendor_specific_attributes = new VendorSpecificAttributes();
-            cardRequest.cardholder = new CardHolder();
-            cardRequest.cardholder.identification = new Indetification();
+            
+            cardRequest.cardholder = new CardHolder()
+            {
+                name = cardtokendto.cardholder.name
+            };
 
+            cardRequest.cardholder.identification = new Indetification() 
+            {
+                number = cardtokendto.cardholder.identification.number,
+                type = cardtokendto.cardholder.identification.type
+            };
+             
             cardRequest.card_number = cardtokendto.card_number;
             cardRequest.security_code = cardtokendto.security_code;
             cardRequest.expiration_month = cardtokendto.expiration_month;
             cardRequest.expiration_year = cardtokendto.expiration_year;
-            cardRequest.cardholder.name = cardtokendto.cardholder.name;
-            cardRequest.cardholder.identification.number = cardtokendto.cardholder.identification.number;
-            cardRequest.cardholder.identification.type = cardtokendto.cardholder.identification.type;
-            cardRequest.device.fingerprint.os = cardtokendto.device.fingerprint.os;
-            cardRequest.device.fingerprint.system_version = cardtokendto.device.fingerprint.system_version;
-            cardRequest.device.fingerprint.ram = cardtokendto.device.fingerprint.ram;
-            cardRequest.device.fingerprint.disk_space = cardtokendto.device.fingerprint.disk_space;
-            cardRequest.device.fingerprint.model = cardtokendto.device.fingerprint.model;
-            cardRequest.device.fingerprint.free_disk_space = cardtokendto.device.fingerprint.free_disk_space;
+
+            cardRequest.device.fingerprint = new Fingerprint()
+            {
+                os = cardtokendto.device.fingerprint.os,
+                system_version = cardtokendto.device.fingerprint.system_version,
+                ram = cardtokendto.device.fingerprint.ram,
+                disk_space = cardtokendto.device.fingerprint.disk_space,
+                model = cardtokendto.device.fingerprint.model,
+                free_disk_space = cardtokendto.device.fingerprint.free_disk_space,
+                resolution = cardtokendto.device.fingerprint.resolution
+            }; 
 
             foreach (var item in cardtokendto.device.fingerprint.vendor_ids)
             {
@@ -106,24 +115,27 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                     value = item.value
                 };
                 cardRequest.device.fingerprint.vendor_ids.Add(vendor);
-            } 
+            }
 
-            cardRequest.device.fingerprint.vendor_specific_attributes.feature_flash = cardtokendto.device.fingerprint.vendor_specific_attributes.feature_flash;
-            cardRequest.device.fingerprint.vendor_specific_attributes.can_make_phone_calls = cardtokendto.device.fingerprint.vendor_specific_attributes.can_make_phone_calls;
-            cardRequest.device.fingerprint.vendor_specific_attributes.can_send_sms = cardtokendto.device.fingerprint.vendor_specific_attributes.can_send_sms;
-            cardRequest.device.fingerprint.vendor_specific_attributes.video_camera_available = cardtokendto.device.fingerprint.vendor_specific_attributes.video_camera_available;
-            cardRequest.device.fingerprint.vendor_specific_attributes.cpu_count = cardtokendto.device.fingerprint.vendor_specific_attributes.cpu_count;
-            cardRequest.device.fingerprint.vendor_specific_attributes.simulator = cardtokendto.device.fingerprint.vendor_specific_attributes.simulator;
-            cardRequest.device.fingerprint.vendor_specific_attributes.device_languaje = cardtokendto.device.fingerprint.vendor_specific_attributes.device_languaje;
-            cardRequest.device.fingerprint.vendor_specific_attributes.device_idiom = cardtokendto.device.fingerprint.vendor_specific_attributes.device_idiom;
-            cardRequest.device.fingerprint.vendor_specific_attributes.platform = cardtokendto.device.fingerprint.vendor_specific_attributes.platform;
-            cardRequest.device.fingerprint.vendor_specific_attributes.device_name = cardtokendto.device.fingerprint.vendor_specific_attributes.device_name;
-            cardRequest.device.fingerprint.vendor_specific_attributes.device_family = cardtokendto.device.fingerprint.vendor_specific_attributes.device_family;
-            cardRequest.device.fingerprint.vendor_specific_attributes.retina_display_capable = cardtokendto.device.fingerprint.vendor_specific_attributes.retina_display_capable;
-            cardRequest.device.fingerprint.vendor_specific_attributes.feature_camera = cardtokendto.device.fingerprint.vendor_specific_attributes.feature_camera;
-            cardRequest.device.fingerprint.vendor_specific_attributes.device_model = cardtokendto.device.fingerprint.vendor_specific_attributes.device_model;
-            cardRequest.device.fingerprint.vendor_specific_attributes.feature_front_camera = cardtokendto.device.fingerprint.vendor_specific_attributes.feature_front_camera;
-            cardRequest.device.fingerprint.resolution = cardtokendto.device.fingerprint.resolution; 
+            cardRequest.device.fingerprint.vendor_specific_attributes = new VendorSpecificAttributes()
+            {
+                feature_flash = cardtokendto.device.fingerprint.vendor_specific_attributes.feature_flash,
+                can_make_phone_calls = cardtokendto.device.fingerprint.vendor_specific_attributes.can_make_phone_calls,
+                can_send_sms = cardtokendto.device.fingerprint.vendor_specific_attributes.can_send_sms,
+                video_camera_available = cardtokendto.device.fingerprint.vendor_specific_attributes.video_camera_available,
+                cpu_count = cardtokendto.device.fingerprint.vendor_specific_attributes.cpu_count,
+                simulator = cardtokendto.device.fingerprint.vendor_specific_attributes.simulator,
+                device_languaje = cardtokendto.device.fingerprint.vendor_specific_attributes.device_languaje,
+                device_idiom = cardtokendto.device.fingerprint.vendor_specific_attributes.device_idiom,
+                platform = cardtokendto.device.fingerprint.vendor_specific_attributes.platform,
+                device_name = cardtokendto.device.fingerprint.vendor_specific_attributes.device_name,
+                device_family = cardtokendto.device.fingerprint.vendor_specific_attributes.device_family,
+                retina_display_capable = cardtokendto.device.fingerprint.vendor_specific_attributes.retina_display_capable,
+                feature_camera = cardtokendto.device.fingerprint.vendor_specific_attributes.feature_camera,
+                device_model = cardtokendto.device.fingerprint.vendor_specific_attributes.device_model,
+                feature_front_camera = cardtokendto.device.fingerprint.vendor_specific_attributes.feature_front_camera
+            }; 
+
             return cardRequest;
         }
 
@@ -136,22 +148,15 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             var payment_client = new PaymentClient();
             var payment_request = new PaymentDto();
             var additiona_info_dto = new AdditionalInfoPaymentDto();
-            var additional_info_items = new List<AdditionalInfoDto>();
-           
+            var additional_info_items = new List<AdditionalInfoDto>(); 
             payment_request = payment;
             additiona_info_dto = payment.additional_info; 
             additional_info_items = payment.additional_info.items;
             payment_create.AdditionalInfo = payment_additional_info;
-            payment_create.AdditionalInfo.Items = new List<PaymentItemRequest>();
-            payment_create.AdditionalInfo.Payer = new PaymentAdditionalInfoPayerRequest();
-            payment_create.AdditionalInfo.Payer.Phone = new PhoneRequest();
-            payment_create.AdditionalInfo.Payer.Address = new AddressRequest();
-            payment_create.AdditionalInfo.Shipments = new PaymentShipmentsRequest();
-            payment_create.AdditionalInfo.Shipments.ReceiverAddress = new PaymentReceiverAddressRequest();
+            payment_create.AdditionalInfo.Items = new List<PaymentItemRequest>(); 
+            payment_create.AdditionalInfo.Shipments = new PaymentShipmentsRequest(); 
             payment_create.Order = new PaymentOrderRequest();
-            payment_create.Payer = new PaymentPayerRequest();
-            payment_create.Payer.Identification = new IdentificationRequest();
-
+             
             foreach (var items in additional_info_items)
             {
                 var paymentItem = new PaymentItemRequest()
@@ -167,32 +172,55 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                 payment_create.AdditionalInfo.Items.Add(paymentItem); 
             }
 
-            payment_create.AdditionalInfo.Payer.FirstName = payment.additional_info.payer.first_name.ToString().Trim();
-            payment_create.AdditionalInfo.Payer.LastName = payment.additional_info.payer.last_name.ToString().Trim(); 
-            payment_create.AdditionalInfo.Payer.Phone.AreaCode = payment.additional_info.payer.phone.area_code;
-            payment_create.AdditionalInfo.Payer.Phone.Number = payment.additional_info.payer.phone.number; 
-            payment_create.AdditionalInfo.Payer.Address.ZipCode = payment.additional_info.payer.address.zip_code;
-            payment_create.AdditionalInfo.Payer.Address.StreetName = payment.additional_info.payer.address.street_name;
-            payment_create.AdditionalInfo.Payer.Address.StreetNumber = payment.additional_info.payer.address.street_number; 
-            payment_create.AdditionalInfo.Shipments.ReceiverAddress.ZipCode = payment.additional_info.shipments.receiver_address.zip_code;
-            payment_create.AdditionalInfo.Shipments.ReceiverAddress.StateName = payment.additional_info.shipments.receiver_address.state_name;
-            payment_create.AdditionalInfo.Shipments.ReceiverAddress.CityName = payment.additional_info.shipments.receiver_address.city_name;
-            payment_create.AdditionalInfo.Shipments.ReceiverAddress.StreetName = payment.additional_info.shipments.receiver_address.street_name;
-            payment_create.AdditionalInfo.Shipments.ReceiverAddress.StreetNumber = payment.additional_info.shipments.receiver_address.street_number; 
+            payment_create.AdditionalInfo.Payer = new PaymentAdditionalInfoPayerRequest()
+            {
+                FirstName = payment.additional_info.payer.first_name.ToString().Trim(),
+                LastName = payment.additional_info.payer.last_name.ToString().Trim()
+            };
+
+            payment_create.AdditionalInfo.Payer.Phone = new PhoneRequest()
+            {
+                AreaCode = payment.additional_info.payer.phone.area_code,
+                Number = payment.additional_info.payer.phone.number
+            };
+
+            payment_create.AdditionalInfo.Payer.Address = new AddressRequest()
+            {
+                ZipCode = payment.additional_info.payer.address.zip_code,
+                StreetName = payment.additional_info.payer.address.street_name,
+                StreetNumber = payment.additional_info.payer.address.street_number
+            };
+
+            payment_create.AdditionalInfo.Shipments.ReceiverAddress = new PaymentReceiverAddressRequest()
+            {
+                ZipCode = payment.additional_info.shipments.receiver_address.zip_code,
+                StateName = payment.additional_info.shipments.receiver_address.state_name,
+                CityName = payment.additional_info.shipments.receiver_address.city_name,
+                StreetName = payment.additional_info.shipments.receiver_address.street_name,
+                StreetNumber = payment.additional_info.shipments.receiver_address.street_number
+            };
+
+            payment_create.Payer = new PaymentPayerRequest()
+            {
+                Email = payment.payer.email.ToString().Trim(),
+                FirstName = payment.additional_info.payer.first_name.ToString().Trim(),
+                LastName = payment.additional_info.payer.last_name.ToString().Trim()
+            };
+
+            payment_create.Payer.Identification = new IdentificationRequest()
+            {
+                Type = payment.payer.identification.type,
+                Number = payment.payer.identification.number
+            };
+              
             payment_create.BinaryMode = payment.binary_mode;
             payment_create.Capture = payment.capture;
             payment_create.ExternalReference = payment.external_reference;
             payment_create.Installments = payment.installments;
-            payment_create.NotificationUrl = payment.notification_url; 
-            payment_create.Payer.Email = payment.payer.email.ToString().Trim();
-            payment_create.Payer.Identification.Type = payment.payer.identification.type;
-            payment_create.Payer.Identification.Number = payment.payer.identification.number;
-            payment_create.Payer.FirstName = payment.additional_info.payer.first_name.ToString().Trim();
-            payment_create.Payer.LastName = payment.additional_info.payer.last_name.ToString().Trim();
+            payment_create.NotificationUrl = payment.notification_url;  
             payment_create.PaymentMethodId = payment.payment_method_id;
             payment_create.Token = payment.token;
-            payment_create.TransactionAmount = payment.transaction_amount;
-
+            payment_create.TransactionAmount = payment.transaction_amount; 
             return payment_create;
         }
         #endregion
