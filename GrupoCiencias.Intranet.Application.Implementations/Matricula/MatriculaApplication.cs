@@ -63,9 +63,10 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
                 Dni = solicitudDto.document_number,                                
                 Correo = solicitudDto.email,
                 Universidad = solicitudDto.university,
-                //Falta agregar sede
+                id_sede = solicitudDto.headquarters,
                 CarreraInteres = solicitudDto.career,
                 Ciclo = solicitudDto.cycle,
+                id_tipopago = solicitudDto.payment_type,
                 MedioInfo = solicitudDto.medio_info,
                 Referido = solicitudDto.referred,
                 RutaFotoPerfil = solicitudDto.route_photo_profile,

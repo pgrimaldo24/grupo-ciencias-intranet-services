@@ -101,6 +101,10 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                 .WithMany(p => p.Solicitudes)
                 .HasForeignKey(d => d.Idapoderado)
                 .HasConstraintName("apoderados_constraint");
+
+            builder.Property(e => e.id_sede).HasColumnName("id_sede");
+
+            builder.Property(e => e.id_tipopago).HasColumnName("id_tipopago");
         }
     }
 }

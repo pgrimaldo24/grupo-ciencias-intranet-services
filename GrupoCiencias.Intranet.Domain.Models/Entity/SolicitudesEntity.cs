@@ -29,6 +29,8 @@ namespace GrupoCiencias.Intranet.Domain.Models.Entity
         public DateTime? FechaNacimiento { get; set; }
         public int? Politicasseguridad { get; set; }
         public int? PoliticasFinesComerciales { get; set; }
+        public int id_sede { get; set; }
+        public int id_tipopago { get; set; }
         public virtual ApoderadosEntity Apoderado { get; set; }
         
     }
