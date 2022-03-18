@@ -5,14 +5,13 @@ using GrupoCiencias.Intranet.CrossCutting.Common.Constants;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Common;
 using GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago;
 using GrupoCiencias.Intranet.CrossCutting.IoC.Container;
+using GrupoCiencias.Intranet.Domain.Models.Entity;
+using GrupoCiencias.Intranet.Domain.Models.MercadoPago;
 using GrupoCiencias.Intranet.Repository.Interfaces.Data;
 using GrupoCiencias.Intranet.Repository.Interfaces.Repositories;
-using MercadoPago.Client;
 using MercadoPago.Client.Common;
 using MercadoPago.Client.Payment;
 using MercadoPago.Config;
-using MercadoPago.Resource.Common;
-using MercadoPago.Resource.Payment;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
@@ -24,6 +23,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
     {
         private readonly Lazy<IUnitOfWork> _unitOfWork;
         private readonly Lazy<IBridgeApplication> _bridgeApplication;
+        private readonly Lazy<IRelationRepository> _relationApplication;
         private readonly AppSetting _appSettings;
 
         public MercadoPagoApplication(IOptions<AppSetting> appSettings)
@@ -31,6 +31,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             _appSettings = appSettings.Value;
             _unitOfWork = new Lazy<IUnitOfWork>(() => IoCAutofacContainer.Current.Resolve<IUnitOfWork>());
             _bridgeApplication = new Lazy<IBridgeApplication>(() => IoCAutofacContainer.Current.Resolve<IBridgeApplication>());
+            _relationApplication = new Lazy<IRelationRepository>(() => IoCAutofacContainer.Current.Resolve<IRelationRepository>());
         }
 
         private IUnitOfWork UnitOfWork => _unitOfWork.Value;
@@ -39,13 +40,15 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
 
         private IBridgeApplication BridgeApplication => _bridgeApplication.Value;
 
+        private IRelationRepository RelationRepository => UnitOfWork.Repository<IRelationRepository>();
 
+        #region method async MercadoPagoServices
         public async Task<ResponseDto> CardTokenAsync(CardTokenDto cardTokenDto)
         {
             var response = new ResponseDto();
             var cardInformation = SetDataCardTokenInformation(cardTokenDto);
             var cardtoken = await BridgeApplication.PostInvoque<RequestCardTokenDto, ResponseCardTokenDto>(
-                cardInformation, string.Concat(_appSettings.MercadoPagoServices.CardToken, UtilConstants.ContentService.PublicKey + cardTokenDto.token_public + ""), cardTokenDto.token_public, PropiedadesConstants.TypeRequest.POST);
+                cardInformation, string.Concat(_appSettings.MercadoPagoServices.CardToken, UtilConstants.ContentService.PublicKey + cardTokenDto.token_public), cardTokenDto.token_public, PropiedadesConstants.TypeRequest.POST);
             response.Data = cardtoken;
             return response;
         }
@@ -55,10 +58,19 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             var response = new ResponseDto();
             //var codpaymentreference = await GetCodePaymentReference();
             var payment_received = new PaymentReceivedDto();
+            var paymentTransactionEntity = new TransaccionPagoEntity();
             var process_payment = RecordPaymentInformation(paymentDto);
 
-
-
+            if(process_payment != null)
+                paymentTransactionEntity = await SetRecordPaymentTransaction(process_payment);
+             
+            UnitOfWork.Set<TransaccionPagoEntity>().Add(paymentTransactionEntity);
+            UnitOfWork.SaveChanges();
+             
+            //falta logica
+            var create_payment = await BridgeApplication.PostInvoque<PaymentCreateRequest, PaymentReceivedDto>(
+               process_payment, string.Concat(_appSettings.MercadoPagoServices.CreatePayment, UtilConstants.ContentService.InitialAccessToken + _appSettings.MercadoPagoCredentials.AccessToken), _appSettings.MercadoPagoCredentials.AccessToken, PropiedadesConstants.TypeRequest.POST);
+             
 
             return response;
         }
@@ -67,12 +79,13 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
         {
             var response = new ResponseDto();
             var bincardDto = new RequestPaymentMethodDto() { bin_card = binCard };
-            var result = await BridgeApplication.GetInvoque<RequestPaymentMethodDto, List<ResponsePaymentMethodDto>> (bincardDto, string.Concat(_appSettings.MercadoPagoServices.PaymentMethods, UtilConstants.ContentService.Bin + bincardDto.bin_card + UtilConstants.ContentService.AccessToken + _appSettings.MercadoPagoCredentials.AccessToken),
+            var result = await BridgeApplication.GetInvoque<RequestPaymentMethodDto, List<ResponsePaymentMethodDto>>(bincardDto, string.Concat(_appSettings.MercadoPagoServices.PaymentMethods, UtilConstants.ContentService.Bin + bincardDto.bin_card + UtilConstants.ContentService.AccessToken + _appSettings.MercadoPagoCredentials.AccessToken),
                 _appSettings.MercadoPagoCredentials.AccessToken, PropiedadesConstants.TypeRequest.GET);
             response.Data = result;
             return response;
         }
-
+        #endregion
+         
         #region Method private MercadoPago
         private RequestCardTokenDto SetDataCardTokenInformation(CardTokenDto cardtokendto)
         {
@@ -144,8 +157,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             MercadoPagoConfig.AccessToken = _appSettings.MercadoPagoCredentials.AccessToken;
 
             var payment_additional_info = new PaymentAdditionalInfoRequest();
-            var payment_create = new PaymentCreateRequest();
-            var payment_client = new PaymentClient();
+            var payment_create = new PaymentCreateRequest(); 
             var payment_request = new PaymentDto();
             var additiona_info_dto = new AdditionalInfoPaymentDto();
             var additional_info_items = new List<AdditionalInfoDto>(); 
@@ -220,8 +232,28 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             payment_create.NotificationUrl = payment.notification_url;  
             payment_create.PaymentMethodId = payment.payment_method_id;
             payment_create.Token = payment.token;
-            payment_create.TransactionAmount = payment.transaction_amount; 
+            payment_create.TransactionAmount = payment.transaction_amount;
+ 
             return payment_create;
+        }
+
+        private async Task<TransaccionPagoEntity> SetRecordPaymentTransaction(PaymentCreateRequest createRequest)
+        {
+            var payment_transaction_entity = new TransaccionPagoEntity()
+            { 
+                CuotasPago = createRequest.Installments,
+                NotificacionUrl = createRequest.NotificationUrl,
+                NombreTitular = createRequest.Payer.FirstName,
+                ApellidoTitular = createRequest.Payer.LastName,
+                EmailTitular = createRequest.Payer.Email,
+                NumeroDocumentoTitular = createRequest.Payer.Identification.Number,
+                TipoDocumentoTitularId = await RelationRepository.GetDocumentTypeXId(createRequest.Payer.Identification.Type),
+                MetodoPagoId = createRequest.PaymentMethodId,
+                TokenCard = createRequest.Token,
+                MontoTransaccion = createRequest.TransactionAmount 
+            };
+
+            return payment_transaction_entity; 
         }
         #endregion
     }

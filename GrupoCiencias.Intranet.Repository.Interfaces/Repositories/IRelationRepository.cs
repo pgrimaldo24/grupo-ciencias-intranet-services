@@ -12,6 +12,7 @@ namespace GrupoCiencias.Intranet.Repository.Interfaces.Repositories
         public Task<List<MasterDto>> GetListTypeMatriculaAsync();
         public Task<List<MasterDto>> GetListMarketingAsync();
         public Task<List<MasterDto>> GetListTypeDocumentsAsync();
-        public Task<List<MasterDto>> GetListHeadquartersAsync();
+        public Task<List<MasterDto>> GetListHeadquartersAsync(); 
+        public Task<int> GetDocumentTypeXId(string document_type);
     }
 }
