@@ -193,12 +193,6 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             payment_create.Token = payment.token;
             payment_create.TransactionAmount = payment.transaction_amount;
 
-            //var requestOptions = new RequestOptions()
-            //{
-            //    AccessToken = _appSettings.MercadoPagoCredentials.AccessToken 
-            //};
-            //Payment create_payment = await payment_client.CreateAsync(payment_create, requestOptions);
-
             return payment_create;
         }
         #endregion
