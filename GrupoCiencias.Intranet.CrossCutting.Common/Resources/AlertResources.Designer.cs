@@ -22,7 +22,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public  class AlertResources {
+    public class AlertResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -66,6 +66,24 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
         public static string msg_correcto {
             get {
                 return ResourceManager.GetString("msg_correcto", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a Hubo un error en el método GetRegisteredPaymentInformationAsync..
+        /// </summary>
+        public static string msg_error_metohd_register_payment {
+            get {
+                return ResourceManager.GetString("msg_error_metohd_register_payment", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a Hubo un error, el Objeto create_payment está null..
+        /// </summary>
+        public static string msg_null_variable {
+            get {
+                return ResourceManager.GetString("msg_null_variable", resourceCulture);
             }
         }
 

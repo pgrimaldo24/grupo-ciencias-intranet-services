@@ -5,7 +5,7 @@ namespace GrupoCiencias.Intranet.Domain.Models.MercadoPago
     public class TransaccionPagoEntity
     {
         public int IdTransaccionPago { get; set; }
-        public int? IdComprobantePago { get; set; }
+        public long? IdComprobantePago { get; set; }
         public string CodPagoReferencia { get; set; }
         public int? CuotasPago { get; set; }
         public string NotificacionUrl { get; set; }

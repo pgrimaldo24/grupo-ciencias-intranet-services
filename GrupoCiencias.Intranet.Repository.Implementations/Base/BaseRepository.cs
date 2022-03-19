@@ -50,5 +50,11 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Base
             table.Attach(entity);
             Context.Entry(entity).State = EntityState.Modified; 
         }
+
+        public void Remove(T entity)
+        {
+            table.Attach(entity);
+            Context.Entry(entity).State = EntityState.Modified;
+        }
     }
 }

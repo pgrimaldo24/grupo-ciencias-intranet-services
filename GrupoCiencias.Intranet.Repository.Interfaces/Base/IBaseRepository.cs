@@ -12,6 +12,7 @@ namespace GrupoCiencias.Intranet.Repository.Interfaces.Base
         Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate);
         Task Insert(T entity);
         void Update(T entity, bool activarDeteccion = false);
+        void Remove(T entity);
         Task Delete(object id);
         Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> predicate);
     }
