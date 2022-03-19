@@ -18,7 +18,10 @@
         {
             public const string CreatePayment = "CreatePayment";
             public const string PaymentMethod = "PaymentMethod";
-            public const string CardToken = "CardToken";
+            public const string CardToken = "CardToken"; 
+            public const string GetMeansPayment = "GetMeansPayment";
+            public const string IdentificationTypes = "IdentificationTypes";
+            public const string CardValidation = "CardValidation";
         }
     }
 }

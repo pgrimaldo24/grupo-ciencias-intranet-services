@@ -65,6 +65,7 @@
             public const string Bin = "?bin=";
             public const string AccessToken = "&access_token=";
             public const string InitialAccessToken = "?access_token=";
+            public const string Prefix_GrupoCiencias = "GC-";
         }
     }
 }

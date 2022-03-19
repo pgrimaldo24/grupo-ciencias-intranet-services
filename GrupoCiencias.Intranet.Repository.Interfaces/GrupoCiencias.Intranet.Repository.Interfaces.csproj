@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GrupoCiencias.Intranet.CrossCutting.Common\GrupoCiencias.Intranet.CrossCutting.Common.csproj" />
     <ProjectReference Include="..\GrupoCiencias.Intranet.CrossCutting.Dto\GrupoCiencias.Intranet.CrossCutting.Dto.csproj" />
+    <ProjectReference Include="..\GrupoCiencias.Intranet.Domain.Models\GrupoCiencias.Intranet.Domain.Models.csproj" />
   </ItemGroup>
 
 </Project>

@@ -7,6 +7,7 @@ namespace GrupoCiencias.Intranet.Domain.Models.MercadoPago
         public int IdTransaccionPago { get; set; }
         public long? IdComprobantePago { get; set; }
         public string CodPagoReferencia { get; set; }
+        public int CodPagoRefIndex { get; set; }
         public int? CuotasPago { get; set; }
         public string NotificacionUrl { get; set; }
         public string NombreTitular { get; set; }
@@ -29,6 +30,6 @@ namespace GrupoCiencias.Intranet.Domain.Models.MercadoPago
         public string Proveedor { get; set; }
         public DateTime FechaCreacionRegistro { get; set; }
         public DateTime? FechaBajaRegistro { get; set; }
-        public int EstadoRegistro { get; set; }
+        public int EstadoRegistro { get; set; } 
     }
 }

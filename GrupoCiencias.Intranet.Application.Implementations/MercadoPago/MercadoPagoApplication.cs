@@ -5,6 +5,7 @@ using GrupoCiencias.Intranet.CrossCutting.Common.Constants;
 using GrupoCiencias.Intranet.CrossCutting.Common.Exceptions;
 using GrupoCiencias.Intranet.CrossCutting.Common.Resources;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Common;
+using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
 using GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago;
 using GrupoCiencias.Intranet.CrossCutting.IoC.Container;
 using GrupoCiencias.Intranet.Domain.Models.Entity;
@@ -58,12 +59,11 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
 
         public async Task<ResponseDto> CreatePaymentAsync(PaymentDto paymentDto)
         {
-            var response = new ResponseDto();
-            //var codpaymentreference = await GetCodePaymentReference();
+            var response = new ResponseDto(); 
             var payment_received = new PaymentReceivedDto();
             var process_payment = new PaymentCreateRequest();
-            //agregar paymentDto.external_reference
-            var cod_payment_reference = string.Empty;
+
+            var codpaymentreference = await GetPaymentReference(); 
             var paymentTransactionEntity = await InitialRegistrationPaymentTransaction(paymentDto);
             UnitOfWork.Set<TransaccionPagoEntity>().Add(paymentTransactionEntity);
             UnitOfWork.SaveChanges();
@@ -92,14 +92,48 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
         {
             var response = new ResponseDto();
             var bincardDto = new RequestPaymentMethodDto() { bin_card = binCard };
-            var result = await BridgeApplication.GetInvoque<RequestPaymentMethodDto, List<ResponsePaymentMethodDto>>(bincardDto, 
+            var result = await BridgeApplication.GetInvoque<List<ResponsePaymentMethodDto>>( 
                 string.Concat(_appSettings.MercadoPagoServices.PaymentMethods, UtilConstants.ContentService.Bin + bincardDto.bin_card + UtilConstants.ContentService.AccessToken + _appSettings.MercadoPagoCredentials.AccessToken),
                 _appSettings.MercadoPagoCredentials.AccessToken, PropiedadesConstants.TypeRequest.GET);
             response.Data = result;
             return response;
         }
+
+        public async Task<ResponseReferenciaDto> GetPaymentReference()
+        {
+            var infoTransaccionPago = await MercadoPagoRepository.GetMaxIdExternalReference();
+            int codPagoRefIndex = infoTransaccionPago != null ? infoTransaccionPago.codpagorefindex + 1 : 1;
+            var cod_pago_referencia = UtilConstants.ContentService.Prefix_GrupoCiencias + codPagoRefIndex.ToString().PadLeft(8, char.Parse("0"));
+            var response = new ResponseReferenciaDto
+            {
+                cod_pago_referencia = cod_pago_referencia,
+                codpagorefindex = codPagoRefIndex,
+            };
+            return response;
+        }
+
+
+        public async Task<ResponseDto> IdentificationTypesAsync()
+        {
+            var response = new ResponseDto();
+            var result = await BridgeApplication.GetInvoque<List<IdentificationTypeDto>>(
+                string.Concat(_appSettings.MercadoPagoServices.IdentificationTypes, UtilConstants.ContentService.InitialAccessToken + _appSettings.MercadoPagoCredentials.AccessToken),
+                _appSettings.MercadoPagoCredentials.AccessToken, PropiedadesConstants.TypeRequest.GET);
+            response.Data = result;
+            return response;
+        }
+
+        public async Task<ResponseDto> CardValidationAsync()
+        {
+            var response = new ResponseDto();
+            var result = await BridgeApplication.GetInvoque<List<CardValidationDto>>(
+                string.Concat(_appSettings.MercadoPagoServices.CardValidation, UtilConstants.ContentService.InitialAccessToken + _appSettings.MercadoPagoCredentials.AccessToken),
+                _appSettings.MercadoPagoCredentials.AccessToken, PropiedadesConstants.TypeRequest.GET);
+            response.Data = result;
+            return response;
+        }
         #endregion
-         
+
         #region Method private MercadoPago
         private RequestCardTokenDto SetDataCardTokenInformation(CardTokenDto cardtokendto)
         {
@@ -289,7 +323,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             payment_information.Proveedor = paymentReceived.statement_descriptor; 
             return payment_information;
         }
-
+ 
         #endregion
     }
 }

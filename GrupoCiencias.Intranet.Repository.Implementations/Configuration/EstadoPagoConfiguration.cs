@@ -11,6 +11,9 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
 
             builder.ToTable("estado_pago");
 
+            builder.HasKey(e => e.IdEstadoPago)
+             .HasName("idestadopago_pkey");
+
             builder.Property(e => e.IdEstadoPago).HasColumnName("idestadopago");
 
             builder.Property(e => e.Estado)

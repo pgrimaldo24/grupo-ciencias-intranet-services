@@ -25,6 +25,8 @@
         public string CreatePayment { get; set; }
         public string CardToken { get; set; }
         public string PaymentMethods { get; set; }
+        public string CardValidation { get; set; }
+        public string IdentificationTypes { get; set; }
     }
 
     public class MercadoPagoCredential

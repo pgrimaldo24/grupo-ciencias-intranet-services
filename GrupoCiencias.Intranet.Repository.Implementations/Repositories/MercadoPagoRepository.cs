@@ -1,4 +1,5 @@
-﻿using GrupoCiencias.Intranet.Domain.Models.MercadoPago;
+﻿using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
+using GrupoCiencias.Intranet.Domain.Models.MercadoPago;
 using GrupoCiencias.Intranet.Repository.Implementations.Data;
 using GrupoCiencias.Intranet.Repository.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,19 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
         {
             return await context.TransaccionPagos.Where(x => x.CodPagoReferencia.Equals(cod_payment_reference) && x.EstadoRegistro.Equals(1))
                 .FirstOrDefaultAsync();
+        }
+
+        public async Task<PagoReferenceDto> GetMaxIdExternalReference()
+        {
+            return await context.TransaccionPagos
+                                    .Where(y => y.CodPagoReferencia != null)
+                                    .OrderByDescending(x => x.CodPagoRefIndex)
+                                    .Take(1)
+                                    .Select(tr => new PagoReferenceDto
+                                    {
+                                        codpagorefindex = (int)tr.CodPagoRefIndex
+                                    }).FirstOrDefaultAsync(); 
+
         }
     }
 }

@@ -48,7 +48,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
             return result; 
         }
 
-        public async Task<TResult> GetInvoque<T, TResult>(T obj, string detailUrlKey, string token, string typeRequest)
+        public async Task<TResult> GetInvoque<TResult>(string detailUrlKey, string token, string typeRequest)
         {
             TResult result;
             ServicePointManager.SecurityProtocol = (SecurityProtocolType)(0xc0 | 0x300 | 0xc00);
