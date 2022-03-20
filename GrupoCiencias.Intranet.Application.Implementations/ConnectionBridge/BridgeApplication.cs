@@ -29,13 +29,16 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
             request.Headers = await GetHeaders(false ? ParameterHeaderOsb(obj, token) : ParameterHeader(obj, token));
             var data = JsonConvert.SerializeObject(obj);
             byte[] byteArray = Encoding.UTF8.GetBytes(data);
+            
             request.ContentType = UtilConstants.ContentService.ContentTypeApplicationJson;
             request.ContentLength = byteArray.Length;
             request.Expect = UtilConstants.ContentService.ContentTypeApplicationJson;
             request.Accept = UtilConstants.ContentService.ContentTypeApplicationJson;
+           
             Stream dataStream = request.GetRequestStream();
             dataStream.Write(byteArray, 0, byteArray.Length);
             dataStream.Close();
+            
             using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
             {
                 using (Stream stream = response.GetResponseStream())
@@ -51,10 +54,12 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
         public async Task<TResult> GetInvoque<TResult>(string detailUrlKey, string token, string typeRequest)
         {
             TResult result;
-            ServicePointManager.SecurityProtocol = (SecurityProtocolType)(0xc0 | 0x300 | 0xc00);
+            ServicePointManager.SecurityProtocol = (SecurityProtocolType)(0xc0 | 0x300 | 0xc00);            
             var request = (HttpWebRequest)WebRequest.Create(detailUrlKey);
             request.Method = typeRequest;
+           
             Header(ref request, typeRequest);
+            
             using (WebResponse response = request.GetResponse())
             {
                 using (Stream stream = response.GetResponseStream())

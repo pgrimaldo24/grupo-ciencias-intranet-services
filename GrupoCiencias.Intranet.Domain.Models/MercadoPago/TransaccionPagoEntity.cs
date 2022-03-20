@@ -5,10 +5,10 @@ namespace GrupoCiencias.Intranet.Domain.Models.MercadoPago
     public class TransaccionPagoEntity
     {
         public int IdTransaccionPago { get; set; }
-        public long? IdComprobantePago { get; set; }
+        public string IdComprobantePago { get; set; }
         public string CodPagoReferencia { get; set; }
         public int CodPagoRefIndex { get; set; }
-        public int? CuotasPago { get; set; }
+        public string CuotasPago { get; set; }
         public string NotificacionUrl { get; set; }
         public string NombreTitular { get; set; }
         public string ApellidoTitular { get; set; }
@@ -17,8 +17,7 @@ namespace GrupoCiencias.Intranet.Domain.Models.MercadoPago
         public int? TipoDocumentoTitularId { get; set; }
         public string MetodoPagoId { get; set; }
         public string TokenCard { get; set; }
-        public decimal? MontoTransaccion { get; set; }
-        public string EstadoTransaccionPago { get; set; }
+        public string MontoTransaccion { get; set; } 
         public string FechaCreadaPago { get; set; }
         public string FechaAprovadaPago { get; set; }
         public string FechaUltimaActualizacion { get; set; }

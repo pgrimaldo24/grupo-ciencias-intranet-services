@@ -102,7 +102,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
 
         public async Task<int> GetDocumentTypeXId(string document_type)
         {
-            return await context.TipoDocumentos.Where(x => x.Id.Equals(document_type) && x.Activo.Equals(1))
+            return await context.TipoDocumentos.Where(x => x.Valor.Equals(document_type) && x.Activo.Equals(1))
                 .Select(k=> k.Id).FirstOrDefaultAsync();
         }
     }

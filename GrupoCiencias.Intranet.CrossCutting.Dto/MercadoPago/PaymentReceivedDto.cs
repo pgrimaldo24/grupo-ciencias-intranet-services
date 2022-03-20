@@ -32,7 +32,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago
         public object integrator_id { get; set; }
         public object platform_id { get; set; }
         public object corporation_id { get; set; }
-        public int? collector_id { get; set; }
+        public long? collector_id { get; set; }
         public Payer payer { get; set; }
         public object marketplace_owner { get; set; }
         public Metadata metadata { get; set; }

@@ -1,4 +1,5 @@
 ﻿using GrupoCiencias.Intranet.Application.Interfaces.ConnectionBridge;
+using GrupoCiencias.Intranet.Application.Interfaces.Intranet;
 using GrupoCiencias.Intranet.Application.Interfaces.MercadoPago;
 using GrupoCiencias.Intranet.CrossCutting.Common;
 using GrupoCiencias.Intranet.CrossCutting.Common.Constants;
@@ -27,6 +28,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
         private readonly Lazy<IUnitOfWork> _unitOfWork;
         private readonly Lazy<IBridgeApplication> _bridgeApplication;
         private readonly Lazy<IRelationRepository> _relationApplication;
+        private readonly Lazy<IEncryptionApplication> _encryptionApplication;
         private readonly AppSetting _appSettings;
 
         public MercadoPagoApplication(IOptions<AppSetting> appSettings)
@@ -35,6 +37,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             _unitOfWork = new Lazy<IUnitOfWork>(() => IoCAutofacContainer.Current.Resolve<IUnitOfWork>());
             _bridgeApplication = new Lazy<IBridgeApplication>(() => IoCAutofacContainer.Current.Resolve<IBridgeApplication>());
             _relationApplication = new Lazy<IRelationRepository>(() => IoCAutofacContainer.Current.Resolve<IRelationRepository>());
+            _encryptionApplication = new Lazy<IEncryptionApplication>(() => IoCAutofacContainer.Current.Resolve<IEncryptionApplication>());
         }
 
         private IUnitOfWork UnitOfWork => _unitOfWork.Value;
@@ -44,6 +47,8 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
         private IBridgeApplication BridgeApplication => _bridgeApplication.Value;
 
         private IRelationRepository RelationRepository => UnitOfWork.Repository<IRelationRepository>();
+
+        private IEncryptionApplication EncryptionApplication => _encryptionApplication.Value;
 
         #region method async MercadoPagoServices
         public async Task<ResponseDto> CardTokenAsync(CardTokenDto cardTokenDto)
@@ -64,14 +69,16 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             var process_payment = new PaymentCreateRequest();
 
             var codpaymentreference = await GetPaymentReference(); 
-            var paymentTransactionEntity = await InitialRegistrationPaymentTransaction(paymentDto);
+            paymentDto.external_reference = codpaymentreference.cod_pago_referencia;
+
+            var paymentTransactionEntity = await InitialRegistrationPaymentTransaction(paymentDto, codpaymentreference.codpagorefindex);
             UnitOfWork.Set<TransaccionPagoEntity>().Add(paymentTransactionEntity);
             UnitOfWork.SaveChanges();
              
             if (!ReferenceEquals(null, paymentTransactionEntity)) 
                 process_payment = RecordPaymentInformation(paymentDto);
 
-            var create_payment = await BridgeApplication.PostInvoque<PaymentCreateRequest, PaymentReceivedDto>(process_payment, 
+            var create_payment = await BridgeApplication.PostInvoque<PaymentDto, PaymentReceivedDto>(paymentDto, 
                 string.Concat(_appSettings.MercadoPagoServices.CreatePayment, UtilConstants.ContentService.InitialAccessToken + _appSettings.MercadoPagoCredentials.AccessToken),
                 _appSettings.MercadoPagoCredentials.AccessToken, PropiedadesConstants.TypeRequest.POST);
 
@@ -137,10 +144,8 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
         #region Method private MercadoPago
         private RequestCardTokenDto SetDataCardTokenInformation(CardTokenDto cardtokendto)
         {
-            var cardRequest = new RequestCardTokenDto();
-            cardRequest.device = new Device(); 
-            cardRequest.device.fingerprint.vendor_ids = new List<VendorId>();
-            
+            var cardRequest = new RequestCardTokenDto(); 
+
             cardRequest.cardholder = new CardHolder()
             {
                 name = cardtokendto.cardholder.name
@@ -157,6 +162,8 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             cardRequest.expiration_month = cardtokendto.expiration_month;
             cardRequest.expiration_year = cardtokendto.expiration_year;
 
+            cardRequest.device = new Device();
+
             cardRequest.device.fingerprint = new Fingerprint()
             {
                 os = cardtokendto.device.fingerprint.os,
@@ -166,7 +173,9 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                 model = cardtokendto.device.fingerprint.model,
                 free_disk_space = cardtokendto.device.fingerprint.free_disk_space,
                 resolution = cardtokendto.device.fingerprint.resolution
-            }; 
+            };
+
+            cardRequest.device.fingerprint.vendor_ids = new List<VendorId>();
 
             foreach (var item in cardtokendto.device.fingerprint.vendor_ids)
             {
@@ -285,21 +294,23 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             return payment_create;
         }
 
-        private async Task<TransaccionPagoEntity> InitialRegistrationPaymentTransaction(PaymentDto createRequest)
+        private async Task<TransaccionPagoEntity> InitialRegistrationPaymentTransaction(PaymentDto createRequest, int cod_pago_ref_index)
         {
             var payment_transaction_entity = new TransaccionPagoEntity()
             { 
-                CuotasPago = createRequest.installments,
-                NotificacionUrl = createRequest.notification_url,
-                NombreTitular = createRequest.payer.first_name,
-                ApellidoTitular = createRequest.payer.last_name,
-                EmailTitular = createRequest.payer.email,
-                NumeroDocumentoTitular = createRequest.payer.identification.number,
-                TipoDocumentoTitularId = await RelationRepository.GetDocumentTypeXId(createRequest.payer.identification.type),
-                MetodoPagoId = createRequest.payment_method_id,
-                TokenCard = createRequest.token,
-                MontoTransaccion = createRequest.transaction_amount
-            };
+                CodPagoReferencia = createRequest.external_reference,
+                CuotasPago = await EncryptionApplication.EncryptString(createRequest.installments.ToString()),
+                NotificacionUrl = await EncryptionApplication.EncryptString(createRequest.notification_url.ToString()),
+                NombreTitular = await EncryptionApplication.EncryptString(createRequest.payer.first_name.ToString()),
+                ApellidoTitular = await EncryptionApplication.EncryptString(createRequest.payer.last_name.ToString()),
+                EmailTitular = await EncryptionApplication.EncryptString(createRequest.payer.email.ToString()),
+                NumeroDocumentoTitular = await EncryptionApplication.EncryptString(createRequest.payer.identification.number.ToString()),
+                TipoDocumentoTitularId = await RelationRepository.GetDocumentTypeXId(createRequest.payer.identification.type.ToString()),
+                MetodoPagoId = await EncryptionApplication.EncryptString(createRequest.payment_method_id.ToString()),
+                TokenCard = await EncryptionApplication.EncryptString(createRequest.token.ToString()),
+                MontoTransaccion = await EncryptionApplication.EncryptString(createRequest.transaction_amount.ToString()),
+                CodPagoRefIndex = cod_pago_ref_index
+            }; 
 
             return payment_transaction_entity; 
         }
@@ -307,20 +318,21 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
         private async Task<TransaccionPagoEntity> TransactionProcessCompleted(PaymentReceivedDto paymentReceived)
         { 
             var payment_information = await MercadoPagoRepository.GetRegisteredPaymentInformationAsync(paymentReceived.external_reference);
+          
+            if (!ReferenceEquals(null, paymentReceived))
+            { 
+                payment_information.IdComprobantePago = await EncryptionApplication.EncryptString(paymentReceived.id.ToString());
+                payment_information.FechaCreadaPago = await EncryptionApplication.EncryptString(paymentReceived.date_created.ToString()); 
+                payment_information.FechaAprovadaPago = await EncryptionApplication.EncryptString(paymentReceived.date_approved.ToString());
+                payment_information.FechaUltimaActualizacion = await EncryptionApplication.EncryptString(paymentReceived.date_last_updated.ToString());
+                payment_information.FechaLiberacionDinero = await EncryptionApplication.EncryptString(paymentReceived.money_release_date.ToString());
+                payment_information.IdTipoTarjeta = await EncryptionApplication.EncryptString(paymentReceived.payment_type_id.ToString());
+                payment_information.EstadoPago = await EncryptionApplication.EncryptString(paymentReceived.status.ToString());
+                payment_information.EstadoPagoDetalle = await EncryptionApplication.EncryptString(paymentReceived.status_detail.ToString());
+                payment_information.TipoMoneda = await EncryptionApplication.EncryptString(paymentReceived.currency_id.ToString());
+                payment_information.Proveedor = paymentReceived.statement_descriptor.ToString();
+            } 
 
-            if (ReferenceEquals(null, paymentReceived))
-                throw new FunctionalException(UtilConstants.CodigoEstado.InternalServerError, AlertResources.msg_error_metohd_register_payment); 
-
-            payment_information.IdComprobantePago = paymentReceived.id;
-            payment_information.FechaCreadaPago = paymentReceived.date_created.ToString();
-            payment_information.FechaAprovadaPago = paymentReceived.date_approved.ToString();
-            payment_information.FechaUltimaActualizacion = paymentReceived.date_last_updated.ToString();
-            payment_information.FechaLiberacionDinero = paymentReceived.money_release_date.ToString();
-            payment_information.IdTipoTarjeta = paymentReceived.payment_type_id;
-            payment_information.EstadoPago = paymentReceived.status;
-            payment_information.EstadoPagoDetalle = paymentReceived.status_detail;
-            payment_information.TipoMoneda = paymentReceived.currency_id;
-            payment_information.Proveedor = paymentReceived.statement_descriptor; 
             return payment_information;
         }
  
