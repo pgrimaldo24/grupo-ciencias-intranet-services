@@ -19,6 +19,7 @@ using MercadoPago.Config;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
@@ -89,8 +90,38 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             UnitOfWork.Set<TransaccionPagoEntity>().Update(paymentTransactionEntity);
             UnitOfWork.SaveChanges();
 
+            var status = await MercadoPagoRepository.GetAllPaymentStatuses(); 
+            var result = new Payment_ResponseDto
+            {
+                id_voucher = create_payment.id.ToString(),
+                payment_status = status.Where(x => x.status_index.ToString().Contains(create_payment.status))
+                                   .Select(psm => new Payment_StatusDto
+                                   {
+                                       status_index = psm.status_index.ToString(),
+                                       payment_status_description = status.Select(psd => new StatusDescriptionDto
+                                       {
+                                           status_detail = psm.status_detail.ToString(),
+                                           description = psm.description.ToString()
+                                       }).FirstOrDefault()
+                                   }).FirstOrDefault(),
+                payment_status_detail = status.Where(x => x.status_index.ToString().Contains(create_payment.status_detail))
+                                .Select(o => new Payment_StatusDto
+                                {
+                                    status_index = o.status_index.ToString(),
+                                    payment_status_description = status.Select(sd => new StatusDescriptionDto
+                                    {
+                                        status_detail = o.status_detail.ToString(),
+                                        description = o.description.ToString()
+                                    }).FirstOrDefault()
+                                }).FirstOrDefault(),
+                payment_date_created = create_payment.date_created.ToString(),
+                payment_date_approved = create_payment.date_approved.ToString(),
+                payment_money_release_date = create_payment.money_release_date.ToString()
+            };
+              
             response.Status = UtilConstants.CodigoEstado.Ok;
             response.Message = AlertResources.msg_correcto;
+            response.Data = result;
 
             return response;
         }

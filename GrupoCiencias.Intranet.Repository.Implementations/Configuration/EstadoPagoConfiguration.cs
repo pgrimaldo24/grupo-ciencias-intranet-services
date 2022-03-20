@@ -45,6 +45,10 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                 .HasMaxLength(50)
                 .HasColumnName("estadopago");
 
+            builder.Property(e => e.EstadoPagoDetalle)
+                .HasMaxLength(50)
+                .HasColumnName("estado_pago_detalle");
+
             builder.Property(e => e.Descripcion)
                 .HasMaxLength(200)
                 .HasColumnName("descripcion"); 
