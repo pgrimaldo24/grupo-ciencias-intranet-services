@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  grupociencias.intranet.api:
+    image: ${DOCKER_REGISTRY-}grupocienciasintranetapi
+    build:
+      context: .
+      dockerfile: GrupoCiencias.Intranet.Api/Dockerfile
