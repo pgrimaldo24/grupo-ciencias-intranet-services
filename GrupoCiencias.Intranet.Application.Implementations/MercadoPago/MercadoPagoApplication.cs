@@ -59,6 +59,12 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             var cardtoken = await BridgeApplication.PostInvoque<RequestCardTokenDto, ResponseCardTokenDto>(
                 cardInformation, string.Concat(_appSettings.MercadoPagoServices.CardToken, UtilConstants.ContentService.PublicKey + cardTokenDto.token_public),
                 cardTokenDto.token_public, PropiedadesConstants.TypeRequest.POST);
+
+            if (cardtoken.exceptions.Any())
+            {
+                response.Data = cardtoken.exceptions;
+            }
+            
             response.Data = cardtoken;
             return response;
         }
@@ -370,6 +376,11 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
         {
             var result = string.Empty;
             return result;
+        }
+
+        private async Task<ErrorResponseDto> Exception()
+        {
+
         }
  
         #endregion

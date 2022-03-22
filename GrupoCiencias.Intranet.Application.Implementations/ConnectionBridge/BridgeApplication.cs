@@ -4,6 +4,7 @@ using GrupoCiencias.Intranet.CrossCutting.Common.Constants;
 using GrupoCiencias.Intranet.CrossCutting.Common.Exceptions;
 using GrupoCiencias.Intranet.CrossCutting.Common.Resources;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Common;
+using GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System;
@@ -53,17 +54,20 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
                     {
                         StreamReader reader = new StreamReader(stream, Encoding.UTF8);
                         var responseString = reader.ReadToEnd();
-                        result = JsonConvert.DeserializeObject<TResult>(responseString);
+                        result = JsonConvert.DeserializeObject<TResult>(responseString); 
                     }
                 } 
             }
             catch (WebException ex)
             {
-                var validationHttps = await GetValidateErrorHttp(ex.Status, ex);
-                var data = JsonConvert.SerializeObject(validationHttps);
-                result = JsonConvert.DeserializeObject<TResult>(data); 
-            }
-        
+                var validationHttps = await GetValidateErrorHttp(ex.Status, ex);  
+                var collectionWrapper = new
+                {
+                    exceptions = validationHttps
+                }; 
+                var data = JsonConvert.SerializeObject(collectionWrapper);
+                result = JsonConvert.DeserializeObject<TResult>(data);  
+            } 
             return result;
         }
 
@@ -91,7 +95,11 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
             catch (WebException ex)
             {
                 var validationHttps = await GetValidateErrorHttp(ex.Status, ex);
-                var data = JsonConvert.SerializeObject(validationHttps);
+                var collectionWrapper = new
+                {
+                    exceptions = validationHttps
+                };
+                var data = JsonConvert.SerializeObject(collectionWrapper);
                 result = JsonConvert.DeserializeObject<TResult>(data);
             }
             return result;
@@ -136,7 +144,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
             p_request.KeepAlive = true;
         }
          
-        private async Task<string> GetValidateErrorHttp(WebExceptionStatus webException, WebException exception)
+        private async Task<List<ErrorResponseDto>> GetValidateErrorHttp(WebExceptionStatus webException, WebException exception)
         {
             var response = string.Empty;
             var errores = new List<ErrorResponseDto>();
@@ -147,7 +155,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
                     errorResponse = new ErrorResponseDto
                     {
                         status_code = UtilConstants.CodigoEstado.InternalServerError.ToString(),
-                        message = AlertResources.msg_error_post_invoke.ToString()
+                        message = exception.Message.ToString()
                     };
                     errores.Add(errorResponse);
                     response = JsonConvert.SerializeObject(errores);
@@ -156,7 +164,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
                     errorResponse = new ErrorResponseDto
                     {
                         status_code = UtilConstants.CodigoEstado.ConnectionClosed.ToString(),
-                        message = AlertResources.msg_error_post_invoke.ToString()
+                        message = exception.Message.ToString()
                     };
                     errores.Add(errorResponse);
                     response = JsonConvert.SerializeObject(errores);
@@ -165,7 +173,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
                     errorResponse = new ErrorResponseDto
                     {
                         status_code = UtilConstants.CodigoEstado.KeepAliveFailure,
-                        message = AlertResources.msg_error_post_invoke.ToString()
+                        message = exception.Message.ToString() 
                     };
                     errores.Add(errorResponse);
                     response = JsonConvert.SerializeObject(errores);
@@ -174,7 +182,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
                     errorResponse = new ErrorResponseDto
                     {
                         status_code = UtilConstants.CodigoEstado.Pending.ToString(),
-                        message = AlertResources.msg_error_post_invoke.ToString()
+                        message = exception.Message.ToString()
                     };
                     errores.Add(errorResponse);
                     response = JsonConvert.SerializeObject(errores);
@@ -183,7 +191,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
                     errorResponse = new ErrorResponseDto
                     {
                         status_code = UtilConstants.CodigoEstado.Timeout.ToString(),
-                        message = AlertResources.msg_error_post_invoke.ToString()
+                        message = exception.Message.ToString()
                     };
                     errores.Add(errorResponse);
                     response = JsonConvert.SerializeObject(errores);
@@ -192,7 +200,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
                     errorResponse = new ErrorResponseDto
                     {
                         status_code = UtilConstants.CodigoEstado.NotFound.ToString(),
-                        message = AlertResources.msg_error_post_invoke.ToString()
+                        message = exception.Message.ToString()
                     };
                     errores.Add(errorResponse);
                     response = JsonConvert.SerializeObject(errores);
@@ -201,7 +209,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
                     errorResponse = new ErrorResponseDto
                     {
                         status_code = UtilConstants.CodigoEstado.Forbidden.ToString(),
-                        message = AlertResources.msg_error_post_invoke.ToString()
+                        message = exception.Message.ToString()
                     };
                     errores.Add(errorResponse);
                     response = JsonConvert.SerializeObject(errores);
@@ -210,7 +218,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
                     response = new StreamReader(exception.Response.GetResponseStream()).ReadToEnd();
                     break;
             }
-            return response;
+            return errores;
         }
 
         #endregion

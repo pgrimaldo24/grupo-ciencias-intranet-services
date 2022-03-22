@@ -95,5 +95,6 @@ namespace GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago
         public bool live_mode { get; set; }
         public bool require_esc { get; set; }
         public int security_code_length { get; set; }
+        public List<ErrorResponseDto> exceptions { get; set; }
     }
 }
