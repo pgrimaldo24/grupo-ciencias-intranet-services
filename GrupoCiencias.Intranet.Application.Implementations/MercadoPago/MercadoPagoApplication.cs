@@ -57,8 +57,8 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             var response = new ResponseDto();
             var cardInformation = SetDataCardTokenInformation(cardTokenDto);
             var cardtoken = await BridgeApplication.PostInvoque<RequestCardTokenDto, ResponseCardTokenDto>(
-                cardInformation, string.Concat(_appSettings.MercadoPagoServices.CardToken, UtilConstants.ContentService.PublicKey + cardTokenDto.token_public), 
-                cardTokenDto.token_public, PropiedadesConstants.TypeRequest.POST);
+                cardInformation, string.Concat(_appSettings.MercadoPagoServices.CardToken, UtilConstants.ContentService.PublicKey + cardTokenDto.token_public),
+                _appSettings.MercadoPagoCredentials.AccessToken, PropiedadesConstants.TypeRequest.POST);
             response.Data = cardtoken;
             return response;
         }
@@ -82,15 +82,13 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             var create_payment = await BridgeApplication.PostInvoque<PaymentDto, PaymentReceivedDto>(paymentDto, 
                 string.Concat(_appSettings.MercadoPagoServices.CreatePayment, UtilConstants.ContentService.InitialAccessToken + _appSettings.MercadoPagoCredentials.AccessToken),
                 _appSettings.MercadoPagoCredentials.AccessToken, PropiedadesConstants.TypeRequest.POST);
-
-            if (ReferenceEquals(null, create_payment))
-                throw new FunctionalException(UtilConstants.CodigoEstado.InternalServerError, AlertResources.msg_null_variable);
-
+              
+            //var notification_webhook = await GetUrlNotificationResult(create_payment.);
             paymentTransactionEntity = await TransactionProcessCompleted(create_payment);
             UnitOfWork.Set<TransaccionPagoEntity>().Update(paymentTransactionEntity);
             UnitOfWork.SaveChanges();
 
-            var status = await MercadoPagoRepository.GetAllPaymentStatuses(); 
+            var status = await MercadoPagoRepository.GetAllPaymentStatuses();
             var result = new Payment_ResponseDto
             {
                 id_voucher = create_payment.id.ToString(),
@@ -116,7 +114,8 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                                 }).FirstOrDefault(),
                 payment_date_created = create_payment.date_created.ToString(),
                 payment_date_approved = create_payment.date_approved.ToString(),
-                payment_money_release_date = create_payment.money_release_date.ToString()
+                payment_money_release_date = create_payment.money_release_date.ToString(),
+                payment_notification_url = "URL_NOTIFICACION"
             };
               
             response.Status = UtilConstants.CodigoEstado.Ok;
@@ -365,6 +364,12 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             } 
 
             return payment_information;
+        }
+
+        private async Task<string> GetUrlNotificationResult(string payment_status)
+        {
+            var result = string.Empty;
+            return result;
         }
  
         #endregion
