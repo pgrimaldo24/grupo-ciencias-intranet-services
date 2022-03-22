@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using GrupoCiencias.Intranet.CrossCutting.Dto.Common;
+using System.Collections.Generic;
 
 namespace GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago
 { 

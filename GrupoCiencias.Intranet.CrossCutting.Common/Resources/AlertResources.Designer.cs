@@ -70,11 +70,29 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
         }
 
         /// <summary>
+        ///   Busca una cadena traducida similar a Hubo un error en el método GetInvoke.
+        /// </summary>
+        public static string msg_error_get_invoke {
+            get {
+                return ResourceManager.GetString("msg_error_get_invoke", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Busca una cadena traducida similar a Hubo un error en el método GetRegisteredPaymentInformationAsync..
         /// </summary>
         public static string msg_error_metohd_register_payment {
             get {
                 return ResourceManager.GetString("msg_error_metohd_register_payment", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a Hubo un error en el método PostInvoke.
+        /// </summary>
+        public static string msg_error_post_invoke {
+            get {
+                return ResourceManager.GetString("msg_error_post_invoke", resourceCulture);
             }
         }
 

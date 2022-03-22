@@ -58,7 +58,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             var cardInformation = SetDataCardTokenInformation(cardTokenDto);
             var cardtoken = await BridgeApplication.PostInvoque<RequestCardTokenDto, ResponseCardTokenDto>(
                 cardInformation, string.Concat(_appSettings.MercadoPagoServices.CardToken, UtilConstants.ContentService.PublicKey + cardTokenDto.token_public),
-                _appSettings.MercadoPagoCredentials.AccessToken, PropiedadesConstants.TypeRequest.POST);
+                cardTokenDto.token_public, PropiedadesConstants.TypeRequest.POST);
             response.Data = cardtoken;
             return response;
         }
