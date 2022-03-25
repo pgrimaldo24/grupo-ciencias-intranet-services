@@ -166,7 +166,6 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
             }
 
             return new JsonResult(response);
-        }
-
+        } 
     }
 }

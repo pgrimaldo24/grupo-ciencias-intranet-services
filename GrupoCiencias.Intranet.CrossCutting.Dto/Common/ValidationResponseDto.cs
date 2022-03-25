@@ -1,8 +1,8 @@
 ﻿namespace GrupoCiencias.Intranet.CrossCutting.Dto.Common
 {
-    public class ErrorResponseDto
+    public class ValidationResponseDto
     {
-        public string status_code { get; set; }
+        public int status_code { get; set; }
         public string message { get; set; }
     }
 }

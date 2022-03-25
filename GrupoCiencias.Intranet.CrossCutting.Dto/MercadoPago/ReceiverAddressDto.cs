@@ -44,4 +44,9 @@
         public string status_detail { get; set; }
         public string description { get; set; }
     }
+
+    public class NotificationUrl
+    {
+        public string payment_notification_url { get; set; }
+    }
 }

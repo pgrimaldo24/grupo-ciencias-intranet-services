@@ -27,6 +27,7 @@
         public string PaymentMethods { get; set; }
         public string CardValidation { get; set; }
         public string IdentificationTypes { get; set; }
+        public string NoificationWebhook { get; set; }
     }
 
     public class MercadoPagoCredential

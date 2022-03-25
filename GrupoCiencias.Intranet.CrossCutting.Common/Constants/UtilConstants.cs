@@ -29,8 +29,7 @@
             public const int InternalServerError = 500; 
 
             public const int ProtocolError = 1201;
-            public const int ConnectionClosed = 444;
-            public const string KeepAliveFailure = "KeepAliveFailure";
+            public const int ConnectionClosed = 444; 
             public const int Pending = 202;
             public const int Timeout = 408;  
         }
@@ -72,9 +71,12 @@
             public const string Bin = "?bin=";
             public const string AccessToken = "&access_token=";
             public const string InitialAccessToken = "?access_token=";
-            public const string Prefix_GrupoCiencias = "GC-";
-
-            public const string KeyFormat = "ABCDEFGHIJKLMÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz"; 
+            public const string Prefix_GrupoCiencias = "GC-"; 
+            public const string KeyFormat = "ABCDEFGHIJKLMÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz";
+            public const string TypeMethod = " | Type: ";
+            public const string Url = " | Url: ";
+            public const string StatusCode = "?statud_code=";
+            public const string Message = "&message=";
         }
     }
 }

@@ -14,6 +14,24 @@ namespace GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago
         public Device device { get; set; }
     }
 
+    public class ResultCardTokenDto
+    {
+        public string id { get; set; }
+        public string public_key { get; set; }
+        public int expiration_month { get; set; }
+        public int expiration_year { get; set; }
+        public string last_four_digits { get; set; }
+        public CardHolder cardholder { get; set; }
+        public string status { get; set; }
+        public string date_created { get; set; }
+        public string date_last_updated { get; set; }
+        public string date_due { get; set; }
+        public bool luhn_validation { get; set; }
+        public bool live_mode { get; set; }
+        public bool require_esc { get; set; }
+        public int security_code_length { get; set; }
+    }
+
     public class CardHolder 
     {
         public Indetification identification { get; set; }
@@ -95,6 +113,6 @@ namespace GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago
         public bool live_mode { get; set; }
         public bool require_esc { get; set; }
         public int security_code_length { get; set; }
-        public List<ErrorResponseDto> exceptions { get; set; }
-    }
+        public List<ValidationResponseDto> validations { get; set; }
+    }  
 }

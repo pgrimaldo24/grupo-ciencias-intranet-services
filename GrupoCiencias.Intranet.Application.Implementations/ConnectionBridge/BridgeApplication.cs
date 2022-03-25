@@ -1,13 +1,10 @@
 ﻿using GrupoCiencias.Intranet.Application.Interfaces.ConnectionBridge;
 using GrupoCiencias.Intranet.CrossCutting.Common;
 using GrupoCiencias.Intranet.CrossCutting.Common.Constants;
-using GrupoCiencias.Intranet.CrossCutting.Common.Exceptions;
 using GrupoCiencias.Intranet.CrossCutting.Common.Resources;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Common;
-using GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -30,8 +27,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
         {
             TResult result;
             try
-            {
-
+            { 
                 ServicePointManager.SecurityProtocol = (SecurityProtocolType)(0xc0 | 0x300 | 0xc00);
                 var request = HttpWebRequest.Create(detailUrlKey) as HttpWebRequest;
                 request.Method = typeRequest;
@@ -51,19 +47,33 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
                 using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
                 {
                     using (Stream stream = response.GetResponseStream())
-                    {
-                        StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+                    { 
+                        StreamReader reader = new StreamReader(stream, Encoding.UTF8); 
                         var responseString = reader.ReadToEnd();
-                        result = JsonConvert.DeserializeObject<TResult>(responseString); 
+                        result = JsonConvert.DeserializeObject<TResult>(responseString);
+
+                        var oExceptionOk = new ValidationResponseDto()
+                        {
+                            status_code = UtilConstants.CodigoEstado.Ok,
+                            message = AlertResources.msg_correcto.ToString()
+                        }; 
                     }
                 } 
             }
             catch (WebException ex)
             {
-                var validationHttps = await GetValidateErrorHttp(ex.Status, ex);  
+                var validationHttps = new List<ValidationResponseDto>(); 
+                var http_result = ex.Response as HttpWebResponse; 
+                var exception = new ValidationResponseDto
+                {
+                    status_code = (int)http_result.StatusCode,
+                    message = http_result.StatusDescription.ToString() + UtilConstants.ContentService.TypeMethod + http_result.Method.ToString() + UtilConstants.ContentService.Url + http_result.ResponseUri 
+                }; 
+                validationHttps.Add(exception);
+
                 var collectionWrapper = new
                 {
-                    exceptions = validationHttps
+                    validations = validationHttps
                 }; 
                 var data = JsonConvert.SerializeObject(collectionWrapper);
                 result = JsonConvert.DeserializeObject<TResult>(data);  
@@ -94,10 +104,18 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
             }
             catch (WebException ex)
             {
-                var validationHttps = await GetValidateErrorHttp(ex.Status, ex);
+                var validationHttps = new List<ValidationResponseDto>();
+                var http_result = ex.Response as HttpWebResponse;
+                var exception = new ValidationResponseDto
+                {
+                    status_code = (int)http_result.StatusCode,
+                    message = http_result.StatusDescription.ToString() + UtilConstants.ContentService.TypeMethod + http_result.Method.ToString() + UtilConstants.ContentService.Url + http_result.ResponseUri
+                };
+                validationHttps.Add(exception);
+
                 var collectionWrapper = new
                 {
-                    exceptions = validationHttps
+                    validations = validationHttps
                 };
                 var data = JsonConvert.SerializeObject(collectionWrapper);
                 result = JsonConvert.DeserializeObject<TResult>(data);
@@ -143,84 +161,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
             p_request.Headers.Add(UtilConstants.ContentService.CacheControl, "no-cache\r\n");
             p_request.KeepAlive = true;
         }
-         
-        private async Task<List<ErrorResponseDto>> GetValidateErrorHttp(WebExceptionStatus webException, WebException exception)
-        {
-            var response = string.Empty;
-            var errores = new List<ErrorResponseDto>();
-            ErrorResponseDto errorResponse;
-            switch (webException)
-            {
-                case WebExceptionStatus.ProtocolError:
-                    errorResponse = new ErrorResponseDto
-                    {
-                        status_code = UtilConstants.CodigoEstado.InternalServerError.ToString(),
-                        message = exception.Message.ToString()
-                    };
-                    errores.Add(errorResponse);
-                    response = JsonConvert.SerializeObject(errores);
-                    break;
-                case WebExceptionStatus.ConnectionClosed:
-                    errorResponse = new ErrorResponseDto
-                    {
-                        status_code = UtilConstants.CodigoEstado.ConnectionClosed.ToString(),
-                        message = exception.Message.ToString()
-                    };
-                    errores.Add(errorResponse);
-                    response = JsonConvert.SerializeObject(errores);
-                    break;
-                case WebExceptionStatus.KeepAliveFailure:
-                    errorResponse = new ErrorResponseDto
-                    {
-                        status_code = UtilConstants.CodigoEstado.KeepAliveFailure,
-                        message = exception.Message.ToString() 
-                    };
-                    errores.Add(errorResponse);
-                    response = JsonConvert.SerializeObject(errores);
-                    break;
-                case WebExceptionStatus.Pending:
-                    errorResponse = new ErrorResponseDto
-                    {
-                        status_code = UtilConstants.CodigoEstado.Pending.ToString(),
-                        message = exception.Message.ToString()
-                    };
-                    errores.Add(errorResponse);
-                    response = JsonConvert.SerializeObject(errores);
-                    break;
-                case WebExceptionStatus.Timeout:
-                    errorResponse = new ErrorResponseDto
-                    {
-                        status_code = UtilConstants.CodigoEstado.Timeout.ToString(),
-                        message = exception.Message.ToString()
-                    };
-                    errores.Add(errorResponse);
-                    response = JsonConvert.SerializeObject(errores);
-                    break;
-                case WebExceptionStatus.UnknownError:
-                    errorResponse = new ErrorResponseDto
-                    {
-                        status_code = UtilConstants.CodigoEstado.NotFound.ToString(),
-                        message = exception.Message.ToString()
-                    };
-                    errores.Add(errorResponse);
-                    response = JsonConvert.SerializeObject(errores);
-                    break;
-                case WebExceptionStatus.MessageLengthLimitExceeded:
-                    errorResponse = new ErrorResponseDto
-                    {
-                        status_code = UtilConstants.CodigoEstado.Forbidden.ToString(),
-                        message = exception.Message.ToString()
-                    };
-                    errores.Add(errorResponse);
-                    response = JsonConvert.SerializeObject(errores);
-                    break;
-                default:
-                    response = new StreamReader(exception.Response.GetResponseStream()).ReadToEnd();
-                    break;
-            }
-            return errores;
-        }
-
+           
         #endregion
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrupoCiencias.Intranet.CrossCutting.Dto.Common;
+using System;
 using System.Collections.Generic;
 
 namespace GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago
@@ -59,6 +60,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago
         public object merchant_account_id { get; set; }
         public object merchant_number { get; set; }
         public PointOfInteraction point_of_interaction { get; set; }
+        public List<ValidationResponseDto> validations { get; set; }
     }
 
     public class Identification

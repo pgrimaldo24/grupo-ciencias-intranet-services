@@ -3,13 +3,11 @@ using GrupoCiencias.Intranet.Application.Interfaces.Intranet;
 using GrupoCiencias.Intranet.Application.Interfaces.MercadoPago;
 using GrupoCiencias.Intranet.CrossCutting.Common;
 using GrupoCiencias.Intranet.CrossCutting.Common.Constants;
-using GrupoCiencias.Intranet.CrossCutting.Common.Exceptions;
 using GrupoCiencias.Intranet.CrossCutting.Common.Resources;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Common;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
 using GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago;
 using GrupoCiencias.Intranet.CrossCutting.IoC.Container;
-using GrupoCiencias.Intranet.Domain.Models.Entity;
 using GrupoCiencias.Intranet.Domain.Models.MercadoPago;
 using GrupoCiencias.Intranet.Repository.Interfaces.Data;
 using GrupoCiencias.Intranet.Repository.Interfaces.Repositories;
@@ -55,19 +53,29 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
         public async Task<ResponseDto> CardTokenAsync(CardTokenDto cardTokenDto)
         {
             var response = new ResponseDto();
-            var cardInformation = SetDataCardTokenInformation(cardTokenDto);
+            var cardInformation = SetRequestDataCardToken(cardTokenDto);
+
             var cardtoken = await BridgeApplication.PostInvoque<RequestCardTokenDto, ResponseCardTokenDto>(
                 cardInformation, string.Concat(_appSettings.MercadoPagoServices.CardToken, UtilConstants.ContentService.PublicKey + cardTokenDto.token_public),
                 cardTokenDto.token_public, PropiedadesConstants.TypeRequest.POST);
-
-            if (cardtoken.exceptions.Any())
+             
+            if (cardtoken.validations.Equals(null))
             {
-                response.Data = cardtoken.exceptions;
+                var result_card_token = await SetResponseCardToken(cardtoken);
+                response.Data = result_card_token; 
             }
-            
-            response.Data = cardtoken;
+            else
+            {
+                cardtoken.validations.ForEach(x =>
+                {
+                    response.Status = x.status_code;
+                    response.Message = x.message.ToString();
+                });
+            } 
             return response;
         }
+
+      
 
         public async Task<ResponseDto> CreatePaymentAsync(PaymentDto paymentDto)
         {
@@ -88,8 +96,41 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             var create_payment = await BridgeApplication.PostInvoque<PaymentDto, PaymentReceivedDto>(paymentDto, 
                 string.Concat(_appSettings.MercadoPagoServices.CreatePayment, UtilConstants.ContentService.InitialAccessToken + _appSettings.MercadoPagoCredentials.AccessToken),
                 _appSettings.MercadoPagoCredentials.AccessToken, PropiedadesConstants.TypeRequest.POST);
-              
-            //var notification_webhook = await GetUrlNotificationResult(create_payment.);
+
+            var url_response_notification = new NotificationUrl();
+            create_payment.validations = new List<ValidationResponseDto>();
+
+            if (!create_payment.validations.Equals(null))
+            { 
+                create_payment.validations.ForEach(x =>
+                {
+                    response.Status = x.status_code;
+                    response.Message = x.message.ToString(); 
+                });
+
+                var urlBad = new NotificationUrl
+                {
+                    payment_notification_url = await GetUrlNotificationResult(create_payment.validations)
+                };
+                url_response_notification = urlBad; 
+                response.Data = url_response_notification; 
+                return response;
+            } 
+
+            var oExceptionOk = new ValidationResponseDto()
+            {
+                status_code = UtilConstants.CodigoEstado.Ok,
+                message = AlertResources.msg_correcto
+            };
+
+            create_payment.validations.Add(oExceptionOk);
+
+            var urlOk = new NotificationUrl
+            {
+                payment_notification_url = await GetUrlNotificationResult(create_payment.validations)
+            };
+
+            url_response_notification = urlOk;
             paymentTransactionEntity = await TransactionProcessCompleted(create_payment);
             UnitOfWork.Set<TransaccionPagoEntity>().Update(paymentTransactionEntity);
             UnitOfWork.SaveChanges();
@@ -121,13 +162,12 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                 payment_date_created = create_payment.date_created.ToString(),
                 payment_date_approved = create_payment.date_approved.ToString(),
                 payment_money_release_date = create_payment.money_release_date.ToString(),
-                payment_notification_url = "URL_NOTIFICACION"
+                payment_notification_url = url_response_notification.payment_notification_url
             };
-              
+
             response.Status = UtilConstants.CodigoEstado.Ok;
             response.Message = AlertResources.msg_correcto;
             response.Data = result;
-
             return response;
         }
 
@@ -138,30 +178,27 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             var result = await BridgeApplication.GetInvoque<List<ResponsePaymentMethodDto>>( 
                 string.Concat(_appSettings.MercadoPagoServices.PaymentMethods, UtilConstants.ContentService.Bin + bincardDto.bin_card + UtilConstants.ContentService.AccessToken + _appSettings.MercadoPagoCredentials.AccessToken),
                 _appSettings.MercadoPagoCredentials.AccessToken, PropiedadesConstants.TypeRequest.GET);
+
+           
+            foreach (var rst in result)
+            {
+                if (rst.validations.Equals(null))
+                {
+                    var result_card_token = await SetResponsePaymentMethod(result);
+                    response.Data = result_card_token; return response;
+                } 
+            }
+
             response.Data = result;
             return response;
         }
-
-        public async Task<ResponseReferenciaDto> GetPaymentReference()
-        {
-            var infoTransaccionPago = await MercadoPagoRepository.GetMaxIdExternalReference();
-            int codPagoRefIndex = infoTransaccionPago != null ? infoTransaccionPago.codpagorefindex + 1 : 1;
-            var cod_pago_referencia = UtilConstants.ContentService.Prefix_GrupoCiencias + codPagoRefIndex.ToString().PadLeft(8, char.Parse("0"));
-            var response = new ResponseReferenciaDto
-            {
-                cod_pago_referencia = cod_pago_referencia,
-                codpagorefindex = codPagoRefIndex,
-            };
-            return response;
-        }
-
-
+          
         public async Task<ResponseDto> IdentificationTypesAsync()
-        {
+        { 
             var response = new ResponseDto();
             var result = await BridgeApplication.GetInvoque<List<IdentificationTypeDto>>(
                 string.Concat(_appSettings.MercadoPagoServices.IdentificationTypes, UtilConstants.ContentService.InitialAccessToken + _appSettings.MercadoPagoCredentials.AccessToken),
-                _appSettings.MercadoPagoCredentials.AccessToken, PropiedadesConstants.TypeRequest.GET);
+                _appSettings.MercadoPagoCredentials.AccessToken, PropiedadesConstants.TypeRequest.GET); 
             response.Data = result;
             return response;
         }
@@ -178,7 +215,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
         #endregion
 
         #region Method private MercadoPago
-        private RequestCardTokenDto SetDataCardTokenInformation(CardTokenDto cardtokendto)
+        private RequestCardTokenDto SetRequestDataCardToken(CardTokenDto cardtokendto)
         {
             var cardRequest = new RequestCardTokenDto(); 
 
@@ -372,17 +409,121 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             return payment_information;
         }
 
-        private async Task<string> GetUrlNotificationResult(string payment_status)
+        private async Task<ResultCardTokenDto> SetResponseCardToken(ResponseCardTokenDto responseCard)
         {
-            var result = string.Empty;
+            responseCard.validations = new List<ValidationResponseDto>();
+            var oExceptionOk = new ValidationResponseDto()
+            {
+                status_code = UtilConstants.CodigoEstado.Ok,
+                message = AlertResources.msg_correcto
+            };
+
+            responseCard.validations.Add(oExceptionOk);
+
+            var result = new ResultCardTokenDto()
+            {
+                id = responseCard.id,
+                public_key = responseCard.public_key,
+                expiration_month = responseCard.expiration_month,
+                expiration_year = responseCard.expiration_year,
+                last_four_digits = responseCard.last_four_digits,
+                status = responseCard.status,
+                date_created = responseCard.date_created,
+                date_last_updated = responseCard.date_last_updated,
+                date_due = responseCard.date_due,
+                luhn_validation = responseCard.luhn_validation,
+                live_mode = responseCard.live_mode,
+                require_esc = responseCard.require_esc,
+                security_code_length = responseCard.security_code_length
+            };
+
+            result.cardholder = new CardHolder
+            {
+                name = responseCard.cardholder.name
+            };
+
+            result.cardholder.identification = new Indetification
+            {
+                type = responseCard.cardholder.identification.type,
+                number = responseCard.cardholder.identification.number
+            };
+
             return result;
         }
 
-        private async Task<ErrorResponseDto> Exception()
+        private async Task<string> GetUrlNotificationResult(List<ValidationResponseDto> result)
         {
-
+            var response = string.Empty;
+            foreach (var item in result)
+            {
+                var url_response_notification = _appSettings.MercadoPagoServices.NoificationWebhook + UtilConstants.ContentService.StatusCode + item.status_code + UtilConstants.ContentService.Message + item.message.ToString();
+                response = url_response_notification;
+            }   
+            return response;
         }
- 
+
+        private async Task<ResulPaymentMethodDto> SetResponsePaymentMethod(List<ResponsePaymentMethodDto> responsePaymentMethods)
+        {
+            var result = new ResulPaymentMethodDto();
+
+            foreach (var item in responsePaymentMethods)
+            {
+                var result_payment = new ResulPaymentMethodDto
+                {
+                    payment_method_id = item.payment_method_id,
+                    payment_type_id = item.payment_type_id,
+                    processing_mode = item.processing_mode,
+                    merchant_account_id = item.merchant_account_id,
+                    agreements = item.agreements
+                };
+
+                result_payment.issuer = new Issuer
+                {
+                    id = item.issuer.id,
+                    name = item.issuer.name,
+                    secure_thumbnail = item.issuer.secure_thumbnail,
+                    thumbnail = item.issuer.thumbnail
+                };
+
+                var listPayerCosts = new List<PayerCost>();
+
+                foreach (var payercosts in item.payer_costs)
+                {
+                    var oPayerCost = new PayerCost
+                    {
+                        installments = payercosts.installments,
+                        installment_rate = payercosts.installment_rate,
+                        discount_rate = payercosts.discount_rate,
+                        reimbursement_rate = payercosts.reimbursement_rate,
+                        labels = payercosts.labels.ToList(),
+                        installment_rate_collector = payercosts.installment_rate_collector.ToList(),
+                        min_allowed_amount = payercosts.min_allowed_amount,
+                        max_allowed_amount = payercosts.max_allowed_amount,
+                        recommended_message = payercosts.recommended_message,
+                        installment_amount = payercosts.installment_amount,
+                        total_amount = payercosts.total_amount,
+                        payment_method_option_id = payercosts.payment_method_option_id
+                    };
+                    listPayerCosts.Add(oPayerCost);
+                }
+                result_payment.payer_costs = listPayerCosts.ToList();
+                result = result_payment;
+            }
+            return result;
+        }
+
+        private async Task<ResponseReferenciaDto> GetPaymentReference()
+        {
+            var infoTransaccionPago = await MercadoPagoRepository.GetMaxIdExternalReference();
+            int codPagoRefIndex = infoTransaccionPago != null ? infoTransaccionPago.codpagorefindex + 1 : 1;
+            var cod_pago_referencia = UtilConstants.ContentService.Prefix_GrupoCiencias + codPagoRefIndex.ToString().PadLeft(8, char.Parse("0"));
+            var response = new ResponseReferenciaDto
+            {
+                cod_pago_referencia = cod_pago_referencia,
+                codpagorefindex = codPagoRefIndex,
+            };
+            return response;
+        }
         #endregion
     }
 }

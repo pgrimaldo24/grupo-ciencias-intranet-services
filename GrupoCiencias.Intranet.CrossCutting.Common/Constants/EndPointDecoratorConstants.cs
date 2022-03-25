@@ -22,6 +22,7 @@
             public const string GetMeansPayment = "GetMeansPayment";
             public const string IdentificationTypes = "IdentificationTypes";
             public const string CardValidation = "CardValidation";
+            public const string Webhook = "Webhook";
         }
     }
 }
