@@ -182,7 +182,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
            
             foreach (var rst in result)
             {
-                if (rst.validations.Equals(null))
+                if (rst.validations is null)
                 {
                     var result_card_token = await SetResponsePaymentMethod(result);
                     response.Data = result_card_token; return response;
