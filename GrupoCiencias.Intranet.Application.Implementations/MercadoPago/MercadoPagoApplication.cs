@@ -185,11 +185,16 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                 if (rst.validations is null)
                 {
                     var result_card_token = await SetResponsePaymentMethod(result);
-                    response.Data = result_card_token; return response;
-                } 
+                    response.Data = result_card_token; 
+                }else{
+                    rst.validations.ForEach(x =>
+                    {
+                        response.Status = x.status_code;
+                        response.Message = x.message.ToString();
+                    });
+                }
             }
 
-            response.Data = result;
             return response;
         }
           
@@ -462,9 +467,9 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             return response;
         }
 
-        private async Task<ResulPaymentMethodDto> SetResponsePaymentMethod(List<ResponsePaymentMethodDto> responsePaymentMethods)
+        private async Task<List<ResulPaymentMethodDto>> SetResponsePaymentMethod(List<ResponsePaymentMethodDto> responsePaymentMethods)
         {
-            var result = new ResulPaymentMethodDto();
+            var result = new List<ResulPaymentMethodDto>();
 
             foreach (var item in responsePaymentMethods)
             {
@@ -506,8 +511,9 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                     };
                     listPayerCosts.Add(oPayerCost);
                 }
+
                 result_payment.payer_costs = listPayerCosts.ToList();
-                result = result_payment;
+                result.Add(result_payment);
             }
             return result;
         }
