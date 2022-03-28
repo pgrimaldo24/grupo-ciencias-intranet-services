@@ -7,7 +7,8 @@ namespace GrupoCiencias.Intranet.Repository.Interfaces.Repositories
     public interface IRelationRepository
     {
         public Task<List<UniversityDto>> GetListaUniversitiesAsync();
-        public Task<List<MasterDto>> GetListCareersXIdAsync(int idUniversity);
+        public Task<List<MasterDto>> GetListCareersXIdAsync(int idUniversity, int idArea);
+        public Task<List<MasterDto>> GetListAreasXIdAsync(int idUniversity);
         public Task<List<MasterDto>> GetListCyclesXIdAsync(int idUniversity);
         public Task<List<MasterDto>> GetListTypeMatriculaAsync();
         public Task<List<MasterDto>> GetListMarketingAsync();

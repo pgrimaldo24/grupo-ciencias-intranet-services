@@ -28,16 +28,27 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                 .ToListAsync();
         }
 
-        public async Task<List<MasterDto>> GetListCareersXIdAsync(int idUniversity)
+        public async Task<List<MasterDto>> GetListCareersXIdAsync(int idUniversity, int idArea)
         {
             return await context.Carreras.Join(context.AreasCarrera, a => a.Idarea, p => p.Idarea, (a, p) => new { Carrera = a, AreaCarrera = p })
-                    .Where(x => x.AreaCarrera.Iduniversidad.Equals(idUniversity) && x.Carrera.Estado.Equals(1))
+                    .Where(x => x.AreaCarrera.Iduniversidad.Equals(idUniversity) && x.AreaCarrera.Idarea.Equals(idArea) &&x.Carrera.Estado.Equals(1))
                     .OrderBy(p => p.Carrera.Idcarrera)
                     .Select(o => new MasterDto
                     {
                         code = o.Carrera.Idcarrera,
                         name = o.Carrera.Nombre.ToString()
                     }).ToListAsync(); 
+        }
+
+        public async Task<List<MasterDto>> GetListAreasXIdAsync(int idUniversity)
+        {
+            return await context.AreasCarrera.Where(x => x.Iduniversidad.Equals(idUniversity))
+                    .OrderBy(r => r.Idarea)
+                    .Select(o => new MasterDto
+                    {
+                        code=o.Idarea,
+                        name = o.Nombre.ToString(),
+                    }).ToListAsync();
         }
 
         public async Task<List<MasterDto>> GetListCyclesXIdAsync(int idUniversity)

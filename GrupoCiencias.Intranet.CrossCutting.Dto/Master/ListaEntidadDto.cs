@@ -11,6 +11,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Dto.Master
         public List<MasterDto> Marketings { get; set; }
         public List<MasterDto> DocumentTypes { get; set; }
         public List<MasterDto> Sedes { get; set; }
+        public List<MasterDto> Areas { get; set; }
     } 
      
     public class UniversityDto
@@ -18,6 +19,14 @@ namespace GrupoCiencias.Intranet.CrossCutting.Dto.Master
         public int code { get; set; }
         public string name { get; set; }
         public List<MasterDto> Careers { get; set; }
+        public List<AreasDto> Areas { get; set; }
         public List<MasterDto> Cycles { get; set; }
+    }
+
+    public class AreasDto 
+    {
+        public int code { get; set; }
+        public string name { get; set; }
+        public List<MasterDto> Careers { get; set; }
     }
 }
