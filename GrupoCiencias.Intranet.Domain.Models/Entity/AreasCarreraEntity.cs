@@ -18,7 +18,7 @@ namespace GrupoCiencias.Intranet.Domain.Models.Entity
         public double? PreguntaIncorrecta { get; set; }
         public decimal? PreguntaEnBlanco { get; set; }
         public DateTime? FechaCreacion { get; set; }
-
+        public int? isArea { get; set; }
         public virtual UniversidadEntity Universidad { get; set; }
         public virtual ICollection<CarrerasEntity> Carreras { get; set; }
     }

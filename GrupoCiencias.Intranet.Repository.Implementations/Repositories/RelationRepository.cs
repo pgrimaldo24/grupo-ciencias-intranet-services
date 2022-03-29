@@ -42,7 +42,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
 
         public async Task<List<MasterDto>> GetListAreasXIdAsync(int idUniversity)
         {
-            return await context.AreasCarrera.Where(x => x.Iduniversidad.Equals(idUniversity))
+            return await context.AreasCarrera.Where(x => x.Iduniversidad.Equals(idUniversity) && x.isArea.Equals(1))
                     .OrderBy(r => r.Idarea)
                     .Select(o => new MasterDto
                     {

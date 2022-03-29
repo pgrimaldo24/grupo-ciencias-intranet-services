@@ -43,6 +43,8 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                 .WithMany(p => p.AreasCarreras)
                 .HasForeignKey(d => d.Iduniversidad)
                 .HasConstraintName("areas_carreras_universidad_constraint");
+
+            builder.Property(e => e.isArea).HasColumnName("isarea");
         }
     }
 }
