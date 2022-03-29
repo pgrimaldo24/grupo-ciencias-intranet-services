@@ -123,6 +123,9 @@
   <data name="msg_error_get_invoke" xml:space="preserve">
     <value>Hubo un error en el método GetInvoke</value>
   </data>
+  <data name="msg_error_matricula_register_enrollment" xml:space="preserve">
+    <value>Hubo un error interno en el metodo RegisterEnrollmentAsync.</value>
+  </data>
   <data name="msg_error_metohd_register_payment" xml:space="preserve">
     <value>Hubo un error en el método GetRegisteredPaymentInformationAsync.</value>
   </data>

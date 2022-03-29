@@ -114,6 +114,11 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
             builder.Property(e => e.TokenCard)
                 .HasMaxLength(200)
                 .HasColumnName("token_card");
+
+            builder.Property(e => e.NumeroDocumentoEstudiante)
+              .HasMaxLength(50)
+              .HasColumnName("numero_documento_estudiante");
+            
         }
     }
 }

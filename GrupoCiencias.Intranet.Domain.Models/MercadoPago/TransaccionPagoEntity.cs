@@ -29,6 +29,7 @@ namespace GrupoCiencias.Intranet.Domain.Models.MercadoPago
         public string Proveedor { get; set; }
         public DateTime FechaCreacionRegistro { get; set; }
         public DateTime? FechaBajaRegistro { get; set; }
-        public int EstadoRegistro { get; set; } 
+        public int EstadoRegistro { get; set; }
+        public string NumeroDocumentoEstudiante { get; set; }
     }
 }

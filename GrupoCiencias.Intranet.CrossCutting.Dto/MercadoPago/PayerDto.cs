@@ -3,9 +3,7 @@
     public class PayerDto
     {
         public string first_name { get; set; }
-        public string last_name { get; set; }
-        public PhoneDto phone { get; set; }
-        public AddressDto address { get; set; }
+        public string last_name { get; set; } 
     }
      
     public class PhoneDto

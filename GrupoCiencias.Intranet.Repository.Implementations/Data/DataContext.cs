@@ -33,6 +33,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
             builder.ApplyConfiguration(new TipoPagoDetalleConfiguration());
             builder.ApplyConfiguration(new EstadoPagoConfiguration());
             builder.ApplyConfiguration(new TransaccionPagoConfiguration());
+            builder.ApplyConfiguration(new HistorialPagoSolicitudConfiguration());
         }
 
         public virtual DbSet<SolicitudesEntity> Solicitudes { get; set; }
@@ -52,5 +53,6 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
         public virtual DbSet<TipoPagoDetalleEntity> TipoPagoDetalle { get; set; }
         public virtual DbSet<EstadoPagoEntity> EstadoPagos { get; set; }
         public virtual DbSet<TransaccionPagoEntity> TransaccionPagos { get; set; }
+        public virtual DbSet<HistorialPagoSolicitudEntity> HistorialPagoSolicitudes { get; set; }
     }
 }

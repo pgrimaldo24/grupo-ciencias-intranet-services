@@ -1,4 +1,5 @@
 ﻿using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
+using GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago;
 using GrupoCiencias.Intranet.Repository.Implementations.Data;
 using GrupoCiencias.Intranet.Repository.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -35,6 +36,16 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                       final_price = precioMatricula.preciofinal,
                   })
                   .FirstOrDefaultAsync();
+        }
+
+        public async Task<HistorialPagoSolicitudDto> GetIdHistoryPaymentTransaction(int id_payment_transaction)
+        {
+            return await context.HistorialPagoSolicitudes.Where(x => x.IdTransaccionPago == id_payment_transaction)
+              .Select(hpsd => new HistorialPagoSolicitudDto
+              {
+                  id_historial_pago_solicitud = hpsd.IdHistorialPagoSolicitud,
+                  id_transaccion_pago = hpsd.IdTransaccionPago
+              }).FirstOrDefaultAsync();
         }
     }
 }

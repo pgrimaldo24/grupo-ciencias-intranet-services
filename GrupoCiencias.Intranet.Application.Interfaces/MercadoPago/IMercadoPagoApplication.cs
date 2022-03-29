@@ -8,7 +8,7 @@ namespace GrupoCiencias.Intranet.Application.Interfaces.MercadoPago
     {
         Task<ResponseDto> CardTokenAsync(CardTokenDto cardTokenDto);
         Task<ResponseDto> PaymentMethodAsync(string binCard);
-        Task<ResponseDto> CreatePaymentAsync(PaymentDto paymentDto);
+        Task<ResponseDto> CreatePaymentAsync(StudentPaymentDto studentPaymentDto);
         Task<ResponseDto> IdentificationTypesAsync();
         Task<ResponseDto> CardValidationAsync();
     }

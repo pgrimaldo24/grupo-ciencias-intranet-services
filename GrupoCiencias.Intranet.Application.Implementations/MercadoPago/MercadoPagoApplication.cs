@@ -8,6 +8,7 @@ using GrupoCiencias.Intranet.CrossCutting.Dto.Common;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
 using GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago;
 using GrupoCiencias.Intranet.CrossCutting.IoC.Container;
+using GrupoCiencias.Intranet.Domain.Models.Entity;
 using GrupoCiencias.Intranet.Domain.Models.MercadoPago;
 using GrupoCiencias.Intranet.Repository.Interfaces.Data;
 using GrupoCiencias.Intranet.Repository.Interfaces.Repositories;
@@ -77,30 +78,37 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
 
       
 
-        public async Task<ResponseDto> CreatePaymentAsync(PaymentDto paymentDto)
+        public async Task<ResponseDto> CreatePaymentAsync(StudentPaymentDto studentPaymentDto)
         {
             var response = new ResponseDto(); 
-            var payment_received = new PaymentReceivedDto();
-            var process_payment = new PaymentCreateRequest();
-
+            var payment_received = new PaymentReceivedDto();  
             var codpaymentreference = await GetPaymentReference(); 
-            paymentDto.external_reference = codpaymentreference.cod_pago_referencia;
-
-            var paymentTransactionEntity = await InitialRegistrationPaymentTransaction(paymentDto, codpaymentreference.codpagorefindex);
+            var payment_request = await RecordPaymentInformation(studentPaymentDto); 
+            
+            var paymentTransactionEntity = await InitialRegistrationPaymentTransaction(payment_request, codpaymentreference.codpagorefindex);
             UnitOfWork.Set<TransaccionPagoEntity>().Add(paymentTransactionEntity);
             UnitOfWork.SaveChanges();
              
-            if (!ReferenceEquals(null, paymentTransactionEntity)) 
-                process_payment = RecordPaymentInformation(paymentDto);
-
-            var create_payment = await BridgeApplication.PostInvoque<PaymentDto, PaymentReceivedDto>(paymentDto, 
+            var create_payment = await BridgeApplication.PostInvoque<PaymentDto, PaymentReceivedDto>(payment_request, 
                 string.Concat(_appSettings.MercadoPagoServices.CreatePayment, UtilConstants.ContentService.InitialAccessToken + _appSettings.MercadoPagoCredentials.AccessToken),
                 _appSettings.MercadoPagoCredentials.AccessToken, PropiedadesConstants.TypeRequest.POST);
+
+            paymentTransactionEntity = await TransactionProcessCompleted(create_payment);
+            UnitOfWork.Set<TransaccionPagoEntity>().Update(paymentTransactionEntity);
+            UnitOfWork.SaveChanges();
+
+            if (!string.IsNullOrEmpty(studentPaymentDto.student.student_document_number.ToString()))
+            {
+                var oPaymentTransaction = await MercadoPagoRepository.GetIdPaymentTransactionXDocument(studentPaymentDto.student.student_document_number.ToString().Trim());
+                var historyPaymentTransaction = await SetHistoryPaymentTransaction(oPaymentTransaction.id_payment_transaction);
+                UnitOfWork.Set<HistorialPagoSolicitudEntity>().Add(historyPaymentTransaction);
+                UnitOfWork.SaveChanges();
+            } 
 
             var url_response_notification = new NotificationUrl();
             create_payment.validations = new List<ValidationResponseDto>();
 
-            if (!create_payment.validations.Equals(null))
+            if (create_payment.validations is null)
             { 
                 create_payment.validations.ForEach(x =>
                 {
@@ -122,7 +130,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                 status_code = UtilConstants.CodigoEstado.Ok,
                 message = AlertResources.msg_correcto
             };
-
+             
             create_payment.validations.Add(oExceptionOk);
 
             var urlOk = new NotificationUrl
@@ -131,10 +139,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             };
 
             url_response_notification = urlOk;
-            paymentTransactionEntity = await TransactionProcessCompleted(create_payment);
-            UnitOfWork.Set<TransaccionPagoEntity>().Update(paymentTransactionEntity);
-            UnitOfWork.SaveChanges();
-
+              
             var status = await MercadoPagoRepository.GetAllPaymentStatuses();
             var result = new Payment_ResponseDto
             {
@@ -287,89 +292,60 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             return cardRequest;
         }
 
-        private PaymentCreateRequest RecordPaymentInformation(PaymentDto payment)
+        private async Task<PaymentDto> RecordPaymentInformation(StudentPaymentDto studentPaymentDto)
         {
-            MercadoPagoConfig.AccessToken = _appSettings.MercadoPagoCredentials.AccessToken;
+            MercadoPagoConfig.AccessToken = _appSettings.MercadoPagoCredentials.AccessToken; 
+            var payment_response = new PaymentDto();
+            var student_payment = new StudentPaymentDto();
+            var additional_info_items = new List<AdditionalInfoDto>();
+            var additiona_info_dto = new AdditionalInfoPaymentDto(); 
+            student_payment = studentPaymentDto;
+            additiona_info_dto = student_payment.additional_info;
+            additional_info_items = student_payment.additional_info.items;  
 
-            var payment_additional_info = new PaymentAdditionalInfoRequest();
-            var payment_create = new PaymentCreateRequest(); 
-            var payment_request = new PaymentDto();
-            var additiona_info_dto = new AdditionalInfoPaymentDto();
-            var additional_info_items = new List<AdditionalInfoDto>(); 
-            payment_request = payment;
-            additiona_info_dto = payment.additional_info; 
-            additional_info_items = payment.additional_info.items;
-            payment_create.AdditionalInfo = payment_additional_info;
-            payment_create.AdditionalInfo.Items = new List<PaymentItemRequest>(); 
-            payment_create.AdditionalInfo.Shipments = new PaymentShipmentsRequest(); 
-            payment_create.Order = new PaymentOrderRequest();
-             
             foreach (var items in additional_info_items)
             {
-                var paymentItem = new PaymentItemRequest()
+                var paymentItem = new AdditionalInfoDto()
                 {
-                    Id = items.id.ToString(),
-                    Title = items.title.ToString(),
-                    Description = items.description.ToString(),
-                    PictureUrl = items.picture_url.ToString(),
-                    CategoryId = items.category_id.ToString(),
-                    Quantity = items.quantity,
-                    UnitPrice = items.unit_price
-                }; 
-                payment_create.AdditionalInfo.Items.Add(paymentItem); 
+                    id = items.id.ToString(),
+                    title = items.title.ToString(),
+                    description = items.description.ToString(),
+                    picture_url = items.picture_url.ToString(),
+                    category_id = items.category_id.ToString(),
+                    quantity = items.quantity,
+                    unit_price = items.unit_price
+                };
+                payment_response.additional_info.items.Add(paymentItem); 
             }
 
-            payment_create.AdditionalInfo.Payer = new PaymentAdditionalInfoPayerRequest()
+            payment_response.additional_info.payer = new PayerDto()
             {
-                FirstName = payment.additional_info.payer.first_name.ToString().Trim(),
-                LastName = payment.additional_info.payer.last_name.ToString().Trim()
+                first_name = student_payment.additional_info.payer.first_name.ToString().Trim(),
+                last_name = student_payment.additional_info.payer.last_name.ToString().Trim()
+            };
+             
+            payment_response.payer = new PayerRequestDto()
+            {
+                email = student_payment.payer.email.ToString().Trim(),
+                first_name = student_payment.additional_info.payer.first_name.ToString().Trim(),
+                last_name = student_payment.additional_info.payer.last_name.ToString().Trim()
             };
 
-            payment_create.AdditionalInfo.Payer.Phone = new PhoneRequest()
+            payment_response.payer.identification = new PayerIdentificationDto()
             {
-                AreaCode = payment.additional_info.payer.phone.area_code,
-                Number = payment.additional_info.payer.phone.number
+                type = student_payment.payer.identification.type,
+                number = student_payment.payer.identification.number
             };
 
-            payment_create.AdditionalInfo.Payer.Address = new AddressRequest()
-            {
-                ZipCode = payment.additional_info.payer.address.zip_code,
-                StreetName = payment.additional_info.payer.address.street_name,
-                StreetNumber = payment.additional_info.payer.address.street_number
-            };
-
-            payment_create.AdditionalInfo.Shipments.ReceiverAddress = new PaymentReceiverAddressRequest()
-            {
-                ZipCode = payment.additional_info.shipments.receiver_address.zip_code,
-                StateName = payment.additional_info.shipments.receiver_address.state_name,
-                CityName = payment.additional_info.shipments.receiver_address.city_name,
-                StreetName = payment.additional_info.shipments.receiver_address.street_name,
-                StreetNumber = payment.additional_info.shipments.receiver_address.street_number
-            };
-
-            payment_create.Payer = new PaymentPayerRequest()
-            {
-                Email = payment.payer.email.ToString().Trim(),
-                FirstName = payment.additional_info.payer.first_name.ToString().Trim(),
-                LastName = payment.additional_info.payer.last_name.ToString().Trim()
-            };
-
-            payment_create.Payer.Identification = new IdentificationRequest()
-            {
-                Type = payment.payer.identification.type,
-                Number = payment.payer.identification.number
-            };
-              
-            payment_create.BinaryMode = payment.binary_mode;
-            payment_create.Capture = payment.capture;
-            payment_create.ExternalReference = payment.external_reference;
-            payment_create.Installments = payment.installments;
-            payment_create.NotificationUrl = payment.notification_url;  
-            payment_create.PaymentMethodId = payment.payment_method_id;
-            payment_create.Token = payment.token;
-            payment_create.TransactionAmount = payment.transaction_amount;
- 
-            return payment_create;
+            payment_response.binary_mode = student_payment.binary_mode;
+            payment_response.capture = student_payment.capture;
+            payment_response.external_reference = student_payment.external_reference;
+            payment_response.installments = student_payment.installments;
+            payment_response.notification_url = student_payment.notification_url;
+            payment_response.payment_method_id = student_payment.payment_method_id;
+            payment_response.token = student_payment.token;
+            payment_response.transaction_amount = student_payment.transaction_amount; 
+            return payment_response;
         }
 
         private async Task<TransaccionPagoEntity> InitialRegistrationPaymentTransaction(PaymentDto createRequest, int cod_pago_ref_index)
@@ -530,6 +506,16 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             };
             return response;
         }
+
+        private async Task<HistorialPagoSolicitudEntity> SetHistoryPaymentTransaction(int id_transaction = 0, int id_solicitud = 0)
+        { 
+            var result = new HistorialPagoSolicitudEntity()
+            {
+                IdTransaccionPago = id_transaction
+            };  
+            return result; 
+        }
+
         #endregion
     }
 }

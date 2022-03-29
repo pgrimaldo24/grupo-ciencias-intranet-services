@@ -79,6 +79,15 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
         }
 
         /// <summary>
+        ///   Busca una cadena traducida similar a Hubo un error interno en el metodo RegisterEnrollmentAsync..
+        /// </summary>
+        public static string msg_error_matricula_register_enrollment {
+            get {
+                return ResourceManager.GetString("msg_error_matricula_register_enrollment", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Busca una cadena traducida similar a Hubo un error en el método GetRegisteredPaymentInformationAsync..
         /// </summary>
         public static string msg_error_metohd_register_payment {
@@ -167,7 +176,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("str_response", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Busca una cadena traducida similar a INFO : URL -&gt;.
         /// </summary>
