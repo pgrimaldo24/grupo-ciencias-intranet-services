@@ -34,12 +34,12 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
 
         [HttpPost(EndPointDecoratorConstants.MercadoPagoEndPointRouter.CreatePayment)]
 
-        public async Task<JsonResult> CreatePayment([FromBody] PaymentDto paymentDto)
+        public async Task<JsonResult> CreatePayment([FromBody] StudentPaymentDto studentPaymentDto)
         {
             var response = new ResponseDto();
             try
             {
-                response = await MercadoPagoApplication.CreatePaymentAsync(paymentDto);
+                response = await MercadoPagoApplication.CreatePaymentAsync(studentPaymentDto);
             }
             catch (FunctionalException ex)
             {
