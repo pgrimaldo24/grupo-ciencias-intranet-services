@@ -1,5 +1,6 @@
 ﻿using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
 using GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago;
+using GrupoCiencias.Intranet.Domain.Models.Entity;
 using GrupoCiencias.Intranet.Repository.Implementations.Data;
 using GrupoCiencias.Intranet.Repository.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -44,8 +45,17 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
               .Select(hpsd => new HistorialPagoSolicitudDto
               {
                   id_historial_pago_solicitud = hpsd.IdHistorialPagoSolicitud,
-                  id_transaccion_pago = hpsd.IdTransaccionPago
+                  id_transaccion_pago = hpsd.IdTransaccionPago,
               }).FirstOrDefaultAsync();
+        }
+
+        public async Task<SolicitudesEntityDto> GetIdEnrollmentByDocumentNumber(string nroDocumento)
+        {
+            return await context.Solicitudes
+                   .Where(x => x.Dni == nroDocumento)
+                   .OrderByDescending(x => x.Idsolicitud)
+                   .Take(1)
+                   .Select(p => new SolicitudesEntityDto { Idsolicitud = p.Idsolicitud }).FirstOrDefaultAsync();
         }
     }
 }

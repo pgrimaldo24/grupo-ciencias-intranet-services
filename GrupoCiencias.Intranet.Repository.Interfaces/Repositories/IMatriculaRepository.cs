@@ -1,5 +1,6 @@
 ﻿using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
 using GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago;
+using GrupoCiencias.Intranet.Domain.Models.Entity;
 using System.Threading.Tasks;
 
 namespace GrupoCiencias.Intranet.Repository.Interfaces.Repositories
@@ -9,5 +10,7 @@ namespace GrupoCiencias.Intranet.Repository.Interfaces.Repositories
         Task<ApoderadoDetalleDto> GetIdApoderadoAsync(string nroDocumento); 
         Task<PreciosMatriculaDto> EnrollmentPricesListAsync(int IdPeriod, int IdPaymentType);
         Task<HistorialPagoSolicitudDto> GetIdHistoryPaymentTransaction(int id_payment_transaction);
+        Task<SolicitudesEntityDto> GetIdEnrollmentByDocumentNumber(string nroDocumento);
+
     }
 }

@@ -56,13 +56,13 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
 
             var oPayment_transaction = await MercadoPagoRepository.GetIdPaymentTransactionXDocument(solicitudDto.document_number.ToString().Trim());
 
-            //var idSolicitud = agregar metodo que filtre la solicitud
+            var oRequestInfo = await MatriculaRepository.GetIdEnrollmentByDocumentNumber(solicitudDto.document_number);
 
             var oIdPaymentTransaction = await MatriculaRepository.GetIdHistoryPaymentTransaction(oPayment_transaction.id_payment_transaction);
              
-            var history_payment_transaction = await SetHistoryPaymentTransaction(oIdPaymentTransaction, idSolicitud);
+            var history_payment_transaction = await SetHistoryPaymentTransaction(oIdPaymentTransaction, oRequestInfo.Idsolicitud);
 
-            UnitOfWork.Set<HistorialPagoSolicitudEntity>().Add(history_payment_transaction);
+            UnitOfWork.Set<HistorialPagoSolicitudEntity>().Update(history_payment_transaction);
             UnitOfWork.SaveChanges();
 
 
@@ -114,9 +114,13 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
 
         private async Task<HistorialPagoSolicitudEntity> SetHistoryPaymentTransaction(HistorialPagoSolicitudDto historialPagoSolicitud, int idSolicitud)
         {
-               
+            var paymentRequestHistory = new HistorialPagoSolicitudEntity()
+            {
+                IdSolicitud = idSolicitud,
+                IdTransaccionPago = historialPagoSolicitud.id_transaccion_pago.Value
+            };
 
-
+            return paymentRequestHistory;
         }
 
 
