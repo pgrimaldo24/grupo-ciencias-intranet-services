@@ -50,42 +50,40 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Intranet
         private async Task<MasterDetailDto> SetListaMasterDetail()
         {
             var masterDetail = new MasterDetailDto();
-            var entidades = new ListaEntidadDto();
+            var entidades = new ListaEntidadDto(); 
             masterDetail.Universities = new List<UniversityDto>();
             masterDetail.Redsocials = new List<MasterDto>();
             masterDetail.Marketings = new List<MasterDto>();
             masterDetail.DocumentTypes = new List<MasterDto>();
             masterDetail.Sedes = new List<MasterDto>(); 
-            var Areas = new List<AreasDto>();
-
-
-
+             
             entidades.Universities = await RelationRepository.GetListaUniversitiesAsync();
              
             foreach (var item in entidades.Universities)
             {
-                entidades.Areas = await RelationRepository.GetListAreasXIdAsync(item.code);                
+                var listMasterAreas = new List<AreasDto>();
+                var informationAcademy = new UniversityDto();
+                entidades.Areas = await RelationRepository.GetListAreasXIdAsync(item.code);
                 entidades.Cycles = await RelationRepository.GetListCyclesXIdAsync(item.code);
 
-                //entidades.Careers = await RelationRepository.GetListCareersXIdAsync(item.code, area.code);
-               
-
-
-                var informationAcademy = new UniversityDto
+                foreach (var lstAreas in entidades.Areas)
                 {
-                    code = item.code,
-                    name = item.name,
-                    Cycles = entidades.Cycles,
-                    Areas = Areas,
-                    //Careers = entidades.Careers,
-                    //Areas = entidades.Areas,                    
-                };
-                masterDetail.Universities.Add(informationAcademy);
-            }
+                    entidades.Careers = await RelationRepository.GetListCareersXIdAsync(item.code, lstAreas.code);
+                    var oMasterArea = new AreasDto
+                    {
+                        code = lstAreas.code,
+                        name = lstAreas.name,
+                        Careers = entidades.Careers
+                    };
 
-
-           
-            //Areas.Clear();
+                    listMasterAreas.Add(oMasterArea); 
+                    informationAcademy.code = item.code;
+                    informationAcademy.name = item.name;
+                    informationAcademy.Cycles = entidades.Cycles;
+                    informationAcademy.Areas = listMasterAreas; 
+                }
+                masterDetail.Universities.Add(informationAcademy); 
+            } 
 
             entidades.Redsocials = await RelationRepository.GetListTypeMatriculaAsync();
             entidades.Marketings = await RelationRepository.GetListMarketingAsync();
