@@ -89,6 +89,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
                 Politicasseguridad = solicitudDto.security_policy,
                 PoliticasFinesComerciales = solicitudDto.trade_policy,
                 FechaRegistro = DateTime.UtcNow.ToLocalTime(),
+                PoliticasVeracidad = solicitudDto.truth_policy
             };
             return solicitudEntity;
         }

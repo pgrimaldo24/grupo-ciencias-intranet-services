@@ -24,6 +24,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Dto.Matricula
         public int security_policy { get; set; }
         public int trade_policy { get; set; }
         public ApoderadoDto apoderado { get; set; }
+        public int truth_policy { get; set; }
     }
 
     public class SolicitudesEntityDto
