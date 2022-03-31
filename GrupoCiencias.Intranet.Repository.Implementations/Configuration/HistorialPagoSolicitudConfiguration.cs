@@ -20,12 +20,12 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
 
             builder.Property(e => e.FechaCreacion)
                  .HasColumnType("date")
-                 .HasColumnName("FechaCreacion")
+                 .HasColumnName("fechacreacion")
                  .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             builder.Property(e => e.FechaBaja)
                   .HasColumnType("date")
-                  .HasColumnName("FechaBaja");
+                  .HasColumnName("fechabaja");
         }
     }
 }

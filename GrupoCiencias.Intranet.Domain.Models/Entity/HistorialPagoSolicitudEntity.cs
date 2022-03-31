@@ -8,6 +8,6 @@ namespace GrupoCiencias.Intranet.Domain.Models.Entity
         public int IdSolicitud { get; set; }
         public int IdTransaccionPago { get; set; }
         public DateTime FechaCreacion { get; set; }
-        public DateTime FechaBaja { get; set; } 
+        public DateTime? FechaBaja { get; set; } 
     }
 }

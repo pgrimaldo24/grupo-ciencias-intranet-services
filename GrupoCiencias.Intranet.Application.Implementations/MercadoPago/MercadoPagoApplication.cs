@@ -83,9 +83,10 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             var response = new ResponseDto(); 
             var payment_received = new PaymentReceivedDto();  
             var codpaymentreference = await GetPaymentReference(); 
-            var payment_request = await RecordPaymentInformation(studentPaymentDto); 
-            
-            var paymentTransactionEntity = await InitialRegistrationPaymentTransaction(payment_request, codpaymentreference.codpagorefindex);
+            var payment_request = await RecordPaymentInformation(studentPaymentDto);
+
+            payment_request.external_reference = codpaymentreference.cod_pago_referencia.ToString(); 
+            var paymentTransactionEntity = await InitialRegistrationPaymentTransaction(payment_request, codpaymentreference.codpagorefindex, studentPaymentDto.student.student_document_number);
             UnitOfWork.Set<TransaccionPagoEntity>().Add(paymentTransactionEntity);
             UnitOfWork.SaveChanges();
              
@@ -100,7 +101,10 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             if (!string.IsNullOrEmpty(studentPaymentDto.student.student_document_number.ToString()))
             {
                 var oPaymentTransaction = await MercadoPagoRepository.GetIdPaymentTransactionXDocument(studentPaymentDto.student.student_document_number.ToString().Trim());
-                var historyPaymentTransaction = await SetHistoryPaymentTransaction(oPaymentTransaction.id_payment_transaction);
+                var historyPaymentTransaction = new HistorialPagoSolicitudEntity()
+                {
+                    IdTransaccionPago = oPaymentTransaction.id_payment_transaction
+                };
                 UnitOfWork.Set<HistorialPagoSolicitudEntity>().Add(historyPaymentTransaction);
                 UnitOfWork.SaveChanges();
             } 
@@ -301,7 +305,9 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             var additiona_info_dto = new AdditionalInfoPaymentDto(); 
             student_payment = studentPaymentDto;
             additiona_info_dto = student_payment.additional_info;
-            additional_info_items = student_payment.additional_info.items;  
+            additional_info_items = student_payment.additional_info.items; 
+            payment_response.additional_info = new AdditionalInfoPaymentDto();
+            payment_response.additional_info.items = new List<AdditionalInfoDto>();
 
             foreach (var items in additional_info_items)
             {
@@ -348,7 +354,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             return payment_response;
         }
 
-        private async Task<TransaccionPagoEntity> InitialRegistrationPaymentTransaction(PaymentDto createRequest, int cod_pago_ref_index)
+        private async Task<TransaccionPagoEntity> InitialRegistrationPaymentTransaction(PaymentDto createRequest, int cod_pago_ref_index, string student_document_number)
         {
             var payment_transaction_entity = new TransaccionPagoEntity()
             { 
@@ -363,20 +369,21 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                 MetodoPagoId = await EncryptionApplication.EncryptString(createRequest.payment_method_id.ToString()),
                 TokenCard = await EncryptionApplication.EncryptString(createRequest.token.ToString()),
                 MontoTransaccion = await EncryptionApplication.EncryptString(createRequest.transaction_amount.ToString()),
-                CodPagoRefIndex = cod_pago_ref_index
-            }; 
-
+                CodPagoRefIndex = cod_pago_ref_index,
+                NumeroDocumentoEstudiante = student_document_number.ToString()
+            };  
             return payment_transaction_entity; 
         }
 
         private async Task<TransaccionPagoEntity> TransactionProcessCompleted(PaymentReceivedDto paymentReceived)
         { 
-            var payment_information = await MercadoPagoRepository.GetRegisteredPaymentInformationAsync(paymentReceived.external_reference);
-          
+            var payment_information = new TransaccionPagoEntity(); 
+            payment_information = await MercadoPagoRepository.GetRegisteredPaymentInformationAsync(paymentReceived.external_reference);
+
             if (!ReferenceEquals(null, paymentReceived))
             { 
                 payment_information.IdComprobantePago = await EncryptionApplication.EncryptString(paymentReceived.id.ToString());
-                payment_information.FechaCreadaPago = await EncryptionApplication.EncryptString(paymentReceived.date_created.ToString()); 
+                payment_information.FechaCreadaPago = await EncryptionApplication.EncryptString(paymentReceived.date_created.ToString());
                 payment_information.FechaAprovadaPago = await EncryptionApplication.EncryptString(paymentReceived.date_approved.ToString());
                 payment_information.FechaUltimaActualizacion = await EncryptionApplication.EncryptString(paymentReceived.date_last_updated.ToString());
                 payment_information.FechaLiberacionDinero = await EncryptionApplication.EncryptString(paymentReceived.money_release_date.ToString());
@@ -384,9 +391,8 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                 payment_information.EstadoPago = await EncryptionApplication.EncryptString(paymentReceived.status.ToString());
                 payment_information.EstadoPagoDetalle = await EncryptionApplication.EncryptString(paymentReceived.status_detail.ToString());
                 payment_information.TipoMoneda = await EncryptionApplication.EncryptString(paymentReceived.currency_id.ToString());
-                payment_information.Proveedor = paymentReceived.statement_descriptor.ToString();
-            } 
-
+                payment_information.Proveedor = paymentReceived.statement_descriptor.ToString(); 
+            }  
             return payment_information;
         }
 
@@ -506,16 +512,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             };
             return response;
         }
-
-        private async Task<HistorialPagoSolicitudEntity> SetHistoryPaymentTransaction(int id_transaction = 0, int id_solicitud = 0)
-        { 
-            var result = new HistorialPagoSolicitudEntity()
-            {
-                IdTransaccionPago = id_transaction
-            };  
-            return result; 
-        }
-
+         
         #endregion
     }
 }

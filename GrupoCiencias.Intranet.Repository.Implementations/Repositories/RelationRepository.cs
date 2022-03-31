@@ -19,7 +19,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
         public async Task<List<UniversityDto>> GetListaUniversitiesAsync()
         {
             return await context.Universidad.Where(x => x.Activo.Equals(1))
-                .OrderBy(r => r.Iduniversidad)
+                .OrderBy(r => r.Nombre.ToString())
                 .Select(u => new UniversityDto
                 {
                     code = u.Iduniversidad,
@@ -43,7 +43,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
         public async Task<List<MasterDto>> GetListAreasXIdAsync(int idUniversity)
         {
             return await context.AreasCarrera.Where(x => x.Iduniversidad.Equals(idUniversity) && x.isArea.Equals(1))
-                    .OrderBy(r => r.Idarea)
+                    .OrderBy(r => r.Nombre.ToString())
                     .Select(o => new MasterDto
                     {
                         code=o.Idarea,

@@ -48,25 +48,20 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
                  
                 var infoApoderado = MatriculaRepository.GetIdApoderadoAsync(solicitudDto.apoderado.document_number).Result; 
                 idApoderado = infoApoderado.IdApoderado;
-            }
+            } 
 
             var solicitud = await SetSolicitud(solicitudDto, idApoderado);
             UnitOfWork.Set<SolicitudesEntity>().Add(solicitud); 
-            UnitOfWork.SaveChanges();
+            UnitOfWork.SaveChanges(); 
 
-            var oPayment_transaction = await MercadoPagoRepository.GetIdPaymentTransactionXDocument(solicitudDto.document_number.ToString().Trim());
+            var oPayment_transaction = await MercadoPagoRepository.GetIdPaymentTransactionXDocument(solicitudDto.document_number.ToString().Trim()); 
+            var oRequestInfo = await MatriculaRepository.GetIdEnrollmentByDocumentNumber(solicitudDto.document_number); 
 
-            var oRequestInfo = await MatriculaRepository.GetIdEnrollmentByDocumentNumber(solicitudDto.document_number);
-
-            var oIdPaymentTransaction = await MatriculaRepository.GetIdHistoryPaymentTransaction(oPayment_transaction.id_payment_transaction);
-             
-            var history_payment_transaction = await SetHistoryPaymentTransaction(oIdPaymentTransaction, oRequestInfo.Idsolicitud);
-
-            UnitOfWork.Set<HistorialPagoSolicitudEntity>().Update(history_payment_transaction);
-            UnitOfWork.SaveChanges();
-
-
-
+            var oIdPaymentTransaction = new HistorialPagoSolicitudEntity();
+            oIdPaymentTransaction = await MatriculaRepository.GetIdHistoryPaymentTransaction(oPayment_transaction.id_payment_transaction);
+            oIdPaymentTransaction.IdSolicitud = oRequestInfo.Idsolicitud;  
+            UnitOfWork.Set<HistorialPagoSolicitudEntity>().Update(oIdPaymentTransaction);
+            UnitOfWork.SaveChanges(); 
             return response;
         }
 
@@ -110,19 +105,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
                 RutaFotoDni = apoderadoDto.route_photo_document 
             };
             return apoderadoEntity;
-        }
-
-        private async Task<HistorialPagoSolicitudEntity> SetHistoryPaymentTransaction(HistorialPagoSolicitudDto historialPagoSolicitud, int idSolicitud)
-        {
-            var paymentRequestHistory = new HistorialPagoSolicitudEntity()
-            {
-                IdSolicitud = idSolicitud,
-                IdTransaccionPago = historialPagoSolicitud.id_transaccion_pago.Value
-            };
-
-            return paymentRequestHistory;
-        }
-
+        } 
 
         public async Task<ResponseDto> GetEnrollmentPricesList(int IdPeriod, int IdPaymentType)
         {

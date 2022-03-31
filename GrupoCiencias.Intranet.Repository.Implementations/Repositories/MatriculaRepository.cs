@@ -39,13 +39,14 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                   .FirstOrDefaultAsync();
         }
 
-        public async Task<HistorialPagoSolicitudDto> GetIdHistoryPaymentTransaction(int id_payment_transaction)
+        public async Task<HistorialPagoSolicitudEntity> GetIdHistoryPaymentTransaction(int id_payment_transaction)
         {
             return await context.HistorialPagoSolicitudes.Where(x => x.IdTransaccionPago == id_payment_transaction)
-              .Select(hpsd => new HistorialPagoSolicitudDto
+              .Select(hpsd => new HistorialPagoSolicitudEntity
               {
-                  id_historial_pago_solicitud = hpsd.IdHistorialPagoSolicitud,
-                  id_transaccion_pago = hpsd.IdTransaccionPago,
+                  IdHistorialPagoSolicitud = hpsd.IdHistorialPagoSolicitud,
+                  IdTransaccionPago = hpsd.IdTransaccionPago,
+                  FechaCreacion = hpsd.FechaCreacion
               }).FirstOrDefaultAsync();
         }
 
