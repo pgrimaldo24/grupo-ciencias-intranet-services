@@ -31,7 +31,8 @@ namespace GrupoCiencias.Intranet.Domain.Models.Entity
         public int? PoliticasFinesComerciales { get; set; }
         public int id_sede { get; set; }
         public int id_tipopago { get; set; }
-        public virtual ApoderadosEntity Apoderado { get; set; }
-        
+        public virtual ApoderadosEntity Apoderado { get; set; } 
+        public int PoliticasVeracidad { get; set; }
+
     }
 }

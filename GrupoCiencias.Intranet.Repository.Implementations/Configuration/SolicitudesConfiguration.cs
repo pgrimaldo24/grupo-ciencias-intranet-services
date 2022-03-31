@@ -105,6 +105,8 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
             builder.Property(e => e.id_sede).HasColumnName("id_sede");
 
             builder.Property(e => e.id_tipopago).HasColumnName("id_tipopago");
+
+            builder.Property(e => e.PoliticasVeracidad).HasColumnName("politicas_veracidad");
         }
     }
 }
