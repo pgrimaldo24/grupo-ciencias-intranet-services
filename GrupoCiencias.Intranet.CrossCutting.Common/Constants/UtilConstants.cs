@@ -75,7 +75,7 @@
             public const string KeyFormat = "ABCDEFGHIJKLMÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz";
             public const string TypeMethod = " | Type: ";
             public const string Url = " | Url: ";
-            public const string StatusCode = "?statud_code=";
+            public const string StatusCode = "?status_code=";
             public const string Message = "&message=";
         }
     }
