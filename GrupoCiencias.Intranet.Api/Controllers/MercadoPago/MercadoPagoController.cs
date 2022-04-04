@@ -23,7 +23,7 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
         private readonly Lazy<ILogger> _logger;
         private readonly Lazy<IMercadoPagoApplication> _mercadoPagoApplication;
         
-        public MercadoPagoController(IOptions<AppSetting> appSettings)
+        public MercadoPagoController()
         {
             _mercadoPagoApplication = new Lazy<IMercadoPagoApplication>(() => IoCAutofacContainer.Current.Resolve<IMercadoPagoApplication>());
             _logger = new Lazy<ILogger>(() => IoCAutofacContainer.Current.Resolve<ILogger>());
