@@ -356,7 +356,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
 
         private async Task<TransaccionPagoEntity> InitialRegistrationPaymentTransaction(PaymentDto createRequest, int cod_pago_ref_index, string student_document_number)
         {
-            var payment_transaction_entity = new TransaccionPagoEntity()
+            var payment_transaction_entity = new TransaccionPagoEntity() 
             { 
                 CodPagoReferencia = createRequest.external_reference,
                 CuotasPago = await EncryptionApplication.EncryptString(createRequest.installments.ToString()),
