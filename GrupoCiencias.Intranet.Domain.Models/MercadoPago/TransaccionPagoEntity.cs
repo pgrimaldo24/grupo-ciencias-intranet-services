@@ -1,13 +1,15 @@
-﻿using System;
+﻿using GrupoCiencias.Intranet.Domain.Models.Entity;
+using System;
+using System.Collections.Generic;
 
 namespace GrupoCiencias.Intranet.Domain.Models.MercadoPago
 {
     public class TransaccionPagoEntity
-    {
+    { 
         public int IdTransaccionPago { get; set; }
         public string IdComprobantePago { get; set; }
         public string CodPagoReferencia { get; set; }
-        public int CodPagoRefIndex { get; set; }
+        public int? CodPagoRefIndex { get; set; }
         public string CuotasPago { get; set; }
         public string NotificacionUrl { get; set; }
         public string NombreTitular { get; set; }
@@ -31,5 +33,6 @@ namespace GrupoCiencias.Intranet.Domain.Models.MercadoPago
         public DateTime? FechaBajaRegistro { get; set; }
         public int EstadoRegistro { get; set; }
         public string NumeroDocumentoEstudiante { get; set; }
+        public string GuidKey { get; set; } 
     }
 }

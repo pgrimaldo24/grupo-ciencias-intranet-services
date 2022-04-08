@@ -8,8 +8,7 @@
         public bool? capture { get; set; }
         public string external_reference { get; set; }
         public int? installments { get; set; }
-        public MetadataDto metadata { get; set; }
-        public string notification_url { get; set; }
+        public MetadataDto metadata { get; set; } 
         public PayerRequestDto payer { get; set; }
         public string payment_method_id { get; set; }
         public string token { get; set; }

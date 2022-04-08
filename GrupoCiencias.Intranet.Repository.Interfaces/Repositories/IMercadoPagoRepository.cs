@@ -12,5 +12,6 @@ namespace GrupoCiencias.Intranet.Repository.Interfaces.Repositories
         Task<PagoReferenceDto> GetMaxIdExternalReference();
         Task<List<StatusDescriptionIndexDto>> GetAllPaymentStatuses();
         Task<PaymentTransactionDto> GetIdPaymentTransactionXDocument(string student_document_number);
+        Task<PaymentTransactionDto> GetGuidKey(string transaction_identifier);
     }
 }

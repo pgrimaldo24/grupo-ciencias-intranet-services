@@ -50,6 +50,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
 
         private IEncryptionApplication EncryptionApplication => _encryptionApplication.Value;
 
+
         #region method async MercadoPagoServices
         public async Task<ResponseDto> CardTokenAsync(CardTokenDto cardTokenDto)
         {
@@ -75,21 +76,23 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             } 
             return response;
         }
-
-      
-
+         
         public async Task<ResponseDto> CreatePaymentAsync(StudentPaymentDto studentPaymentDto)
         {
             var response = new ResponseDto(); 
-            var payment_received = new PaymentReceivedDto();  
+            var payment_received = new PaymentReceivedDto(); 
             var codpaymentreference = await GetPaymentReference(); 
-            var payment_request = await RecordPaymentInformation(studentPaymentDto);
+            var transaction_identifier = Guid.NewGuid().ToString(); 
 
+            var notification_webhook = _appSettings.MercadoPagoServices.NoificationWebhook + transaction_identifier;  
+            
+            var payment_request = await RecordPaymentInformation(studentPaymentDto, notification_webhook); 
             payment_request.external_reference = codpaymentreference.cod_pago_referencia.ToString(); 
-            var paymentTransactionEntity = await InitialRegistrationPaymentTransaction(payment_request, codpaymentreference.codpagorefindex, studentPaymentDto.student.student_document_number);
+            
+            var paymentTransactionEntity = await InitialRegistrationPaymentTransaction(payment_request, codpaymentreference.codpagorefindex, studentPaymentDto.student.student_document_number, transaction_identifier);
             UnitOfWork.Set<TransaccionPagoEntity>().Add(paymentTransactionEntity);
             UnitOfWork.SaveChanges();
-             
+                     
             var create_payment = await BridgeApplication.PostInvoque<PaymentDto, PaymentReceivedDto>(payment_request, 
                 string.Concat(_appSettings.MercadoPagoServices.CreatePayment, UtilConstants.ContentService.InitialAccessToken + _appSettings.MercadoPagoCredentials.AccessToken),
                 _appSettings.MercadoPagoCredentials.AccessToken, PropiedadesConstants.TypeRequest.POST);
@@ -98,6 +101,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             UnitOfWork.Set<TransaccionPagoEntity>().Update(paymentTransactionEntity);
             UnitOfWork.SaveChanges();
 
+            var id_payment_transaction = await MercadoPagoRepository.GetGuidKey(transaction_identifier); 
             if (!string.IsNullOrEmpty(studentPaymentDto.student.student_document_number.ToString()))
             {
                 var oPaymentTransaction = await MercadoPagoRepository.GetIdPaymentTransactionXDocument(studentPaymentDto.student.student_document_number.ToString().Trim());
@@ -107,43 +111,26 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                 };
                 UnitOfWork.Set<HistorialPagoSolicitudEntity>().Add(historyPaymentTransaction);
                 UnitOfWork.SaveChanges();
-            } 
-
-            var url_response_notification = new NotificationUrl();
+            }
+              
             create_payment.validations = new List<ValidationResponseDto>();
+            var historyWebhooks = new HistorialWebhooksEntity(); 
 
             if (create_payment.validations is null)
             { 
-                create_payment.validations.ForEach(x =>
+                create_payment.validations.ForEach(x => 
                 {
+                    response.TransactionId = DateTime.Now.ToString(UtilConstants.DateTimeFormats.DD_MM_YYYY_HH_MM_SS_FFF);
                     response.Status = x.status_code;
-                    response.Message = x.message.ToString(); 
+                    response.Message = x.message.ToString();
                 });
 
-                var urlBad = new NotificationUrl
-                {
-                    payment_notification_url = await GetUrlNotificationResult(create_payment.validations)
-                };
-                url_response_notification = urlBad; 
-                response.Data = url_response_notification; 
+                historyWebhooks = await RecordGuidHistory(id_payment_transaction, response, notification_webhook);
+                UnitOfWork.Set<HistorialWebhooksEntity>().Add(historyWebhooks);
+                UnitOfWork.SaveChanges();  
                 return response;
-            } 
-
-            var oExceptionOk = new ValidationResponseDto()
-            {
-                status_code = UtilConstants.CodigoEstado.Ok,
-                message = AlertResources.msg_correcto
-            };
+            }
              
-            create_payment.validations.Add(oExceptionOk);
-
-            var urlOk = new NotificationUrl
-            {
-                payment_notification_url = await GetUrlNotificationResult(create_payment.validations)
-            };
-
-            url_response_notification = urlOk;
-              
             var status = await MercadoPagoRepository.GetAllPaymentStatuses();
             var result = new Payment_ResponseDto
             {
@@ -170,13 +157,17 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                                 }).FirstOrDefault(),
                 payment_date_created = create_payment.date_created.ToString(),
                 payment_date_approved = create_payment.date_approved.ToString(),
-                payment_money_release_date = create_payment.money_release_date.ToString(),
-                payment_notification_url = url_response_notification.payment_notification_url
+                payment_money_release_date = create_payment.money_release_date.ToString()
             };
-
+            
             response.Status = UtilConstants.CodigoEstado.Ok;
             response.Message = AlertResources.msg_correcto;
             response.Data = result;
+
+            historyWebhooks = await RecordGuidHistory(id_payment_transaction, response, notification_webhook);
+            UnitOfWork.Set<HistorialWebhooksEntity>().Add(historyWebhooks);
+            UnitOfWork.SaveChanges(); 
+
             return response;
         }
 
@@ -296,7 +287,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             return cardRequest;
         }
 
-        private async Task<PaymentDto> RecordPaymentInformation(StudentPaymentDto studentPaymentDto)
+        private async Task<PaymentDto> RecordPaymentInformation(StudentPaymentDto studentPaymentDto, string notification_webhook)
         {
             MercadoPagoConfig.AccessToken = _appSettings.MercadoPagoCredentials.AccessToken; 
             var payment_response = new PaymentDto();
@@ -308,7 +299,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             additional_info_items = student_payment.additional_info.items; 
             payment_response.additional_info = new AdditionalInfoPaymentDto();
             payment_response.additional_info.items = new List<AdditionalInfoDto>();
-
+             
             foreach (var items in additional_info_items)
             {
                 var paymentItem = new AdditionalInfoDto()
@@ -347,15 +338,15 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             payment_response.capture = student_payment.capture;
             payment_response.external_reference = student_payment.external_reference;
             payment_response.installments = student_payment.installments;
-            payment_response.notification_url = student_payment.notification_url;
+            payment_response.notification_url = notification_webhook;
             payment_response.payment_method_id = student_payment.payment_method_id;
             payment_response.token = student_payment.token;
             payment_response.transaction_amount = student_payment.transaction_amount; 
             return payment_response;
         }
 
-        private async Task<TransaccionPagoEntity> InitialRegistrationPaymentTransaction(PaymentDto createRequest, int cod_pago_ref_index, string student_document_number)
-        {
+        private async Task<TransaccionPagoEntity> InitialRegistrationPaymentTransaction(PaymentDto createRequest, int cod_pago_ref_index, string student_document_number, string transaction_identifier)
+        { 
             var payment_transaction_entity = new TransaccionPagoEntity() 
             { 
                 CodPagoReferencia = createRequest.external_reference,
@@ -370,7 +361,8 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                 TokenCard = await EncryptionApplication.EncryptString(createRequest.token.ToString()),
                 MontoTransaccion = await EncryptionApplication.EncryptString(createRequest.transaction_amount.ToString()),
                 CodPagoRefIndex = cod_pago_ref_index,
-                NumeroDocumentoEstudiante = student_document_number.ToString()
+                NumeroDocumentoEstudiante = student_document_number.ToString(),
+                GuidKey = transaction_identifier.ToString()
             };  
             return payment_transaction_entity; 
         }
@@ -438,15 +430,9 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             return result;
         }
 
-        private async Task<string> GetUrlNotificationResult(List<ValidationResponseDto> result)
+        private async Task<string> GetUrlNotificationResult(string transaction_identifier)
         {
-            var response = string.Empty;
-            foreach (var item in result)
-            {
-                var url_response_notification = _appSettings.MercadoPagoServices.NoificationWebhook + UtilConstants.ContentService.StatusCode + item.status_code + UtilConstants.ContentService.Message + item.message.ToString();
-                response = url_response_notification;
-            }   
-            return response;
+            return _appSettings.MercadoPagoServices.NoificationWebhook + transaction_identifier; 
         }
 
         private async Task<List<ResulPaymentMethodDto>> SetResponsePaymentMethod(List<ResponsePaymentMethodDto> responsePaymentMethods)
@@ -512,7 +498,20 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             };
             return response;
         }
-         
+        private async Task<HistorialWebhooksEntity> RecordGuidHistory(PaymentTransactionDto paymentTransactionDto, ResponseDto response_history, string payment_notification_url)
+        {
+            var webhookEntity = new HistorialWebhooksEntity()
+            {
+                IdTransaccionPago = paymentTransactionDto.id_payment_transaction,
+                IdTransactionService = response_history.TransactionId,
+                StatusCode = response_history.Status.ToString(),
+                Message = response_history.Message.ToString(),
+                GuidUrl = payment_notification_url
+            };
+
+            return webhookEntity;
+        }
+
         #endregion
     }
 }

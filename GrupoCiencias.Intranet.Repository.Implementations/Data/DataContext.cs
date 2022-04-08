@@ -34,6 +34,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
             builder.ApplyConfiguration(new EstadoPagoConfiguration());
             builder.ApplyConfiguration(new TransaccionPagoConfiguration());
             builder.ApplyConfiguration(new HistorialPagoSolicitudConfiguration());
+            builder.ApplyConfiguration(new HistorialWebhooksConfiguration());
         }
 
         public virtual DbSet<SolicitudesEntity> Solicitudes { get; set; }
@@ -54,5 +55,6 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
         public virtual DbSet<EstadoPagoEntity> EstadoPagos { get; set; }
         public virtual DbSet<TransaccionPagoEntity> TransaccionPagos { get; set; }
         public virtual DbSet<HistorialPagoSolicitudEntity> HistorialPagoSolicitudes { get; set; }
+        public virtual DbSet<HistorialWebhooksEntity> HistorialWebhooks { get; set; }
     }
 }

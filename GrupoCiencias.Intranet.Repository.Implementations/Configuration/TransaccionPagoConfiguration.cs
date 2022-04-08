@@ -8,11 +8,11 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
     {
         public void Configure(EntityTypeBuilder<TransaccionPagoEntity> builder)
         {
+            builder.HasKey(e => e.IdTransaccionPago)
+                   .HasName("transaccion_pago_pkey");
+
             builder.ToTable("transaccion_pago");
 
-            builder.HasKey(e => e.IdTransaccionPago)
-                   .HasName("transaccion_pago_pkey"); 
-             
             builder.Property(e => e.IdTransaccionPago).HasColumnName("id_transaccion_pago");
 
             builder.Property(e => e.ApellidoTitular)
@@ -26,11 +26,11 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
             builder.Property(e => e.CodPagoRefIndex).HasColumnName("codpagorefindex");
 
             builder.Property(e => e.CuotasPago)
-                 .HasMaxLength(100)
+                .HasMaxLength(100)
                 .HasColumnName("cuotas_pago");
 
             builder.Property(e => e.EmailTitular)
-               .HasMaxLength(100)
+                .HasMaxLength(100)
                 .HasColumnName("email_titular");
 
             builder.Property(e => e.EstadoPago)
@@ -44,7 +44,6 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
             builder.Property(e => e.EstadoRegistro)
                 .HasColumnName("estado_registro")
                 .HasDefaultValueSql("1");
-             
 
             builder.Property(e => e.FechaAprovadaPago)
                 .HasMaxLength(100)
@@ -71,6 +70,10 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                 .HasMaxLength(100)
                 .HasColumnName("fecha_ultima_actualizacion");
 
+            builder.Property(e => e.GuidKey)
+                .HasMaxLength(200)
+                .HasColumnName("guid_key");
+
             builder.Property(e => e.IdComprobantePago)
                 .HasMaxLength(50)
                 .HasColumnName("id_comprobante_pago");
@@ -92,8 +95,12 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                 .HasColumnName("nombre_titular");
 
             builder.Property(e => e.NotificacionUrl)
-                .HasMaxLength(100)
+                .HasMaxLength(500)
                 .HasColumnName("notificacion_url");
+
+            builder.Property(e => e.NumeroDocumentoEstudiante)
+                .HasMaxLength(50)
+                .HasColumnName("numero_documento_estudiante");
 
             builder.Property(e => e.NumeroDocumentoTitular)
                 .HasMaxLength(100)
@@ -103,9 +110,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                 .HasMaxLength(50)
                 .HasColumnName("proveedor");
 
-            builder.Property(e => e.TipoDocumentoTitularId)
-                .HasColumnType("int4")
-                .HasColumnName("tipo_documento_titular_id");
+            builder.Property(e => e.TipoDocumentoTitularId).HasColumnName("tipo_documento_titular_id");
 
             builder.Property(e => e.TipoMoneda)
                 .HasMaxLength(100)
@@ -114,11 +119,6 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
             builder.Property(e => e.TokenCard)
                 .HasMaxLength(200)
                 .HasColumnName("token_card");
-
-            builder.Property(e => e.NumeroDocumentoEstudiante)
-              .HasMaxLength(50)
-              .HasColumnName("numero_documento_estudiante");
-            
         }
     }
 }

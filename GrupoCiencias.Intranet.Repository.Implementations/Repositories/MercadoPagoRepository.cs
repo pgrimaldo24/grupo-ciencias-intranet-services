@@ -57,5 +57,17 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                             .OrderByDescending(od => od.id_payment_transaction)
                             .FirstOrDefaultAsync();
         }
+
+        public async Task<PaymentTransactionDto> GetGuidKey(string transaction_identifier)
+        {
+            return await context.TransaccionPagos.Where(x => x.GuidKey == transaction_identifier && x.EstadoRegistro == 1)
+                           .Select(tp => new PaymentTransactionDto
+                           {
+                               id_payment_transaction = tp.IdTransaccionPago,
+                               reference_number = tp.CodPagoReferencia.ToString()
+                           })
+                           .OrderByDescending(od => od.id_payment_transaction)
+                           .FirstOrDefaultAsync();
+        }
     }
 }
