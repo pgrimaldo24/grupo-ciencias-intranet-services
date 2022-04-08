@@ -66,7 +66,6 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                                id_payment_transaction = tp.IdTransaccionPago,
                                reference_number = tp.CodPagoReferencia.ToString()
                            })
-                           .OrderByDescending(od => od.id_payment_transaction)
                            .FirstOrDefaultAsync();
         }
     }
