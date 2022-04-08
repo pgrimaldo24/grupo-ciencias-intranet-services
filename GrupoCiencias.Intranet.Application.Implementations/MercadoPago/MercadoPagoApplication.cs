@@ -96,25 +96,10 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             var create_payment = await BridgeApplication.PostInvoque<PaymentDto, PaymentReceivedDto>(payment_request, 
                 string.Concat(_appSettings.MercadoPagoServices.CreatePayment, UtilConstants.ContentService.InitialAccessToken + _appSettings.MercadoPagoCredentials.AccessToken),
                 _appSettings.MercadoPagoCredentials.AccessToken, PropiedadesConstants.TypeRequest.POST);
-
-            paymentTransactionEntity = await TransactionProcessCompleted(create_payment);
-            UnitOfWork.Set<TransaccionPagoEntity>().Update(paymentTransactionEntity);
-            UnitOfWork.SaveChanges();
-
-            var id_payment_transaction = await MercadoPagoRepository.GetGuidKey(transaction_identifier); 
-            if (!string.IsNullOrEmpty(studentPaymentDto.student.student_document_number.ToString()))
-            {
-                var oPaymentTransaction = await MercadoPagoRepository.GetIdPaymentTransactionXDocument(studentPaymentDto.student.student_document_number.ToString().Trim());
-                var historyPaymentTransaction = new HistorialPagoSolicitudEntity()
-                {
-                    IdTransaccionPago = oPaymentTransaction.id_payment_transaction
-                };
-                UnitOfWork.Set<HistorialPagoSolicitudEntity>().Add(historyPaymentTransaction);
-                UnitOfWork.SaveChanges();
-            }
-              
+             
             create_payment.validations = new List<ValidationResponseDto>();
-            var historyWebhooks = new HistorialWebhooksEntity(); 
+            var historyWebhooks = new HistorialWebhooksEntity();
+            var id_payment_transaction = await MercadoPagoRepository.GetGuidKey(transaction_identifier);
 
             if (create_payment.validations is null)
             { 
@@ -130,7 +115,20 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                 UnitOfWork.SaveChanges();  
                 return response;
             }
+
+            paymentTransactionEntity = await TransactionProcessCompleted(create_payment);
+            UnitOfWork.Set<TransaccionPagoEntity>().Update(paymentTransactionEntity);
+            UnitOfWork.SaveChanges();
              
+            if (!string.IsNullOrEmpty(studentPaymentDto.student.student_document_number.ToString()))
+            {
+                var oPaymentTransaction = await MercadoPagoRepository.GetIdPaymentTransactionXDocument(studentPaymentDto.student.student_document_number.ToString().Trim());
+                var historyPaymentTransaction = new HistorialPagoSolicitudEntity();
+                historyPaymentTransaction.IdTransaccionPago = oPaymentTransaction.id_payment_transaction;
+                UnitOfWork.Set<HistorialPagoSolicitudEntity>().Add(historyPaymentTransaction);
+                UnitOfWork.SaveChanges();
+            }
+
             var status = await MercadoPagoRepository.GetAllPaymentStatuses();
             var result = new Payment_ResponseDto
             {

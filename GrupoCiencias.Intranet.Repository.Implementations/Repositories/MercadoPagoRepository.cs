@@ -47,15 +47,13 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
         }
 
         public async Task<PaymentTransactionDto> GetIdPaymentTransactionXDocument(string student_document_number)
-        {
-            return await context.TransaccionPagos.Where(x => x.NumeroDocumentoEstudiante == student_document_number && x.EstadoRegistro == 1)
-                            .Select(tp => new PaymentTransactionDto
-                            {
-                                id_payment_transaction = tp.IdTransaccionPago,
-                                reference_number = tp.CodPagoReferencia.ToString()
-                            })
-                            .OrderByDescending(od => od.id_payment_transaction)
-                            .FirstOrDefaultAsync();
+        { 
+            var paymentTransaction = await context.TransaccionPagos.Where(x => x.NumeroDocumentoEstudiante == student_document_number && x.EstadoRegistro == 1).OrderByDescending(od => od.IdTransaccionPago).FirstOrDefaultAsync();
+            var result = new PaymentTransactionDto()
+            {
+                id_payment_transaction = paymentTransaction.IdTransaccionPago
+            }; 
+            return result;
         }
 
         public async Task<PaymentTransactionDto> GetGuidKey(string transaction_identifier)
@@ -65,8 +63,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                            {
                                id_payment_transaction = tp.IdTransaccionPago,
                                reference_number = tp.CodPagoReferencia.ToString()
-                           })
-                           .FirstOrDefaultAsync();
+                           }).FirstOrDefaultAsync();
         }
     }
 }

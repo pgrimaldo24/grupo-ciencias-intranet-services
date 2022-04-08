@@ -56,7 +56,6 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
 
             var oPayment_transaction = await MercadoPagoRepository.GetIdPaymentTransactionXDocument(solicitudDto.document_number.ToString().Trim()); 
             var oRequestInfo = await MatriculaRepository.GetIdEnrollmentByDocumentNumber(solicitudDto.document_number); 
-
             var oIdPaymentTransaction = new HistorialPagoSolicitudEntity();
             oIdPaymentTransaction = await MatriculaRepository.GetIdHistoryPaymentTransaction(oPayment_transaction.id_payment_transaction);
             oIdPaymentTransaction.IdSolicitud = oRequestInfo.Idsolicitud;  

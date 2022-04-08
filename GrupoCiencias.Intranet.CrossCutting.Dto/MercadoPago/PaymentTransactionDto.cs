@@ -4,6 +4,7 @@
     { 
         public int id_payment_transaction { get; set; }
         public string reference_number { get; set; }
+        public int id_solicitud { get; set; }
     }
      
 }
