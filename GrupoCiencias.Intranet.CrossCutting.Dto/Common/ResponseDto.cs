@@ -21,8 +21,31 @@ namespace GrupoCiencias.Intranet.CrossCutting.Dto.Common
         public string TransactionId { get; set; }
         public int Status { get; set; }
         public string Message { get; set; }
-        public dynamic Data { get; set; }
+        public dynamic Data { get; set; } 
     }
+
+    public class ResponseBadRequest
+    {
+        public ResponseBadRequest()
+        { 
+            TransactionId = DateTime.Now.ToString(UtilConstants.DateTimeFormats.DD_MM_YYYY_HH_MM_SS_FFF); 
+            Cause = new List<CauseDto>();
+        }
+
+        public string TransactionId { get; set; }
+        public int Status { get; set; }
+        public string Message { get; set; }
+        public string Error { get; set; }
+        public List<CauseDto> Cause { get; set; }
+    }
+
+    public class CauseDto
+    {
+        public int Code { get; set; }
+        public string Description { get; set; }
+        public string Data { get; set; }
+    }
+
 
     [Serializable]
     public class Dynamic : DynamicObject, ISerializable

@@ -21,7 +21,8 @@
         public Payment_StatusDto payment_status_detail { get; set; }
         public string payment_date_created { get; set; }
         public string payment_date_approved { get; set; }
-        public string payment_money_release_date { get; set; } 
+        public string payment_money_release_date { get; set; }
+        public string payment_notification_url { get; set; }
     }
 
     public class Payment_StatusDto

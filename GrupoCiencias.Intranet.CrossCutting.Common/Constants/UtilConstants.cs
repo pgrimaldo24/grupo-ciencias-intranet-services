@@ -26,8 +26,8 @@
             public const int Created = 201;
             public const int NotFound = 404;
             public const int Forbidden = 403;
-            public const int InternalServerError = 500; 
-
+            public const int InternalServerError = 500;
+            public const int BadRequest = 400;
             public const int ProtocolError = 1201;
             public const int ConnectionClosed = 444; 
             public const int Pending = 202;

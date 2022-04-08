@@ -61,6 +61,15 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
         }
 
         /// <summary>
+        ///   Busca una cadena traducida similar a Ha ocurrido un error, el atributo notificaction_url no existe, inténtelo de nuevo..
+        /// </summary>
+        public static string msg_alerta_webhook_error {
+            get {
+                return ResourceManager.GetString("msg_alerta_webhook_error", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Busca una cadena traducida similar a Se procesó correctamente..
         /// </summary>
         public static string msg_correcto {
@@ -176,7 +185,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("str_response", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Busca una cadena traducida similar a INFO : URL -&gt;.
         /// </summary>

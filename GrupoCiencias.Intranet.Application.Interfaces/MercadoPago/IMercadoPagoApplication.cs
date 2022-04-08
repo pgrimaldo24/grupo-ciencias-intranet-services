@@ -11,5 +11,6 @@ namespace GrupoCiencias.Intranet.Application.Interfaces.MercadoPago
         Task<ResponseDto> CreatePaymentAsync(StudentPaymentDto studentPaymentDto);
         Task<ResponseDto> IdentificationTypesAsync();
         Task<ResponseDto> CardValidationAsync();
+        Task<ResponseDto> NotificationWebhooksAsync(string notificaction_url);
     }
 }

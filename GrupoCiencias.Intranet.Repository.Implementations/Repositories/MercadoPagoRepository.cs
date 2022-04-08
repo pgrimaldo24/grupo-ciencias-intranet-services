@@ -1,5 +1,6 @@
 ﻿using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
 using GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago;
+using GrupoCiencias.Intranet.Domain.Models.Entity;
 using GrupoCiencias.Intranet.Domain.Models.MercadoPago;
 using GrupoCiencias.Intranet.Repository.Implementations.Data;
 using GrupoCiencias.Intranet.Repository.Interfaces.Repositories;
@@ -64,6 +65,28 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                                id_payment_transaction = tp.IdTransaccionPago,
                                reference_number = tp.CodPagoReferencia.ToString()
                            }).FirstOrDefaultAsync();
+        }
+
+        public async Task<NotificationWebhooksDto> GetNotificationServices(string notificaction_url)
+        {
+            var historialWebhooksEntity = new HistorialWebhooksEntity();
+            var notificationWebhooksDto = new NotificationWebhooksDto();
+            
+            if (!string.IsNullOrEmpty(notificaction_url))
+                historialWebhooksEntity = await context.HistorialWebhooks.Where(hwk => hwk.GuidUrl == notificaction_url).OrderByDescending(hwbk => hwbk.IdHistorialWebhooks).FirstOrDefaultAsync();
+
+            if (historialWebhooksEntity.IdHistorialWebhooks == 0) 
+                return notificationWebhooksDto;
+
+            if (!ReferenceEquals(null, historialWebhooksEntity))
+            {
+                notificationWebhooksDto.id_history_webhook = historialWebhooksEntity.IdHistorialWebhooks;
+                notificationWebhooksDto.id_transaction_service = historialWebhooksEntity.IdTransactionService;
+                notificationWebhooksDto.status_code = historialWebhooksEntity.StatusCode.ToString();
+                notificationWebhooksDto.message = historialWebhooksEntity.Message.ToString();
+            } 
+
+            return notificationWebhooksDto;
         }
     }
 }
