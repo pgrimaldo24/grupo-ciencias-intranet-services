@@ -75,8 +75,7 @@ namespace GrupoCiencias.Intranet.Testing.Application.MercadoPago
             oCreatePayment.binary_mode = true;
             oCreatePayment.capture = true;
             oCreatePayment.external_reference = "";
-            oCreatePayment.installments = 1; 
-            oCreatePayment.notification_url = "https://intranet.catalogobata.pe/CatalogoBata/Pedido/Lista";
+            oCreatePayment.installments = 1;  
             oCreatePayment.payer = new PayerRequestDto
             {
                 email = "test_user_17191298@testuser.com",

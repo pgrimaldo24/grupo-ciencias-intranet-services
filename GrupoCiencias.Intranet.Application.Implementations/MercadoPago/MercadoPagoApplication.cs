@@ -8,8 +8,7 @@ using GrupoCiencias.Intranet.CrossCutting.Dto.Common;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
 using GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago;
 using GrupoCiencias.Intranet.CrossCutting.IoC.Container;
-using GrupoCiencias.Intranet.Domain.Models.Entity;
-using GrupoCiencias.Intranet.Domain.Models.MercadoPago;
+using GrupoCiencias.Intranet.Domain.Models.Entity; 
 using GrupoCiencias.Intranet.Repository.Interfaces.Data;
 using GrupoCiencias.Intranet.Repository.Interfaces.Repositories;
 using MercadoPago.Client.Common;
@@ -95,7 +94,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                 _appSettings.MercadoPagoCredentials.AccessToken, PropiedadesConstants.TypeRequest.POST);
              
             create_payment.validations = new List<ValidationResponseDto>();
-            var historyWebhooks = new HistorialWebhooksEntity();
+            var historyWebhooks = new HistorialWebhookEntity();
             var id_payment_transaction = await MercadoPagoRepository.GetGuidKey(transaction_identifier);
 
             if (create_payment.validations is null)
@@ -108,7 +107,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                 });
 
                 historyWebhooks = await RecordGuidHistory(id_payment_transaction, response, url_notification_webhook);
-                UnitOfWork.Set<HistorialWebhooksEntity>().Add(historyWebhooks);
+                UnitOfWork.Set<HistorialWebhookEntity>().Add(historyWebhooks);
                 UnitOfWork.SaveChanges();  
                 return response;
             }
@@ -164,7 +163,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             }; 
 
             historyWebhooks = await RecordGuidHistory(id_payment_transaction, result, url_notification_webhook);
-            UnitOfWork.Set<HistorialWebhooksEntity>().Add(historyWebhooks);
+            UnitOfWork.Set<HistorialWebhookEntity>().Add(historyWebhooks);
             UnitOfWork.SaveChanges(); 
 
             return result;
@@ -377,7 +376,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                 MetodoPagoId = await EncryptionApplication.EncryptString(createRequest.payment_method_id.ToString()),
                 TokenCard = await EncryptionApplication.EncryptString(createRequest.token.ToString()),
                 MontoTransaccion = await EncryptionApplication.EncryptString(createRequest.transaction_amount.ToString()),
-                CodPagoRefIndex = cod_pago_ref_index,
+                Codpagorefindex = cod_pago_ref_index,
                 NumeroDocumentoEstudiante = student_document_number.ToString(),
                 GuidKey = transaction_identifier.ToString()
             };  
@@ -510,15 +509,15 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             };
             return response;
         }
-        private async Task<HistorialWebhooksEntity> RecordGuidHistory(PaymentTransactionDto paymentTransactionDto, ResponseDto response_history, string payment_notification_url)
+        private async Task<HistorialWebhookEntity> RecordGuidHistory(PaymentTransactionDto paymentTransactionDto, ResponseDto response_history, string payment_notification_url)
         {
-            var webhookEntity = new HistorialWebhooksEntity()
+            var webhookEntity = new HistorialWebhookEntity()
             {
                 IdTransaccionPago = paymentTransactionDto.id_payment_transaction,
                 IdTransactionService = response_history.TransactionId,
                 StatusCode = response_history.Status.ToString(),
                 Message = response_history.Message.ToString(),
-                GuidUrl = payment_notification_url
+                UrlGuid = payment_notification_url
             };
 
             return webhookEntity;

@@ -58,7 +58,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
             var oRequestInfo = await MatriculaRepository.GetIdEnrollmentByDocumentNumber(solicitudDto.document_number); 
             var oIdPaymentTransaction = new HistorialPagoSolicitudEntity();
             oIdPaymentTransaction = await MatriculaRepository.GetIdHistoryPaymentTransaction(oPayment_transaction.id_payment_transaction);
-            oIdPaymentTransaction.IdSolicitud = oRequestInfo.Idsolicitud;  
+            oIdPaymentTransaction.Idsolicitud = oRequestInfo.Idsolicitud;  
             UnitOfWork.Set<HistorialPagoSolicitudEntity>().Update(oIdPaymentTransaction);
             UnitOfWork.SaveChanges(); 
             return response;
@@ -77,10 +77,10 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
                 Dni = solicitudDto.document_number,                                
                 Correo = solicitudDto.email,
                 Universidad = solicitudDto.university,
-                id_sede = solicitudDto.headquarters,
+                IdSede = solicitudDto.headquarters,
                 CarreraInteres = solicitudDto.career,
                 Ciclo = solicitudDto.cycle,
-                id_tipopago = solicitudDto.payment_type,
+                IdTipopago = solicitudDto.payment_type,
                 MedioInfo = solicitudDto.medio_info,
                 Referido = solicitudDto.referred,
                 RutaFotoPerfil = solicitudDto.route_photo_profile,

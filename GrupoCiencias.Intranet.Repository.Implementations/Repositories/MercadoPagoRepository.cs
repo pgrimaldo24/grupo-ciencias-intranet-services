@@ -1,7 +1,6 @@
 ﻿using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
 using GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago;
-using GrupoCiencias.Intranet.Domain.Models.Entity;
-using GrupoCiencias.Intranet.Domain.Models.MercadoPago;
+using GrupoCiencias.Intranet.Domain.Models.Entity; 
 using GrupoCiencias.Intranet.Repository.Implementations.Data;
 using GrupoCiencias.Intranet.Repository.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -28,10 +27,10 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
         public async Task<PagoReferenceDto> GetMaxIdExternalReference()
         {
             return await context.TransaccionPagos.Where(y => y.CodPagoReferencia != null)
-                                    .OrderByDescending(x => x.CodPagoRefIndex)
+                                    .OrderByDescending(x => x.Codpagorefindex)
                                     .Take(1).Select(tr => new PagoReferenceDto
                                             {
-                                              codpagorefindex = (int)tr.CodPagoRefIndex
+                                              codpagorefindex = (int)tr.Codpagorefindex
                                             }).FirstOrDefaultAsync(); 
 
         }
@@ -69,11 +68,11 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
 
         public async Task<NotificationWebhooksDto> GetNotificationServices(string notificaction_url)
         {
-            var historialWebhooksEntity = new HistorialWebhooksEntity();
+            var historialWebhooksEntity = new HistorialWebhookEntity();
             var notificationWebhooksDto = new NotificationWebhooksDto();
             
             if (!string.IsNullOrEmpty(notificaction_url))
-                historialWebhooksEntity = await context.HistorialWebhooks.Where(hwk => hwk.GuidUrl == notificaction_url).OrderByDescending(hwbk => hwbk.IdHistorialWebhooks).FirstOrDefaultAsync();
+                historialWebhooksEntity = await context.HistorialWebhooks.Where(hwk => hwk.UrlGuid == notificaction_url).OrderByDescending(hwbk => hwbk.IdHistorialWebhooks).FirstOrDefaultAsync();
 
             if (historialWebhooksEntity.IdHistorialWebhooks == 0) 
                 return notificationWebhooksDto;

@@ -21,20 +21,11 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
 
             builder.Property(e => e.Nombre)
                 .HasMaxLength(100)
-                .HasColumnName("nombre");
-
-            builder.Property(e => e.Idmaster)
-                  .HasMaxLength(50)
-                  .HasColumnName("idmaster");
+                .HasColumnName("nombre"); 
 
             builder.Property(e => e.Activo)
                .HasColumnName("activo")
-               .HasDefaultValueSql("1");
-
-            builder.HasOne(d => d.Master)
-                 .WithMany(p => p.Universidads)
-                 .HasForeignKey(d => d.Idmaster)
-                 .HasConstraintName("master__carreras_constraint");
+               .HasDefaultValueSql("1"); 
         }
     }
 }

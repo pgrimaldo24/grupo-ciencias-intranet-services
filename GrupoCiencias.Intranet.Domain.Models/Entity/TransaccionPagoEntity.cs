@@ -1,15 +1,14 @@
-﻿using GrupoCiencias.Intranet.Domain.Models.Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace GrupoCiencias.Intranet.Domain.Models.MercadoPago
+
+namespace GrupoCiencias.Intranet.Domain.Models.Entity
 {
-    public class TransaccionPagoEntity
-    { 
+    public partial class TransaccionPagoEntity
+    {
         public int IdTransaccionPago { get; set; }
         public string IdComprobantePago { get; set; }
         public string CodPagoReferencia { get; set; }
-        public int? CodPagoRefIndex { get; set; }
         public string CuotasPago { get; set; }
         public string NotificacionUrl { get; set; }
         public string NombreTitular { get; set; }
@@ -19,7 +18,8 @@ namespace GrupoCiencias.Intranet.Domain.Models.MercadoPago
         public int? TipoDocumentoTitularId { get; set; }
         public string MetodoPagoId { get; set; }
         public string TokenCard { get; set; }
-        public string MontoTransaccion { get; set; } 
+        public string MontoTransaccion { get; set; }
+        public string EstadoTransaccionPago { get; set; }
         public string FechaCreadaPago { get; set; }
         public string FechaAprovadaPago { get; set; }
         public string FechaUltimaActualizacion { get; set; }
@@ -29,10 +29,11 @@ namespace GrupoCiencias.Intranet.Domain.Models.MercadoPago
         public string EstadoPagoDetalle { get; set; }
         public string TipoMoneda { get; set; }
         public string Proveedor { get; set; }
+        public int? Codpagorefindex { get; set; }
         public DateTime FechaCreacionRegistro { get; set; }
         public DateTime? FechaBajaRegistro { get; set; }
         public int EstadoRegistro { get; set; }
         public string NumeroDocumentoEstudiante { get; set; }
-        public string GuidKey { get; set; } 
+        public string GuidKey { get; set; }
     }
 }

@@ -29,7 +29,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                         Password = key.Clave.ToString(),
                         Description = key.Descripcion.ToString(),
                         Status = Convert.ToString(key.Estado),
-                        CreationDate = key.FechaCreacion.ToString("yyyyMMdd")
+                        CreationDate = key.Fechacreacion.ToString("yyyyMMdd")
                     })
                     .FirstOrDefaultAsync();
         }

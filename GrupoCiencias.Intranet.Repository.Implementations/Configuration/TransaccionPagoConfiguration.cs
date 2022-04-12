@@ -1,4 +1,4 @@
-﻿using GrupoCiencias.Intranet.Domain.Models.MercadoPago;
+﻿using GrupoCiencias.Intranet.Domain.Models.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -23,7 +23,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                 .HasMaxLength(50)
                 .HasColumnName("cod_pago_referencia");
 
-            builder.Property(e => e.CodPagoRefIndex).HasColumnName("codpagorefindex");
+            builder.Property(e => e.Codpagorefindex).HasColumnName("codpagorefindex");
 
             builder.Property(e => e.CuotasPago)
                 .HasMaxLength(100)

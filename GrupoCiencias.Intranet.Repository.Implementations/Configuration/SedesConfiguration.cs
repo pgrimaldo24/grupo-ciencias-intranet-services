@@ -28,10 +28,6 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                 .HasColumnName("fechacreacion")
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-            builder.Property(e => e.Idmaster)
-                .HasMaxLength(50)
-                .HasColumnName("idmaster");
-
             builder.Property(e => e.Usuario)
                 .IsRequired()
                 .HasMaxLength(100)
@@ -41,11 +37,6 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
             builder.Property(e => e.Valor)
                 .HasMaxLength(200)
                 .HasColumnName("valor");
-
-            builder.HasOne(d => d.Master)
-                .WithMany(p => p.Sedes)
-                .HasForeignKey(d => d.Idmaster)
-                .HasConstraintName("master_sedes_constraint");
         }
     }
 }

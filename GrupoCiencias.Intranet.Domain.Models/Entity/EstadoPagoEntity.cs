@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace GrupoCiencias.Intranet.Domain.Models.MercadoPago
+namespace GrupoCiencias.Intranet.Domain.Models.Entity
 {
-    public class EstadoPagoEntity
+    public partial class EstadoPagoEntity
     {
-        public int IdEstadoPago { get; set; }
+        public int Idestadopago { get; set; }
         public string EstadoPago { get; set; }
         public string EstadoPagoDetalle { get; set; }
         public string Descripcion { get; set; }

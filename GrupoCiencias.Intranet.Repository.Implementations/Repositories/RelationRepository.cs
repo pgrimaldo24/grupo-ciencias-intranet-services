@@ -42,7 +42,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
 
         public async Task<List<MasterDto>> GetListAreasXIdAsync(int idUniversity)
         {
-            return await context.AreasCarrera.Where(x => x.Iduniversidad.Equals(idUniversity) && x.isArea.Equals(1))
+            return await context.AreasCarrera.Where(x => x.Iduniversidad.Equals(idUniversity) && x.Isarea.Equals(1))
                     .OrderBy(r => r.Idarea)
                     .Select(o => new MasterDto
                     {
@@ -66,10 +66,10 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
         public async Task<List<MasterDto>> GetListTypeMatriculaAsync()
         {
             return await context.TipoPagos.Where(x => x.Activo.Equals(1))
-               .OrderBy(r => r.Idmaster)
+               .OrderBy(r => r.IdtipoPago)
                .Select(u => new MasterDto
                {
-                   code = u.Idred,
+                   code = u.IdtipoPago,
                    name = u.Valor
                })
                .ToListAsync();

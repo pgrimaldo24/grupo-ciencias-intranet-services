@@ -14,16 +14,16 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
 
             builder.Property(e => e.IdHistorialPagoSolicitud).HasColumnName("id_historial_pago_solicitud");
 
-            builder.Property(e => e.IdSolicitud).HasColumnName("idsolicitud");
+            builder.Property(e => e.Idsolicitud).HasColumnName("idsolicitud");
 
             builder.Property(e => e.IdTransaccionPago).HasColumnName("id_transaccion_pago");
 
-            builder.Property(e => e.FechaCreacion)
+            builder.Property(e => e.Fechacreacion)
                  .HasColumnType("date")
                  .HasColumnName("fechacreacion")
                  .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-            builder.Property(e => e.FechaBaja)
+            builder.Property(e => e.Fechabaja)
                   .HasColumnType("date")
                   .HasColumnName("fechabaja");
         }

@@ -1,16 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GrupoCiencias.Intranet.Domain.Models.Entity
 {
-    public class KeyAppEntity
+    public partial class KeyappEntity
     {
         public int Id { get; set; }
         public string Usuario { get; set; }
         public string Clave { get; set; }
         public string Descripcion { get; set; }
         public int Estado { get; set; }
-        public string Usuario_Creacion { get; set; }
-        public DateTime FechaCreacion { get; set; }
-        public DateTime? FechaBaja { get; set; } 
+        public string UsuarioCreacion { get; set; }
+        public DateTime Fechacreacion { get; set; }
+        public DateTime? Fechabaja { get; set; }
     }
 }

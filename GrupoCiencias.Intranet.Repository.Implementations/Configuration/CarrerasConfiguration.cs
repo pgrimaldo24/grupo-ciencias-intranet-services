@@ -23,23 +23,15 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
 
             builder.Property(e => e.Idarea).HasColumnName("idarea");
 
-            builder.Property(e => e.Idmaster)
-                  .HasMaxLength(50)
-                  .HasColumnName("idmaster");
-
+            
             builder.Property(e => e.Nombre)
                 .HasMaxLength(100)
                 .HasColumnName("nombre");
 
-            builder.HasOne(d => d.AreasCarrera)
+            builder.HasOne(d => d.AreaCarrerasNavigation)
                 .WithMany(p => p.Carreras)
                 .HasForeignKey(d => d.Idarea)
-                .HasConstraintName("areas_carreras_constraint");
-
-            builder.HasOne(d => d.Master)
-                .WithMany(p => p.Carreras)
-                .HasForeignKey(d => d.Idmaster)
-                .HasConstraintName("carreras_master_constraint");
+                .HasConstraintName("areas_carreras_constraint"); 
         }
     }
 }

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
 {
-    public class AreasCarreraConfiguration : IEntityTypeConfiguration<AreasCarreraEntity>
+    public class AreasCarreraConfiguration : IEntityTypeConfiguration<AreasCarrerasEntity>
     {
-        public void Configure(EntityTypeBuilder<AreasCarreraEntity> builder)
+        public void Configure(EntityTypeBuilder<AreasCarrerasEntity> builder)
         {
             builder.HasKey(e => e.Idarea)
                                 .HasName("areas_carrera_pkey");
@@ -39,12 +39,12 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
 
             builder.Property(e => e.PreguntaIncorrecta).HasColumnName("pregunta_incorrecta");
 
-            builder.HasOne(d => d.Universidad)
+            builder.HasOne(d => d.UniversidadNavigation)
                 .WithMany(p => p.AreasCarreras)
                 .HasForeignKey(d => d.Iduniversidad)
                 .HasConstraintName("areas_carreras_universidad_constraint");
 
-            builder.Property(e => e.isArea).HasColumnName("isarea");
+            builder.Property(e => e.Isarea).HasColumnName("isarea");
         }
     }
 }

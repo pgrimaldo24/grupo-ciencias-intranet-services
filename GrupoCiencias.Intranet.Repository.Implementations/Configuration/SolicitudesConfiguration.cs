@@ -97,14 +97,14 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                 .HasMaxLength(100)
                 .HasColumnName("universidad");
 
-            builder.HasOne(d => d.Apoderado)
+            builder.HasOne(d => d.ApoderadoNavigation)
                 .WithMany(p => p.Solicitudes)
                 .HasForeignKey(d => d.Idapoderado)
                 .HasConstraintName("apoderados_constraint");
 
-            builder.Property(e => e.id_sede).HasColumnName("id_sede");
+            builder.Property(e => e.IdSede).HasColumnName("id_sede");
 
-            builder.Property(e => e.id_tipopago).HasColumnName("id_tipopago");
+            builder.Property(e => e.IdTipopago).HasColumnName("id_tipopago");
 
             builder.Property(e => e.PoliticasVeracidad).HasColumnName("politicas_veracidad");
         }

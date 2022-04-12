@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
 {
-    public class TipoDocumentoConfiguration : IEntityTypeConfiguration<TipoDocumentoEntity>
+    public class TipoDocumentoConfiguration : IEntityTypeConfiguration<TipoDocumentosEntity>
     {
-        public void Configure(EntityTypeBuilder<TipoDocumentoEntity> builder)
+        public void Configure(EntityTypeBuilder<TipoDocumentosEntity> builder)
         {
             builder.ToTable("tipo_documentos");
 
@@ -25,9 +25,6 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                 .HasColumnName("fechacreacion")
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-            builder.Property(e => e.Idmaster)
-                .HasMaxLength(50)
-                .HasColumnName("idmaster");
 
             builder.Property(e => e.Usuario)
                 .IsRequired()
@@ -37,12 +34,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
 
             builder.Property(e => e.Valor)
                 .HasMaxLength(200)
-                .HasColumnName("valor");
-
-            builder.HasOne(d => d.Master)
-                .WithMany(p => p.TipoDocumentos)
-                .HasForeignKey(d => d.Idmaster)
-                .HasConstraintName("master_tipo_documentos_constraint");
+                .HasColumnName("valor"); 
         }
     }
 }

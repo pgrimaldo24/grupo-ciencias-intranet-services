@@ -8,12 +8,12 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
     {
         public void Configure(EntityTypeBuilder<TipoPagoEntity> builder)
         {
-            builder.HasKey(e => e.Idred)
+            builder.HasKey(e => e.IdtipoPago)
                   .HasName("redsocial_pkey");
 
             builder.ToTable("tipo_pago");
 
-            builder.Property(e => e.Idred).HasColumnName("idred");
+            builder.Property(e => e.IdtipoPago).HasColumnName("idtipo_pago");
 
             builder.Property(e => e.Activo)
                 .HasColumnName("activo")
@@ -27,11 +27,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                 .HasColumnType("date")
                 .HasColumnName("fechacreacion")
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
-
-            builder.Property(e => e.Idmaster)
-                .HasMaxLength(50)
-                .HasColumnName("idmaster");
-
+             
             builder.Property(e => e.Usuario)
                 .IsRequired()
                 .HasMaxLength(100)
@@ -41,11 +37,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
             builder.Property(e => e.Valor)
                 .HasMaxLength(200)
                 .HasColumnName("valor");
-
-            builder.HasOne(d => d.Master)
-                .WithMany(p => p.Redsocials)
-                .HasForeignKey(d => d.Idmaster)
-                .HasConstraintName("master_redsocial_constraint");
+ 
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
 using GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago;
-using GrupoCiencias.Intranet.Domain.Models.MercadoPago;
+using GrupoCiencias.Intranet.Domain.Models.Entity;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

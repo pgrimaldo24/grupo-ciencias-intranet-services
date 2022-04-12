@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
 {
-    public class HistorialWebhooksConfiguration : IEntityTypeConfiguration<HistorialWebhooksEntity>
+    public class HistorialWebhooksConfiguration : IEntityTypeConfiguration<HistorialWebhookEntity>
     {
-        public void Configure(EntityTypeBuilder<HistorialWebhooksEntity> builder)
+        public void Configure(EntityTypeBuilder<HistorialWebhookEntity> builder)
         {
             builder.HasKey(e => e.IdHistorialWebhooks)
                    .HasName("historial_webhooks_pkey");
@@ -37,7 +37,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                 .HasMaxLength(15)
                 .HasColumnName("status_code");
 
-            builder.Property(e => e.GuidUrl)
+            builder.Property(e => e.UrlGuid)
                 .HasMaxLength(200)
                 .HasColumnName("url_guid");
         }

@@ -28,13 +28,13 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
 
         public async Task<PreciosMatriculaDto> EnrollmentPricesListAsync(int IdPeriod, int IdPaymentType)
         {
-            return await context.TipoPagoDetalle.Where(x => x.idciclo == IdPeriod && x.idtipopago == IdPaymentType)
+            return await context.TipoPagoDetalle.Where(x => x.Idciclo == IdPeriod && x.Idtipopago == IdPaymentType)
                   .Select(precioMatricula => new PreciosMatriculaDto
                   {
-                      id_detail_payment = precioMatricula.idpagodetalle,
-                      sub_total = precioMatricula.subtotal,
-                      discount = precioMatricula.descuento,
-                      final_price = precioMatricula.preciofinal,
+                      id_detail_payment = precioMatricula.Idpagodetalle,
+                      sub_total = precioMatricula.Subtotal,
+                      discount = precioMatricula.Descuento,
+                      final_price = precioMatricula.Preciofinal,
                   })
                   .FirstOrDefaultAsync();
         }
@@ -46,7 +46,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
               {
                   IdHistorialPagoSolicitud = hpsd.IdHistorialPagoSolicitud,
                   IdTransaccionPago = hpsd.IdTransaccionPago,
-                  FechaCreacion = hpsd.FechaCreacion
+                  Fechacreacion = hpsd.Fechacreacion 
               }).FirstOrDefaultAsync();
         }
 

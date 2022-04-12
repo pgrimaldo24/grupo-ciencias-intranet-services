@@ -1,13 +1,15 @@
-﻿namespace GrupoCiencias.Intranet.Domain.Models.Entity
+﻿using System;
+using System.Collections.Generic;
+
+namespace GrupoCiencias.Intranet.Domain.Models.Entity
 {
-    public class TipoPagoDetalleEntity
+    public partial class TipoPagoDetalleEntity
     {
-        public int idpagodetalle { get; set; }
-        public int idtipopago { get; set; }
-        public int idciclo { get; set; }
-        public decimal subtotal { get; set; }
-        public decimal descuento { get; set; }
-        public decimal preciofinal { get; set; }
-        
+        public int Idpagodetalle { get; set; }
+        public int? Idtipopago { get; set; }
+        public int? Idciclo { get; set; }
+        public decimal Subtotal { get; set; }
+        public decimal Descuento { get; set; }
+        public decimal Preciofinal { get; set; }
     }
 }

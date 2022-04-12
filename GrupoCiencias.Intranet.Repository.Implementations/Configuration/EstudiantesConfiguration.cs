@@ -84,7 +84,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                 .HasMaxLength(20)
                 .HasColumnName("usuario");
 
-            builder.HasOne(d => d.Apoderado)
+            builder.HasOne(d => d.ApoderadoNavigation)
                 .WithMany(p => p.Estudiantes)
                 .HasForeignKey(d => d.Idapoderado)
                 .HasConstraintName("apoderados_estudiantes_constraint");

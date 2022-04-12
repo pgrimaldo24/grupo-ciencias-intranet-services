@@ -1,7 +1,15 @@
-﻿namespace GrupoCiencias.Intranet.Domain.Models.Entity
+﻿using System;
+using System.Collections.Generic;
+
+namespace GrupoCiencias.Intranet.Domain.Models.Entity
 {
-    public class EstudiantesEntity
+    public partial class EstudiantesEntity
     {
+        public EstudiantesEntity()
+        {
+            ExamenEstudiantes = new HashSet<ExamenEstudiantesEntity>();
+        }
+
         public int Idestudiante { get; set; }
         public int? Idciclo { get; set; }
         public int? Idapoderado { get; set; }
@@ -24,6 +32,8 @@
         public string RutaFotoDni2 { get; set; }
         public int? IdTipoDocumento { get; set; }
 
-        public virtual ApoderadosEntity Apoderado { get; set; }
+        public virtual ApoderadosEntity ApoderadoNavigation { get; set; }
+        public virtual CiclosEntity CicloNavigation { get; set; }
+        public virtual ICollection<ExamenEstudiantesEntity> ExamenEstudiantes { get; set; }
     }
 }

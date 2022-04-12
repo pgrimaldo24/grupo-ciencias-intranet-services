@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GrupoCiencias.Intranet.Domain.Models.Entity
 {
-    public class SolicitudesEntity
+    public partial class SolicitudesEntity
     {
         public int Idsolicitud { get; set; }
         public int? Idapoderado { get; set; }
@@ -25,14 +26,13 @@ namespace GrupoCiencias.Intranet.Domain.Models.Entity
         public string RutaFotoDni2 { get; set; }
         public string Referido { get; set; }
         public DateTime? FechaRegistro { get; set; }
-        public int? IdTipoDocumento { get; set; }
         public DateTime? FechaNacimiento { get; set; }
+        public int? IdTipoDocumento { get; set; }
         public int? Politicasseguridad { get; set; }
         public int? PoliticasFinesComerciales { get; set; }
-        public int id_sede { get; set; }
-        public int id_tipopago { get; set; }
-        public virtual ApoderadosEntity Apoderado { get; set; } 
-        public int PoliticasVeracidad { get; set; }
-
+        public int? IdSede { get; set; }
+        public int? IdTipopago { get; set; }
+        public int? PoliticasVeracidad { get; set; } 
+        public virtual ApoderadosEntity ApoderadoNavigation { get; set; }
     }
 }

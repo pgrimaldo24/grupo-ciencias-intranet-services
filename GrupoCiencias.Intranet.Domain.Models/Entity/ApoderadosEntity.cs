@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GrupoCiencias.Intranet.Domain.Models.Entity
 {
-    public class ApoderadosEntity
+    public partial class ApoderadosEntity
     {
         public ApoderadosEntity()
         {
@@ -18,6 +19,7 @@ namespace GrupoCiencias.Intranet.Domain.Models.Entity
         public string RutaFotoDni { get; set; }
         public int? Estado { get; set; }
         public int? IdTipoDocumento { get; set; }
+
         public virtual ICollection<EstudiantesEntity> Estudiantes { get; set; }
         public virtual ICollection<SolicitudesEntity> Solicitudes { get; set; }
     }
