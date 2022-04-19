@@ -53,23 +53,26 @@ namespace GrupoCiencias.Intranet.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-
-            }
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
+            //}
 
             app.UseCors(x => x
             .AllowAnyOrigin()
             .AllowAnyMethod()
-            .AllowAnyHeader()
-           );
+            .AllowAnyHeader());
 
-            app.UseCors(x => x
-               .AllowAnyMethod()
-               .AllowAnyHeader()
-               .SetIsOriginAllowed(origin => true)
-               .AllowCredentials());
+            //app.UseCors(x => x
+            //   .AllowAnyMethod()
+            //   .AllowAnyHeader()
+            //   .SetIsOriginAllowed(origin => true)
+            //   .AllowCredentials());
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "GrupoCiencias.Intranet.Api v1"); });
+            
+            app.UseDeveloperExceptionPage(); 
 
             app.UseHttpsRedirection();
 
@@ -81,10 +84,6 @@ namespace GrupoCiencias.Intranet.Api
             {
                 endpoints.MapControllers();
             });
-
-            app.UseSwagger();
-
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GrupoCiencias.Intranet.Api v1"));
         }
     }
 }
