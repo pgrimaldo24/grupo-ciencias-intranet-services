@@ -19,7 +19,6 @@ namespace GrupoCiencias.Intranet.Domain.Models.Entity
         public string MetodoPagoId { get; set; }
         public string TokenCard { get; set; }
         public string MontoTransaccion { get; set; }
-        public string EstadoTransaccionPago { get; set; }
         public string FechaCreadaPago { get; set; }
         public string FechaAprovadaPago { get; set; }
         public string FechaUltimaActualizacion { get; set; }

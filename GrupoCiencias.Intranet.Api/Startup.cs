@@ -37,16 +37,26 @@ namespace GrupoCiencias.Intranet.Api
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             var appSettingsSection = Configuration.GetSection("AppSettings");
+            
             services.AddServicesInAssembly(Configuration);
+            
             services.AddControllers()
                 .AddJsonOptions(opt => opt.JsonSerializerOptions.PropertyNamingPolicy = null); 
+            
             services.Configure<AppSetting>(appSettingsSection);
+            
             services.AddSingleton(x => x.GetService<IOptions<AppSetting>>().Value);
+            
             services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            
             services.AddTransient<IUnitOfWork, UnitOfWork>();
+            
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            
             services.AddSwaggerGen();
+           
             var initialize = IoCAutofacContainer.Initialize(services);
+            
             return new AutofacServiceProvider(initialize);
         }
 
@@ -62,13 +72,7 @@ namespace GrupoCiencias.Intranet.Api
             .AllowAnyOrigin()
             .AllowAnyMethod()
             .AllowAnyHeader());
-
-            //app.UseCors(x => x
-            //   .AllowAnyMethod()
-            //   .AllowAnyHeader()
-            //   .SetIsOriginAllowed(origin => true)
-            //   .AllowCredentials());
-
+             
             app.UseSwagger();
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "GrupoCiencias.Intranet.Api v1"); });
             
