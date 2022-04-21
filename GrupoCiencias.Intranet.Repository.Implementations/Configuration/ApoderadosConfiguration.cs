@@ -23,6 +23,10 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                 .HasMaxLength(10)
                 .HasColumnName("celular");
 
+            builder.Property(e => e.GuidIdentificador)
+               .HasMaxLength(200)
+               .HasColumnName("id_identificador");
+
             builder.Property(e => e.Dni)
                 .HasMaxLength(8)
                 .HasColumnName("dni")
