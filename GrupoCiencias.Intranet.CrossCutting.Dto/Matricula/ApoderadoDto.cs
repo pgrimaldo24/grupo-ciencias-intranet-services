@@ -4,7 +4,7 @@
     {
         public string names { get; set; }
         public string surnames { get; set; }
-        public int document_type_id { get; set; }
+        public int? document_type_id { get; set; }
         public string document_number { get; set; }
         public string email { get; set; }
         public string cell_phone { get; set; }
