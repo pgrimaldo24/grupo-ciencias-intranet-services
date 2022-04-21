@@ -33,22 +33,21 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
         {
             var response = new ResponseDto();
             var idApoderado = 0;
-
+             
             if (string.IsNullOrEmpty(solicitudDto.ToString()))
             {
                 response.Status = UtilConstants.CodigoEstado.InternalServerError;
                 response.Message = AlertResources.msg_error_matricula_register_enrollment.ToString();
                 return response;
             }
-            
-            if (solicitudDto.has_apoderado == true) {
-                var apoderado = await SetApoderado(solicitudDto.apoderado);
-                UnitOfWork.Set<ApoderadosEntity>().Add(apoderado);
-                UnitOfWork.SaveChanges();
-                 
-                var infoApoderado = MatriculaRepository.GetIdApoderadoAsync(solicitudDto.apoderado.document_number).Result; 
-                idApoderado = infoApoderado.IdApoderado;
-            } 
+
+            var idApoderadoGuid = Guid.NewGuid().ToString(); 
+            var apoderado = await SetApoderado(solicitudDto.apoderado, solicitudDto.has_apoderado, idApoderadoGuid);
+            UnitOfWork.Set<ApoderadosEntity>().Add(apoderado);
+            UnitOfWork.SaveChanges();
+ 
+            var infoApoderado = MatriculaRepository.GetIdApoderadoAsync(idApoderadoGuid).Result;
+            idApoderado = infoApoderado.IdApoderado;
 
             var solicitud = await SetSolicitud(solicitudDto, idApoderado);
             UnitOfWork.Set<SolicitudesEntity>().Add(solicitud); 
@@ -93,16 +92,17 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
             return solicitudEntity;
         }
 
-        private async Task<ApoderadosEntity> SetApoderado(ApoderadoDto apoderadoDto)
-        {
+        private async Task<ApoderadosEntity> SetApoderado(ApoderadoDto apoderadoDto, bool has_apoderado, string idApoderadoGuid)
+        { 
             var apoderadoEntity = new ApoderadosEntity
             {
-                Nombres = apoderadoDto.names,
-                Apellidos = apoderadoDto.surnames,
-                IdTipoDocumento = apoderadoDto.document_type_id,
-                Dni = apoderadoDto.document_number,
-                Celular = apoderadoDto.cell_phone,
-                RutaFotoDni = apoderadoDto.route_photo_document 
+                Nombres = has_apoderado == true ? apoderadoDto.names : null,
+                Apellidos = has_apoderado == true ? apoderadoDto.surnames : null,
+                IdTipoDocumento = has_apoderado == true ? apoderadoDto.document_type_id : null,
+                Dni = has_apoderado == true ? apoderadoDto.document_number : null,
+                Celular = has_apoderado == true ? apoderadoDto.cell_phone : null,
+                RutaFotoDni = has_apoderado == true ? apoderadoDto.route_photo_document : null,
+                GuidIdentificador = idApoderadoGuid
             };
             return apoderadoEntity;
         } 
