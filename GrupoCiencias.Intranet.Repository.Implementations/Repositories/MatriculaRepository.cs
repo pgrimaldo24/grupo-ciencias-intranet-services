@@ -17,10 +17,10 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
             this.context = context;
         }
 
-        public async Task<ApoderadoDetalleDto> GetIdApoderadoAsync(string nroDocumento)
+        public async Task<ApoderadoDetalleDto> GetIdApoderadoAsync(string idApoderadoGuid)
         {
             return await context.Apoderado
-                    .Where(x => x.Dni == nroDocumento)
+                    .Where(x => x.GuidIdentificador == idApoderadoGuid)
                     .OrderByDescending(x => x.Idapoderado)
                     .Take(1)
                     .Select(p => new ApoderadoDetalleDto { IdApoderado = p.Idapoderado }).FirstOrDefaultAsync();
