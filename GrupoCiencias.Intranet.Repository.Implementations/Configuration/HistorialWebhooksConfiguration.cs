@@ -30,7 +30,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                 .HasColumnName("id_transaction_service");
 
             builder.Property(e => e.Message)
-                .HasMaxLength(100)
+                .HasMaxLength(500)
                 .HasColumnName("message");
 
             builder.Property(e => e.StatusCode)

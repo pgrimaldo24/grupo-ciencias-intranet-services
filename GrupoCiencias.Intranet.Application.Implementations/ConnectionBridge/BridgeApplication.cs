@@ -47,28 +47,36 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
                 using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
                 {
                     using (Stream stream = response.GetResponseStream())
-                    { 
-                        StreamReader reader = new StreamReader(stream, Encoding.UTF8); 
+                    {
+                        StreamReader reader = new StreamReader(stream, Encoding.UTF8);
                         var responseString = reader.ReadToEnd();
                         result = JsonConvert.DeserializeObject<TResult>(responseString);
 
                         var oExceptionOk = new ValidationResponseDto()
                         {
                             status_code = UtilConstants.CodigoEstado.Ok,
-                            message = AlertResources.msg_correcto.ToString()
-                        }; 
+                            status_message = AlertResources.msg_correcto.ToString()
+                        };
                     }
-                } 
+                }
             }
             catch (WebException ex)
             {
+                //1. Crear una DTO con los datos que se envia en WSP
+                //2. Setear header con un JsonConvert a un TResult 
+                //3. Probar
                 var validationHttps = new List<ValidationResponseDto>(); 
-                var http_result = ex.Response as HttpWebResponse; 
+                var http_result = ex.Response as HttpWebResponse;
+               
+                var header = ex.Response.Headers;
+
                 var exception = new ValidationResponseDto
                 {
-                    status_code = (int)http_result.StatusCode,
-                    message = http_result.StatusDescription.ToString() + UtilConstants.ContentService.TypeMethod + http_result.Method.ToString() + UtilConstants.ContentService.Url + http_result.ResponseUri 
+                    status_code = (int)http_result.StatusCode, 
+                    status_description = http_result.StatusDescription.ToString() + UtilConstants.ContentService.TypeMethod + http_result.Method.ToString() + UtilConstants.ContentService.Url + http_result.ResponseUri,
+                    status_message = ex.Message.ToString()
                 }; 
+
                 validationHttps.Add(exception);
 
                 var collectionWrapper = new
@@ -109,7 +117,8 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
                 var exception = new ValidationResponseDto
                 {
                     status_code = (int)http_result.StatusCode,
-                    message = http_result.StatusDescription.ToString() + UtilConstants.ContentService.TypeMethod + http_result.Method.ToString() + UtilConstants.ContentService.Url + http_result.ResponseUri
+                    status_description = http_result.StatusDescription.ToString() + UtilConstants.ContentService.TypeMethod + http_result.Method.ToString() + UtilConstants.ContentService.Url + http_result.ResponseUri,
+                    status_message = ex.Message.ToString()
                 };
                 validationHttps.Add(exception);
 

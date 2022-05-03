@@ -68,7 +68,8 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                 cardtoken.validations.ForEach(x =>
                 {
                     response.Status = x.status_code;
-                    response.Message = x.message.ToString();
+                    response.Message = x.status_message.ToString();
+                    response.Data = x;
                 });
             } 
             return response;
@@ -80,11 +81,11 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             var payment_received = new PaymentReceivedDto(); 
             var codpaymentreference = await GetPaymentReference(); 
             var transaction_identifier = Guid.NewGuid().ToString();  
-            var url_notification_webhook = _appSettings.MercadoPagoServices.NoificationWebhook + transaction_identifier;   
-           
-            var payment_request = await RecordPaymentInformation(studentPaymentDto, url_notification_webhook); 
-            payment_request.external_reference = codpaymentreference.cod_pago_referencia.ToString();  
+            var url_notification_webhook = _appSettings.MercadoPagoServices.NoificationWebhook + transaction_identifier;
 
+            var payment_request = await RecordPaymentInformation(studentPaymentDto, url_notification_webhook); 
+            payment_request.external_reference = codpaymentreference.cod_pago_referencia.ToString(); 
+             
             var paymentTransactionEntity = await InitialRegistrationPaymentTransaction(payment_request, codpaymentreference.codpagorefindex, studentPaymentDto.student.student_document_number, transaction_identifier);
             UnitOfWork.Set<TransaccionPagoEntity>().Add(paymentTransactionEntity);
             UnitOfWork.SaveChanges();
@@ -93,17 +94,17 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                 string.Concat(_appSettings.MercadoPagoServices.CreatePayment, UtilConstants.ContentService.InitialAccessToken + _appSettings.MercadoPagoCredentials.AccessToken),
                 _appSettings.MercadoPagoCredentials.AccessToken, PropiedadesConstants.TypeRequest.POST);
              
-            create_payment.validations = new List<ValidationResponseDto>();
             var historyWebhooks = new HistorialWebhookEntity();
             var id_payment_transaction = await MercadoPagoRepository.GetGuidKey(transaction_identifier);
 
-            if (create_payment.validations is null)
+            if (create_payment.validations is not null)
             { 
                 create_payment.validations.ForEach(x => 
                 {
                     response.TransactionId = DateTime.Now.ToString(UtilConstants.DateTimeFormats.DD_MM_YYYY_HH_MM_SS_FFF);
                     response.Status = x.status_code;
-                    response.Message = x.message.ToString();
+                    response.Message = x.status_message.ToString();
+                    response.Data = x; 
                 });
 
                 historyWebhooks = await RecordGuidHistory(id_payment_transaction, response, url_notification_webhook);
@@ -112,6 +113,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                 return response;
             }
 
+            create_payment.validations = new List<ValidationResponseDto>();
             paymentTransactionEntity = await TransactionProcessCompleted(create_payment);
             UnitOfWork.Set<TransaccionPagoEntity>().Update(paymentTransactionEntity);
             UnitOfWork.SaveChanges();
@@ -187,11 +189,11 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                     rst.validations.ForEach(x =>
                     {
                         response.Status = x.status_code;
-                        response.Message = x.message.ToString();
+                        response.Message = x.status_message.ToString();
+                        response.Data = x; 
                     });
                 }
             }
-
             return response;
         }
           
@@ -362,24 +364,25 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
         }
 
         private async Task<TransaccionPagoEntity> InitialRegistrationPaymentTransaction(PaymentDto createRequest, int cod_pago_ref_index, string student_document_number, string transaction_identifier)
-        { 
-            var payment_transaction_entity = new TransaccionPagoEntity() 
-            { 
-                CodPagoReferencia = createRequest.external_reference,
-                CuotasPago = await EncryptionApplication.EncryptString(createRequest.installments.ToString()),
-                NotificacionUrl = await EncryptionApplication.EncryptString(createRequest.notification_url.ToString()),
-                NombreTitular = await EncryptionApplication.EncryptString(createRequest.payer.first_name.ToString()),
-                ApellidoTitular = await EncryptionApplication.EncryptString(createRequest.payer.last_name.ToString()),
-                EmailTitular = await EncryptionApplication.EncryptString(createRequest.payer.email.ToString()),
-                NumeroDocumentoTitular = await EncryptionApplication.EncryptString(createRequest.payer.identification.number.ToString()),
-                TipoDocumentoTitularId = await RelationRepository.GetDocumentTypeXId(createRequest.payer.identification.type.ToString()),
-                MetodoPagoId = await EncryptionApplication.EncryptString(createRequest.payment_method_id.ToString()),
-                TokenCard = await EncryptionApplication.EncryptString(createRequest.token.ToString()),
-                MontoTransaccion = await EncryptionApplication.EncryptString(createRequest.transaction_amount.ToString()),
-                Codpagorefindex = cod_pago_ref_index,
-                NumeroDocumentoEstudiante = student_document_number.ToString(),
-                GuidKey = transaction_identifier.ToString()
-            };  
+        {
+     
+            var payment_transaction_entity = new TransaccionPagoEntity();
+
+            payment_transaction_entity.CodPagoReferencia = createRequest.external_reference;
+            payment_transaction_entity.CuotasPago = await EncryptionApplication.EncryptString(createRequest.installments.ToString());
+            payment_transaction_entity.NotificacionUrl = await EncryptionApplication.EncryptString(createRequest.notification_url.ToString());
+            payment_transaction_entity.NombreTitular = await EncryptionApplication.EncryptString(createRequest.payer.first_name.ToString());
+            payment_transaction_entity.ApellidoTitular = await EncryptionApplication.EncryptString(createRequest.payer.last_name.ToString());
+            payment_transaction_entity.EmailTitular = await EncryptionApplication.EncryptString(createRequest.payer.email.ToString());
+            payment_transaction_entity.NumeroDocumentoTitular = await EncryptionApplication.EncryptString(createRequest.payer.identification.number.ToString());
+            payment_transaction_entity.TipoDocumentoTitularId = await RelationRepository.GetDocumentTypeXId(createRequest.payer.identification.type.ToString());
+            payment_transaction_entity.MetodoPagoId = await EncryptionApplication.EncryptString(createRequest.payment_method_id.ToString());
+            payment_transaction_entity.TokenCard = await EncryptionApplication.EncryptString(createRequest.token.ToString());
+            payment_transaction_entity.MontoTransaccion = await EncryptionApplication.EncryptString(createRequest.transaction_amount.ToString());
+            payment_transaction_entity.Codpagorefindex = cod_pago_ref_index;
+            payment_transaction_entity.NumeroDocumentoEstudiante = student_document_number.ToString();
+            payment_transaction_entity.GuidKey = transaction_identifier.ToString();
+
             return payment_transaction_entity; 
         }
 
@@ -410,7 +413,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             var oExceptionOk = new ValidationResponseDto()
             {
                 status_code = UtilConstants.CodigoEstado.Ok,
-                message = AlertResources.msg_correcto
+                status_message = AlertResources.msg_correcto
             };
 
             responseCard.validations.Add(oExceptionOk);
