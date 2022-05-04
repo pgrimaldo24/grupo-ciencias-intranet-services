@@ -3,6 +3,7 @@ using GrupoCiencias.Intranet.CrossCutting.Common;
 using GrupoCiencias.Intranet.CrossCutting.Common.Constants;
 using GrupoCiencias.Intranet.CrossCutting.Common.Resources;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Common;
+using GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System.Collections;
@@ -62,29 +63,36 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
             }
             catch (WebException ex)
             {
-                //1. Crear una DTO con los datos que se envia en WSP
-                //2. Setear header con un JsonConvert a un TResult 
-                //3. Probar
-                var validationHttps = new List<ValidationResponseDto>(); 
-                var http_result = ex.Response as HttpWebResponse;
-               
-                var header = ex.Response.Headers;
+                ErrorHandler ErrorResult = new ErrorHandler();
+                var validationHttps = new List<ValidationResponseDto>();
 
-                var exception = new ValidationResponseDto
+                using (HttpWebResponse response = (HttpWebResponse)ex.Response)
                 {
-                    status_code = (int)http_result.StatusCode, 
-                    status_description = http_result.StatusDescription.ToString() + UtilConstants.ContentService.TypeMethod + http_result.Method.ToString() + UtilConstants.ContentService.Url + http_result.ResponseUri,
-                    status_message = ex.Message.ToString()
-                }; 
+                    using (Stream stream = response.GetResponseStream())
+                    {
+                        StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+                        var responseString = reader.ReadToEnd();
+                        ErrorResult = JsonConvert.DeserializeObject<ErrorHandler>(responseString);
 
-                validationHttps.Add(exception);
+                        var header = ex.Response.Headers;
 
-                var collectionWrapper = new
-                {
-                    validations = validationHttps
-                }; 
-                var data = JsonConvert.SerializeObject(collectionWrapper);
-                result = JsonConvert.DeserializeObject<TResult>(data);  
+                        var exception = new ValidationResponseDto
+                        {
+                            status_code = (int)response.StatusCode,
+                            status_description = response.StatusDescription.ToString() + UtilConstants.ContentService.TypeMethod + response.Method.ToString() + UtilConstants.ContentService.Url + response.ResponseUri,
+                            status_message = (int)response.StatusCode == 400 ? ErrorResult.message.ToString() : ex.Message.ToString()
+                        };
+
+                        validationHttps.Add(exception);
+
+                        var collectionWrapper = new
+                        {
+                            validations = validationHttps
+                        };
+                        var data = JsonConvert.SerializeObject(collectionWrapper);
+                        result = JsonConvert.DeserializeObject<TResult>(data);
+                    }
+                } 
             } 
             return result;
         }
@@ -112,22 +120,36 @@ namespace GrupoCiencias.Intranet.Application.Implementations.ConnectionBridge
             }
             catch (WebException ex)
             {
+                ErrorHandler ErrorResult = new ErrorHandler();
                 var validationHttps = new List<ValidationResponseDto>();
-                var http_result = ex.Response as HttpWebResponse;
-                var exception = new ValidationResponseDto
-                {
-                    status_code = (int)http_result.StatusCode,
-                    status_description = http_result.StatusDescription.ToString() + UtilConstants.ContentService.TypeMethod + http_result.Method.ToString() + UtilConstants.ContentService.Url + http_result.ResponseUri,
-                    status_message = ex.Message.ToString()
-                };
-                validationHttps.Add(exception);
 
-                var collectionWrapper = new
+                using (HttpWebResponse response = (HttpWebResponse)ex.Response)
                 {
-                    validations = validationHttps
-                };
-                var data = JsonConvert.SerializeObject(collectionWrapper);
-                result = JsonConvert.DeserializeObject<TResult>(data);
+                    using (Stream stream = response.GetResponseStream())
+                    {
+                        StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+                        var responseString = reader.ReadToEnd();
+                        ErrorResult = JsonConvert.DeserializeObject<ErrorHandler>(responseString);
+
+                        var header = ex.Response.Headers;
+
+                        var exception = new ValidationResponseDto
+                        {
+                            status_code = (int)response.StatusCode,
+                            status_description = response.StatusDescription.ToString() + UtilConstants.ContentService.TypeMethod + response.Method.ToString() + UtilConstants.ContentService.Url + response.ResponseUri,
+                            status_message = (int)response.StatusCode == 400 ? ErrorResult.message.ToString() : ex.Message.ToString()
+                        };
+
+                        validationHttps.Add(exception);
+
+                        var collectionWrapper = new
+                        {
+                            validations = validationHttps
+                        };
+                        var data = JsonConvert.SerializeObject(collectionWrapper);
+                        result = JsonConvert.DeserializeObject<TResult>(data);
+                    }
+                }
             }
             return result;
         }
