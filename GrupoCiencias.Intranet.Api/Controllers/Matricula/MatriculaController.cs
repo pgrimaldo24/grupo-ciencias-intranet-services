@@ -62,12 +62,12 @@ namespace GrupoCiencias.Intranet.Api.Controllers.Matricula
 
         [HttpGet]
         [Route(EndPointDecoratorConstants.MatriculaRouter.GetListMatriculaPrices)]
-        public async Task<JsonResult> GetEnrollmentPricesList(int IdPeriod, int IdPaymentType)
+        public async Task<JsonResult> GetEnrollmentPricesList(int IdPeriod, int IdSede, int IdPaymentType)
         {
             var response = new ResponseDto();
             try
             {
-                response = await ProcesoMatriculaApplication.GetEnrollmentPricesList(IdPeriod, IdPaymentType);
+                response = await ProcesoMatriculaApplication.GetEnrollmentPricesList(IdPeriod, IdSede, IdPaymentType);
             }
             catch (FunctionalException ex)
             {

@@ -26,14 +26,14 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                     .Select(p => new ApoderadoDetalleDto { IdApoderado = p.Idapoderado }).FirstOrDefaultAsync();
         }
 
-        public async Task<PreciosMatriculaDto> EnrollmentPricesListAsync(int IdPeriod, int IdPaymentType)
+        public async Task<PreciosMatriculaDto> EnrollmentPricesListAsync(int IdPeriod, int IdSede, int IdPaymentType)
         {
-            return await context.TipoPagoDetalle.Where(x => x.Idciclo == IdPeriod && x.Idtipopago == IdPaymentType)
+            return await context.TipoPagoDetalle.Where(x => x.Idciclo == IdPeriod && x.IdSede == IdSede && x.Idtipopago == IdPaymentType)
                   .Select(precioMatricula => new PreciosMatriculaDto
                   {
                       id_detail_payment = precioMatricula.Idpagodetalle,
                       sub_total = precioMatricula.Subtotal,
-                      discount = precioMatricula.Descuento,
+                      discount = (string.IsNullOrEmpty(precioMatricula.Descuento.ToString()) ? 0 : precioMatricula.Descuento),
                       final_price = precioMatricula.Preciofinal,
                   })
                   .FirstOrDefaultAsync();

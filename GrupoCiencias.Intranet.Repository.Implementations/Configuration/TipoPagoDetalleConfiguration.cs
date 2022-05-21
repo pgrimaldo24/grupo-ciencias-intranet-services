@@ -31,6 +31,8 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                 .HasPrecision(9, 2)
                 .HasColumnName("subtotal");
 
+            builder.Property(e => e.IdSede).HasColumnName("idsede");
+
         }
     }
 }

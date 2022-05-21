@@ -8,7 +8,7 @@ namespace GrupoCiencias.Intranet.Repository.Interfaces.Repositories
     public interface IMatriculaRepository
     {
         Task<ApoderadoDetalleDto> GetIdApoderadoAsync(string idApoderadoGuid); 
-        Task<PreciosMatriculaDto> EnrollmentPricesListAsync(int IdPeriod, int IdPaymentType);
+        Task<PreciosMatriculaDto> EnrollmentPricesListAsync(int IdPeriod, int IdSede, int IdPaymentType);
         Task<HistorialPagoSolicitudEntity> GetIdHistoryPaymentTransaction(int id_payment_transaction);
         Task<SolicitudesEntityDto> GetIdEnrollmentByDocumentNumber(string nroDocumento);
     }

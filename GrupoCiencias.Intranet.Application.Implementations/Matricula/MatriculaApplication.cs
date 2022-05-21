@@ -107,10 +107,10 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
             return apoderadoEntity;
         } 
 
-        public async Task<ResponseDto> GetEnrollmentPricesList(int IdPeriod, int IdPaymentType)
+        public async Task<ResponseDto> GetEnrollmentPricesList(int IdPeriod, int IdSede, int IdPaymentType)
         {
             var response = new ResponseDto();
-            var listaPrecios = await MatriculaRepository.EnrollmentPricesListAsync(IdPeriod, IdPaymentType);
+            var listaPrecios = await MatriculaRepository.EnrollmentPricesListAsync(IdPeriod, IdSede, IdPaymentType);
             if (ReferenceEquals(null, listaPrecios))
             {
                 response.Status = UtilConstants.CodigoEstado.NotFound;
@@ -119,7 +119,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
             }
             response.Status = UtilConstants.CodigoEstado.Ok;
             response.Message = AlertResources.msg_correcto.ToString();
-            response.Data = listaPrecios;
+            response.Data = listaPrecios; 
             return response;
         }
     }
