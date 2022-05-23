@@ -26,9 +26,9 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                     .Select(p => new ApoderadoDetalleDto { IdApoderado = p.Idapoderado }).FirstOrDefaultAsync();
         }
 
-        public async Task<PreciosMatriculaDto> EnrollmentPricesListAsync(int IdPeriod, int IdSede, int IdPaymentType)
+        public async Task<PreciosMatriculaDto> EnrollmentPricesListAsync(int IdPeriod, int CampusId, int IdPaymentType)
         {
-            return await context.TipoPagoDetalle.Where(x => x.Idciclo == IdPeriod && x.IdSede == IdSede && x.Idtipopago == IdPaymentType)
+            return await context.TipoPagoDetalle.Where(x => x.Idciclo == IdPeriod && x.IdSede == CampusId && x.Idtipopago == IdPaymentType)
                   .Select(precioMatricula => new PreciosMatriculaDto
                   {
                       id_detail_payment = precioMatricula.Idpagodetalle,

@@ -1,4 +1,5 @@
-﻿using GrupoCiencias.Intranet.Application.Interfaces.Matricula;
+﻿
+using GrupoCiencias.Intranet.Application.Interfaces.Matricula;
 using GrupoCiencias.Intranet.CrossCutting.Common;
 using GrupoCiencias.Intranet.CrossCutting.Common.Constants;
 using GrupoCiencias.Intranet.CrossCutting.Common.Exceptions;
@@ -62,12 +63,12 @@ namespace GrupoCiencias.Intranet.Api.Controllers.Matricula
 
         [HttpGet]
         [Route(EndPointDecoratorConstants.MatriculaRouter.GetListMatriculaPrices)]
-        public async Task<JsonResult> GetEnrollmentPricesList(int IdPeriod, int IdSede, int IdPaymentType)
+        public async Task<JsonResult> GetEnrollmentPricesList(int IdPeriod, int CampusID, int IdPaymentType)
         {
             var response = new ResponseDto();
             try
             {
-                response = await ProcesoMatriculaApplication.GetEnrollmentPricesList(IdPeriod, IdSede, IdPaymentType);
+                response = await ProcesoMatriculaApplication.GetEnrollmentPricesList(IdPeriod, CampusID, IdPaymentType);
             }
             catch (FunctionalException ex)
             {
