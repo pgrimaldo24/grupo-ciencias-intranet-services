@@ -24,5 +24,11 @@
             public const string CardValidation = "CardValidation";
             public const string Webhooks = "NotificationWebhooks";
         }
+
+        public struct MailManagerEndPointRouter
+        {
+            public const string MailManager = "MailManager";
+            
+        }
     }
 }

@@ -34,4 +34,26 @@
     {
         public string AccessToken { get; set; }
     }
+
+    public class MailManager
+    {
+        public Outlook Outlook { get; set; }
+        public Gmail Gmail { get; set; }
+    }
+
+    public class Outlook
+    {
+        public string host_outlook { get; set; }
+        public string port_outlook { get; set; }
+        public string ssl_outlook { get; set; }
+        public string defaultcredentials_outlook { get; set; }
+    }
+
+    public class Gmail
+    {
+        public string host_gmail { get; set; }
+        public string port_gmail { get; set; }
+        public string ssl_gmail { get; set; }
+        public string defaultcredentials_gmail { get; set; }
+    }
 }
