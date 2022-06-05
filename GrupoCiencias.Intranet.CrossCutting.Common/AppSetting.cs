@@ -9,6 +9,14 @@
         public MercadoPagoService MercadoPagoServices { get; set; }
         public MercadoPagoCredential MercadoPagoCredentials { get; set; }
     }
+
+    public class MailManagers
+    {
+        public Outlook Outlook { get; set; }
+        public Gmail Gmail { get; set; }
+        public MSN MSN { get; set; }
+    }
+
     public class ConnectionString
     {
         public string BDGrupoCiencias { get; set; }
@@ -33,13 +41,7 @@
     public class MercadoPagoCredential
     {
         public string AccessToken { get; set; }
-    }
-
-    public class MailManager
-    {
-        public Outlook Outlook { get; set; }
-        public Gmail Gmail { get; set; }
-    }
+    } 
 
     public class Outlook
     {
@@ -55,5 +57,13 @@
         public string port_gmail { get; set; }
         public string ssl_gmail { get; set; }
         public string defaultcredentials_gmail { get; set; }
+    }
+
+    public class MSN
+    {
+        public string host_hotmail { get; set; }
+        public string port_hotmail { get; set; }
+        public string ssl_hotmail { get; set; }
+        public string defaultcredentials_hotmail { get; set; }
     }
 }

@@ -2,15 +2,8 @@
 {
     public class UserRequestDto
     {
-        public int? id_student { get; set; }
+        public int id_student_request { get; set; } 
         public string document_number { get; set; }
-        public string email { get; set; }
-    }
-
-    public class CredentialStudent
-    {
-        public int? id_student { get; set; }
-        public string user_intranet { get; set; }
-        public string password_intranet { get; set; }
+        public string notification_type { get; set; }
     }
 }

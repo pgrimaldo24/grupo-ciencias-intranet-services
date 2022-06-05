@@ -24,9 +24,9 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class AlertResources {
         
-        private static global::System.Resources.ResourceManager resourceMan;
-        
-        private static global::System.Globalization.CultureInfo resourceCulture;
+        public static global::System.Resources.ResourceManager resourceMan;
+
+        public static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal AlertResources() {
@@ -57,6 +57,24 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ha ocurrido un error en el envío de correo..
+        /// </summary>
+        public static string mg_alerta_error_envio_correo {
+            get {
+                return ResourceManager.GetString("mg_alerta_error_envio_correo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a El correo se envió correctamente..
+        /// </summary>
+        public static string msg_alerta_envio_correo {
+            get {
+                return ResourceManager.GetString("msg_alerta_envio_correo", resourceCulture);
             }
         }
 

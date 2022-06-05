@@ -37,16 +37,21 @@ namespace GrupoCiencias.Intranet.Api
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             var appSettingsSection = Configuration.GetSection("AppSettings");
-            
+            var appMailManagerSection = Configuration.GetSection("MailManagers");
+
             services.AddServicesInAssembly(Configuration);
             
             services.AddControllers()
                 .AddJsonOptions(opt => opt.JsonSerializerOptions.PropertyNamingPolicy = null); 
             
             services.Configure<AppSetting>(appSettingsSection);
+
+            services.Configure<MailManagers>(appMailManagerSection);
             
             services.AddSingleton(x => x.GetService<IOptions<AppSetting>>().Value);
             
+            services.AddSingleton(mail => mail.GetService<IOptions<MailManagers>>().Value);
+
             services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             
             services.AddTransient<IUnitOfWork, UnitOfWork>();

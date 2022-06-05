@@ -78,5 +78,12 @@
             public const string StatusCode = "?status_code=";
             public const string Message = "&message=";
         }
+
+        public struct EmailDomain
+        {
+            public const string HOTMAIL = "hotmail.com";
+            public const string GMAIL = "gmail.com";
+            public const string OUTLOOK = "outlook.com";
+        } 
     }
 }
