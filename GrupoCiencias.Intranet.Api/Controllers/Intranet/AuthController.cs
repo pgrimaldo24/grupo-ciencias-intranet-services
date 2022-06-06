@@ -29,7 +29,12 @@ namespace GrupoCiencias.Intranet.Api.Controllers.Intranet
         private ILogger Logger => _logger.Value;
 
         private IAuthApplication AuthApplication => _authApplication.Value;
-         
+
+        /// <summary>
+        /// Authentication
+        /// </summary>
+        /// <param name="credential"></param>
+        /// <returns></returns>
         [HttpPost(EndPointDecoratorConstants.EndPointRouter.Authentication)]
         public async Task<JsonResult> Authentication([FromBody] CredentialDto credential)
         {

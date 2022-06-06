@@ -32,6 +32,11 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MailManager
         private ILogger Logger => _logger.Value;
         private IMailManagerApplication MailManagerApplication => mailManagerApplication.Value;
 
+        /// <summary>
+        /// PostMailManager
+        /// </summary>
+        /// <param name="userRequest"></param>
+        /// <returns></returns>
         [HttpPost(EndPointDecoratorConstants.MailManagerEndPointRouter.MailManager)]
         public async Task<JsonResult> PostMailManager([FromBody] UserRequestDto userRequest)
         {

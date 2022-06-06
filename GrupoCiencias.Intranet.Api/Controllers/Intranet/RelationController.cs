@@ -31,6 +31,10 @@ namespace GrupoCiencias.Intranet.Api.Controllers.Intranet
         private ILogger Logger => _logger.Value;
         private IRelationApplication RelationApplication => _masterApplication.Value;
 
+        /// <summary>
+        /// GetListMasterDetail
+        /// </summary>
+        /// <returns></returns>
         [HttpGet(EndPointDecoratorConstants.EndPointRouter.GetListMasterDetail)]
         public async Task<JsonResult> GetListMasterDetail()
         {

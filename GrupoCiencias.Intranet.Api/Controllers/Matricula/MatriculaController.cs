@@ -33,6 +33,11 @@ namespace GrupoCiencias.Intranet.Api.Controllers.Matricula
         private ILogger Logger => _logger.Value;
         private IMatriculaApplication ProcesoMatriculaApplication => _procesoMatriculaApplication.Value;
 
+        /// <summary>
+        /// RegisterEnrollment
+        /// </summary>
+        /// <param name="solicitudDto"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route(EndPointDecoratorConstants.MatriculaRouter.RegistrarSolicitud)]
         public async Task<JsonResult> RegisterEnrollment([FromBody] SolicitudDto solicitudDto)
@@ -61,6 +66,13 @@ namespace GrupoCiencias.Intranet.Api.Controllers.Matricula
             return new JsonResult(response);
         }
 
+        /// <summary>
+        /// GetEnrollmentPricesList
+        /// </summary>
+        /// <param name="IdPeriod"></param>
+        /// <param name="CampusID"></param>
+        /// <param name="IdPaymentType"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route(EndPointDecoratorConstants.MatriculaRouter.GetListMatriculaPrices)]
         public async Task<JsonResult> GetEnrollmentPricesList(int IdPeriod, int CampusID, int IdPaymentType)

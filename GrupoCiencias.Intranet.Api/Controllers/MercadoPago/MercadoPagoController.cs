@@ -32,8 +32,12 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
         private ILogger Logger => _logger.Value;
         private IMercadoPagoApplication MercadoPagoApplication => _mercadoPagoApplication.Value;
 
-        [HttpPost(EndPointDecoratorConstants.MercadoPagoEndPointRouter.CreatePayment)]
-
+        /// <summary>
+        /// CreatePayment
+        /// </summary>
+        /// <param name="studentPaymentDto"></param>
+        /// <returns></returns>
+        [HttpPost(EndPointDecoratorConstants.MercadoPagoEndPointRouter.CreatePayment)] 
         public async Task<JsonResult> CreatePayment([FromBody] StudentPaymentDto studentPaymentDto)
         {
             var response = new ResponseDto();
@@ -60,6 +64,11 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
             return new JsonResult(response);
         }
 
+        /// <summary>
+        /// PaymentMethod
+        /// </summary>
+        /// <param name="bin_card"></param>
+        /// <returns></returns>
         [HttpGet(EndPointDecoratorConstants.MercadoPagoEndPointRouter.PaymentMethod)]
         public async Task<JsonResult> PaymentMethod(string bin_card)
         {
@@ -87,6 +96,11 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
             return new JsonResult(response);
         }
 
+        /// <summary>
+        /// CardToken
+        /// </summary>
+        /// <param name="cardTokenDto"></param>
+        /// <returns></returns>
         [HttpPost(EndPointDecoratorConstants.MercadoPagoEndPointRouter.CardToken)] 
         public async Task<JsonResult> CardToken([FromBody] CardTokenDto cardTokenDto)
         {
@@ -114,6 +128,10 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
             return new JsonResult(response);
         }
 
+        /// <summary>
+        /// IdentificationTypes
+        /// </summary>
+        /// <returns></returns>
         [HttpGet(EndPointDecoratorConstants.MercadoPagoEndPointRouter.IdentificationTypes)]
         public async Task<JsonResult> IdentificationTypes()
         {
@@ -141,6 +159,10 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
             return new JsonResult(response);
         }
 
+        /// <summary>
+        /// CardValidation
+        /// </summary>
+        /// <returns></returns>
         [HttpGet(EndPointDecoratorConstants.MercadoPagoEndPointRouter.CardValidation)]
         public async Task<JsonResult> CardValidation()
         {
@@ -168,6 +190,11 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
             return new JsonResult(response);
         }
 
+        /// <summary>
+        /// NotificationWebhooks
+        /// </summary>
+        /// <param name="notificaction_url"></param>
+        /// <returns></returns>
         [HttpGet(EndPointDecoratorConstants.MercadoPagoEndPointRouter.Webhooks)]
         public async Task<JsonResult> NotificationWebhooks(string notificaction_url)
         {
