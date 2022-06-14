@@ -57,6 +57,12 @@
             public const string InactiveJwt = "Inactive";
         }
 
+        public struct EstadoSolicitud
+        {
+            public const int Pendiente = 1;
+            public const int Aprobado = 2;
+        }
+
         public struct ContentService
         {
             public const string ContentTypeApplicationJson = "application/json";
