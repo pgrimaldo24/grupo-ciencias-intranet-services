@@ -58,5 +58,15 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                    .Take(1)
                    .Select(p => new SolicitudesEntityDto { Idsolicitud = p.Idsolicitud }).FirstOrDefaultAsync();
         }
+
+        public async Task<int> GetIdApoderadoAsync()
+        {
+            return await context.Apoderado.OrderByDescending(x => x.Idapoderado).Select(op => op.Idapoderado).FirstOrDefaultAsync();  
+        }
+
+        public async Task<int> GetIdSolicitudAsync()
+        {
+            return await context.Solicitudes.OrderByDescending(x => x.Idsolicitud).Select(op => op.Idsolicitud).FirstOrDefaultAsync();
+        }
     }
 }

@@ -40,16 +40,18 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
                 response.Message = AlertResources.msg_error_matricula_register_enrollment.ToString();
                 return response;
             }
-
+             
+            var lastIdApoderado = await MatriculaRepository.GetIdApoderadoAsync() + 1; 
             var idApoderadoGuid = Guid.NewGuid().ToString(); 
-            var apoderado = await SetApoderado(solicitudDto.apoderado, solicitudDto.has_apoderado, idApoderadoGuid);
+            var apoderado = await SetApoderado(solicitudDto.apoderado, solicitudDto.has_apoderado, idApoderadoGuid, lastIdApoderado);
             UnitOfWork.Set<ApoderadosEntity>().Add(apoderado);
             UnitOfWork.SaveChanges();
  
             var infoApoderado = MatriculaRepository.GetIdApoderadoAsync(idApoderadoGuid).Result;
             idApoderado = infoApoderado.IdApoderado;
 
-            var solicitud = await SetSolicitud(solicitudDto, idApoderado);
+            var lastIdSolicitud = await MatriculaRepository.GetIdSolicitudAsync() + 1;
+            var solicitud = await SetSolicitud(solicitudDto, idApoderado, lastIdSolicitud);
             UnitOfWork.Set<SolicitudesEntity>().Add(solicitud); 
             UnitOfWork.SaveChanges(); 
 
@@ -63,11 +65,12 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
             return response;
         }
 
-        private async Task<SolicitudesEntity> SetSolicitud(SolicitudDto solicitudDto, int idApoderado)
+        private async Task<SolicitudesEntity> SetSolicitud(SolicitudDto solicitudDto, int idApoderado, int lastIdSolicitud)
         { 
             var solicitudEntity = new SolicitudesEntity
             {
-                Idapoderado= idApoderado,
+                Idsolicitud = lastIdSolicitud,
+                Idapoderado = idApoderado,
                 Nombres = solicitudDto.names,
                 Apellidos = solicitudDto.surnames,
                 FechaNacimiento = solicitudDto.birth_date,
@@ -92,10 +95,11 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
             return solicitudEntity;
         }
 
-        private async Task<ApoderadosEntity> SetApoderado(ApoderadoDto apoderadoDto, bool has_apoderado, string idApoderadoGuid)
+        private async Task<ApoderadosEntity> SetApoderado(ApoderadoDto apoderadoDto, bool has_apoderado, string idApoderadoGuid, int lastIdApoderado)
         { 
             var apoderadoEntity = new ApoderadosEntity
             {
+                Idapoderado = lastIdApoderado,
                 Nombres = has_apoderado == true ? apoderadoDto.names : null,
                 Apellidos = has_apoderado == true ? apoderadoDto.surnames : null,
                 IdTipoDocumento = has_apoderado == true ? apoderadoDto.document_type_id : null,
