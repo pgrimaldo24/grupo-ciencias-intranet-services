@@ -53,7 +53,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
 
         public async Task<List<MasterDto>> GetListCyclesXIdAsync(int idUniversity)
         {
-            return await context.Ciclos.Where(x => x.Iduniversidad.Equals(idUniversity) && x.Estado.Equals(1))
+            return await context.Ciclos.Where(x => x.Iduniversidad.Equals(idUniversity) && x.Estado.Equals(1) && x.VisibleOnlinePayment.Equals(1))
                     .OrderBy(r => r.Idciclo)
                     .Select(u => new MasterDto
                     {

@@ -28,12 +28,14 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
             builder.Property(e => e.GrupoCiclos).HasColumnName("grupo_ciclos");
 
             builder.Property(e => e.Iduniversidad).HasColumnName("iduniversidad");
-
+             
             builder.Property(e => e.Precio)
                 .HasPrecision(9, 2)
                 .HasColumnName("precio");
 
             builder.Property(e => e.VisibleLanding).HasColumnName("visible_landing");
+
+            builder.Property(e => e.VisibleOnlinePayment).HasColumnName("visible_online_payment");
 
             builder.HasOne(d => d.UniversidadNavigation)
                 .WithMany(p => p.Ciclos)

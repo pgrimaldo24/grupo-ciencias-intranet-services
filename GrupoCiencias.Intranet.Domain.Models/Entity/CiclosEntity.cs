@@ -22,6 +22,7 @@ namespace GrupoCiencias.Intranet.Domain.Models.Entity
         public int? GrupoCiclos { get; set; }
         public int? Estado { get; set; }
         public int? VisibleLanding { get; set; }
+        public int VisibleOnlinePayment { get; set; }
 
         public virtual UniversidadEntity UniversidadNavigation { get; set; }
         public virtual ICollection<CabeceraPreguntasEntity> CabeceraPregunta { get; set; }
