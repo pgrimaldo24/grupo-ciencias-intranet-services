@@ -195,7 +195,7 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
         /// </summary>
         /// <param name="notificaction_url"></param>
         /// <returns></returns>
-        [HttpGet(EndPointDecoratorConstants.MercadoPagoEndPointRouter.Webhooks)]
+        [HttpPost(EndPointDecoratorConstants.MercadoPagoEndPointRouter.Webhooks)]
         public async Task<JsonResult> NotificationWebhooks(string notificaction_url)
         {
             var response = new ResponseDto();

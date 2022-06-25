@@ -66,13 +66,13 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                            }).FirstOrDefaultAsync();
         }
 
-        public async Task<NotificationWebhooksDto> GetNotificationServices(string notificaction_url)
+        public async Task<NotificationWebhooksDto> GetNotificationServices(ParametroWebHooksDto parametroWebHooksDto)
         {
             var historialWebhooksEntity = new HistorialWebhookEntity();
             var notificationWebhooksDto = new NotificationWebhooksDto();
             
-            if (!string.IsNullOrEmpty(notificaction_url))
-                historialWebhooksEntity = await context.HistorialWebhooks.Where(hwk => hwk.UrlGuid == notificaction_url).OrderByDescending(hwbk => hwbk.IdHistorialWebhooks).FirstOrDefaultAsync();
+            if (!string.IsNullOrEmpty(parametroWebHooksDto.notificaction_url))
+                historialWebhooksEntity = await context.HistorialWebhooks.Where(hwk => hwk.UrlGuid == parametroWebHooksDto.notificaction_url).OrderByDescending(hwbk => hwbk.IdHistorialWebhooks).FirstOrDefaultAsync();
 
             if (historialWebhooksEntity.IdHistorialWebhooks == 0) 
                 return notificationWebhooksDto;

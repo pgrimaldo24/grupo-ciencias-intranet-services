@@ -7,4 +7,9 @@
         public string status_code { get; set; }
         public string message { get; set; }
     }
+
+    public class ParametroWebHooksDto
+    {
+        public string notificaction_url { get; set; }
+    }
 }
