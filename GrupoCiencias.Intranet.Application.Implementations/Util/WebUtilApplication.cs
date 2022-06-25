@@ -42,14 +42,8 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Util
             var patriarch = (HSSFPatriarch)sheet.CreateDrawingPatriarch();
             var anchor = new HSSFClientAnchor(255, 255, 255, 200, 0, 0, 0, 255);
             anchor.AnchorType = (AnchorType)2;
-
-
-            //string dirPicture = HttpContext.Current.Server.MapPath("~") + @"\Imagenes\everisbpo.jpg";
-            //HSSFPicture picture = patriarch.CreatePicture(anchor, LoadImageExcel(dirPicture, workbook));
-
-            //string pathFile = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", "grupo_ciencias_FE001.png");
-
-            string pathFile = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images" , "grupo_ciencias_FE001.png");
+              
+            string pathFile = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images" , "grupo_ciencias_FE002.png");
 
             HSSFPicture img = (HSSFPicture)patriarch.CreatePicture(anchor, LoadImageExcel(pathFile, workbook));
           

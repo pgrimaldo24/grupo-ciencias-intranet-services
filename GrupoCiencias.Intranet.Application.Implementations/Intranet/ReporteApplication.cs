@@ -40,15 +40,12 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Intranet
           
         public async Task<byte[]> ExportStudentListAsync(StudentFilterDto studentFilterDto)
         {
-            var result = await StudentRepository.ListEnrolledStudentFilterAsync(studentFilterDto);
-            var count = 0;
+            var result = await StudentRepository.ListEnrolledStudentFilterAsync(studentFilterDto); 
             var oRegistroAlumno = new RegistroAlumnoExcelDto(); 
             var listRegistroAlumno = new List<RegistroAlumnoExcelDto>();
 
             result.ForEach(x =>
-            {
-                count++; 
-                oRegistroAlumno.Item = count;
+            { 
                 oRegistroAlumno.Nombres = x.full_name;
                 oRegistroAlumno.Celular = x.cellphone;
                 oRegistroAlumno.Ciclo = x.cycle;
