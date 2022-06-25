@@ -217,9 +217,9 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             return response;
         }
 
-        public async Task<ResponseDto> NotificationWebhooksAsync(string notificaction_url)
+        public async Task<ResponseDto> NotificationWebhooksAsync(ParametroWebHooksDto parametroWebHooksDto)
         {  
-            var notification = await MercadoPagoRepository.GetNotificationServices(notificaction_url);
+            var notification = await MercadoPagoRepository.GetNotificationServices(parametroWebHooksDto);
 
             if (ReferenceEquals(null, notification) || notification.id_history_webhook == null )
             {
