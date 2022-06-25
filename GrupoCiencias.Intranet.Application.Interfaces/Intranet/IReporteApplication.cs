@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using GrupoCiencias.Intranet.CrossCutting.Dto.Busqueda;
+using GrupoCiencias.Intranet.CrossCutting.Dto.Common;
 using System.Threading.Tasks;
 
 namespace GrupoCiencias.Intranet.Application.Interfaces.Intranet
 {
     public interface IReporteApplication
     {
-    }
+        Task<byte[]> ExportStudentListAsync(StudentFilterDto studentFilterDto);
+    } 
 }

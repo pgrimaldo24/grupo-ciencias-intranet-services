@@ -15,6 +15,11 @@
             public const string ListEnrolledStudents = "ListEnrolledStudents";
         }
         
+        public struct ReportesRouter 
+        {
+            public const string ExportStudentList = "ExportStudentList";
+        }
+
         public struct MercadoPagoEndPointRouter
         {
             public const string CreatePayment = "CreatePayment";

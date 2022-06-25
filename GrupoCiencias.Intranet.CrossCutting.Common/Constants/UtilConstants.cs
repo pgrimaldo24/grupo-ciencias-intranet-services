@@ -84,6 +84,11 @@
             public const string StatusCode = "?status_code=";
             public const string Message = "&message=";
         }
+        
+        public struct NombreReporte
+        {
+            public const string ReporteAlumnosMatriculados = "Reporte_Alumnos_Matriculados";
+        }
 
         public struct EmailDomain
         {

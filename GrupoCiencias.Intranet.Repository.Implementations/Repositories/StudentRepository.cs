@@ -1,20 +1,15 @@
-﻿using GrupoCiencias.Intranet.Application.Implementations.Intranet;
-using GrupoCiencias.Intranet.Application.Interfaces.Intranet;
-using GrupoCiencias.Intranet.CrossCutting.Common.Constants;
+﻿using GrupoCiencias.Intranet.Application.Interfaces.Intranet;
 using GrupoCiencias.Intranet.CrossCutting.Common.Enum;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Base;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Busqueda;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Common;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
 using GrupoCiencias.Intranet.CrossCutting.IoC.Container;
-using GrupoCiencias.Intranet.Domain.Models.Entity;
 using GrupoCiencias.Intranet.Repository.Implementations.Data;
 using GrupoCiencias.Intranet.Repository.Implementations.Extensions;
 using GrupoCiencias.Intranet.Repository.Interfaces.Repositories;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -30,9 +25,14 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
             this.context = context;
             _encryptionApplication = new Lazy<IEncryptionApplication>(() => IoCAutofacContainer.Current.Resolve<IEncryptionApplication>());
         }
-
-
+          
         private IEncryptionApplication EncryptionApplication => _encryptionApplication.Value;
+
+        public async Task<List<RegistroAlumnoDto>> ListEnrolledStudentFilterAsync(StudentFilterDto studentFilterDto)
+        { 
+            var result = await ListEnrolledStudentsAsync(studentFilterDto); 
+            return result.Data.Results.ToList();
+        }
 
         public async Task<ResponseDTO<PaginationResultDto<RegistroAlumnoDto>>> ListEnrolledStudentsAsync(StudentFilterDto studentFilterDto)
         {
@@ -42,8 +42,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
             var query = context.Solicitudes
                             .Join(context.Estudiantes, s => s.Dni, e => e.Dni, (s, e) => new { solicitud = s, estudiante = e })
                             .Join(context.TransaccionPagos, p => p.solicitud.Dni, tp => tp.NumeroDocumentoEstudiante, (p, tp) => new { p.solicitud, p.estudiante, transaccionpago = tp })
-                            .Where(filter => filter.solicitud.Estado == (int)EstadoEstudianteSolicitud.Aprobado 
-                                            //&& filter.estudiante.Estado == (int)EstadoEstudianteMatriculado.Activo
+                            .Where(filter => filter.solicitud.Estado == (int)EstadoEstudianteSolicitud.Aprobado  
                                             && filter.transaccionpago.EstadoRegistro == 1)
                             .Select(rpt => new StudentResponseDto 
                             {
