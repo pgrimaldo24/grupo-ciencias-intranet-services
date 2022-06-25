@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GrupoCiencias.Intranet.CrossCutting.Common\GrupoCiencias.Intranet.CrossCutting.Common.csproj" />
+    <ProjectReference Include="..\GrupoCiencias.Intranet.CrossCutting.Model\GrupoCiencias.Intranet.CrossCutting.Model.csproj" />
   </ItemGroup>
 
 </Project>

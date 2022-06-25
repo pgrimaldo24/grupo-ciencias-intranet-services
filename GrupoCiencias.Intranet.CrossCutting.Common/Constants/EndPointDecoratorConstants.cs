@@ -12,6 +12,7 @@
         {
             public const string RegistrarSolicitud = "RegisterEnrollment";
             public const string GetListMatriculaPrices = "GetEnrollmentPricesList";
+            public const string ListEnrolledStudents = "ListEnrolledStudents";
         }
         
         public struct MercadoPagoEndPointRouter

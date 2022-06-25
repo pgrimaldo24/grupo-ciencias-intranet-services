@@ -18,7 +18,7 @@
             public const string DD_MM_YYY_HH_MM_SS = "ddMMyyyHHmmss";
             public const string YYYY_MM_DD = "yyyyMMdd";
         }
-         
+          
 
         public struct CodigoEstado
         {

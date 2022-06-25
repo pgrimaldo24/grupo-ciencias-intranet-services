@@ -24,6 +24,22 @@ namespace GrupoCiencias.Intranet.CrossCutting.Dto.Common
         public dynamic Data { get; set; } 
     }
 
+    public class ResponseDTO<T>
+    {
+        public ResponseDTO()
+        {
+            Status = UtilConstants.CodigoEstado.Ok;
+            TransactionId = DateTime.Now.ToString(UtilConstants.DateTimeFormats.DD_MM_YYYY_HH_MM_SS_FFF);
+            Message = AlertResources.msg_correcto;
+        }
+
+        public string TransactionId { get; set; }
+        public int Status { get; set; }
+        public string Message { get; set; }
+        public T Data { get; set; }
+
+    }
+
     public class ResponseBadRequest
     {
         public ResponseBadRequest()

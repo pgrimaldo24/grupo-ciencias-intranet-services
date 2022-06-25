@@ -3,6 +3,8 @@ using GrupoCiencias.Intranet.Application.Interfaces.Matricula;
 using GrupoCiencias.Intranet.CrossCutting.Common;
 using GrupoCiencias.Intranet.CrossCutting.Common.Constants;
 using GrupoCiencias.Intranet.CrossCutting.Common.Exceptions;
+using GrupoCiencias.Intranet.CrossCutting.Dto.Base;
+using GrupoCiencias.Intranet.CrossCutting.Dto.Busqueda;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Common;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
 using GrupoCiencias.Intranet.CrossCutting.IoC.Container;
@@ -99,6 +101,42 @@ namespace GrupoCiencias.Intranet.Api.Controllers.Matricula
             }
 
             return new JsonResult(response);
-        } 
+        }
+
+
+        /// <summary>
+        /// ListEnrolledStudentsAsync
+        /// </summary>
+        /// <param name="studentFilterDto"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route(EndPointDecoratorConstants.MatriculaRouter.ListEnrolledStudents)]
+        public async Task<JsonResult> ListEnrolledStudents([FromBody] StudentFilterDto studentFilterDto)
+        {
+            ResponseDTO<PaginationResultDto<RegistroAlumnoDto>> response;
+
+            try
+            {
+                response = await ProcesoMatriculaApplication.ListEnrolledStudentsAsync(studentFilterDto);
+            }
+            catch (FunctionalException ex)
+            {
+                response = new ResponseDTO<PaginationResultDto<RegistroAlumnoDto>> { Status = ex.FuntionalCode, Message = ex.Message, Data = ex.Data, TransactionId = ex.TransactionId };
+                Logger.LogWarning(ex.Message, ex.TransactionId, ex);
+            }
+            catch (TechnicalException ex)
+            {
+                response = new ResponseDTO<PaginationResultDto<RegistroAlumnoDto>> { Status = ex.ErrorCode, Message = ex.StackTrace.ToString(), Data = ex.Data, TransactionId = ex.TransactionId };
+                Logger.LogError(ex.Message, ex.TransactionId, ex);
+            }
+            catch (Exception ex)
+            {
+                response = new ResponseDTO<PaginationResultDto<RegistroAlumnoDto>> { Status = UtilConstants.CodigoEstado.InternalServerError, Message = ex.StackTrace.ToString() };
+                Logger.LogError(ex.Message, response.TransactionId, ex);
+            }
+
+            return new JsonResult(response);
+        }
+
     }
 }

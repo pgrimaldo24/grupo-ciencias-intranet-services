@@ -369,16 +369,16 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             var payment_transaction_entity = new TransaccionPagoEntity();
 
             payment_transaction_entity.CodPagoReferencia = createRequest.external_reference;
-            payment_transaction_entity.CuotasPago = await EncryptionApplication.EncryptString(createRequest.installments.ToString());
-            payment_transaction_entity.NotificacionUrl = await EncryptionApplication.EncryptString(createRequest.notification_url.ToString());
-            payment_transaction_entity.NombreTitular = await EncryptionApplication.EncryptString(createRequest.payer.first_name.ToString());
-            payment_transaction_entity.ApellidoTitular = await EncryptionApplication.EncryptString(createRequest.payer.last_name.ToString());
-            payment_transaction_entity.EmailTitular = await EncryptionApplication.EncryptString(createRequest.payer.email.ToString());
-            payment_transaction_entity.NumeroDocumentoTitular = await EncryptionApplication.EncryptString(createRequest.payer.identification.number.ToString());
+            payment_transaction_entity.CuotasPago = await EncryptionApplication.EncryptStringAsync(createRequest.installments.ToString());
+            payment_transaction_entity.NotificacionUrl = await EncryptionApplication.EncryptStringAsync(createRequest.notification_url.ToString());
+            payment_transaction_entity.NombreTitular = await EncryptionApplication.EncryptStringAsync(createRequest.payer.first_name.ToString());
+            payment_transaction_entity.ApellidoTitular = await EncryptionApplication.EncryptStringAsync(createRequest.payer.last_name.ToString());
+            payment_transaction_entity.EmailTitular = await EncryptionApplication.EncryptStringAsync(createRequest.payer.email.ToString());
+            payment_transaction_entity.NumeroDocumentoTitular = await EncryptionApplication.EncryptStringAsync(createRequest.payer.identification.number.ToString());
             payment_transaction_entity.TipoDocumentoTitularId = await RelationRepository.GetDocumentTypeXId(createRequest.payer.identification.type.ToString());
-            payment_transaction_entity.MetodoPagoId = await EncryptionApplication.EncryptString(createRequest.payment_method_id.ToString());
-            payment_transaction_entity.TokenCard = await EncryptionApplication.EncryptString(createRequest.token.ToString());
-            payment_transaction_entity.MontoTransaccion = await EncryptionApplication.EncryptString(createRequest.transaction_amount.ToString());
+            payment_transaction_entity.MetodoPagoId = await EncryptionApplication.EncryptStringAsync(createRequest.payment_method_id.ToString());
+            payment_transaction_entity.TokenCard = await EncryptionApplication.EncryptStringAsync(createRequest.token.ToString());
+            payment_transaction_entity.MontoTransaccion = await EncryptionApplication.EncryptStringAsync(createRequest.transaction_amount.ToString());
             payment_transaction_entity.Codpagorefindex = cod_pago_ref_index;
             payment_transaction_entity.NumeroDocumentoEstudiante = student_document_number.ToString();
             payment_transaction_entity.GuidKey = transaction_identifier.ToString();
@@ -393,15 +393,15 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
 
             if (!ReferenceEquals(null, paymentReceived))
             { 
-                payment_information.IdComprobantePago = await EncryptionApplication.EncryptString(paymentReceived.id.ToString());
-                payment_information.FechaCreadaPago = await EncryptionApplication.EncryptString(paymentReceived.date_created.ToString());
-                payment_information.FechaAprovadaPago = await EncryptionApplication.EncryptString(paymentReceived.date_approved.ToString());
-                payment_information.FechaUltimaActualizacion = await EncryptionApplication.EncryptString(paymentReceived.date_last_updated.ToString());
-                payment_information.FechaLiberacionDinero = await EncryptionApplication.EncryptString(paymentReceived.money_release_date.ToString());
-                payment_information.IdTipoTarjeta = await EncryptionApplication.EncryptString(paymentReceived.payment_type_id.ToString());
-                payment_information.EstadoPago = await EncryptionApplication.EncryptString(paymentReceived.status.ToString());
-                payment_information.EstadoPagoDetalle = await EncryptionApplication.EncryptString(paymentReceived.status_detail.ToString());
-                payment_information.TipoMoneda = await EncryptionApplication.EncryptString(paymentReceived.currency_id.ToString());
+                payment_information.IdComprobantePago = await EncryptionApplication.EncryptStringAsync(paymentReceived.id.ToString());
+                payment_information.FechaCreadaPago = await EncryptionApplication.EncryptStringAsync(paymentReceived.date_created.ToString());
+                payment_information.FechaAprovadaPago = await EncryptionApplication.EncryptStringAsync(paymentReceived.date_approved.ToString());
+                payment_information.FechaUltimaActualizacion = await EncryptionApplication.EncryptStringAsync(paymentReceived.date_last_updated.ToString());
+                payment_information.FechaLiberacionDinero = await EncryptionApplication.EncryptStringAsync(paymentReceived.money_release_date.ToString());
+                payment_information.IdTipoTarjeta = await EncryptionApplication.EncryptStringAsync(paymentReceived.payment_type_id.ToString());
+                payment_information.EstadoPago = await EncryptionApplication.EncryptStringAsync(paymentReceived.status.ToString());
+                payment_information.EstadoPagoDetalle = await EncryptionApplication.EncryptStringAsync(paymentReceived.status_detail.ToString());
+                payment_information.TipoMoneda = await EncryptionApplication.EncryptStringAsync(paymentReceived.currency_id.ToString());
                 payment_information.Proveedor = paymentReceived.statement_descriptor.ToString(); 
             }  
             return payment_information;

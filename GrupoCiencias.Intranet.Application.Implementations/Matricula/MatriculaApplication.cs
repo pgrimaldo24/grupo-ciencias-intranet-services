@@ -2,6 +2,8 @@
 using GrupoCiencias.Intranet.CrossCutting.Common;
 using GrupoCiencias.Intranet.CrossCutting.Common.Constants;
 using GrupoCiencias.Intranet.CrossCutting.Common.Resources;
+using GrupoCiencias.Intranet.CrossCutting.Dto.Base;
+using GrupoCiencias.Intranet.CrossCutting.Dto.Busqueda;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Common;
 using GrupoCiencias.Intranet.CrossCutting.Dto.Matricula;
 using GrupoCiencias.Intranet.CrossCutting.Dto.MercadoPago;
@@ -28,6 +30,8 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
         private IMatriculaRepository MatriculaRepository => UnitOfWork.Repository<IMatriculaRepository>();
 
         private IMercadoPagoRepository MercadoPagoRepository => UnitOfWork.Repository<IMercadoPagoRepository>();
+
+        private IStudentRepository StudentRepository => UnitOfWork.Repository<IStudentRepository>();
 
         public async Task<ResponseDto> RegisterEnrollmentAsync(SolicitudDto solicitudDto)
         {
@@ -126,6 +130,16 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
             response.Message = AlertResources.msg_correcto.ToString();
             response.Data = listaPrecios; 
             return response;
+        }
+
+        public async Task<ResponseDTO<PaginationResultDto<RegistroAlumnoDto>>> ListEnrolledStudentsAsync(StudentFilterDto studentFilterDto)
+        {
+            var result = await StudentRepository.ListEnrolledStudentsAsync(studentFilterDto); 
+            if (result.Data.Results != null)
+                return result; 
+            result.Status = UtilConstants.CodigoEstado.InternalServerError;
+            result.Message = AlertResources.no_record_found;
+            return result;
         }
     }
 }

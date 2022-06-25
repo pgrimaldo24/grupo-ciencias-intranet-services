@@ -17,7 +17,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Intranet
             _appSettings = appSettings.Value;
         }
 
-        public async Task<string> EncryptString(string encryptString)
+        public async Task<string> EncryptStringAsync(string encryptString)
         {
             string key = UtilConstants.ContentService.KeyFormat; 
             byte[] keyArray; 
@@ -42,7 +42,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Intranet
             return Convert.ToBase64String(ArrayResultado, 0, ArrayResultado.Length); 
         }
 
-        public async Task<string> DescryptString(string descryptString)
+        public async Task<string> DescryptStringAsync(string descryptString)
         {
             string key = UtilConstants.ContentService.KeyFormat;
             byte[] keyArray; 
@@ -64,6 +64,30 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Intranet
             tdes.Clear(); 
 
             return UTF8Encoding.UTF8.GetString(resultArray);
-        }  
+        }
+
+        public string DescryptString(string descryptString)
+        {
+            string key = UtilConstants.ContentService.KeyFormat;
+            byte[] keyArray;
+            byte[] Array_a_Descifrar = Convert.FromBase64String(descryptString);
+            MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
+
+            keyArray = hashmd5.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
+            hashmd5.Clear();
+
+            var tdes = new TripleDESCryptoServiceProvider()
+            {
+                Key = keyArray,
+                Mode = CipherMode.ECB,
+                Padding = PaddingMode.PKCS7
+            };
+
+            ICryptoTransform cTransform = tdes.CreateDecryptor();
+            byte[] resultArray = cTransform.TransformFinalBlock(Array_a_Descifrar, 0, Array_a_Descifrar.Length);
+            tdes.Clear();
+
+            return UTF8Encoding.UTF8.GetString(resultArray);
+        }
     }
 }

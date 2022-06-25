@@ -1,6 +1,7 @@
 ﻿using GrupoCiencias.Intranet.CrossCutting.Dto.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.Internal;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
@@ -10,9 +11,17 @@ using System.Threading.Tasks;
 namespace GrupoCiencias.Intranet.Repository.Implementations.Extensions
 {
     internal static class QueryableExtensions
-    {
+    {  
         private static readonly TypeInfo QueryCompilerTypeInfo = typeof(QueryCompiler).GetTypeInfo();
 
+        private static readonly FieldInfo QueryCompilerField = typeof(EntityQueryProvider).GetTypeInfo().DeclaredFields.First(x => x.Name == "_queryCompiler");
+
+        private static readonly FieldInfo QueryModelGeneratorField = QueryCompilerTypeInfo.DeclaredFields.First(x => x.Name == "_queryModelGenerator");
+
+        private static readonly FieldInfo DataBaseField = QueryCompilerTypeInfo.DeclaredFields.Single(x => x.Name == "_database");
+
+        private static readonly PropertyInfo DatabaseDependenciesField = typeof(Database).GetTypeInfo().DeclaredProperties.Single(x => x.Name == "Dependencies");
+         
         public static IQueryable<T> SortBy<T>(this IQueryable<T> source, string order, string columnOrder)
         {
             if (!string.IsNullOrEmpty(order) && !string.IsNullOrEmpty(columnOrder))
@@ -29,8 +38,8 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Extensions
             return source;
         }
 
-        public static async Task<PaginationResultDto<T>> GetPagedAsync<T>(this IQueryable<T> query,
-                                         int page, int pageSize) where T : class
+        public static PaginationResultDto<T> GetPaged<T>(this IQueryable<T> query,
+                                       int page, int pageSize) where T : class
         {
             var result = new PaginationResultDto<T>
             {
@@ -39,21 +48,35 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Extensions
                 RowCount = query.Count()
             };
 
-            if (pageSize <= 0)
+            var pageCount = (double)result.RowCount / pageSize;
+            result.PageCount = (int)Math.Ceiling(pageCount);
+
+            var skip = (page - 1) * pageSize;
+            result.Results = query.Skip(skip).Take(pageSize).ToList();
+            result.PageSize = result.Results.Count;
+
+            return result;
+        }
+
+        public static async Task<PaginationResultDto<T>> GetPagedAsync<T>(this IQueryable<T> query, int page, int pageSize) where T : class
+        {
+            var result = new PaginationResultDto<T>
             {
-                result.PageCount = 1;
-                result.Results = await query.ToListAsync();
-                return result;
-            }
+                CurrentPage = page,
+                PageSize = pageSize,
+                RowCount = await query.CountAsync()
+            };
 
             var pageCount = (double)result.RowCount / pageSize;
             result.PageCount = (int)Math.Ceiling(pageCount);
 
             var skip = (page - 1) * pageSize;
-            result.Results = await query.Skip(skip).Take(pageSize).ToListAsync();
-
+            //var json = query.Skip(skip).Take(pageSize).ToSql();
+            result.Results = await query.Skip(skip).Take(pageSize).AsNoTracking().ToListAsync();
+            result.PageSize = result.Results.Count;
             return result;
         }
+
 
         private static IOrderedQueryable<T> ApplyOrder<T>(
            IQueryable<T> source,

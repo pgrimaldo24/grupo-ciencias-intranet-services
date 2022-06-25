@@ -144,6 +144,9 @@
   <data name="msg_null_variable" xml:space="preserve">
     <value>Hubo un error, el Objeto create_payment está null.</value>
   </data>
+  <data name="no_record_found" xml:space="preserve">
+    <value>No se encontró registros.</value>
+  </data>
   <data name="str_error_key_no_encontrado" xml:space="preserve">
     <value>El usuario no se encuentra registrado en la aplicación</value>
   </data>

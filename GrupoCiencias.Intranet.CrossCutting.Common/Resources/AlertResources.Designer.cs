@@ -24,9 +24,9 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class AlertResources {
         
-        public static global::System.Resources.ResourceManager resourceMan;
-
-        public static global::System.Globalization.CultureInfo resourceCulture;
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal AlertResources() {
@@ -138,6 +138,15 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
         public static string msg_null_variable {
             get {
                 return ResourceManager.GetString("msg_null_variable", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a No se encontró registros..
+        /// </summary>
+        public static string no_record_found {
+            get {
+                return ResourceManager.GetString("no_record_found", resourceCulture);
             }
         }
 
