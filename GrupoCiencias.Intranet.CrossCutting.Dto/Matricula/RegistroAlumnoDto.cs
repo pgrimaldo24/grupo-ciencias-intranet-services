@@ -7,5 +7,6 @@
         public string cycle { get; set; }
         public decimal amount { get; set; }
         public string operation_number { get; set; }
+        public string creation_date { get; set; }
     }
 }

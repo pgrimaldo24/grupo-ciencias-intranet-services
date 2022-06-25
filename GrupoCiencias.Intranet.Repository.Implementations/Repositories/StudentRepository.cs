@@ -69,7 +69,8 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
                 cellphone = rpta.cellphone,
                 cycle = rpta.cycle,
                 amount = rpta.amount,
-                operation_number = rpta.operation_number
+                operation_number = rpta.operation_number,
+                creation_date = rpta.creation_date.ToString("dd/MM/yyyy")
             }).SortBy(studentFilterDto.Order, studentFilterDto.ColumnOrder);
 
             var data = await result.GetPagedAsync(studentFilterDto.Page, studentFilterDto.PageSize); 
