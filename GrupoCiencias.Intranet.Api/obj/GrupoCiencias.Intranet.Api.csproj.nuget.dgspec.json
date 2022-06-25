@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Api\\GrupoCiencias.Intranet.Api.csproj": {}
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Api\\GrupoCiencias.Intranet.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Api\\GrupoCiencias.Intranet.Api.csproj": {
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Api\\GrupoCiencias.Intranet.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Api\\GrupoCiencias.Intranet.Api.csproj",
+        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Api\\GrupoCiencias.Intranet.Api.csproj",
         "projectName": "GrupoCiencias.Intranet.Api",
-        "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Api\\GrupoCiencias.Intranet.Api.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Api\\obj\\",
+        "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Api\\GrupoCiencias.Intranet.Api.csproj",
+        "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
+        "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,17 +28,17 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj"
               },
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
               },
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj"
               },
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj"
               }
             }
           }
@@ -56,6 +56,10 @@
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[5.0.0, )"
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.11.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -75,7 +79,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.12, 5.0.12]"
+              "version": "[5.0.14, 5.0.14]"
             }
           ],
           "frameworkReferences": {
@@ -86,21 +90,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj": {
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj",
+        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj",
         "projectName": "GrupoCiencias.Intranet.Application.Implementations",
-        "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\obj\\",
+        "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj",
+        "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
+        "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Implementations\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -114,23 +118,23 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj"
               },
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
               },
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
               },
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj"
               },
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj"
               },
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj"
               }
             }
           }
@@ -145,6 +149,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "NPOI": {
+              "target": "Package",
+              "version": "[2.5.6, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.16.0, )"
+            },
             "mercadopago-sdk": {
               "target": "Package",
               "version": "[2.1.0, )"
@@ -165,21 +177,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj": {
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj",
+        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj",
         "projectName": "GrupoCiencias.Intranet.Application.Interfaces",
-        "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Interfaces\\obj\\",
+        "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Interfaces\\GrupoCiencias.Intranet.Application.Interfaces.csproj",
+        "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
+        "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Interfaces\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -193,8 +205,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
               }
             }
           }
@@ -223,21 +235,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj",
+        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj",
         "projectName": "GrupoCiencias.Intranet.CrossCutting.Common",
-        "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\obj\\",
+        "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj",
+        "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
+        "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -277,21 +289,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj",
+        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj",
         "projectName": "GrupoCiencias.Intranet.CrossCutting.Dto",
-        "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\obj\\",
+        "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj",
+        "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
+        "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -305,8 +317,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
+              },
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Model\\GrupoCiencias.Intranet.CrossCutting.Model.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Model\\GrupoCiencias.Intranet.CrossCutting.Model.csproj"
               }
             }
           }
@@ -335,21 +350,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj": {
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj",
+        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj",
         "projectName": "GrupoCiencias.Intranet.CrossCutting.IoC",
-        "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\obj\\",
+        "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj",
+        "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
+        "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -363,8 +378,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
               }
             }
           }
@@ -403,21 +418,75 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Model\\GrupoCiencias.Intranet.CrossCutting.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj",
-        "projectName": "GrupoCiencias.Intranet.Domain.Models",
-        "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\obj\\",
+        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Model\\GrupoCiencias.Intranet.CrossCutting.Model.csproj",
+        "projectName": "GrupoCiencias.Intranet.CrossCutting.Model",
+        "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Model\\GrupoCiencias.Intranet.CrossCutting.Model.csproj",
+        "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
+        "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj",
+        "projectName": "GrupoCiencias.Intranet.Domain.Models",
+        "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj",
+        "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
+        "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -431,8 +500,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
               }
             }
           }
@@ -461,21 +530,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj": {
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj",
+        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj",
         "projectName": "GrupoCiencias.Intranet.Repository.Implementations",
-        "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Implementations\\obj\\",
+        "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj",
+        "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
+        "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Implementations\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -489,23 +558,23 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj"
               },
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
               },
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
               },
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj"
               },
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj"
               },
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj"
               }
             }
           }
@@ -572,21 +641,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj": {
+    "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj",
+        "projectUniqueName": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj",
         "projectName": "GrupoCiencias.Intranet.Repository.Interfaces",
-        "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\obj\\",
+        "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj",
+        "packagesPath": "C:\\Users\\pgrimald\\.nuget\\packages\\",
+        "outputPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Interfaces\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pgrimald\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -600,11 +669,14 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
               },
-              "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
+              },
+              "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
+                "projectPath": "C:\\1.GrupoCienciasRepository\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj"
               }
             }
           }
@@ -639,7 +711,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

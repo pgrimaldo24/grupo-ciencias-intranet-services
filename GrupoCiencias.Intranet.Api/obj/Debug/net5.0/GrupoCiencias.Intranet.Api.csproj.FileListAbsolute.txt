@@ -97,6 +97,7 @@ C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intr
 C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\GrupoCiencias.Intranet.CrossCutting.Common.dll
 C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\GrupoCiencias.Intranet.CrossCutting.Dto.dll
 C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\GrupoCiencias.Intranet.CrossCutting.IoC.dll
+C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\GrupoCiencias.Intranet.CrossCutting.Model.dll
 C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\GrupoCiencias.Intranet.Domain.Models.dll
 C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\GrupoCiencias.Intranet.Repository.Implementations.dll
 C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\GrupoCiencias.Intranet.Repository.Interfaces.dll
@@ -107,6 +108,7 @@ C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intr
 C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\GrupoCiencias.Intranet.Application.Interfaces.pdb
 C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\GrupoCiencias.Intranet.CrossCutting.Dto.pdb
 C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\GrupoCiencias.Intranet.CrossCutting.IoC.pdb
+C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\GrupoCiencias.Intranet.CrossCutting.Model.pdb
 C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\GrupoCiencias.Intranet.Repository.Interfaces.pdb
 C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\obj\Debug\net5.0\GrupoCiencias.Intranet.Api.csproj.AssemblyReference.cache
 C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\obj\Debug\net5.0\GrupoCiencias.Intranet.Api.GeneratedMSBuildEditorConfig.editorconfig
@@ -123,3 +125,9 @@ C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intr
 C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\obj\Debug\net5.0\ref\GrupoCiencias.Intranet.Api.dll
 C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\obj\Debug\net5.0\GrupoCiencias.Intranet.Api.pdb
 C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\obj\Debug\net5.0\GrupoCiencias.Intranet.Api.genruntimeconfig.cache
+C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\NPOI.OOXML.dll
+C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\NPOI.OpenXml4Net.dll
+C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\NPOI.OpenXmlFormats.dll
+C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\NPOI.dll
+C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\BouncyCastle.Crypto.dll
+C:\1.GrupoCienciasRepository\grupo-ciencias-intranet-services\GrupoCiencias.Intranet.Api\bin\Debug\net5.0\ICSharpCode.SharpZipLib.dll

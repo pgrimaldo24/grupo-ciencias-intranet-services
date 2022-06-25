@@ -49,15 +49,15 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Util
 
             //string pathFile = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", "grupo_ciencias_FE001.png");
 
-            string pathFile = Path.GetFullPath(@"\wwwroot\images\grupo_ciencias_FE001.png");
+            string pathFile = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images" , "grupo_ciencias_FE001.png");
 
             HSSFPicture img = (HSSFPicture)patriarch.CreatePicture(anchor, LoadImageExcel(pathFile, workbook));
-
+          
             // Estilos Cabecera
             IFont fontHeaders = workbook.CreateFont();
             {
                 var withBlock = fontHeaders;
-                withBlock.Color = HSSFColor.Black.Index;
+                withBlock.Color = HSSFColor.White.Index;
                 withBlock.Boldweight = (short)FontBoldWeight.Bold;
                 withBlock.FontName = "Arial";
                 withBlock.FontHeightInPoints = 10;
