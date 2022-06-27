@@ -2,7 +2,6 @@
 {
     public class RegistroAlumnoDto
     {
-        public int item { get; set; }
         public string full_name { get; set; }
         public string cellphone { get; set; }
         public string cycle { get; set; }
