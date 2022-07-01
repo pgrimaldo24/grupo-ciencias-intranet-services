@@ -15,14 +15,14 @@ using System.Threading.Tasks;
 
 namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
 {
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
     [Route("api/[controller]")]
     [ApiController]
     public class MercadoPagoController : Controller
-    { 
+    {
         private readonly Lazy<ILogger> _logger;
         private readonly Lazy<IMercadoPagoApplication> _mercadoPagoApplication;
-        
+
         public MercadoPagoController()
         {
             _mercadoPagoApplication = new Lazy<IMercadoPagoApplication>(() => IoCAutofacContainer.Current.Resolve<IMercadoPagoApplication>());
@@ -37,7 +37,8 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
         /// </summary>
         /// <param name="studentPaymentDto"></param>
         /// <returns></returns>
-        [HttpPost(EndPointDecoratorConstants.MercadoPagoEndPointRouter.CreatePayment)] 
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpPost(EndPointDecoratorConstants.MercadoPagoEndPointRouter.CreatePayment)]
         public async Task<JsonResult> CreatePayment([FromBody] StudentPaymentDto studentPaymentDto)
         {
             var response = new ResponseDto();
@@ -69,6 +70,7 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
         /// </summary>
         /// <param name="bin_card"></param>
         /// <returns></returns>
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet(EndPointDecoratorConstants.MercadoPagoEndPointRouter.PaymentMethod)]
         public async Task<JsonResult> PaymentMethod(string bin_card)
         {
@@ -101,7 +103,8 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
         /// </summary>
         /// <param name="cardTokenDto"></param>
         /// <returns></returns>
-        [HttpPost(EndPointDecoratorConstants.MercadoPagoEndPointRouter.CardToken)] 
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpPost(EndPointDecoratorConstants.MercadoPagoEndPointRouter.CardToken)]
         public async Task<JsonResult> CardToken([FromBody] CardTokenDto cardTokenDto)
         {
             var response = new ResponseDto();
@@ -132,6 +135,7 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
         /// IdentificationTypes
         /// </summary>
         /// <returns></returns>
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet(EndPointDecoratorConstants.MercadoPagoEndPointRouter.IdentificationTypes)]
         public async Task<JsonResult> IdentificationTypes()
         {
@@ -163,6 +167,7 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
         /// CardValidation
         /// </summary>
         /// <returns></returns>
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet(EndPointDecoratorConstants.MercadoPagoEndPointRouter.CardValidation)]
         public async Task<JsonResult> CardValidation()
         {
