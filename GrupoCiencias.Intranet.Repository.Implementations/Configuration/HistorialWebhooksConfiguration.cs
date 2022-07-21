@@ -40,6 +40,11 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
             builder.Property(e => e.UrlGuid)
                 .HasMaxLength(200)
                 .HasColumnName("url_guid");
+
+            builder.Property(e => e.GuidKey)
+               .HasMaxLength(200)
+               .HasColumnName("guid_key");
+
         }
     }
 }

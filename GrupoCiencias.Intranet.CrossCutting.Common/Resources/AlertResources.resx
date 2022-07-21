@@ -123,6 +123,9 @@
   <data name="msg_alerta_envio_correo" xml:space="preserve">
     <value>El correo se envió correctamente.</value>
   </data>
+  <data name="msg_alerta_nomail_envio_correo" xml:space="preserve">
+    <value>El alumno no tiene un mail asignado.</value>
+  </data>
   <data name="msg_alerta_webhook_error" xml:space="preserve">
     <value>Ha ocurrido un error, el atributo notificaction_url no existe, inténtelo de nuevo.</value>
   </data>

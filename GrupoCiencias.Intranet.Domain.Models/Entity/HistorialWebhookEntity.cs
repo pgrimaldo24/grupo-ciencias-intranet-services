@@ -11,6 +11,7 @@ namespace GrupoCiencias.Intranet.Domain.Models.Entity
         public string StatusCode { get; set; }
         public string Message { get; set; }
         public string UrlGuid { get; set; }
+        public string GuidKey { get; set; }        
         public DateTime FechaCreacion { get; set; }
         public DateTime? FechaBaja { get; set; }
     }

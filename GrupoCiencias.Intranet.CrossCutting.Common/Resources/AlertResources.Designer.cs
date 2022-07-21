@@ -29,7 +29,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal AlertResources() {
+        public AlertResources() {
         }
         
         /// <summary>
@@ -59,7 +59,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 resourceCulture = value;
             }
         }
-
+        
         /// <summary>
         ///   Busca una cadena traducida similar a Ha ocurrido un error en el envío de correo..
         /// </summary>
@@ -68,7 +68,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("mg_alerta_error_envio_correo", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Busca una cadena traducida similar a El correo se envió correctamente..
         /// </summary>
@@ -77,7 +77,16 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("msg_alerta_envio_correo", resourceCulture);
             }
         }
-
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El alumno no tiene un mail asignado..
+        /// </summary>
+        public static string msg_alerta_nomail_envio_correo {
+            get {
+                return ResourceManager.GetString("msg_alerta_nomail_envio_correo", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Busca una cadena traducida similar a Ha ocurrido un error, el atributo notificaction_url no existe, inténtelo de nuevo..
         /// </summary>
@@ -86,7 +95,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("msg_alerta_webhook_error", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Busca una cadena traducida similar a Se procesó correctamente..
         /// </summary>
@@ -95,7 +104,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("msg_correcto", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Busca una cadena traducida similar a Hubo un error en el método GetInvoke.
         /// </summary>
@@ -104,7 +113,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("msg_error_get_invoke", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Busca una cadena traducida similar a Hubo un error interno en el metodo RegisterEnrollmentAsync..
         /// </summary>
@@ -113,7 +122,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("msg_error_matricula_register_enrollment", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Busca una cadena traducida similar a Hubo un error en el método GetRegisteredPaymentInformationAsync..
         /// </summary>
@@ -122,7 +131,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("msg_error_metohd_register_payment", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Busca una cadena traducida similar a Hubo un error en el método PostInvoke.
         /// </summary>
@@ -131,7 +140,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("msg_error_post_invoke", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Busca una cadena traducida similar a Hubo un error, el Objeto create_payment está null..
         /// </summary>
@@ -140,7 +149,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("msg_null_variable", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Busca una cadena traducida similar a No se encontró registros..
         /// </summary>
@@ -149,7 +158,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("no_record_found", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Busca una cadena traducida similar a El usuario no se encuentra registrado en la aplicación.
         /// </summary>
@@ -158,7 +167,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("str_error_key_no_encontrado", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Busca una cadena traducida similar a El method -&gt; SetListaMasterDetail ha retornado con un valor NULL .
         /// </summary>
@@ -167,7 +176,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("str_error_method_master", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Busca una cadena traducida similar a ERROR.
         /// </summary>
@@ -176,7 +185,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("str_log_error", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Busca una cadena traducida similar a INFORMATION.
         /// </summary>
@@ -185,7 +194,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("str_log_info", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Busca una cadena traducida similar a WARNING.
         /// </summary>
@@ -194,7 +203,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("str_log_warning", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Busca una cadena traducida similar a INFO : METHOD -&gt;.
         /// </summary>
@@ -203,7 +212,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("str_method", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Busca una cadena traducida similar a INFO : response -&gt;.
         /// </summary>
@@ -212,7 +221,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Common.Resources {
                 return ResourceManager.GetString("str_response", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Busca una cadena traducida similar a INFO : URL -&gt;.
         /// </summary>

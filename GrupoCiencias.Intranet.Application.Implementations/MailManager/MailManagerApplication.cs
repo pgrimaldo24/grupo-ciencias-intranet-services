@@ -10,9 +10,13 @@ using GrupoCiencias.Intranet.Domain.Models.Entity;
 using GrupoCiencias.Intranet.Repository.Interfaces.Data;
 using GrupoCiencias.Intranet.Repository.Interfaces.Repositories.MailManager;
 using Microsoft.Extensions.Options;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 using System;
+using System.IO;
 using System.Net;
 using System.Net.Mail;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace GrupoCiencias.Intranet.Application.Implementations.MailManager
@@ -21,11 +25,13 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MailManager
     { 
         private readonly MailManagers _appMailManagers;
         private readonly Lazy<IUnitOfWork> _unitOfWork;
+        private readonly AppSetting _appSettings;
 
-        public MailManagerApplication(IOptions<MailManagers> appMailManagers)
+        public MailManagerApplication(IOptions<MailManagers> appMailManagers, IOptions<AppSetting> appSettings)
         { 
             _appMailManagers = appMailManagers.Value;
             _unitOfWork = new Lazy<IUnitOfWork>(() => IoCAutofacContainer.Current.Resolve<IUnitOfWork>());
+            _appSettings = appSettings.Value;
         }
          
         private IUnitOfWork UnitOfWork => _unitOfWork.Value;
@@ -36,33 +42,36 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MailManager
             var response = new ResponseDto(); 
             var oStudent = MailManagerRepository.GetStudentAsync(userRequest.id_student_request, userRequest.document_number).Result;
             var oMailBox = MailManagerRepository.GetMailBoxAsync(userRequest.notification_type).Result;
-            var oKeyapp = MailManagerRepository.GetCredentialAsync(oMailBox.TipoNotificacion).Result;
-            var email_domain = oStudent.email.Split('@')[1].ToString();
 
-            var omailBoxDto = new SendInformationMail()
+
+            if (oStudent == null || string.IsNullOrEmpty(oStudent.email))
             {
-                outbox = oMailBox.Buzonsalida.ToString(),
-                outbox_key = oKeyapp.Clave.ToString(),
-                outbox_receiver = oStudent.email.ToString().Trim(),
-                asunto = oMailBox.Asunto.ToString(),
-                body = oMailBox.Cuerpocorreo.ToString()
-            };
-
-            var data = await ValidateEmailDomainAsync(omailBoxDto, email_domain);
-
-            if (!string.IsNullOrEmpty(data))
+                response.Status = UtilConstants.CodigoEstado.NoMail;
+                response.Message = AlertResources.msg_alerta_nomail_envio_correo.ToString();
+                response.Data = UtilConstants.EstadoDatos.FailedMail;
+            }
+            else
             {
-                if (data.Equals(UtilConstants.CodigoEstado.Ok.ToString()))
+
+                var data = await SendGridEmail(oStudent, oMailBox);
+
+                if (!string.IsNullOrEmpty(data))
                 {
-                    response.Status = UtilConstants.CodigoEstado.Ok;
-                    response.Message = AlertResources.msg_alerta_envio_correo.ToString(); 
+                    if (data.Equals(UtilConstants.EstadoDatos.Accepted.ToString()))
+                    {
+                        response.Status = UtilConstants.CodigoEstado.Ok;
+                        response.Message = AlertResources.msg_alerta_envio_correo.ToString();
+                        response.Data = data;
+                    }
+                    else
+                    {
+                        response.Status = UtilConstants.CodigoEstado.InternalServerError;
+                        response.Message = data.ToUpper().ToString();
+                        response.Data = data;
+                    }
                 }
-                else
-                {
-                    response.Status = UtilConstants.CodigoEstado.InternalServerError;
-                    response.Message = data.ToUpper().ToString();
-                }
-            } 
+
+            }           
 
             return response; 
         } 
@@ -126,6 +135,32 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MailManager
             }
             
             return response;
+        }
+
+        private async Task<string> SendGridEmail(StudentRequestDto oStudent, BuzonCorreoEntity oMailBox)
+        {
+            var response = string.Empty;
+            try
+            {
+                var client = new SendGridClient(_appSettings.SendGridCredentials.Key);
+                var from = new EmailAddress(oMailBox.Buzonsalida, "Grupo Ciencias");
+                var subject = oMailBox.Asunto;
+                var to = new EmailAddress(oStudent.email);
+                var plaintextContent = "Confirmacion";
+                var htmlContent = $"<strong> {oMailBox.Cuerpocorreo}";
+
+                var msg = MailHelper.CreateSingleEmail(from, to, subject, plaintextContent, htmlContent);
+                var mailresponse = await client.SendEmailAsync(msg);
+                response = mailresponse.StatusCode.ToString();
+                
+            }
+            catch (Exception ex)
+            {
+                response = UtilConstants.CodigoEstado.InternalServerError.ToString() + " " + ex.Message;
+            }
+
+            return response;
+
         }
 
         private async Task<MailBoxDto> SetInformationMail(SendInformationMail mailbox, MailBoxDto mailBox)

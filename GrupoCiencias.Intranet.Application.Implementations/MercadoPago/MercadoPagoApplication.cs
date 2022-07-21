@@ -107,7 +107,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                     response.Data = x; 
                 });
 
-                historyWebhooks = await RecordGuidHistory(id_payment_transaction, response, url_notification_webhook);
+                historyWebhooks = await RecordGuidHistory(id_payment_transaction, response, url_notification_webhook, transaction_identifier);
                 UnitOfWork.Set<HistorialWebhookEntity>().Add(historyWebhooks);
                 UnitOfWork.SaveChanges();  
                 return response;
@@ -164,7 +164,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                 Data = payment_reponse_data
             }; 
 
-            historyWebhooks = await RecordGuidHistory(id_payment_transaction, result, url_notification_webhook);
+            historyWebhooks = await RecordGuidHistory(id_payment_transaction, result, url_notification_webhook, transaction_identifier);
             UnitOfWork.Set<HistorialWebhookEntity>().Add(historyWebhooks);
             UnitOfWork.SaveChanges(); 
 
@@ -217,9 +217,9 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             return response;
         }
 
-        public async Task<ResponseDto> NotificationWebhooksAsync(ParametroWebHooksDto parametroWebHooksDto)
+        public async Task<ResponseDto> NotificationWebhooksAsync(string guid)
         {  
-            var notification = await MercadoPagoRepository.GetNotificationServices(parametroWebHooksDto);
+            var notification = await MercadoPagoRepository.GetNotificationServices(guid);
 
             if (ReferenceEquals(null, notification) || notification.id_history_webhook == null )
             {
@@ -512,7 +512,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
             };
             return response;
         }
-        private async Task<HistorialWebhookEntity> RecordGuidHistory(PaymentTransactionDto paymentTransactionDto, ResponseDto response_history, string payment_notification_url)
+        private async Task<HistorialWebhookEntity> RecordGuidHistory(PaymentTransactionDto paymentTransactionDto, ResponseDto response_history, string payment_notification_url, string transaction_identifier)
         {
             var webhookEntity = new HistorialWebhookEntity()
             {
@@ -520,7 +520,8 @@ namespace GrupoCiencias.Intranet.Application.Implementations.MercadoPago
                 IdTransactionService = response_history.TransactionId,
                 StatusCode = response_history.Status.ToString(),
                 Message = response_history.Message.ToString(),
-                UrlGuid = payment_notification_url
+                UrlGuid = payment_notification_url,
+                GuidKey = transaction_identifier
             };
 
             return webhookEntity;

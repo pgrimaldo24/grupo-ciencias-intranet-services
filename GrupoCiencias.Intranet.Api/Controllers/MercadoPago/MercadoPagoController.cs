@@ -198,15 +198,15 @@ namespace GrupoCiencias.Intranet.Api.Controllers.MercadoPago
         /// <summary>
         /// NotificationWebhooks
         /// </summary>
-        /// <param name="notificaction_url"></param>
+        /// <param name="guid"></param>
         /// <returns></returns>
-        [HttpPost(EndPointDecoratorConstants.MercadoPagoEndPointRouter.Webhooks)]
-        public async Task<JsonResult> NotificationWebhooks([FromBody] ParametroWebHooksDto parametroWebHooksDto)
+        [HttpPost(EndPointDecoratorConstants.MercadoPagoEndPointRouter.Webhooks + "/{guid}")]
+        public async Task<JsonResult> NotificationWebhooks([FromRoute] string guid)
         {
             var response = new ResponseDto();
             try
             {
-                response = await MercadoPagoApplication.NotificationWebhooksAsync(parametroWebHooksDto);
+                response = await MercadoPagoApplication.NotificationWebhooksAsync(guid);
             }
             catch (FunctionalException ex)
             {

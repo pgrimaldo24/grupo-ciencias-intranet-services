@@ -8,6 +8,8 @@
         public CacheSetting CacheSettings { get; set; }
         public MercadoPagoService MercadoPagoServices { get; set; }
         public MercadoPagoCredential MercadoPagoCredentials { get; set; }
+
+        public SendGridCredentials SendGridCredentials { get; set; }
     }
 
     public class MailManagers
@@ -65,5 +67,10 @@
         public string port_hotmail { get; set; }
         public string ssl_hotmail { get; set; }
         public string defaultcredentials_hotmail { get; set; }
+    }
+
+    public class SendGridCredentials
+    {
+        public string Key { get; set; }        
     }
 }

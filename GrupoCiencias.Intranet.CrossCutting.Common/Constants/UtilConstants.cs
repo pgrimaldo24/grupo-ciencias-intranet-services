@@ -31,7 +31,8 @@
             public const int ProtocolError = 1201;
             public const int ConnectionClosed = 444; 
             public const int Pending = 202;
-            public const int Timeout = 408;  
+            public const int Timeout = 408;
+            public const int NoMail = 2710;
         }
 
         public struct CacheTime
@@ -55,6 +56,8 @@
             public const int NoActivo = 0;
             public const string ActiveJwt = "Active";
             public const string InactiveJwt = "Inactive";
+            public const string Accepted = "Accepted";
+            public const string FailedMail = "Failed Mail"; 
         }
 
         public struct EstadoSolicitud
