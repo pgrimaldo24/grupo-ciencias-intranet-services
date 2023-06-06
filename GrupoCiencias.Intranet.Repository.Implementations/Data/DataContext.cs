@@ -66,6 +66,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
             builder.ApplyConfiguration(new UsuarioConfiguration());
             builder.ApplyConfiguration(new VideosConfiguration());
             builder.ApplyConfiguration(new RegistroUsuarioConfiguration());
+            builder.ApplyConfiguration(new ReclamoUsuarioConfiguration());
         }
 
         public virtual DbSet<SolicitudesEntity> Solicitudes { get; set; }
@@ -119,5 +120,6 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
         public virtual DbSet<UsuarioEntity> Usuarios { get; set; }
         public virtual DbSet<VideoEntity> Videos { get; set; } 
         public virtual DbSet<RegistroUsuarioEntity> RegistroUsuarios { get; set; }
+        public virtual DbSet<ReclamoUsuarioEntity> ReclamoUsuarios { get; set; }
     }
 }

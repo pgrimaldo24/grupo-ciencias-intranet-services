@@ -33,7 +33,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Landing
             if(string.IsNullOrEmpty(registroDto.ToString()))
             {
                 response.Status = UtilConstants.CodigoEstado.InternalServerError;
-                response.Message = AlertResources.msg_error_matricula_register_enrollment.ToString();
+                response.Message = AlertResources.str_log_error.ToString();
                 return response;            
             }
 
@@ -52,7 +52,9 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Landing
                 Nombreapellido = registroDto.nombreapellido,      
                 Dni = registroDto.dni,
                 Email = registroDto.email,
-                Celular = registroDto.celular
+                Celular = registroDto.celular,
+                PoliticasFinesComerciales = registroDto.politicasFinesComerciales ? 1 : 0,
+                PoliticasSeguridad = registroDto.politicasSeguridad ? 1 : 0
             };
 
             Console.WriteLine(registroDto.ciclo);
@@ -60,8 +62,12 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Landing
             Console.WriteLine(registroDto.dni);
             Console.WriteLine(registroDto.email);
             Console.WriteLine(registroDto.celular);
+            Console.WriteLine(registroDto.politicasFinesComerciales);
+            Console.WriteLine(registroDto.politicasSeguridad);
 
             return registroEntity;
         }
+
+        
     }
 }

@@ -28,6 +28,7 @@
         public struct LandingRouter
         {
             public const string RegistrarUsuario = "RegisterUser";
+            public const string ReclamoUsuario = "ComplaintUser";
         }
     }
 }

@@ -30,6 +30,10 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Configuration
                 .HasColumnName("email");
 
             builder.Property(e => e.Celular).HasColumnName("celular");
+
+            builder.Property(e => e.PoliticasFinesComerciales).HasColumnName("politicasfinescomerciales");
+
+            builder.Property(e => e.PoliticasSeguridad).HasColumnName("politicasseguridad");
         }
     }
 }

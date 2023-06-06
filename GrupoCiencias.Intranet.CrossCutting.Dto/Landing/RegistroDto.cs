@@ -10,5 +10,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Dto.Landing
         public int dni { get; set; }
         public string email { get; set; }
         public int celular { get; set; }
+        public bool politicasFinesComerciales { get; set; }
+        public bool politicasSeguridad { get; set; }
     }
 }

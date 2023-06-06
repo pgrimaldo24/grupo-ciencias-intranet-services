@@ -13,5 +13,7 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Models
         public int Dni { get; set; }
         public string Email { get; set; }
         public int Celular { get; set; }
+        public int PoliticasFinesComerciales { get; set; }
+        public int PoliticasSeguridad { get; set; }
     }
 }

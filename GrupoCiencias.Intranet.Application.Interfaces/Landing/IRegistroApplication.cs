@@ -7,5 +7,6 @@ namespace GrupoCiencias.Intranet.Application.Interfaces.Landing
     public interface IRegistroApplication
     {
         Task<ResponseDto> RegisterUserAsync(RegistroDto registroDto);
+        
     }
 }
