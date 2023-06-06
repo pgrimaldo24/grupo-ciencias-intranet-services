@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace GrupoCiencias.Intranet.Api.Controllers.Intranet
 {
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
     public class RelationController : ControllerBase

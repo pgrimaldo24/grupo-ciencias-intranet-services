@@ -64,21 +64,6 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Landing
                 PoliticasSeguridad = reclamoDto.politicasSeguridad ? 1 : 0
             };
 
-            Console.WriteLine(reclamoDto.tipodocumento);
-            Console.WriteLine(reclamoDto.numerodocumento);
-            Console.WriteLine(reclamoDto.nombres);
-            Console.WriteLine(reclamoDto.apellidos);
-            Console.WriteLine(reclamoDto.email);
-            Console.WriteLine(reclamoDto.telefono);
-            Console.WriteLine(reclamoDto.provincia);
-            Console.WriteLine(reclamoDto.direccion);
-            Console.WriteLine(reclamoDto.sede);
-            Console.WriteLine(reclamoDto.ciclo);
-            Console.WriteLine(reclamoDto.comentario);
-            Console.WriteLine(reclamoDto.solicittud);
-            Console.WriteLine(reclamoDto.politicasFinesComerciales);
-            Console.WriteLine(reclamoDto.politicasSeguridad);
-
             return reclamoEntity;
         }
        

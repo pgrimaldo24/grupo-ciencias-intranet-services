@@ -57,14 +57,6 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Landing
                 PoliticasSeguridad = registroDto.politicasSeguridad ? 1 : 0
             };
 
-            Console.WriteLine(registroDto.ciclo);
-            Console.WriteLine(registroDto.nombreapellido);
-            Console.WriteLine(registroDto.dni);
-            Console.WriteLine(registroDto.email);
-            Console.WriteLine(registroDto.celular);
-            Console.WriteLine(registroDto.politicasFinesComerciales);
-            Console.WriteLine(registroDto.politicasSeguridad);
-
             return registroEntity;
         }
 
