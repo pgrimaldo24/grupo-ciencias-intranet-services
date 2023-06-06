@@ -24,5 +24,10 @@
             public const string CardValidation = "CardValidation";
             public const string Webhooks = "NotificationWebhooks";
         }
+
+        public struct LandingRouter
+        {
+            public const string RegistrarUsuario = "RegisterUser";
+        }
     }
 }

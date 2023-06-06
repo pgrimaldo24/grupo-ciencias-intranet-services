@@ -282,6 +282,41 @@
           "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {}
         }
       },
+      "Microsoft.IdentityModel.JsonWebTokens/6.16.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Tokens": "6.16.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.dll": {}
+        }
+      },
+      "Microsoft.IdentityModel.Logging/6.16.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll": {}
+        }
+      },
+      "Microsoft.IdentityModel.Tokens/6.16.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0",
+          "Microsoft.IdentityModel.Logging": "6.16.0",
+          "System.Security.Cryptography.Cng": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll": {}
+        }
+      },
       "Microsoft.NETCore.App/2.2.8": {
         "type": "package",
         "dependencies": {
@@ -622,6 +657,19 @@
           }
         }
       },
+      "System.IdentityModel.Tokens.Jwt/6.16.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.JsonWebTokens": "6.16.0",
+          "Microsoft.IdentityModel.Tokens": "6.16.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.dll": {}
+        }
+      },
       "System.Runtime.CompilerServices.Unsafe/4.6.0": {
         "type": "package",
         "compile": {
@@ -645,6 +693,21 @@
         },
         "runtimeTargets": {
           "runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "System.Security.Cryptography.Cng/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.1/System.Security.Cryptography.Cng.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -734,6 +797,7 @@
           "GrupoCiencias.Intranet.CrossCutting.IoC": "1.0.0",
           "GrupoCiencias.Intranet.Domain.Models": "1.0.0",
           "GrupoCiencias.Intranet.Repository.Interfaces": "1.0.0",
+          "System.IdentityModel.Tokens.Jwt": "6.16.0",
           "mercadopago-sdk": "2.1.0"
         },
         "compile": {
@@ -813,6 +877,7 @@
         "dependencies": {
           "GrupoCiencias.Intranet.CrossCutting.Common": "1.0.0",
           "GrupoCiencias.Intranet.CrossCutting.Dto": "1.0.0",
+          "GrupoCiencias.Intranet.Domain.Models": "1.0.0",
           "Microsoft.EntityFrameworkCore": "5.0.0"
         },
         "compile": {
@@ -1299,6 +1364,63 @@
         "microsoft.extensions.primitives.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Microsoft.IdentityModel.JsonWebTokens/6.16.0": {
+      "sha512": "FJtXVXvjoza64VPFOPBxqnhe0yyQ5B/7A09+RpTXIzowr5+A4xcX42patsLrNGmFUvXZAHhS2u/6ojTzhYatpg==",
+      "type": "package",
+      "path": "microsoft.identitymodel.jsonwebtokens/6.16.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Microsoft.IdentityModel.JsonWebTokens.dll",
+        "lib/net45/Microsoft.IdentityModel.JsonWebTokens.xml",
+        "lib/net461/Microsoft.IdentityModel.JsonWebTokens.dll",
+        "lib/net461/Microsoft.IdentityModel.JsonWebTokens.xml",
+        "lib/net472/Microsoft.IdentityModel.JsonWebTokens.dll",
+        "lib/net472/Microsoft.IdentityModel.JsonWebTokens.xml",
+        "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.dll",
+        "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.xml",
+        "microsoft.identitymodel.jsonwebtokens.6.16.0.nupkg.sha512",
+        "microsoft.identitymodel.jsonwebtokens.nuspec"
+      ]
+    },
+    "Microsoft.IdentityModel.Logging/6.16.0": {
+      "sha512": "Fuo5SpYUpFRw90hBM3PDA1uQsrHmbIaxvwkldJcfi0O51gz/qjSFMe8136NFRoKA3NxZZScpz/47oFkRU2WA/A==",
+      "type": "package",
+      "path": "microsoft.identitymodel.logging/6.16.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Microsoft.IdentityModel.Logging.dll",
+        "lib/net45/Microsoft.IdentityModel.Logging.xml",
+        "lib/net461/Microsoft.IdentityModel.Logging.dll",
+        "lib/net461/Microsoft.IdentityModel.Logging.xml",
+        "lib/net472/Microsoft.IdentityModel.Logging.dll",
+        "lib/net472/Microsoft.IdentityModel.Logging.xml",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Logging.xml",
+        "microsoft.identitymodel.logging.6.16.0.nupkg.sha512",
+        "microsoft.identitymodel.logging.nuspec"
+      ]
+    },
+    "Microsoft.IdentityModel.Tokens/6.16.0": {
+      "sha512": "dL7r4bdRbDG0RmyYGw9cpO/pA3GVaxV+lI1ConYuQuRiAxd1ONFlxHue1o8wR8+lEB972cekzfj45WSNaq3+xA==",
+      "type": "package",
+      "path": "microsoft.identitymodel.tokens/6.16.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Microsoft.IdentityModel.Tokens.dll",
+        "lib/net45/Microsoft.IdentityModel.Tokens.xml",
+        "lib/net461/Microsoft.IdentityModel.Tokens.dll",
+        "lib/net461/Microsoft.IdentityModel.Tokens.xml",
+        "lib/net472/Microsoft.IdentityModel.Tokens.dll",
+        "lib/net472/Microsoft.IdentityModel.Tokens.xml",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.xml",
+        "microsoft.identitymodel.tokens.6.16.0.nupkg.sha512",
+        "microsoft.identitymodel.tokens.nuspec"
       ]
     },
     "Microsoft.NETCore.App/2.2.8": {
@@ -2087,6 +2209,25 @@
         "version.txt"
       ]
     },
+    "System.IdentityModel.Tokens.Jwt/6.16.0": {
+      "sha512": "QnZUawkmLkzEhwgvlqcm2YNAoRgz27zVY+2LzMBMWMcfFhl2Sv8aavZOeuFMofmYJsST9h7BilOn7MzFSUMihQ==",
+      "type": "package",
+      "path": "system.identitymodel.tokens.jwt/6.16.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/System.IdentityModel.Tokens.Jwt.dll",
+        "lib/net45/System.IdentityModel.Tokens.Jwt.xml",
+        "lib/net461/System.IdentityModel.Tokens.Jwt.dll",
+        "lib/net461/System.IdentityModel.Tokens.Jwt.xml",
+        "lib/net472/System.IdentityModel.Tokens.Jwt.dll",
+        "lib/net472/System.IdentityModel.Tokens.Jwt.xml",
+        "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.dll",
+        "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.xml",
+        "system.identitymodel.tokens.jwt.6.16.0.nupkg.sha512",
+        "system.identitymodel.tokens.jwt.nuspec"
+      ]
+    },
     "System.Runtime.CompilerServices.Unsafe/4.6.0": {
       "sha512": "HxozeSlipUK7dAroTYwIcGwKDeOVpQnJlpVaOkBz7CM4TsE5b/tKlQBZecTjh6FzcSbxndYaxxpsBMz+wMJeyw==",
       "type": "package",
@@ -2155,6 +2296,69 @@
         "runtimes/win/lib/uap10.0.16299/_._",
         "system.security.accesscontrol.5.0.0.nupkg.sha512",
         "system.security.accesscontrol.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Security.Cryptography.Cng/4.5.0": {
+      "sha512": "WG3r7EyjUe9CMPFSs6bty5doUqT+q9pbI80hlNzo2SkPkZ4VTuZkGWjpp77JB8+uaL4DFPRdBsAY+DX3dBK92A==",
+      "type": "package",
+      "path": "system.security.cryptography.cng/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Security.Cryptography.Cng.dll",
+        "lib/net461/System.Security.Cryptography.Cng.dll",
+        "lib/net462/System.Security.Cryptography.Cng.dll",
+        "lib/net47/System.Security.Cryptography.Cng.dll",
+        "lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll",
+        "lib/netstandard1.3/System.Security.Cryptography.Cng.dll",
+        "lib/netstandard1.4/System.Security.Cryptography.Cng.dll",
+        "lib/netstandard1.6/System.Security.Cryptography.Cng.dll",
+        "lib/netstandard2.0/System.Security.Cryptography.Cng.dll",
+        "lib/uap10.0.16299/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net46/System.Security.Cryptography.Cng.dll",
+        "ref/net461/System.Security.Cryptography.Cng.dll",
+        "ref/net461/System.Security.Cryptography.Cng.xml",
+        "ref/net462/System.Security.Cryptography.Cng.dll",
+        "ref/net462/System.Security.Cryptography.Cng.xml",
+        "ref/net47/System.Security.Cryptography.Cng.dll",
+        "ref/net47/System.Security.Cryptography.Cng.xml",
+        "ref/netcoreapp2.0/System.Security.Cryptography.Cng.dll",
+        "ref/netcoreapp2.0/System.Security.Cryptography.Cng.xml",
+        "ref/netcoreapp2.1/System.Security.Cryptography.Cng.dll",
+        "ref/netcoreapp2.1/System.Security.Cryptography.Cng.xml",
+        "ref/netstandard1.3/System.Security.Cryptography.Cng.dll",
+        "ref/netstandard1.4/System.Security.Cryptography.Cng.dll",
+        "ref/netstandard1.6/System.Security.Cryptography.Cng.dll",
+        "ref/netstandard2.0/System.Security.Cryptography.Cng.dll",
+        "ref/netstandard2.0/System.Security.Cryptography.Cng.xml",
+        "ref/uap10.0.16299/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/win/lib/net46/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/net461/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/net462/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/net47/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/netcoreapp2.0/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/netstandard1.4/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/uap10.0.16299/_._",
+        "system.security.cryptography.cng.4.5.0.nupkg.sha512",
+        "system.security.cryptography.cng.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
@@ -2388,19 +2592,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ASUS\\.nuget\\packages\\": {}
+    "C:\\Users\\LAPTOP ALEX\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj",
+      "projectUniqueName": "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj",
       "projectName": "GrupoCiencias.Intranet.Repository.Implementations",
-      "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj",
-      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Implementations\\obj\\",
+      "projectPath": "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Implementations\\GrupoCiencias.Intranet.Repository.Implementations.csproj",
+      "packagesPath": "C:\\Users\\LAPTOP ALEX\\.nuget\\packages\\",
+      "outputPath": "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Implementations\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\LAPTOP ALEX\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2414,23 +2623,23 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj": {
-              "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj"
+            "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj": {
+              "projectPath": "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Application.Implementations\\GrupoCiencias.Intranet.Application.Implementations.csproj"
             },
-            "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
-              "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
+            "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
+              "projectPath": "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
             },
-            "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
-              "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
+            "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj": {
+              "projectPath": "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj"
             },
-            "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj": {
-              "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj"
+            "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj": {
+              "projectPath": "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.IoC\\GrupoCiencias.Intranet.CrossCutting.IoC.csproj"
             },
-            "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
-              "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj"
+            "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj": {
+              "projectPath": "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj"
             },
-            "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj": {
-              "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj"
+            "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj": {
+              "projectPath": "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Repository.Interfaces\\GrupoCiencias.Intranet.Repository.Interfaces.csproj"
             }
           }
         }
@@ -2497,7 +2706,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
       }
     }
   }

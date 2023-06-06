@@ -10,6 +10,7 @@
         "dependencies": {
           "GrupoCiencias.Intranet.CrossCutting.Common": "1.0.0",
           "GrupoCiencias.Intranet.CrossCutting.Dto": "1.0.0",
+          "GrupoCiencias.Intranet.Domain.Models": "1.0.0",
           "Microsoft.EntityFrameworkCore": "5.0.0"
         },
         "runtime": {
@@ -145,6 +146,14 @@
         "runtime": {
           "GrupoCiencias.Intranet.CrossCutting.Dto.dll": {}
         }
+      },
+      "GrupoCiencias.Intranet.Domain.Models/1.0.0": {
+        "dependencies": {
+          "GrupoCiencias.Intranet.CrossCutting.Common": "1.0.0"
+        },
+        "runtime": {
+          "GrupoCiencias.Intranet.Domain.Models.dll": {}
+        }
       }
     }
   },
@@ -258,6 +267,11 @@
       "sha512": ""
     },
     "GrupoCiencias.Intranet.CrossCutting.Dto/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GrupoCiencias.Intranet.Domain.Models/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

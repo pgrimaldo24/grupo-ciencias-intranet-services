@@ -90,6 +90,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
                 FechaRegistro = DateTime.UtcNow.ToLocalTime(),
                 PoliticasVeracidad = solicitudDto.truth_policy
             };
+            Console.WriteLine(solicitudEntity);
             return solicitudEntity;
         }
 
@@ -104,6 +105,7 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Matricula
                 Celular = apoderadoDto.cell_phone,
                 RutaFotoDni = apoderadoDto.route_photo_document 
             };
+            
             return apoderadoEntity;
         } 
 

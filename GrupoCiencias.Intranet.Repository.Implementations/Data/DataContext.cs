@@ -64,7 +64,8 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
             builder.ApplyConfiguration(new TemaConfiguration());
             builder.ApplyConfiguration(new TemaBibliotecaConfiguration());
             builder.ApplyConfiguration(new UsuarioConfiguration());
-            builder.ApplyConfiguration(new VideosConfiguration()); 
+            builder.ApplyConfiguration(new VideosConfiguration());
+            builder.ApplyConfiguration(new RegistroUsuarioConfiguration());
         }
 
         public virtual DbSet<SolicitudesEntity> Solicitudes { get; set; }
@@ -117,5 +118,6 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Data
         public virtual DbSet<TemaBibliotecaEntity> TemaBibliotecas { get; set; } 
         public virtual DbSet<UsuarioEntity> Usuarios { get; set; }
         public virtual DbSet<VideoEntity> Videos { get; set; } 
+        public virtual DbSet<RegistroUsuarioEntity> RegistroUsuarios { get; set; }
     }
 }

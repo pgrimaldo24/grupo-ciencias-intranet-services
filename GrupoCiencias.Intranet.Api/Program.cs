@@ -11,6 +11,7 @@ namespace GrupoCiencias.Intranet.Api
             CreateHostBuilder(args)
                 .Build()
                 .Run();
+         
         }
 
         public static IWebHostBuilder CreateHostBuilder(string[] args) => WebHost.CreateDefaultBuilder(args)

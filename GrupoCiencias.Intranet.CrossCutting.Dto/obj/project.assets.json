@@ -27,19 +27,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ASUS\\.nuget\\packages\\": {}
+    "C:\\Users\\LAPTOP ALEX\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj",
+      "projectUniqueName": "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj",
       "projectName": "GrupoCiencias.Intranet.CrossCutting.Dto",
-      "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj",
-      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\obj\\",
+      "projectPath": "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\GrupoCiencias.Intranet.CrossCutting.Dto.csproj",
+      "packagesPath": "C:\\Users\\LAPTOP ALEX\\.nuget\\packages\\",
+      "outputPath": "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Dto\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\LAPTOP ALEX\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -53,8 +58,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
-              "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
+            "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj": {
+              "projectPath": "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.CrossCutting.Common\\GrupoCiencias.Intranet.CrossCutting.Common.csproj"
             }
           }
         }
@@ -83,7 +88,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
       }
     }
   }

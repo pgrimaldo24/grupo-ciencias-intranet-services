@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace GrupoCiencias.Intranet.Api.Controllers.Matricula
 {
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
     public class MatriculaController : Controller
@@ -37,6 +37,7 @@ namespace GrupoCiencias.Intranet.Api.Controllers.Matricula
         public async Task<JsonResult> RegisterEnrollment([FromBody] SolicitudDto solicitudDto)
         {
             var response = new ResponseDto();
+            Console.WriteLine(response);
             try
             {
                 response = await ProcesoMatriculaApplication.RegisterEnrollmentAsync(solicitudDto);

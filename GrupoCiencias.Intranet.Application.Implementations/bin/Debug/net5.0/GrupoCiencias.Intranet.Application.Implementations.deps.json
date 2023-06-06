@@ -14,6 +14,7 @@
           "GrupoCiencias.Intranet.CrossCutting.IoC": "1.0.0",
           "GrupoCiencias.Intranet.Domain.Models": "1.0.0",
           "GrupoCiencias.Intranet.Repository.Interfaces": "1.0.0",
+          "System.IdentityModel.Tokens.Jwt": "6.16.0",
           "mercadopago-sdk": "2.1.0"
         },
         "runtime": {
@@ -55,6 +56,7 @@
           }
         }
       },
+      "Microsoft.CSharp/4.5.0": {},
       "Microsoft.EntityFrameworkCore/5.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Abstractions": "5.0.0",
@@ -169,6 +171,38 @@
           }
         }
       },
+      "Microsoft.IdentityModel.JsonWebTokens/6.16.0": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Tokens": "6.16.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
+            "assemblyVersion": "6.16.0.0",
+            "fileVersion": "6.16.0.30218"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Logging/6.16.0": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll": {
+            "assemblyVersion": "6.16.0.0",
+            "fileVersion": "6.16.0.30218"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Tokens/6.16.0": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0",
+          "Microsoft.IdentityModel.Logging": "6.16.0",
+          "System.Security.Cryptography.Cng": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll": {
+            "assemblyVersion": "6.16.0.0",
+            "fileVersion": "6.16.0.30218"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/5.0.0": {},
       "Microsoft.Win32.SystemEvents/5.0.0": {
         "dependencies": {
@@ -237,12 +271,25 @@
           }
         }
       },
+      "System.IdentityModel.Tokens.Jwt/6.16.0": {
+        "dependencies": {
+          "Microsoft.IdentityModel.JsonWebTokens": "6.16.0",
+          "Microsoft.IdentityModel.Tokens": "6.16.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.dll": {
+            "assemblyVersion": "6.16.0.0",
+            "fileVersion": "6.16.0.30218"
+          }
+        }
+      },
       "System.Security.AccessControl/5.0.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "5.0.0",
           "System.Security.Principal.Windows": "5.0.0"
         }
       },
+      "System.Security.Cryptography.Cng/4.5.0": {},
       "System.Security.Cryptography.ProtectedData/5.0.0": {
         "runtime": {
           "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll": {
@@ -334,6 +381,7 @@
         "dependencies": {
           "GrupoCiencias.Intranet.CrossCutting.Common": "1.0.0",
           "GrupoCiencias.Intranet.CrossCutting.Dto": "1.0.0",
+          "GrupoCiencias.Intranet.Domain.Models": "1.0.0",
           "Microsoft.EntityFrameworkCore": "5.0.0"
         },
         "runtime": {
@@ -368,6 +416,13 @@
       "sha512": "sha512-xmREOdqphvzfFqiEJFibIZ/kqdnjdS6pW7xuijJwGxEQW+wYu/OD3Swpwpm3zKevzLhbg3YT+mSPdE21+G9oTQ==",
       "path": "mercadopago-sdk/2.1.0",
       "hashPath": "mercadopago-sdk.2.1.0.nupkg.sha512"
+    },
+    "Microsoft.CSharp/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kaj6Wb4qoMuH3HySFJhxwQfe8R/sJsNJnANrvv8WdFPMoNbKY5htfNscv+LHCu5ipz+49m2e+WQXpLXr9XYemQ==",
+      "path": "microsoft.csharp/4.5.0",
+      "hashPath": "microsoft.csharp.4.5.0.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore/5.0.0": {
       "type": "package",
@@ -446,6 +501,27 @@
       "path": "microsoft.extensions.primitives/5.0.0",
       "hashPath": "microsoft.extensions.primitives.5.0.0.nupkg.sha512"
     },
+    "Microsoft.IdentityModel.JsonWebTokens/6.16.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FJtXVXvjoza64VPFOPBxqnhe0yyQ5B/7A09+RpTXIzowr5+A4xcX42patsLrNGmFUvXZAHhS2u/6ojTzhYatpg==",
+      "path": "microsoft.identitymodel.jsonwebtokens/6.16.0",
+      "hashPath": "microsoft.identitymodel.jsonwebtokens.6.16.0.nupkg.sha512"
+    },
+    "Microsoft.IdentityModel.Logging/6.16.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Fuo5SpYUpFRw90hBM3PDA1uQsrHmbIaxvwkldJcfi0O51gz/qjSFMe8136NFRoKA3NxZZScpz/47oFkRU2WA/A==",
+      "path": "microsoft.identitymodel.logging/6.16.0",
+      "hashPath": "microsoft.identitymodel.logging.6.16.0.nupkg.sha512"
+    },
+    "Microsoft.IdentityModel.Tokens/6.16.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dL7r4bdRbDG0RmyYGw9cpO/pA3GVaxV+lI1ConYuQuRiAxd1ONFlxHue1o8wR8+lEB972cekzfj45WSNaq3+xA==",
+      "path": "microsoft.identitymodel.tokens/6.16.0",
+      "hashPath": "microsoft.identitymodel.tokens.6.16.0.nupkg.sha512"
+    },
     "Microsoft.NETCore.Platforms/5.0.0": {
       "type": "package",
       "serviceable": true,
@@ -502,12 +578,26 @@
       "path": "system.drawing.common/5.0.0",
       "hashPath": "system.drawing.common.5.0.0.nupkg.sha512"
     },
+    "System.IdentityModel.Tokens.Jwt/6.16.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QnZUawkmLkzEhwgvlqcm2YNAoRgz27zVY+2LzMBMWMcfFhl2Sv8aavZOeuFMofmYJsST9h7BilOn7MzFSUMihQ==",
+      "path": "system.identitymodel.tokens.jwt/6.16.0",
+      "hashPath": "system.identitymodel.tokens.jwt.6.16.0.nupkg.sha512"
+    },
     "System.Security.AccessControl/5.0.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-dagJ1mHZO3Ani8GH0PHpPEe/oYO+rVdbQjvjJkBRNQkX4t0r1iaeGn8+/ybkSLEan3/slM0t59SVdHzuHf2jmw==",
       "path": "system.security.accesscontrol/5.0.0",
       "hashPath": "system.security.accesscontrol.5.0.0.nupkg.sha512"
+    },
+    "System.Security.Cryptography.Cng/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WG3r7EyjUe9CMPFSs6bty5doUqT+q9pbI80hlNzo2SkPkZ4VTuZkGWjpp77JB8+uaL4DFPRdBsAY+DX3dBK92A==",
+      "path": "system.security.cryptography.cng/4.5.0",
+      "hashPath": "system.security.cryptography.cng.4.5.0.nupkg.sha512"
     },
     "System.Security.Cryptography.ProtectedData/5.0.0": {
       "type": "package",

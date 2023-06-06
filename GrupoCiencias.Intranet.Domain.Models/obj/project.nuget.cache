@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aAgeBiUjd5fUZ2twS0F93mr8eOZ0ltPcu7T8Sns+gxAUJTiXDayfTqdzkpHzyGogtt93r/QV4h29abSVd4axQQ==",
+  "dgSpecHash": "73IB5NbMl2KWPCna5wJo6cNn8byfNYy3bhXw2gsUBoJ+cA1b+2liFILTRj7wV61qrF5IsJrbjzpi+0LWNCXx1Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ASUS\\Documents\\GitHub\\proceso-matricula-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj",
+  "projectFilePath": "D:\\Trabajos\\Pierr\\intranet-services-gc\\grupo-ciencias-intranet-services\\GrupoCiencias.Intranet.Domain.Models\\GrupoCiencias.Intranet.Domain.Models.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
