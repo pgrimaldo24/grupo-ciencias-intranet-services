@@ -59,9 +59,9 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Landing
                 Sede = reclamoDto.sede,
                 Ciclo = reclamoDto.ciclo,
                 Comentario = reclamoDto.comentario,
-                Solicitud = reclamoDto.solicittud,
-                PoliticasFinesComerciales = reclamoDto.politicasFinesComerciales ? 1 : 0,
-                PoliticasSeguridad = reclamoDto.politicasSeguridad ? 1 : 0
+                Solicitud = reclamoDto.solicitud,
+                PoliticasFinesComerciales = reclamoDto.politicasFinesComerciales ? 1 : 1,
+                PoliticasSeguridad = reclamoDto.politicasSeguridad ? 1 : 1
             };
 
             return reclamoEntity;

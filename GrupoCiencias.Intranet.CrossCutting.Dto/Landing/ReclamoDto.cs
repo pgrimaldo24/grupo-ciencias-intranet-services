@@ -16,7 +16,7 @@ namespace GrupoCiencias.Intranet.CrossCutting.Dto.Landing
         public string sede { get; set; }
         public string ciclo { get; set; }
         public string comentario { get; set; }
-        public string solicittud { get; set; }
+        public string solicitud { get; set; }
         public bool politicasFinesComerciales { get; set; }
         public bool politicasSeguridad { get; set; }
     }

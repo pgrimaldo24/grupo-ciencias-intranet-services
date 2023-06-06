@@ -53,8 +53,8 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Landing
                 Dni = registroDto.dni,
                 Email = registroDto.email,
                 Celular = registroDto.celular,
-                PoliticasFinesComerciales = registroDto.politicasFinesComerciales ? 1 : 0,
-                PoliticasSeguridad = registroDto.politicasSeguridad ? 1 : 0
+                PoliticasFinesComerciales = registroDto.politicasFinesComerciales ? 1 : 1,
+                PoliticasSeguridad = registroDto.politicasSeguridad ? 1 : 1
             };
 
             return registroEntity;
