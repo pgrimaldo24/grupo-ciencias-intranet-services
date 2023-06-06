@@ -100,5 +100,33 @@ namespace GrupoCiencias.Intranet.Api.Controllers.Landing
 
             return new JsonResult(response);
         }
+
+
+        [HttpGet(EndPointDecoratorConstants.LandingRouter.GetIdUltimoReclamo)]
+        public async Task<JsonResult> GetUltimoReclamo()
+        {
+            var response = new ResponseDto();
+            try
+            {
+                response = await ProcesoReclamoApplication.GetIdUltimoReclamoAsync();
+            }
+            catch (FunctionalException ex)
+            {
+                response = new ResponseDto { Status = ex.FuntionalCode, Message = ex.Message, Data = ex.Data, TransactionId = ex.TransactionId };
+                Logger.LogWarning(ex.Message, ex.TransactionId, ex);
+            }
+            catch (TechnicalException ex)
+            {
+                response = new ResponseDto { Status = ex.ErrorCode, Message = ex.StackTrace.ToString(), Data = ex.Data, TransactionId = ex.TransactionId };
+                Logger.LogError(ex.Message, ex.TransactionId, ex);
+            }
+            catch (Exception ex)
+            {
+                response = new ResponseDto { Status = UtilConstants.CodigoEstado.InternalServerError, Message = ex.StackTrace.ToString() };
+                Logger.LogError(ex.Message, response.TransactionId, ex);
+            }
+
+            return new JsonResult(response);
+        }
     }
 }

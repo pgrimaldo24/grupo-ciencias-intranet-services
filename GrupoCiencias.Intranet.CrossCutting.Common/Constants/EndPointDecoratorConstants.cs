@@ -29,6 +29,7 @@
         {
             public const string RegistrarUsuario = "RegisterUser";
             public const string ReclamoUsuario = "ComplaintUser";
+            public const string GetIdUltimoReclamo = "UltimoRegistro";
         }
     }
 }

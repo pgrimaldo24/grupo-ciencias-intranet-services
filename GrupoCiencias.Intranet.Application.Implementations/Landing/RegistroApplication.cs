@@ -68,6 +68,6 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Landing
             return registroEntity;
         }
 
-        
+
     }
 }

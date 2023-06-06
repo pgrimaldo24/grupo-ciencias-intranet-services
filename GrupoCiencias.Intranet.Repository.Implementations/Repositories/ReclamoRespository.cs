@@ -18,9 +18,11 @@ namespace GrupoCiencias.Intranet.Repository.Implementations.Repositories
             this.context = context;
         }
 
-        public Task<bool> InsertReclamo(ReclamoDto reclamoDto)
+        public async Task<int> GetIdReclamoAsync()
         {
-            throw new System.NotImplementedException();
+            return (int)await context.ReclamoUsuarios.OrderByDescending(r => r.Id)
+                .Select(u => u.Id).FirstOrDefaultAsync();
         }
+
     }
 }

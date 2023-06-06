@@ -81,5 +81,22 @@ namespace GrupoCiencias.Intranet.Application.Implementations.Landing
 
             return reclamoEntity;
         }
+       
+        public async Task<ResponseDto> GetIdUltimoReclamoAsync()
+        {
+            var response = new ResponseDto();
+            var result =  await ReclamoRepository.GetIdReclamoAsync();
+            if (ReferenceEquals(null, result))
+            {
+                response.Status = UtilConstants.CodigoEstado.InternalServerError;
+                response.Message = AlertResources.str_error_method_master.ToString(); return response;
+            }
+            response.Message = AlertResources.msg_correcto.ToString();
+            response.Data = result;
+
+            return response;
+        }
+
+
     }
 }

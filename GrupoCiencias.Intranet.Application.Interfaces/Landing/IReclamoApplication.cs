@@ -7,5 +7,7 @@ namespace GrupoCiencias.Intranet.Application.Interfaces.Landing
     public interface IReclamoApplication
     {
         Task<ResponseDto> ReclamoUserAsync(ReclamoDto reclamoDto);
+
+        Task<ResponseDto> GetIdUltimoReclamoAsync();
     }
 }
